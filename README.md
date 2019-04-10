@@ -6,6 +6,12 @@ Instructor: Dr. Prerana Mukherjee
 Class Time (Location): MWF: 9.00 AM - 11.00 AM (113& 115)
 Tutorial Time (Location): Monday: 2.30 PM - 4.30 PM (113& 115)
 
+Deliverables for Project:
+1. Codebase+ReadMe: to be hosted as Github repository. 
+2. Report in IEEE/ ACM double-column format (in .docx/.pdf).
+3. Demo (2-min video showing the workflow of the system)+ Live Working Demo during evaluation
+4. App links, Website links
+
 Regulations in Project Work:
 1. Form a team size of 6 inter-section groups are allowed.
 2. Clearly demarcate the work so that during evaluation marks can be alloted as per the work distribution. 
