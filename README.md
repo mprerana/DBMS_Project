@@ -1,6 +1,8 @@
 # DBMS_Project
 Database Management System (Spring 2019)
+
 Indian Institute of Information Technology, Sri City (IIITS)
+
 Instructor: Dr. Prerana Mukherjee
 
 Class Time (Location): MWF: 9.00 AM - 11.00 AM (113& 115)
