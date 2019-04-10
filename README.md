@@ -6,10 +6,10 @@ Indian Institute of Information Technology, Sri City (IIITS)
 Instructor: Dr. Prerana Mukherjee
 
 TAs:
-MS(R): Abhijit Mohanta
+MS(R): Abhijit Mohanta,
 Vennelakanti Vyshnavi
 
-UG: Rohan Sukumaran
+UG: Rohan Sukumaran,
 Arvind Deshraj
 
 Class Time (Location): MWF: 9.00 AM - 11.00 AM (113& 115)
