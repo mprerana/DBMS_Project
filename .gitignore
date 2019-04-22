@@ -1,0 +1,6 @@
+/Group_20/backend/models/logos/*
+/Group_20/backend/models/pictures/*
+/Group_20/backend/models/items/*
+!/Group_20/backend/models/items/.gitkeep
+!/Group_20/backend/models/pictures/.gitkeep
+!/Group_20/backend/models/logos/.gitkeep
