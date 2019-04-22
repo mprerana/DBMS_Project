@@ -1,0 +1,17 @@
+<h2>Menu</h2>
+<ul class="menu">
+  <li *ngFor="let item of items">
+    <div class="logo">
+      <img src={{item.photo}} height="100px" width="100px"/>
+    </div>
+      <span class="badge">{{item.itemname}}</span>
+    <br>
+    Price: ₹{{item.price}}
+    <br>
+    Description: {{item.description}}
+    <br>
+    Category: {{item.categoryid}}
+    <br>
+    Restaurant: {{item.restid}}
+  </li>
+</ul>
