@@ -1,0 +1,79 @@
+<h2>Register</h2>
+<form [formGroup]="restaurantRegisterForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+      <label for="restaurantName">Restaurant Name</label>
+      <input type="text" formControlName="restaurantName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.restaurantName.errors }" />
+      <div *ngIf="submitted && f.restaurantName.errors" class="invalid-feedback">
+          <div *ngIf="f.restaurantName.errors.required">Required</div>
+          <div *ngIf="f.restaurantName.errors.resnameValidator">Only alphabets and spaces are supported</div>
+      </div>
+  </div>
+  <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Email is required</div>
+          <div *ngIf="f.email.errors.emailValidator">Please enter a valid email</div>
+          <div *ngIf="f.email.errors.emailtakenValidator">Email unavailable</div>
+      </div>
+  </div>
+  <div class="form-group">
+    <label>Location</label>
+    <div id="map" class="form-control" style="padding:0px" [ngClass]="{ 'is-invalid': submitted && f.lat.errors }"></div>
+        <div *ngIf="submitted && f.lat.errors" class="invalid-feedback">
+            <div *ngIf="f.lat.errors.required">Choose a location</div>
+        </div>
+  </div>
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input type="text" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
+    <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+        <div *ngIf="f.address.errors.required">Required</div>
+        <div *ngIf="f.address.errors.addressValidator">Enter a valid address</div>
+    </div>
+  </div>
+<div class="form-group">
+    <label for="zipcode">Zipcode</label>
+    <input type="text" formControlName="zipcode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.zipcode.errors }" />
+    <div *ngIf="submitted && f.zipcode.errors" class="invalid-feedback">
+        <div *ngIf="f.zipcode.errors.required">Required</div>
+        <div *ngIf="f.zipcode.errors.zipcodeValidator">Enter a valid zipcode</div>
+    </div>
+</div>
+<div class="form-group">
+    <label for="phone">Phone</label>
+    <input type="text" formControlName="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+        <div *ngIf="f.phone.errors.required">Required</div>
+        <div *ngIf="f.phone.errors.phoneValidator">Enter a valid phone number</div>
+    </div>
+</div>
+<div class="form-group">
+    <label for="openingHrs">Opening Hours</label>
+    <input type="text" formControlName="openingHrs" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.openingHrs.errors }" />
+    <div *ngIf="submitted && f.openingHrs.errors" class="invalid-feedback">
+        <div *ngIf="f.openingHrs.errors.required">Required</div>
+        <div *ngIf="f.openingHrs.errors.timeValidator">Enter a valid time in HHMM 24-h format</div>
+    </div>
+</div>
+<div class="form-group">
+    <label for="closingHrs">Closing Hours</label>
+    <input type="text" formControlName="closingHrs" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.closingHrs.errors }" />
+    <div *ngIf="submitted && f.closingHrs.errors" class="invalid-feedback">
+        <div *ngIf="f.closingHrs.errors.required">Required</div>
+        <div *ngIf="f.closingHrs.errors.timeValidator">Enter a valid time in HHMM 24-h format</div>
+    </div>
+</div>
+<div class="form-group">
+    <label for="logo">Logo</label>
+    <input type="file" (change)="onFileChange($event)" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }"/>
+    <div *ngIf="submitted && f.logo.errors" class="invalid-feedback">
+        <div *ngIf="f.logo.errors.required">required</div>
+    </div>
+</div>
+  <div class="form-group">
+      <button [disabled]="loading" class="btn btn-primary">Submit</button>
+      <img *ngIf="loading" class="pl-2" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+  </div>
+  <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+</form>

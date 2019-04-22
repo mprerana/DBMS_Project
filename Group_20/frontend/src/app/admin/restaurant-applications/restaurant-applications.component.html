@@ -1,0 +1,90 @@
+<div class="main-panel" id="">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
+    <div class="container-fluid">
+      <div class="navbar-wrapper">
+        <div class="navbar-toggle">
+          <button type="button" class="navbar-toggler">
+            <span class="navbar-toggler-bar bar1"></span>
+            <span class="navbar-toggler-bar bar2"></span>
+            <span class="navbar-toggler-bar bar3"></span>
+          </button>
+        </div>
+        <a class="navbar-brand" >Restaurant Applications</a>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-bar navbar-kebab"></span>
+        <span class="navbar-toggler-bar navbar-kebab"></span>
+        <span class="navbar-toggler-bar navbar-kebab"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navigation">
+        
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link">
+                  <i class="now-ui-icons media-2_sound-wave"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">Stats</span>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#pablo">
+                      <i class="now-ui-icons location_world"></i>
+                    <p>
+                      <span class="d-lg-none d-md-block">Account</span>
+                    </p>
+                  </a>
+                </li>
+              <li class="nav-item" ngbDropdown>
+                <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>
+                    <i class="now-ui-icons users_single-02"></i>                  
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <a class="dropdown-item" (click)="logout()">Log out</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+            </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <div class="panel-header panel-header-sm">
+  </div>
+  <div class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title">Restaurant Applications</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class="text-primary">
+                      <th class="text-center">Name</th>
+                      <th class="text-center">Email</th>
+                      <th class="text-center">Zipcode</th>
+                      <th class="text-center">Phone</th>
+                      <th class="text-center">asdf</th>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let restaurant of restaurants" >
+                        <td class="text-center"><a [routerLink]="['../restaurantApplication', restaurant.id]">{{ restaurant.name }}</a></td>
+                        <td class="text-center">{{ restaurant.email }}</td>
+                        <td class="text-center">{{ restaurant.zipcode }}</td>
+                        <td class="text-center">{{ restaurant.phone }}</td>
+                        <td class="text-center"> <button class="btn btn-success" style="margin: 5px" (click)="verifyAppl(restaurant.email)"> Verify </button> <button class="btn btn-danger" style="margin: 5px" (click)="rejectAppl(restaurant.email)">Reject</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

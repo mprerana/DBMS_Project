@@ -1,0 +1,19 @@
+<h2>All Restaurants</h2>
+<ul class="restaurants">
+  <li *ngFor="let restaurant of restaurants">
+    <div class="logo">
+      <img src={{restaurant.logo}} height="100px" width="100px"/>
+    </div>
+    <a [routerLink]="['../restaurant/', restaurant.username]">
+      <span class="badge">{{restaurant.name}}</span>
+    </a>
+    <br>
+    Opening Hours: {{restaurant.openinghrs}}
+    <br>
+    Closing Hours: {{restaurant.closinghrs}}
+    <br>
+    Address: {{restaurant.address}}
+    <br>
+    Phone No. {{restaurant.phone}}
+  </li>
+</ul>

@@ -1,0 +1,30 @@
+<head>
+    <title>Tomato</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
+    <script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript"></script>
+    <style>
+        a { cursor: pointer }
+    </style>
+</head>
+        
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="navbar-nav" >
+        <a class="nav-item nav-link" routerLink="/home">Home</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+</nav>
+<a class="nav-item nav-link" [routerLink]="['./changePassword']">Change Password</a>
+<a class="nav-item nav-link" [routerLink]="['./profile']">My Profile</a>
+<a class="nav-item nav-link" [routerLink]="['./landing']">Show Restaurants</a>
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
