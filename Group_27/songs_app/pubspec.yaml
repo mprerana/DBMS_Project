@@ -1,0 +1,122 @@
+name: songs_app
+description: A new Flutter project.
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# Read more about versioning at semver.org.
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0-dev.68.0 <3.0.0" 
+
+dependencies:
+  flutter: 
+    sdk: flutter 
+  sqflite: any
+  path_provider: ^0.5.0+1
+
+  firebase_core: ^0.3.4
+  firebase_analytics: ^2.1.1+2
+
+  firebase_auth: ^0.8.4+4
+
+  cloud_firestore: ^0.9.13+1
+  firebase_storage: ^2.1.0+1
+
+  rxdart: ^0.21.0
+
+  audioplayers: ^0.10.1
+  
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons. 
+  cupertino_icons: ^0.1.2
+  flutter_swiper : ^1.1.6
+  animator: ^0.1.1
+
+dev_dependencies:
+  flutter_test: 
+    sdk: flutter
+  test: any
+
+
+# For information on the generic Dart part of this file, see the
+# following page: https://www.dartlang.org/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  # assets:
+  #  - images/a_dot_burr.jpeg
+  #  - images/a_dot_ham.jpeg
+  assets:
+    - assets/dog3.jpg
+    - assets/dog1.jpg
+    - assets/dog2.jpg
+    - assets/dog4.jpg
+
+    - assets/gradient.jpeg
+    - assets/gradient.png
+    - assets/background.jpg
+    - assets/card_back3.jpg
+    - assets/card_back2.png
+    - assets/card_back1.jpg
+    - assets/msc-bg-1.jpg
+    - assets/msc-bg-2.jpg
+    - assets/msc-bg-3.jpg
+    - assets/artists/duaLipa.jpg
+    - assets/songs/song-bg-1.jpg
+    - assets/songs/song-bg-2.jpg
+    - assets/songs/song-bg-3.jpg
+  fonts:
+    - family: NotoSans
+      fonts:
+      - asset: fonts/NotoSans-Regular.ttf
+      - asset: fonts/NotoSans-Bold.ttf
+    - family: underworld
+      fonts:
+      - asset: fonts/underworld.ttf
+        weight: 400
+    - family: Magnificent
+      fonts:
+      - asset: fonts/Magnificent.ttf
+        weight: 700
+    - family: LUMOS
+      fonts:
+      - asset: fonts/LUMOS.ttf
+        weight: 700
+    - family: TooneyNoodle
+      fonts:
+      - asset: fonts/TooneyNoodle.ttf
+        weight: 700
+    - family: Velhos Tempos
+      fonts:
+      - asset: fonts/Velhos Tempos.ttf
+        weight: 700
+    - family: Halfomania-Regular
+      fonts:
+      - asset: fonts/Halfomania-Regular.ttf
+        weight: 700
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.io/assets-and-images/#resolution-aware.
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.io/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.io/custom-fonts/#from-packages
