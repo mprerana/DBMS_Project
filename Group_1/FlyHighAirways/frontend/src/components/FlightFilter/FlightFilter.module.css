@@ -1,0 +1,28 @@
+.FilterColumn {
+    border-right: 2px solid #eee;
+}
+
+.FlightType {
+    min-height: 6rem;
+    background: white;
+    padding-left: 1rem;
+}
+
+.FlightOptions {
+    margin-left: 2rem;
+}
+
+.FlightOptions * {
+    font-size: 1.1rem;
+}
+
+.TypeHeader {
+    margin-bottom: 1rem !important;
+}
+
+
+
+
+li {
+    list-style: none;
+}

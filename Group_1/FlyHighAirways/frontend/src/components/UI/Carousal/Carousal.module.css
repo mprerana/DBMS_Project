@@ -1,0 +1,38 @@
+.antCarousel .slickSlide {
+  text-align: center;
+  height: auto;
+  line-height: 160px;
+  background: #f0eeee;
+  overflow: hidden;
+}
+
+.antCarousel .slickSlide {
+  color: rgb(223, 203, 203);
+}
+img {
+  width: 100%;
+}
+.hip {
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+.parentDiv {
+  position: relative;
+}
+
+.childDiv {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}
+.childDiv1 {
+  position: absolute;
+  top: 40%;
+  left: 10%;
+}
+.childDiv2 {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+}

@@ -1,0 +1,1 @@
+exports.FlightBooking = require('./flights');

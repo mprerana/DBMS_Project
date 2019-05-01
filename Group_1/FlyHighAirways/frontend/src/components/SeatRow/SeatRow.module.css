@@ -1,0 +1,8 @@
+.SeatRow {
+    display: flex;
+    justify-content: space-between;
+}
+
+.SeatSide > * {
+    margin: 0 .2rem;
+}
