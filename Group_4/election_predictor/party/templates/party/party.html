@@ -1,0 +1,49 @@
+{% extends 'party/base.html' %}
+{% load static %}
+
+{% block nav %}
+
+  		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<a class="nav-link" href="{% url 'authentication:party:party' %}" style="color:white;padding-left:25px;padding-right: 25px">Home
+					<span class="sr-only">(current)</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:group:group_list' request.user.pk %}" style="color:white;padding-left:20px;padding-right: 20px">Groups</a>
+			</li>
+            <li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:party:data_analysis' %}" style="color:white;padding-left:20px;padding-right: 20px">Data Analysis</a>
+			</li>
+            <li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:party:payment_details' %}" style="color:white;padding-left:20px;padding-right: 20px">Payment</a>
+			</li>
+            <span class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false" style="padding-left:20px;padding-right: 20px; font-size:15px;padding-top:12px">Sentiment Analysis</a>
+              <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink" style="width:100%;">
+                <a class="dropdown-item" href="{% url 'authentication:party:sentimentanalysis:sentiment_analysis_single' %}" style="font-size:15px;">Single Predict</a>
+                <a class="dropdown-item" href="{% url 'authentication:party:sentimentanalysis:sentiment_analysis_batch' %}" style="font-size:15px;">Batch Predict</a>
+              </div>
+            </span>
+		</ul>
+
+
+{% endblock %}
+
+
+{% block content %}
+
+      <div class="container1" style="margin:120px 0px 40px 0px; ">
+
+  </div>
+
+  <div class="">
+    <center><p style="font-size:40px; color:black">{{ party.name }}</p></center>
+  </div>
+
+  <div class="" style="margin: 20px 100px 50px 100px; padding-bottom: 250px">
+    <center><p>{{ party.description }}</p></center>
+  </div>
+
+{% endblock %}

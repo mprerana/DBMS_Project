@@ -1,0 +1,77 @@
+{% extends 'party/base.html' %}
+{% load static %}
+{% load bootstrap %}
+{% load widget_tweaks %}
+
+{% block nav %}
+
+  		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:party:party' %}" style="color:white;padding-left:25px;padding-right: 25px">Home
+					<span class="sr-only">(current)</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:group:group_list' request.user.pk %}" style="color:white;padding-left:20px;padding-right: 20px">Groups</a>
+			</li>
+            <li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:party:data_analysis' %}" style="color:white;padding-left:20px;padding-right: 20px">Data Analysis</a>
+			</li>
+            <li class="nav-item active">
+				<a class="nav-link" href="{% url 'authentication:party:payment_details' %}" style="color:white;padding-left:20px;padding-right: 20px">Payment</a>
+			</li>
+            <span class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false" style="padding-left:20px;padding-right: 20px; font-size:15px;padding-top:12px">Sentiment Analysis</a>
+              <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink" style="width:100%;">
+                <a class="dropdown-item" href="{% url 'authentication:party:sentimentanalysis:sentiment_analysis_single' %}" style="font-size:15px;">Single Predict</a>
+                <a class="dropdown-item" href="{% url 'authentication:party:sentimentanalysis:sentiment_analysis_batch' %}" style="font-size:15px;">Batch Predict</a>
+              </div>
+            </span>
+		</ul>
+
+
+{% endblock %}
+
+
+{% block content %}
+    <div class="p-t-100">
+    <p style="text-align: center;font-size: 16px">An email has been sent to your account</p>
+    <p style="text-align: center;font-size: 16px">Please enter the password that you have received</p>
+        <div class="limiter">
+            <div class="container-login100 p-b-70">
+                <div class="wrap-login100 p-l-50 p-r-50 p-t-50 p-b-50">
+                    <form class="login100-form validate-form" method="post">
+                        {% csrf_token %}
+                        <span class="login100-form-title p-b-30" style="background: -webkit-linear-gradient(#2dfbff, #3c96ff);
+						-webkit-background-clip: text;-webkit-text-fill-color: transparent;">
+                            Verify Purchase
+                        </span>
+                        {% if error %}
+                            <h4 style="color: red">{{ error }}</h4><br><br>
+                        {% endif %}
+                        {% for field in form %}
+                            <div class="wrap-input100 validate-input">
+                                <span class="label-input100 p-t-30">{{ field.label_tag }}</span><br>
+                                {{ field|add_class:"input100" }}
+                                <span class="focus-input100"></span>
+                            </div>
+                            {% for error in field.errors %}
+                                <p style="font-size: 15px; padding-left:15px; color: red">{{ error }}</p>
+                            {% endfor %}
+                        {% endfor %}
+                        <div class="container-login100-form-btn p-t-20">
+                            <div class="wrap-login100-form-btn">
+                                <div class="login100-form-bgbtn"></div>
+                                <button class="login100-form-btn">
+                                    Verify
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

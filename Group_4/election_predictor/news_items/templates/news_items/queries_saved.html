@@ -1,0 +1,80 @@
+{% extends 'news_items/base.html' %}
+{% load static %}
+
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:articles_list' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">Home
+            <span class="sr-only">(current)</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:regional_news' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">Regional News</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:national_news' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">National News</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:feed_new' %}" style="color:white;padding-left:20px;padding-right: 20px">Search</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:group:events_location' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">Events</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:feeds_list' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">News Feed</a>
+    </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'authentication:news_items:saved_queries' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">Saved Searches</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 500px;
+            border: 1px solid whitesmoke;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 7px;
+        }
+
+        tr:nth-child(even){
+            background-color: whitesmoke;
+        }
+
+    </style>
+
+            <div>
+            <span class="login100-form-title p-t-100 p-b-30" style="background: -webkit-linear-gradient(#2dfbff, #3c96ff); -webkit-background-clip: text;-webkit-text-fill-color: transparent; font-size:35px;">
+                Saved Searches
+            </span>
+
+
+            <div class="container">
+<center>
+                <div>
+                <table>
+                    {% for row in savedqps %}
+                    <tr><form method="POST" action="{% url 'authentication:news_items:saved_queries' %}">
+                        {% csrf_token %}
+
+                            <td><span style="font-size: 18px">{{row.query}}</span></td>
+                            <td><button class="btn btn-primary" name="delete" type="submit" value="{{ row.query }}">
+                                Delete
+                            </button></td>
+                            </form>
+                        </tr>
+                    {% endfor %}
+                </table>
+                </div>
+            </div>
+        </div></center><br><br>
+{% endblock %}

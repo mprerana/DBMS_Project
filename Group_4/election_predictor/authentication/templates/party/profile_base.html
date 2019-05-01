@@ -1,0 +1,439 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.5/css/mdb.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Allura" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,600|Roboto" rel="stylesheet">
+
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.5/js/mdb.min.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+	<link rel="icon" type="image/png" href="{% static 'authentication/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'authentication/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'authentication/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'authentication/fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'authentication/fonts/iconic/css/material-design-iconic-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'authentication/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'authentication/vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'authentication/vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'authentication/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'authentication/vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'authentication/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'authentication/css/main.css' %}">
+
+    <style>
+    .container1 {
+    position: relative;
+    width: 100%;
+  }
+
+  .image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 20px;
+    transition: .5s ease;
+    backface-visibility: hidden;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  .middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%)
+  }
+
+  .container1:hover .image {
+    opacity: 1;
+  }
+
+  .container1:hover .middle {
+    opacity: 1;
+  }
+
+  .text {
+    color: white;
+    font-size: 30px;
+  }
+
+    .chip {
+      display: inline-block;
+      padding: 0 25px;
+      height: 50px;
+      font-size: 16px;
+      line-height: 50px;
+      border-radius: 25px;
+      background-color: #f1f1f1;
+    }
+
+    .chip img {
+      float: left;
+      margin: 0 10px 0 -25px;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+    }
+
+    .feedback {
+        background: white;
+      color: white;
+      padding: 10px;
+      border-radius: 30px;
+      border: 2px solid #2dfbff ;
+    }
+
+    #mybutton {
+      position: fixed;
+      bottom: 30px;
+      right: 50px;
+    }
+
+    #magic-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 4px;
+      background: white;
+    }
+
+  </style>
+
+</head>
+
+<body background="{% static 'authentication/images/middle-cover.jpg' %}">
+
+<nav class="navbar navbar-toggleable-md bg-faded fixed-top navbar-expand-lg py-1 mb-md-0 mb-4 z-depth-1" style="background: -webkit-linear-gradient(left, #3c96ff 0%, #2dfbff 100%) !important;
+background: linear-gradient(to right, #3c96ff 0%, #2dfbff 100%) !important; color:white;">
+
+	<!-- Navbar brand -->
+	<a class="navbar-brand" href="#" style="color:white;font-size: 35px;font-family:'Allura';padding-left:50px">Election Predictor</a>
+
+	<!-- Collapse button -->
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+		aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	{% if user.usertype.is_party %}
+    <!-- Collapsible content -->
+	<div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:party:party' %}" style="color:white;padding-left:25px;padding-right: 25px">Home
+					<span class="sr-only">(current)</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:group:group_list' request.user.pk %}" style="color:white;padding-left:20px;padding-right: 20px">Groups</a>
+			</li>
+            <li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:party:data_analysis' %}" style="color:white;padding-left:20px;padding-right: 20px">Data Analysis</a>
+			</li>
+            <li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:party:payment_details' %}" style="color:white;padding-left:20px;padding-right: 20px">Payment</a>
+			</li>
+            <span class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false" style="padding-left:20px;padding-right: 20px; font-size:15px;padding-top:12px">Sentiment Analysis</a>
+              <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink" style="width:100%;">
+                <a class="dropdown-item" href="{% url 'authentication:party:sentimentanalysis:sentiment_analysis_single' %}" style="font-size:15px;">Single Predict</a>
+                <a class="dropdown-item" href="{% url 'authentication:party:sentimentanalysis:sentiment_analysis_batch' %}" style="font-size:15px;">Batch Predict</a>
+              </div>
+            </span>
+		</ul>
+        {% elif user.usertype.is_user %}
+          <ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:news_items:articles_list' %}" style="color:white;padding-left:20px;padding-right: 20px">Home
+					<span class="sr-only">(current)</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:news_items:regional_news' %}" style="color:white;padding-left:20px;padding-right: 20px">Regional News</a>
+			</li>
+            <li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:news_items:national_news' %}" style="color:white;padding-left:20px;padding-right: 20px">National News</a>
+			</li>
+            <li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:news_items:feed_new' %}" style="color:white;padding-left:20px;padding-right: 20px">Search</a>
+			</li>
+            <li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:group:events_location' %}" style="color:white;padding-left:20px;padding-right: 20px">Events</a>
+			</li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'authentication:news_items:feeds_list' %}"
+                   style="color:white;padding-left:20px;padding-right: 20px">News Feed</a>
+            </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'authentication:news_items:saved_queries' %}"
+                     style="color:white;padding-left:20px;padding-right: 20px">Saved Searches</a></li>
+		</ul>
+
+        {% endif %}
+    <li class="nav-item">
+      <span class="nav-link" style="color:white;font-style: italic;padding-left:25px;font-size:15px;">{{ request.user.username }}</span>
+    </li>
+
+    <div class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false" style="padding-left:30px;padding-right: 50px; font-size:15px;">Profile</a>
+      <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="{% url 'authentication:logout' %}" style="font-size:15px;">Log Out</a>
+      </div>
+    </div>
+	</div>
+</nav>
+
+
+{% block content %}
+
+{% endblock %}
+
+
+    {% if user.usertype.is_party %}
+	<!-- Footer -->
+	<footer class="page-footer font-small mdb-color pt-4" style="background: -webkit-linear-gradient(left, #3c96ff 0%, #2dfbff 100%) !important;
+	background: linear-gradient(to right, #3c96ff 0%, #2dfbff 100%) !important; color:white; font-family:Poppins;">
+
+	    <!-- Footer Links -->
+	    <div class="container text-center text-md-left">
+
+	      <!-- Footer links -->
+	      <div class="row text-center text-md-left mt-3 pb-3">
+
+	        <!-- Grid column -->
+	        <div class="col-md-2 col-lg-2 col-xl-3 mx-auto mt-3">
+	          <h6 class="text-uppercase mb-4 font-weight-bold">Links</h6>
+	          <p>
+	            <a href="{% url 'authentication:party:party' %}">Homepage</a>
+	          </p>
+	          <p>
+	            <a href="{% url 'authentication:group:group_list' request.user.id %}">Your Groups</a>
+	          </p><br><br>
+              <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
+	          <p>
+	            <a href="{% url 'authentication:party:data_analysis' %}">Data Analysis</a>
+	          </p>
+	          <p>
+	            <a href="{% url 'authentication:party:payment_details' %}">Payments</a>
+	          </p>
+	        </div>
+	        <!-- Grid column -->
+
+	        <hr class="w-100 clearfix d-md-none">
+
+	        <!-- Grid column -->
+	        <div class="col-md-3 col-lg-2 col-xl-3 mx-auto mt-3">
+	          <h6 class="text-uppercase mb-4 font-weight-bold">Sentiment Analysis</h6>
+	          <p>
+	            <a href="{% url 'authentication:party:sentimentanalysis:sentiment_analysis_single' %}">Single Predict</a>
+	          </p>
+	          <p>
+	            <a href="{% url 'authentication:party:sentimentanalysis:sentiment_analysis_batch' %}">Batch Predict</a>
+	          </p><br><br>
+              <h6 class="text-uppercase mb-4 font-weight-bold">Profile</h6>
+	          <p>
+	            <a href="{% url 'authentication:edit_profile' %}">Edit Profile</a>
+	          </p>
+	          <p>
+	            <a href="{% url 'authentication:logout' %}">Logout</a>
+	          </p>
+	        </div>
+
+	        <!-- Grid column -->
+	        <hr class="w-100 clearfix d-md-none">
+
+	        <!-- Grid column -->
+	        <div class="col-md-4 col-lg-3 col-xl-5 mx-auto mt-3">
+	          <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+	          <p style="color:white">
+	            &nbsp;<i class="fas fa-home mr-3"></i> IIITS, Sri City, Andhra Pradesh</p>
+	          <p style="color:white">
+	            &nbsp;<i class="fas fa-envelope mr-3"></i>Mail us at <a href="mailto:csa.ase1@gmail.com" target="_blank">csa.ase1@gmail.com</a></p>
+                <span style="color:white"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                    width="22" height="22"
+                    viewBox="0 0 192 192"
+                    style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,192v-192h192v192z" fill="none"></path><g fill="#ffffff"><path d="M68.31744,179.85024c2.73024,-1.17504 4.64256,-3.88992 4.64256,-7.05024v-20.736c0,-0.75648 0.06144,-1.54368 0.15744,-2.3424c-0.05376,0.01536 -0.10368,0.02688 -0.15744,0.0384c0,0 -11.52,0 -13.824,0c-5.76,0 -10.752,-2.304 -13.056,-6.912c-2.688,-4.992 -3.84,-13.44 -10.752,-18.048c-1.152,-0.768 -0.384,-1.92 1.92,-1.92c2.304,0.384 7.296,3.456 10.368,7.68c3.456,4.224 6.912,7.68 13.056,7.68c9.55008,0 14.6688,-0.48 17.74848,-2.1312c3.58656,-5.33376 8.55168,-9.3888 13.73952,-9.3888v-0.096c-21.76512,-0.69888 -35.66976,-7.93344 -42.144,-19.104c-14.0736,0.16128 -26.32704,1.5552 -33.31968,2.71488c-0.22272,-1.25568 -0.41472,-2.51904 -0.57984,-3.79008c6.90048,-1.13664 18.59712,-2.48448 32.0448,-2.74176c-0.43008,-1.05984 -0.80256,-2.14656 -1.11744,-3.26016c-13.48224,-0.68352 -25.11744,-0.14976 -31.43808,0.37248c-0.0768,-1.27488 -0.18048,-2.54592 -0.19584,-3.83616c6.33216,-0.5184 17.65248,-1.0368 30.78912,-0.42624c-0.30336,-1.92 -0.4992,-3.88224 -0.4992,-5.92512c0,-6.528 2.304,-13.44 6.528,-19.2c-1.92,-6.528 -4.608,-20.352 0.768,-25.344c10.368,0 17.664,4.992 21.12,8.064c6.52416,-2.69184 13.82016,-4.22784 21.88416,-4.22784c8.064,0 15.36,1.536 21.504,4.224c3.456,-3.072 10.752,-8.064 21.12,-8.064c5.76,5.376 2.688,19.2 0.768,25.344c4.224,5.76 6.528,12.288 6.144,19.2c0,1.85856 -0.1728,3.65184 -0.4224,5.41056c13.43616,-0.66048 25.06368,-0.13056 31.50336,0.39168c-0.00768,1.29408 -0.12672,2.55744 -0.19584,3.83616c-6.41664,-0.52992 -18.336,-1.0752 -32.09856,-0.34176c-0.34176,1.29024 -0.75648,2.54592 -1.248,3.7632c13.61664,0.17664 25.5936,1.49376 32.82432,2.64576c-0.16512,1.27488 -0.35712,2.53824 -0.57984,3.79008c-7.34208,-1.17504 -19.85664,-2.54976 -34.09536,-2.61888c-6.3936,11.05152 -20.0448,18.2592 -41.38368,19.10016v0.11904c9.984,0 19.2,14.976 19.2,25.344v20.736c0,3.16032 1.91232,5.8752 4.64256,7.05024c35.17824,-11.64288 60.63744,-44.82048 60.63744,-83.85024c0,-48.69888 -39.61728,-88.32 -88.32,-88.32c-48.70272,0 -88.32,39.62112 -88.32,88.32c0,39.02976 25.4592,72.20736 60.63744,83.85024z"></path></g></g></svg>
+                    <span style="font-size: 13px">&nbsp;&nbsp;<a href="https://github.com/Manojkumar24/election_predictor" target="_blank">github.com/Manojkumar24/election_predictor</a></span></span>
+	        </div>
+	        <!-- Grid column -->
+
+	      </div>
+	      <!-- Footer links -->
+
+	      <hr>
+
+	      <!-- Grid row -->
+	      <div class="row d-flex align-items-center" style=" padding-bottom : 15px;">
+
+	        <!-- Grid column -->
+	        <div class="col-md-12 col-lg-12">
+
+	          <!--Copyright-->
+	          	          <p class="text-center text-md-center" style="color:white;font-style: italic" >Election Predictor
+	          </p>
+
+	        </div>
+	        <!-- Grid column -->
+
+	        <!-- Grid column -->
+	    </div>
+	    <!-- Footer Links -->
+        </div>
+	  </footer>
+	  <!-- Footer -->
+      {% elif user.usertype.is_user %}
+            <footer class="page-footer font-small mdb-color pt-4" style="background: -webkit-linear-gradient(left, #3c96ff 0%, #2dfbff 100%) !important;
+	background: linear-gradient(to right, #3c96ff 0%, #2dfbff 100%) !important; color:white; font-family:Poppins;">
+
+	    <!-- Footer Links -->
+	    <div class="container text-center text-md-left">
+
+	      <!-- Footer links -->
+	      <div class="row text-center text-md-left mt-3 pb-3">
+
+	        <!-- Grid column -->
+	        <div class="col-md-2 col-lg-2 col-xl-3 mx-auto mt-3">
+	          <h6 class="text-uppercase mb-4 font-weight-bold">News</h6>
+	          <p>
+	            <a href="{% url 'authentication:news_items:articles_list' %}">Your Location</a>
+	          </p>
+	          <p>
+	            <a href="{% url 'authentication:news_items:regional_news' %}">Regional News</a>
+	          </p>
+  	          <p>
+	            <a href="{% url 'authentication:news_items:national_news' %}">National News</a>
+	          </p>
+              <p>
+	            <a href="{% url 'authentication:news_items:feed_new' %}">Search By Location</a>
+	          </p>
+	        </div>
+	        <!-- Grid column -->
+
+	        <hr class="w-100 clearfix d-md-none">
+
+	        <!-- Grid column -->
+	        <div class="col-md-3 col-lg-2 col-xl-3 mx-auto mt-3">
+	          <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
+	          <p>
+	            <a href="{% url 'authentication:group:events_location' %}">Events</a>
+	          </p>
+	          <p>
+	            <a href="{% url 'authentication:edit_profile' %}">Edit Profile</a>
+	          </p>
+              <p>
+	            <a href="{% url 'authentication:logout' %}">Logout</a>
+	          </p>
+	        </div>
+
+	        <!-- Grid column -->
+	        <hr class="w-100 clearfix d-md-none">
+
+	        <!-- Grid column -->
+	        <div class="col-md-4 col-lg-3 col-xl-5 mx-auto mt-3">
+	          <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+	          <p style="color:white">
+	            &nbsp;<i class="fas fa-home mr-3"></i> IIITS, Sri City, Andhra Pradesh</p>
+	          <p style="color:white">
+	            &nbsp;<i class="fas fa-envelope mr-3"></i>Mail us at <a href="mailto:csa.ase1@gmail.com" target="_blank">csa.ase1@gmail.com</a></p>
+                <span style="color:white"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                    width="22" height="22"
+                    viewBox="0 0 192 192"
+                    style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,192v-192h192v192z" fill="none"></path><g fill="#ffffff"><path d="M68.31744,179.85024c2.73024,-1.17504 4.64256,-3.88992 4.64256,-7.05024v-20.736c0,-0.75648 0.06144,-1.54368 0.15744,-2.3424c-0.05376,0.01536 -0.10368,0.02688 -0.15744,0.0384c0,0 -11.52,0 -13.824,0c-5.76,0 -10.752,-2.304 -13.056,-6.912c-2.688,-4.992 -3.84,-13.44 -10.752,-18.048c-1.152,-0.768 -0.384,-1.92 1.92,-1.92c2.304,0.384 7.296,3.456 10.368,7.68c3.456,4.224 6.912,7.68 13.056,7.68c9.55008,0 14.6688,-0.48 17.74848,-2.1312c3.58656,-5.33376 8.55168,-9.3888 13.73952,-9.3888v-0.096c-21.76512,-0.69888 -35.66976,-7.93344 -42.144,-19.104c-14.0736,0.16128 -26.32704,1.5552 -33.31968,2.71488c-0.22272,-1.25568 -0.41472,-2.51904 -0.57984,-3.79008c6.90048,-1.13664 18.59712,-2.48448 32.0448,-2.74176c-0.43008,-1.05984 -0.80256,-2.14656 -1.11744,-3.26016c-13.48224,-0.68352 -25.11744,-0.14976 -31.43808,0.37248c-0.0768,-1.27488 -0.18048,-2.54592 -0.19584,-3.83616c6.33216,-0.5184 17.65248,-1.0368 30.78912,-0.42624c-0.30336,-1.92 -0.4992,-3.88224 -0.4992,-5.92512c0,-6.528 2.304,-13.44 6.528,-19.2c-1.92,-6.528 -4.608,-20.352 0.768,-25.344c10.368,0 17.664,4.992 21.12,8.064c6.52416,-2.69184 13.82016,-4.22784 21.88416,-4.22784c8.064,0 15.36,1.536 21.504,4.224c3.456,-3.072 10.752,-8.064 21.12,-8.064c5.76,5.376 2.688,19.2 0.768,25.344c4.224,5.76 6.528,12.288 6.144,19.2c0,1.85856 -0.1728,3.65184 -0.4224,5.41056c13.43616,-0.66048 25.06368,-0.13056 31.50336,0.39168c-0.00768,1.29408 -0.12672,2.55744 -0.19584,3.83616c-6.41664,-0.52992 -18.336,-1.0752 -32.09856,-0.34176c-0.34176,1.29024 -0.75648,2.54592 -1.248,3.7632c13.61664,0.17664 25.5936,1.49376 32.82432,2.64576c-0.16512,1.27488 -0.35712,2.53824 -0.57984,3.79008c-7.34208,-1.17504 -19.85664,-2.54976 -34.09536,-2.61888c-6.3936,11.05152 -20.0448,18.2592 -41.38368,19.10016v0.11904c9.984,0 19.2,14.976 19.2,25.344v20.736c0,3.16032 1.91232,5.8752 4.64256,7.05024c35.17824,-11.64288 60.63744,-44.82048 60.63744,-83.85024c0,-48.69888 -39.61728,-88.32 -88.32,-88.32c-48.70272,0 -88.32,39.62112 -88.32,88.32c0,39.02976 25.4592,72.20736 60.63744,83.85024z"></path></g></g></svg>
+                    <span style="font-size: 13px">&nbsp;&nbsp;<a href="https://github.com/Manojkumar24/election_predictor" target="_blank">github.com/Manojkumar24/election_predictor</a></span></span>
+	        </div>
+	        <!-- Grid column -->
+
+	      </div>
+	      <!-- Footer links -->
+
+	      <hr>
+
+	      <!-- Grid row -->
+	      <div class="row d-flex align-items-center" style=" padding-bottom : 15px;">
+
+	        <!-- Grid column -->
+	        <div class="col-md-12 col-lg-12">
+
+	          <!--Copyright-->
+	          <p class="text-center text-md-center" style="color:white;font-style: italic" >Election Predictor
+	          </p>
+
+	        </div>
+	        <!-- Grid column -->
+
+	      </div>
+	      <!-- Grid row -->
+
+	    </div>
+	    <!-- Footer Links -->
+
+	  </footer>
+	  <!-- Footer -->
+      {% endif %}
+
+
+		<script>
+		$(document).ready(function(){
+		  $(".dropdown-toggle").dropdown();
+		});
+		</script>
+
+<!--===============================================================================================-->
+	<script src="{% static 'authentication/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'authentication/vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'authentication/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'authentication/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'authentication/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'authentication/vendor/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'authentication/vendor/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'authentication/vendor/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'authentication/js/main.js' %}"></script>
+    <script src="{% static 'authentication/js/main2.js' %}"></script>
+	<script src="{% static 'authentication/js/scrolling-nav.js' %}"></script>
+	<script src="{% static 'authentication/js/magicline.js' %}"></script>
+
+</body>
+</html>

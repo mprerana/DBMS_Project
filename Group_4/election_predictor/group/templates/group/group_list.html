@@ -1,0 +1,66 @@
+{% extends 'party/base.html' %}
+{% load static %}
+
+{% block nav %}
+
+  		  		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:party:party' %}" style="color:white;padding-left:25px;padding-right: 25px">Home
+					<span class="sr-only">(current)</span>
+				</a>
+			</li>
+			<li class="nav-item active">
+				<a class="nav-link" href="{% url 'authentication:group:group_list' request.user.pk %}" style="color:white;padding-left:20px;padding-right: 20px">Groups</a>
+			</li>
+            <li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:party:data_analysis' %}" style="color:white;padding-left:20px;padding-right: 20px">Data Analysis</a>
+			</li>
+            <li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:party:payment_details' %}" style="color:white;padding-left:20px;padding-right: 20px">Payment</a>
+			</li>
+            <span class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false" style="padding-left:20px;padding-right: 20px; font-size:15px;padding-top:12px">Sentiment Analysis</a>
+              <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink" style="width:100%;">
+                <a class="dropdown-item" href="{% url 'authentication:party:sentimentanalysis:sentiment_analysis_single' %}" style="font-size:15px;">Single Predict</a>
+                <a class="dropdown-item" href="{% url 'authentication:party:sentimentanalysis:sentiment_analysis_batch' %}" style="font-size:15px;">Batch Predict</a>
+              </div>
+            </span>
+		</ul>
+
+
+{% endblock %}
+
+
+{% block content %}
+<div style="background-image: url({% static 'authentication/images/middle-cover.jpg' %});">
+    <span class="login100-form-title p-t-100 p-b-30" style="background: #3c96ff; background: -webkit-linear-gradient(45deg, #2dfbff, #3c96ff);
+						-webkit-background-clip: text;-webkit-text-fill-color: transparent; font-size:35px;">
+                    Groups
+                </span>
+    {% if groups %}
+        {% for group in groups %}
+            <div class="container">
+               <div class="card" style="max-width:1200px">
+                  <div class="card-body" style="padding: 30px">
+                    <h1 class="card-title" style="font-weight: bold">{{ group.1 }}</h1>
+                    <p class="card-text" style="font-size: 16px;" >{{ group.2 }}</p>
+                    <br><br>
+                    <a href="{% url 'authentication:group:event_list' group.0 %}" class="btn btn-primary" style="padding: 10px; border-radius: 5px; background: -webkit-linear-gradient(top, #2bfbff);">Visit Group</a>
+                    <a href="{% url 'authentication:group:update_group' group.0 %}" class="btn btn-primary" style="padding: 10px; border-radius: 5px; background: -webkit-linear-gradient(top, #2bfbff);">Update Group</a>
+                  </div>
+               </div>
+            </div>
+            <br><br>
+        {% endfor %}
+    {% else %}
+        <h3 style="padding: 30px; padding-bottom: 35%; text-align: center">No Groups to show. Click on '+' on bottom right to create one.</h3>
+    {% endif %}
+
+
+    <br><br><br>
+    <div id="mybutton">
+      <a href="{% url  'authentication:group:create_group' request.user.pk %}"><abbr title="Click to add a new Group"><button class="feedback"><img src="https://img.icons8.com/nolan/64/000000/plus-math.png" style="width:35px;height: auto"></button></abbr></a>
+    </div>
+</div>
+{% endblock %}
