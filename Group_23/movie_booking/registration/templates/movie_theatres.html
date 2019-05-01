@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+ {% for i in movie_details %}
+
+   <a href="{% url 'movies_and_cinemas:movie-name' city i.movie_name %}">
+   	<img src="{{media_url}}{{i.movie_poster_1}}" alt="Image placeholder">
+   </a><br>
+    {{ i.movie_name}}
+    {{ i.movie_age_rating}}
+    {{ i.movie_genre}}
+    {{ i.movie_language}}
+    {{ i.movie_duration_mins}}
+
+ {% endfor %}
+  
+<br><br><br>
+
+{% for i in theatre_address %}
+
+   
+    {{i.theatre_name}}
+    {{i.address}}
+
+
+    {% for j in theatre_dates%}
+    	{% if i.theatre_name == j.theatre_name and i.address == j.address %}
+    		{{j.date}}
+    		{% for k in theatre_details%}
+    			{% if j.date == k.date %}
+		    		{{k.show_timings}}
+    			{% endif %}
+    		{% endfor %}
+    	
+    	{% endif %}
+    {% endfor %}
+
+
+    <br><br>
+
+{% endfor %}
+
+</body>
+</html>

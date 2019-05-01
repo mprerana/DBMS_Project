@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+  {%for i in movies_city%}
+
+  <fieldset style="right_margin:300px;width:200px">
+
+
+    {%for x in i%}
+
+    {{x.movie_name}}<br>
+    {{x.movie_actors}}<br>
+    {{x.movie_language}}<br>
+    {{x.imdb_movie_rating}}<br>
+    y={{x.movie_name}}
+    city='Vijayawada'
+    Time Duration:{{x.movie_duration_mins}}<br><br><br>
+
+    <button type="" name="button" onclick="">Book now</button>
+    
+    {% endfor %}
+      </fieldset>
+  {%endfor%}
+</body>
+</html>

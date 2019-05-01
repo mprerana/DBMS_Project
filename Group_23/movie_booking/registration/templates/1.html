@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+
+<div class="w3-content" style="max-width:2000px;margin-top:90px">
+    <div class="container" style="background-color: #e3e3e3">
+        <div class="sel-reg p-5" style="width: 100%;background-color: #e3e3e1;border-color: #D4AF37;border-width: 5px; text-align: center;">
+            <h2>CONFIRMATION PAGE !</h2><br>
+
+                <h3>Dear {{username}},&nbsp Are you sure pay 180/-?</h3><br><br>
+
+            <a href="{% url 'movies_and_cinemas:pay' %}"><button class="btn btn-outline-primary">Pay Now</button></a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

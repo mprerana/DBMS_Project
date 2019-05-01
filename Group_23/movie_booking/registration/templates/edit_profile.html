@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+
+{% block viewprofile %}
+    <style>
+        .inputForm-title input[type="text"],input[type="password"],input[type="email"],textarea {
+    width: 300px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: black;
+    float: left;
+  display: block;
+  background:white;
+    border-bottom: solid 2px #666666;
+  height: 25px;
+  border-radius: 25px;
+            margin: 10px 10px 10px 10px;
+}
+
+
+    .inputForm-title {
+  font-size: 20px;
+  color:#D4AF37;
+  line-height: 1.2;
+  text-align: center;
+
+  width: 5px;
+  display: block;
+  padding: 10px 10px 10px 10px ;
+}
+
+
+p {
+	font-family: Poppins-Regular;
+	font-size: 20px;
+	line-height: 1.2;
+	color: #D4AF37;
+	margin: 10px;
+    padding: 10px 10px 10px 10px;
+}
+
+
+   .newbutton {
+  background-color: #D4AF37; /* Green */
+  border: none;
+  color: black;
+            font-weight: bold;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+</style>
+
+        <div class="w3-content" style="margin-left:100px;max-width:300px;margin-top:84px " >
+
+      <h1 style="color: #D4AF37">Edit Your Profile</h1><br>
+      <div>
+          <form method="POST"enctype="multipart/form-data" style="margin-left:100px;max-width: 200px" class="inputForm-title">
+                {% csrf_token %}
+                {{ user_form.as_p}}
+                {{ user_profile_form.as_p }} <br><br><br>
+                <button type="submit" class="newbutton" style="margin-left: 800px;width: 200px;float: left">Submit</button>    <br>
+
+          </form>
+          <br>
+      </div>
+
+        </div>
+
+
+{% endblock %}

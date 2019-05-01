@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <style>
+                .newbutton {
+  background-color: #D4AF37; /* Green */
+  border: none;
+  color: black;
+            font-weight: bold;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+    </style>
+</head>
+
+
+<body style="background-color: black;">
+<h3 style ="color:white; text-align: center;margin-top:110px">Select your city</h3>
+<div class="container " style="margin-top: 110px; margin-left: 180px">
+    <div class="row px-auto">
+
+        {% for i in cities %}
+        <div class="col col-lg-4 mx-auto">
+            <button class="newbutton my-3" style="width: 200px; padding:20px"><a style="text-decoration: none;color: black" onmouseover="this.style.color='white'" onmouseleave="this.style.color='black'" href="{% url 'movies_and_cinemas:main_page' city=i %} ">{{ i }}</a></button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        </div>
+{% endfor %}
+    </div>
+</div>
+</body>
+</html>
+

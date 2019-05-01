@@ -1,0 +1,27 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Paytm Secure Online Payment Gateway</title>
+</head>
+<body>
+<table align='center'>
+    <tr>
+        <td><STRONG>Transaction is being processed,</STRONG></td>
+    </tr>
+    <tr>
+        <td><font color='blue'>Please wait ...</font></td>
+    </tr>
+    <tr>
+        <td>(Please do not press 'Refresh' or 'Back' button</td>
+    </tr>
+</table>
+
+
+<FORM NAME='TESTFORM' ACTION="{% url 'movies_and_cinemas:status' %}"  METHOD='POST'>{% csrf_token %}
+    {% for key,value in paytmDict.items %}
+        <input type='hidden' name='{{key}}' value='{{ value }}'><br>
+    {% endfor %}
+</FORM>
+</body>
+<script type="text/javascript">  document.forms[0].submit();</script>
+</html>
