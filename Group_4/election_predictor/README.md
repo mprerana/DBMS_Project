@@ -30,4 +30,3 @@ If virtualenv is not present, install it by using the command<br>
 
 6. Finally, run the project using:<br>
   `python manage.py runserver`
-

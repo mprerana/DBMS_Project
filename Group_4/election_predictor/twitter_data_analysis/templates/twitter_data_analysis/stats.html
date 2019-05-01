@@ -1,0 +1,165 @@
+{% extends 'party/base.html' %}
+{% load static %}
+
+{% block nav %}
+
+  		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:party:party' %}" style="color:white;padding-left:25px;padding-right: 25px">Home
+					<span class="sr-only">(current)</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:group:group_list' request.user.pk %}" style="color:white;padding-left:20px;padding-right: 20px">Groups</a>
+			</li>
+            <li class="nav-item active">
+				<a class="nav-link" href="{% url 'authentication:party:data_analysis' %}" style="color:white;padding-left:20px;padding-right: 20px">Data Analysis</a>
+			</li>
+            <li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:party:payment_details' %}" style="color:white;padding-left:20px;padding-right: 20px">Payment</a>
+			</li>
+            <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false" style="padding-top:12px;padding-left:20px;padding-right: 20px; font-size:15px;">Sentiment Analysis</a>
+              <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'authentication:party:sentimentanalysis:sentiment_analysis_single' %}" style="font-size:15px;">Single Predict</a>
+                <a class="dropdown-item" href="{% url 'authentication:party:sentimentanalysis:sentiment_analysis_batch' %}" style="font-size:15px;">Batch Predict</a>
+              </div>
+            </div>
+		</ul>
+
+
+{% endblock %}
+
+
+{% block content %}
+    <div style="padding: 100px 100px 0px;background-color: white">
+        <span class="login100-form-title p-b-20" style="background: -webkit-linear-gradient(#2dfbff, #3c96ff); -webkit-background-clip: text;-webkit-text-fill-color: transparent; font-size:30px;">Polarity Analysis</span>
+        <p style="font-size: 14px">Average positive tweet length : <span style="font-size: 16px;font-weight: bold">{{ pos_avg_lev }}</span></p><br>
+        <p style="font-size: 14px">Popular positive hash tags : <span style="font-size: 16px;font-weight: bold">{{ pos_hash }}</span></p><br>
+        <p style="font-size: 14px">Positive key words : <span style="font-size: 16px;font-weight: bold">{{ pos_words }}</span></p><br><br><br>
+
+        <p style="font-size: 14px">Average negative tweet length : <span style="font-size: 16px;font-weight: bold">{{ neg_avg_len }}</span></p><br>
+        <p style="font-size: 14px">Popular negative hash tags : <span style="font-size: 16px;font-weight: bold">{{ neg_hash }}</span></p><br>
+        <p style="font-size: 14px;padding-bottom: 70px">Negative key words : <span style="font-size: 16px;font-weight: bold">{{ neg_words }}</span></p>
+
+        <p style="font-size: 16px;padding-bottom: 70px">Your Current Lead : <span style="font-size: 20px;font-weight: bold">{{ lead }}</span></p>
+
+        <center>
+        <p style="font-size: 16px;font-weight:bold">Positive vs Negative</p><div id="g1" class="p-b-70"></div>
+        <p style="font-size: 16px;font-weight:bold">Party wise Positive</p><div id="g2" class="p-b-70"></div>
+        <p style="font-size: 16px;font-weight:bold">Party wise Negative</p><br><div id="g3" class="p-b-70"></div>
+        <p style="font-size: 16px;font-weight:bold">Party wise Total Share</p><br><div id="g4"></div>
+        </center>
+    </div>
+
+    <style media="screen">
+      @import url(https://fonts.googleapis.com/css?family=Roboto);
+
+      body {
+        font-family: Roboto, sans-serif;
+      }
+
+      #g1,#g2,#g3 {
+        max-width: 650px;
+        margin: 35px auto;
+      }
+
+        #g4 {
+            padding-left: 300px;
+        }
+    </style>
+
+    <script type="text/javascript">
+      var options_1 = {
+      chart: {
+        type: 'bar'
+      },
+      series: [{
+        name: 'sales',
+        data: {{ g1_y }}
+      }],
+      xaxis: {
+        categories: ['p','n']
+      }
+    };
+    var chart_1 = new ApexCharts(document.querySelector("#g1"), options_1);
+    chart_1.render();
+    </script>
+    <script type="text/javascript">
+    var party_list;
+    var bjp;
+    var congress;
+    congress = "congress";
+    bjp = "bjp";
+    var pname ={{ profile.name }}
+    if ( pname == "bjp" )
+    {
+        party_list = ['bjp', 'congress'];
+    }else
+    {
+        party_list = ['congress', 'bjp'];
+    }
+        var g2_y = {{ g2_y }};
+      var options_2 = {
+      chart: {
+        type: 'bar'
+      },
+      series: [{
+        name: 'sales',
+        data: {{ g2_y }}
+      }],
+      xaxis: {
+        categories: party_list
+      }
+    };
+    var chart_2 = new ApexCharts(document.querySelector("#g2"), options_2);
+    chart_2.render();
+    </script>
+    <script type="text/javascript">
+    var party_list;
+    var pname ={{ profile.name }}
+    if ( pname == "bjp" )
+    {
+        party_list = ['bjp', 'congress'];
+    }else
+    {
+        party_list = ['congress', 'bjp'];
+    }
+      var options_3 = {
+      chart: {
+        type: 'bar'
+      },
+      series: [{
+        name: 'sales',
+        data: {{ g3_y }}
+      }],
+      xaxis: {
+        categories: party_list
+      }
+    };
+      var chart_3 = new ApexCharts(document.querySelector("#g3"), options_3);
+    chart_3.render();
+    </script>
+    <script type="text/javascript">
+    var party_list;
+    var pname ={{ profile.name }}
+    if ( pname == "bjp" )
+    {
+        party_list = ['bjp', 'congress'];
+    }else
+    {
+        party_list = ['congress', 'bjp'];
+    }
+      var options_4 = {
+      chart: {
+        type: 'pie'
+      },
+      series: {{ g4_y }},
+      labels: party_list
+    };
+      var chart_4 = new ApexCharts(document.querySelector("#g4"), options_4);
+    chart_4.render();
+    </script>
+
+{% endblock %}

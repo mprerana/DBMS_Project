@@ -1,0 +1,56 @@
+{% extends 'party/base.html' %}
+{% load static %}
+
+{% block nav %}
+
+  		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:party:party' %}" style="color:white;padding-left:25px;padding-right: 25px">Home
+					<span class="sr-only">(current)</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:group:group_list' request.user.pk %}" style="color:white;padding-left:20px;padding-right: 20px">Groups</a>
+			</li>
+
+            <li class="nav-item active">
+				<a class="nav-link" href="{% url 'authentication:party:data_analysis' %}" style="color:white;padding-left:20px;padding-right: 20px">Data Analysis</a>
+			</li>
+            <li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:party:payment_details' %}" style="color:white;padding-left:20px;padding-right: 20px">Payments</a>
+			</li>
+            <span class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false" style="padding-left:20px;padding-right: 20px; font-size:15px;padding-top:12px">Sentiment Analysis</a>
+              <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink" style="width:100%;">
+                <a class="dropdown-item" href="{% url 'authentication:party:sentimentanalysis:sentiment_analysis_single' %}" style="font-size:15px;">Single Predict</a>
+                <a class="dropdown-item" href="{% url 'authentication:party:sentimentanalysis:sentiment_analysis_batch' %}" style="font-size:15px;">Batch Predict</a>
+              </div>
+            </span>
+		</ul>
+{% endblock %}
+
+{% block content %}
+<div style="padding: 100px 150px 80px;background-color: white">
+    <span class="login100-form-title p-b-20" style="background: -webkit-linear-gradient(#2dfbff, #3c96ff); -webkit-background-clip: text;-webkit-text-fill-color: transparent; font-size:30px;">Data Analysis</span>
+        {% if error %}
+            <div style="color: red">{{ error }}</div>
+        {% endif %}
+        <p style="font-size: 15px">Your Credits : <span style="font-size: 20px;font-weight: bold">{{ profile.credit_amount }}</span></p><br>
+        <p style="font-size: 15px;">It costs 200 credits</p><a href="{% url 'authentication:party:dataanalysis:stats' %}"><input type="button" class="btn btn-primary" value="Polarity Analysis"></a>
+        <br><br><br><br>
+        <form method="post">
+        {% csrf_token %}
+            <p style="font-size: 15px">It costs 50 credits</p>
+            <span style="font-size: 15px">Select a city to get analysis : </span>
+            <select name="location" style="font-size: 15px">
+              <option value="mumbai">Mumbai</option>
+              <option value="pune">Pune</option>
+              <option value="delhi">Delhi</option>
+              <option value="chennai">Chennai</option>
+                <option value="hyderabad">Hyderabad</option>
+            </select><br><br>
+        <a href="{% url 'authentication:party:data_analysis' %}"><input type="submit" class="btn btn-primary" value="location analysis"></a><br><br>
+        </form>
+</div>
+{% endblock %}

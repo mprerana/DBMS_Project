@@ -1,0 +1,20 @@
+{% extends 'news_items/base.html' %}
+{% load static %}
+{% block content %}
+
+<div style="background-image: url({% static 'authentication/images/middle-cover.jpg' %})">
+
+  <span class="login100-form-title p-t-100 p-b-30" style="background: -webkit-linear-gradient(#2dfbff, #3c96ff); -webkit-background-clip: text;-webkit-text-fill-color: transparent; font-size:35px;">
+       News Feed
+  </span>
+
+<div class="container">
+  <hr>
+  <ul>
+    {% for feed in feeds %}
+      <li><a href="{{feed.url}}">{{feed.title}}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+</div>
+{% endblock %}

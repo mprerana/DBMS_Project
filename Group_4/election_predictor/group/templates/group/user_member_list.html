@@ -1,0 +1,55 @@
+{% extends 'news_items/base.html' %}
+{% load static %}
+
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:articles_list' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">Home
+            <span class="sr-only">(current)</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:regional_news' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">Regional News</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:national_news' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">National News</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:feed_new' %}" style="color:white;padding-left:20px;padding-right: 20px">Search</a>
+    </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'authentication:group:events_location' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">Events</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:feeds_list' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">News Feed</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:saved_queries' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">Saved Searches</a></li>
+{% endblock %}
+
+{% block content %}
+    <div style="padding-bottom: 370px;margin-left: 100px">
+    {% if members %}
+        <span class="login100-form-title p-t-100 p-b-30" style="background: -webkit-linear-gradient(#2dfbff, #3c96ff); -webkit-background-clip: text;-webkit-text-fill-color: transparent; font-size:30px;">
+               Group Members
+          </span>
+        {% for member in members %}
+            <div style="padding: 3px">
+            <div class="chip">
+              <img src="{% static 'authentication/images/img_avatar1.png' %}" alt="Person" width="96" height="96">
+                {{ member.first_name}}&nbsp;{{ member.last_name }}
+            </div></div>
+        {% endfor %}
+     {% else %}
+        <div style="text-align: center">
+            <p class="p-t-150" style="padding-bottom: 45px; font-size: 20px;">There are no members in your party.</p>
+        </div>
+    {% endif %}
+
+    </div>
+{% endblock %}

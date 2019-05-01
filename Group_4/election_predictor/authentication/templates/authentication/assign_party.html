@@ -1,0 +1,48 @@
+{% extends 'news_items/base.html' %}
+
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:articles_list' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">Home
+            <span class="sr-only">(current)</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:regional_news' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">Regional News</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:national_news' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">National News</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:feed_new' %}" style="color:white;padding-left:20px;padding-right: 20px">Search</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:group:events_location' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">Events</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:feeds_list' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">News Feed</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:saved_queries' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">Saved Searches</a></li>
+{% endblock %}
+
+{% block content %}
+
+    <span class="login100-form-title p-t-100 p-b-30" style="background: -webkit-linear-gradient(#2dfbff, #3c96ff); -webkit-background-clip: text;-webkit-text-fill-color: transparent; font-size:30px;">
+       Change your party
+    </span>
+
+    <div style="margin-left: 150px;padding-bottom: 335px;">
+        <h2 style="font-size: 15px;">Select one to switch your party!! </h2><br>
+        {% for party in parties %}
+            <div style="margin-left: 30px ">
+                <h2><a href = "{% url 'authentication:choose_party' party.id %}" style="font-size: 20px; color: black;">&longrightarrow;&nbsp; {{ party.name }}</a></h2>
+            </div><br>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'news_items/base.html' %}
+{% load static %}
+{% load bootstrap %}
+{% load widget_tweaks %}
+
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:articles_list' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">Home
+            <span class="sr-only">(current)</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:regional_news' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">Regional News</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:national_news' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">National News</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:feed_new' %}" style="color:white;padding-left:20px;padding-right: 20px">Search</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:group:events_location' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">Events</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:feeds_list' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">News Feed</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:news_items:saved_queries' %}"
+           style="color:white;padding-left:20px;padding-right: 20px">Saved Searches</a>
+{% endblock %}
+
+{% block content %}
+
+    <span class="login100-form-title p-t-100 p-b-30" style="background: #3c96ff; background: -webkit-linear-gradient(45deg, #2dfbff, #3c96ff);
+						-webkit-background-clip: text;-webkit-text-fill-color: transparent; font-size:30px;">
+                    Requested Groups:
+                </span>
+    {% if groups %}
+        {% for group in groups %}
+            <div class="container">
+               <div class="card" style="max-width:1200px">
+                  <div class="card-body" style="padding: 30px">
+                    <h1 class="card-title" style="font-weight: bold">{{ group.name }}</h1>
+                    <p class="card-text" style="font-size: 16px;" >{{ group.description }}</p>
+                      <br><br>
+                    <a href="{% url 'authentication:group:user_accept' group.pk u_id.pk %}" class="btn btn-primary" style="padding: 10px; border-radius: 5px; background: -webkit-linear-gradient(top, #2bfbff);">Accept</a>
+                    <a href="{% url 'authentication:group:user_decline' group.pk u_id.pk %}" class="btn btn-primary" style="padding: 10px; border-radius: 5px; background: -webkit-linear-gradient(top, #2bfbff);">Decline</a>
+                  </div>
+               </div>
+            </div>
+            <br><br>
+        {% endfor %}
+     {% else %}
+        <div style="text-align: center">
+            <p class="p-t-150" style="font-size: 20px;">Oops..!! You have no requested groups.</p>
+        </div>
+    {% endif %}
+    <div style="padding-bottom: 418px;"></div>
+{% endblock %}

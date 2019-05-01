@@ -1,0 +1,72 @@
+{% extends 'party/base.html' %}
+{% load static %}
+
+{% block nav %}
+
+  		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:party:party' %}" style="color:white;padding-left:25px;padding-right: 25px">Home
+					<span class="sr-only">(current)</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:group:group_list' request.user.pk %}" style="color:white;padding-left:20px;padding-right: 20px">Groups</a>
+			</li>
+            <li class="nav-item active">
+				<a class="nav-link" href="{% url 'authentication:party:data_analysis' %}" style="color:white;padding-left:20px;padding-right: 20px">Data Analysis</a>
+			</li>
+            <li class="nav-item">
+				<a class="nav-link" href="{% url 'authentication:party:payment_details' %}" style="color:white;padding-left:20px;padding-right: 20px">Payments</a>
+			</li>
+            <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false" style="padding-top:12px;padding-left:30px;padding-right: 50px; font-size:15px;">Sentiment Analysis</a>
+              <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'authentication:party:sentimentanalysis:sentiment_analysis_single' %}" style="font-size:15px;">Single Predict</a>
+                <a class="dropdown-item" href="{% url 'authentication:party:sentimentanalysis:sentiment_analysis_batch' %}" style="font-size:15px;">Batch Predict</a>
+              </div>
+            </div>
+		</ul>
+
+{% endblock %}
+
+
+{% block content %}
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 500px;
+            border: 1px solid whitesmoke;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 7px;
+        }
+
+        tr:nth-child(even){
+            background-color: whitesmoke;
+        }
+
+    </style>
+
+
+    <div style="padding: 100px 100px 50px;background-color: white">
+        <span class="login100-form-title p-b-20" style="background: -webkit-linear-gradient(#2dfbff, #3c96ff); -webkit-background-clip: text;-webkit-text-fill-color: transparent; font-size:30px;">Location Analysis</span>
+        <p style="font-size: 14px">Hastags : <span style="font-size: 16px;font-weight: bold">{{ hashtags }}</span></p><br>
+        <p style="font-size: 14px">Number of tweets : <span style="font-size: 16px;font-weight: bold">{{ count }}</span></p><br>
+        <p style="font-size: 14px">Average tweet length : <span style="font-size: 16px;font-weight: bold">{{ avg_len }}</span></p><br>
+        <p style="font-size: 14px">Important words : <span style="font-size: 16px;font-weight: bold">{{ words }}</span></p><br><br>
+
+        <p style="font-size: 14px">Personalities : </p><br>
+        <div>
+        {% if mylist %}
+            <table>
+            <tr><th style="font-size: 14px;font-weight: bold">Personality</th><th style="font-size: 14px;font-weight: bold">Value</th></tr>
+            {% for personality,value in mylist %}
+                <tr><td style="font-size: 13px">{{ personality }}</td><td style="font-size: 13px">{{ value }}</td></tr>
+            {% endfor %}
+            </table>
+        {% endif %}</div>
+    </div>
+{% endblock %}

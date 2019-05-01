@@ -1,0 +1,71 @@
+{% extends 'party/profile_base.html' %}
+{% load static %}
+{% load bootstrap %}
+{% load widget_tweaks %}
+
+{% block content %}
+{% if user.is_authenticated %}
+
+    <div style="background-image:url({% static 'authentication/images/middle-cover.jpg' %});">
+    <div class="limiter">
+        <div class="container-login100 p-t-50 p-b-70">
+    <div class="wrap-login100 p-l-50 p-r-50 p-t-50 p-b-50">
+            <form class="login100-form validate-form" method="post">
+                {% csrf_token %}
+                <span class="login100-form-title p-b-30" style="background: -webkit-linear-gradient(#2dfbff, #3c96ff);
+						-webkit-background-clip: text;-webkit-text-fill-color: transparent;">
+                    Update Account
+                </span>
+        {% for field in form %}
+        <div class="wrap-input100 validate-input">
+            <span class="label-input100 p-t-30">{{ field.label_tag }}</span><br>
+            {{ field|add_class:"input100" }}
+            <span class="focus-input100"></span>
+        </div>
+        {% for error in field.errors %}
+          <p style="font-size: 15px; padding-bottom: 15px; color: red">{{ error }}</p>
+        {% endfor %}
+        {% endfor %}
+
+        {% if form_party %}
+            {% for field in form_party %}
+                <div class="wrap-input100 validate-input">
+                    <span class="label-input100 p-t-30">{{ field.label_tag }}</span><br>
+                    {{ field|add_class:"input100" }}
+                    <span class="focus-input100"></span>
+                </div>
+                {% for error in field.errors %}
+                    <p style="font-size: 15px;padding-bottom: 15px; color: red">{{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+        {% if user_form %}
+            {% for field in user_form %}
+            <div class="wrap-input100 validate-input">
+                <span class="label-input100 p-t-30">{{ field.label_tag }}</span><br>
+                {{ field|add_class:"input100" }}
+                <span class="focus-input100"></span>
+            </div>
+                {% for error in field.errors %}
+          <p style="font-size: 15px;padding-bottom: 15px; color: red">{{ error }}</p>
+        {% endfor %}
+            {% endfor %}
+        {% endif %}
+        <div class="container-login100-form-btn p-t-20 p-l-75">
+            <div class="wrap-login100-form-btn">
+                <div class="login100-form-bgbtn"></div>
+                <button class="login100-form-btn">
+                    Update
+                </button>
+            </div>
+        </div>
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+{% endif %}
+{% endblock %}
+
+
