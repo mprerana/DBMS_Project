@@ -28,3 +28,5 @@ As soon as the user is enrolled at a data center the user can access all the fea
 User is required to bring necessary proofs at the time of enrollment.<br />
 If the user wants to update his details online, he needs to submit the respective proofs.<br />
 Once proofs are verified, the details are updated.<br /> 
+`backup` folder is basically for backing up the database.<br />
+`data` folder is for saving the data.
