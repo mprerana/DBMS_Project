@@ -1,0 +1,25 @@
+{% extends 'test.html' %}
+{% block content %}
+  <div class="container">
+    <center><h5>Enter data for update</h5></center>
+    <div class="card hoverable">
+      <div class="card-content">
+        <p>
+            Submit your details in the form below. Ensure that your information is
+            transliterated correctly in the local language. The English spellings in the
+            local language boxes may be modified to get the local language spelling
+            correctly. Detailed guidelines on local language transliteration are available <br>
+        </p>
+        <b>Contact Details:</b>
+        <form class="" action="{% url 'update:data_modify' %}" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="aadhar_num" value="{{ aadhar_num }}">
+          {{ form }}
+          <div class="card-content grey lighten-4">
+            <button type="submit" name="button" class="waves-effect waves-light btn Center">Submit update request</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

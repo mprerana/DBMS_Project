@@ -1,0 +1,22 @@
+{% extends 'test.html' %}
+{% block content %}
+  <div class="container">
+    <center><h5>Update Address Online</h5></center>
+    <div class="card hoverable">
+      <div class="card-content">
+
+        <form class="" action="{% url 'update:proceed' %}" method="post">
+          <input type="hidden" name="aadhar_num" value="{{ aadhar_num }}">
+          {% csrf_token %}
+          {% for field in form %}
+            {{ field.label_tag }}
+            {{ field.value }}<br>
+          {% endfor %}
+          <div class="card-content grey lighten-4">
+            <button type="submit" name="proceed" class="waves-effect waves-light btn Center">Proceed</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

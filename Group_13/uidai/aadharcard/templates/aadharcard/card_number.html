@@ -1,0 +1,18 @@
+{% extends 'test.html' %}
+{% block content %}
+  <div class="container">
+    <div class="card hoverable">
+      <div class="card-content">
+
+        <form class="" action="{% url 'aadharcard:download' %}" method="post">
+          {% csrf_token %}
+          <b>Enter your aadhar card number:</b>
+          <input type="number" name="aadhar_num" value="">
+          <div class="card-content grey lighten-4">
+            <button type="submit" name="button" class="waves-effect waves-light btn Center">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
