@@ -1,0 +1,23 @@
+ {% extends 'home/base.html' %}
+
+{% block body %}
+
+ <div class="container"style="padding-top: 80px; padding-bottom: 100px; padding-left: 150px; padding-right: 150px; ">
+    <br>
+        <div class="row" style="background-color: white; padding-left:50px; padding-right:50px; padding-top: 40px; padding-bottom: 40px">
+        <center>
+            <p style="color:#1D466A; font-size: 25px;">Thank you {{ name }} for starting a Fundraiser</p>
+
+            <div style="font-size: 18px;color:#1D466A; ">
+                <br>
+                <a href="{% url 'funding:index' %}">Do you want to check how your fundraiser looks like!</a>
+
+            </div>
+            <br>
+
+        </center>
+        </div>
+    </div>
+
+
+{% endblock %}

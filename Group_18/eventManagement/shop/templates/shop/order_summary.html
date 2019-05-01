@@ -1,0 +1,95 @@
+{% extends 'shop/base.html' %}
+
+{% block body %}
+<div class="container">
+<br>
+    <p style=" font-size: 25px">User name : {{ order.user.username }}</p>
+    <p style="font-size: 25px; font-weight: bold; letter-spacing: 1px">Your orders are:</p>
+    <br><br>
+<section>
+   <div class="row" style="padding-left: 50px;padding-right: 50px">
+    <table class="table table-hover table-bordered text-center" >
+      <tr class="text-center" style="background-color: hsl(0, 0%, 48%);">
+        <th class="text-center">no.</th>
+        <th class="text-center">Item</th>
+        <th class="text-center">Price</th>
+          <th class="text-center">Quantity</th>
+         </tr>
+      {% for item in order.get_cart_items %}
+        <tr style="background-color:white">
+          <td>{{ forloop.counter }}</td>
+          <td>
+            {{ item.product.name }}
+            <span class="pull-right">
+              <a href="{% url 'shop:delete_item' item.id %}" data-balloon="remove this item from cart" class="text-danger" >
+                <i class="fa fa-trash"></i>
+
+              </a>
+            </span>
+          </td>
+          <td>{{ item.product.price }}</td>
+{#        <td>{{ item.quantity }}</td>#}
+            <td><input type="number" class="r" k="{{ item.id }}" value="{{ item.quantity }}" name="qq" required placeholder="Quantity" min="0" style="width: 100px; text-align: center">
+            <a href="{% url 'shop:order_summary' %}">change</a></td>
+            {#        <td>{{ item.medicine.pres_req }}</td>#}
+        </tr>
+        {% empty %}
+        <tr style="background-color:white">
+          <td colspan= 5> You have not added any items yet.</td>
+        </tr>
+      {% endfor %}
+     <tr style="background-color:white">
+        {% if order.get_cart_total != None %}
+        <td colspan=2>
+          <strong class="pull-right">Order Total:</strong>
+        </td>
+
+        <td colspan= 3>
+          <strong>Rs {{ order.get_cart_total }}</strong>
+        </td>
+        {% endif %}
+      </tr>
+    <tr style="background-color:white">
+        <td colspan=1 >
+          <a href="{% url 'shop:index' %}" class="btn btn-warning pull-left btn-success active">
+            {% if order %}Continue Shopping{% else %}Add Items to Cart {% endif %}
+          </a>
+        </td>
+        <td colspan=4>
+          {% if order.get_cart_items %}
+            <a href="{% url 'shop:finalPrice' order.id %}" class="pull-right btn btn-primary btn-success active">Proceed To Checkout</a>
+          {% endif %}
+        </td>
+      </tr>
+    </table>
+   </div>
+ </section>
+</div>
+    <br>
+    {% csrf_token %}
+    <script>
+        $(".r").click(function () {
+            console.log('jndalknl')
+            let td = $(this).parent();
+            $.ajax({
+                type: 'POST',
+                url: '{% url "shop:send" %}',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    id: $(this).attr("k"),
+                    qq: $(this).val()
+                },
+                success: function (data) {
+                    console.log('ljsdmlfm')
+                    {#$(this).remove();#}
+                    $(this).html(data);
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'home/testbase.html' %}
+
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block head %}
+    <style>
+    body{
+        background-image: url("https://images4.alphacoders.com/278/thumb-1920-278448.jpg");
+    }
+        </style>
+{% endblock %}
+{% block body %}
+    <div style="height: 100px;"></div>
+    <div class="panel panel-primary" style="width:600px; margin-left: 120px">
+        <div class="container" style="width:550px" >
+        <h1>Create Groups</h1>
+        <form action="{% url 'groups:creategroup' %}" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <center><input type="submit" value="Submit"></center>
+        </form>
+             </div>
+    </div><br><br><br><br><br><br><br><br><br>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<br><br><br><br><br>
+<center>
+<div class="">
+
+<h1 style="font-size:45px">Profile</h1>
+  {% if editable == True %}
+  <a href="{% url 'home:edit_profile' user.username %}">Edit Profile</a>
+  {% endif %}
+  <p>
+  <p style="font-size:25px">Name: {{ user.first_name }} {{ user.last_name }}</p>
+  <p style="font-size:25px">Email: {{ user.email }} </p>
+  <br>
+  <p  style="font-size:25px">Registered for the following events:</p>
+  <p style="font-size:25px">
+    {% for int in event %}
+        <p style="font-size:25px">{{int}}</p>
+    {% endfor %}
+  </p>
+  </p>
+</div>
+</center>
+<br><br><br><br><br><br><br>
+{% endblock %}

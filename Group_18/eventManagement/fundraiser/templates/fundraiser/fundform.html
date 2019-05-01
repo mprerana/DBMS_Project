@@ -1,0 +1,67 @@
+{% extends 'home/testbase.html' %}
+{% load static %}
+
+{% block head %}
+    <style>
+    body{
+        background-image: url("http://www.kiplinger.com/kipimages/pages/13033.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+        </style>
+{% endblock %}
+
+{% block body %}
+<div class="main" style="padding-top: 120px;padding-left: 900px">
+
+        <div class="container" style="background-color: white; height: 40vh;width: 40vh;">
+            <form method="POST" class="appointment-form" id="appointment-form" action="{% url 'payment-button' %}">
+                {% csrf_token %}
+                <h2>Fundraiser Form</h2><hr>
+                <div class="form-group-1">
+                    <input type="hidden" name="eventname" value="{{ eventname }}"><br>
+                    Username:&nbsp&nbsp<input type="text" name="username" value="{{ username }}" ><br><br>
+                    Amount:&nbsp&nbsp<input type="number" name="amount"><br><br>
+{#                    <input type="text" name="title" id="title" placeholder="Title" required />#}
+{#                    <input type="text" name="name" id="name" placeholder="Your Name" required />#}
+{#                    <input type="email" name="email" id="email" placeholder="Email" required />#}
+{#                    <input type="number" name="phone_number" id="phone_number" placeholder="Phone number" required />#}
+{#                    <div class="select-list">#}
+{#                        <select name="course_type" id="course_type">#}
+{#                            <option slected value="">Course Type</option>#}
+{#                            <option value="society">Society</option>#}
+{#                            <option value="language">Language</option>#}
+{#                        </select>#}
+{#                    </div>#}
+                </div>
+{#                <div class="form-group-2">#}
+{#                    <h3>How would you like to bo located ?</h3>#}
+{#                    <div class="select-list">#}
+{#                        <select name="confirm_type" id="confirm_type">#}
+{#                            <option seleected value="">By phone</option>#}
+{#                            <option value="by_email">By email</option>#}
+{#                        </select>#}
+{#                    </div>#}
+{#                    <div class="select-list">#}
+{#                        <select name="hour_appointment" id="hour_appointment">#}
+{#                            <option seleected value="">Hours : 8am 10pm</option>#}
+{#                            <option value="9h-11h">Hours : 9am 11pm</option>#}
+{#                        </select>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="form-check">#}
+{#                    <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />#}
+{#                    <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree to the  <a href="#" class="term-service">Terms and Conditions</a></label>#}
+{#                </div>#}
+                <div class="form-submit">
+
+                    <button type="submit" value="Pay now" class="submit">PAY NOW</button>
+                </div>
+            </form>
+        </div>
+
+    </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}
+    <!-- JS -->
+{#    <script src="{% static 'fundraiser/vendor/jquery/jquery.min.js' %}"></script>#}
+{#    <script src="{% static 'fundraiser/js/main.js' %}"></script>#}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for item in event %}
+<center>
+    <form class="form-horizontal" action="{% url 'events:product_form' item.id%}" method="post">
+    {% csrf_token %}
+         Name : <input type="text" class="form-control" name="pname"><br>
+    Image : <input type="file" name="image" accept="image/*"><br>
+        Desc :<input type="text" class="form-control" name="desc"><br>
+    Price: <input type="text" class="form-control" name="price">
+<br>
+     <button type="submit" class="btn btn-success">Order</button>
+    </form>
+</center>
+{% endfor %}
+</body>
+</html>
