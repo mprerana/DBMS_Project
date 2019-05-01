@@ -10,7 +10,7 @@ import { ChangePasswordComponent } from './customer/change-password';
 import { ProfileComponent } from './customer/profile';
 import { ForgotPasswordComponent } from './landing/forgot-password';
 import { UserLandingComponent } from './customer/user-landing';
-import { RestaurantDetailComponent } from './restaurant/restaurant-detail';
+import { RestaurantDetailComponent } from './customer/restaurant-detail';
 
 import { AdminComponent } from './admin'
 import { RestaurantApplicationsComponent } from './admin/restaurant-applications'
@@ -23,6 +23,7 @@ import { ChangePasswordComponent as RChangePasswordComponent} from './restaurant
 import { MenuComponent } from './restaurant/menu/menu.component';
 import { CategoryComponent } from './restaurant/menu/category/category.component';
 import { ItemComponent } from './restaurant/menu/item/item.component';
+import { RestaurantsComponent } from './customer/restaurants/restaurants.component';
 
 
 const appRoutes: Routes = [
@@ -30,9 +31,11 @@ const appRoutes: Routes = [
         path: 'home',
         component: CustomerComponent,
         children: [
+            {path:'',redirectTo: 'landing',pathMatch: 'full'},
             {path: 'changePassword', component: ChangePasswordComponent},
             {path: 'profile', component: ProfileComponent},
             {path: 'landing', component: UserLandingComponent},
+            {path: 'restaurants', component: RestaurantsComponent},
             {path: 'restaurant/:resname', component: RestaurantDetailComponent},
         ],
         canActivate: [AuthGuard],

@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html"><span class="flaticon-pizza-1 mr-1"></span>Tomato<br></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a [routerLink]="['../../landing']" class="nav-link">Home</a></li>
+          <li class="nav-item active"><a [routerLink]="['../../restaurants']" class="nav-link">Restaurants</a></li>
+          <li class="nav-item"><a [routerLink]="['../../profile']" class="nav-link">My Account</a></li>
+          <li class="nav-item"><a class="nav-link" (click)="logout()">Log out</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="ftco-section" style="background-image: url(assets/customer/images/bg_4.jpg);">
+    	<div class="container">
+    		<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section  text-center">
+            <h2 class="mb-4">Our Menu</h2>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+          </div>
+        </div>
+    	</div>
+    	<div class="container-wrap">
+    		<div class="row no-gutters d-flex">
+
+    			<div class="col-lg-4 d-flex " *ngFor="let item of items; let i = index">
+    				<div class="services-wrap d-flex">
+    					<img [ngClass]="i%6 > 2  ? 'img': 'img order-lg-last'" src={{item.photo}} height="200px">
+    					<div class="text p-4">
+                <h3 style="height:2em">{{item.itemname}}</h3>
+    						<p>{{item.description}} </p>
+                <p class="price"><span>₹{{item.price}}</span>
+                <button class="ml-2 btn btn-white btn-outline-white" (click)="addToCart(item.id, 0)" onclick="var num = Number(document.getElementById('quantity').innerHTML); if (num != 0) { num -= 1; document.getElementById('quantity').innerHTML = num; }">-</button> <button class="ml-2 btn btn-white btn-outline-white" (click)="addToCart(item.id, 1)" onclick="var num = Number(document.getElementById('quantity').innerHTML); num += 1; document.getElementById('quantity').innerHTML = num;">+</button></p>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+      </div>
+      <h3>Items in Cart</h3><h3 [id]="'quantity'">0</h3>
+      <button class="ml-2 btn btn-white btn-outline-white" (click)="createOrder()">Order Items</button>
+
+    </section>

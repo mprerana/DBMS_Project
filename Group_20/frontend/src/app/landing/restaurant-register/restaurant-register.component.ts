@@ -62,7 +62,6 @@ export class RestaurantRegisterComponent implements OnInit {
     });
     var vectorSource = null;
     this.map.on('click', (args) => {
-
       var lonlat = ol.proj.transform(args.coordinate, 'EPSG:3857', 'EPSG:4326');
       if (vectorSource){
         vectorSource.clear()
@@ -81,7 +80,7 @@ export class RestaurantRegisterComponent implements OnInit {
       this.map.addLayer(markerVectorLayer);
       this.restaurantRegisterForm.controls['lon'].setValue(lonlat[1].toString());
       this.restaurantRegisterForm.controls['lat'].setValue(lonlat[0].toString());
-
+      this.getZipcode(lonlat[1],lonlat[0])
     });
     
     
@@ -108,7 +107,13 @@ export class RestaurantRegisterComponent implements OnInit {
     }
   }
 
-
+  getZipcode(lat,lon){
+    this.http.get(`http://api.geonames.org/findNearbyPostalCodesJSON?lat=${lat}&lng=${lon}&username=thehanimo`)
+    .subscribe(
+        data => {
+          this.restaurantRegisterForm.controls['zipcode'].setValue(data['postalCodes'][0]['postalCode']);
+        })
+  }
   onSubmit() {
     this.submitted = true;
     var email = this.f.email.value;

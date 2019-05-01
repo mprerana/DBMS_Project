@@ -7,7 +7,20 @@ import { User } from '@/_models';
 import { UserService, AuthenticationService } from '@/_services';
 import * as customValidators from '@/custom-validators';
 
-@Component({ templateUrl: 'profile.component.html' })
+@Component({ templateUrl: 'profile.component.html',
+styleUrls: ['../assets/css/open-iconic-bootstrap.min.css',
+              "../assets/css/animate.css",
+              // "./assets/css/owl.carousel.min.css",
+              "../assets/css/owl.theme.default.min.css",
+              "../assets/css/magnific-popup.css",
+              "../assets/css/aos.css",
+              "../assets/css/ionicons.min.css",
+              "../assets/css/bootstrap-datepicker.css",
+              "../assets/css/jquery.timepicker.css",
+              "../assets/css/flaticon.css",
+              "../assets/css/icomoon.css",
+              "../assets/css/style.css"
+]})
 export class ProfileComponent {
     profileForm: FormGroup;
     loading = false;
@@ -93,4 +106,9 @@ export class ProfileComponent {
                     this.loading = false;
                 });
     }
+
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
+  }
 }

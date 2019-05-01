@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html"><span class="flaticon-pizza-1 mr-1"></span>Tomato<br></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a [routerLink]="['../landing']" class="nav-link">Home</a></li>
+          <li class="nav-item active"><a [routerLink]="['../restaurants']" class="nav-link">Restaurants</a></li>
+          <li class="nav-item"><a [routerLink]="['../profile']" class="nav-link">My Account</a></li>
+          <li class="nav-item"><a class="nav-link" (click)="logout()">Log out</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- END nav -->
+
+  <section class="ftco-section" style="background-image: url(assets/customer/images/bg_4.jpg);">
+    <div class="container">
+      <div class="row justify-content-center mb-5 pb-3">
+        <div class="col-md-7 heading-section  text-center">
+          <h2 class="mb-4">Restaurants</h2>
+          <p>The Best-Selling restaurants on our platform that are guaranteed to get you drooling in no time, based on your location.</p>
+        </div>
+      </div>
+      <div class="row d-flex">
+        <div class="col-md-4 d-flex " *ngFor="let restaurant of restaurants">
+          <div class="blog-entry align-self-stretch">
+            <img class="block-20" src={{restaurant.logo}}>
+            <div class="text py-4 d-block">
+              <div class="meta">
+                <div><span class="icon-clock-o"></span> {{restaurant.openinghrs}} - {{restaurant.closinghrs}}</div>
+              </div>
+              <h3 class="heading mt-2"><a [routerLink]="['../restaurant/', restaurant.username]">{{restaurant.name}}</a></h3>
+              <p>{{restaurant.address}}
+              <br><span class="icon-phone"></span> +91 {{restaurant.phone}}
+              </p>
+              <a [routerLink]="['../restaurant/', restaurant.username]" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

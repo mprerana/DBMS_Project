@@ -26,10 +26,11 @@ import { SingleRestoApplicationComponent } from './admin/single-resto-applicatio
 import { RestaurantComponent } from './restaurant/restaurant.component';
 import { ChangePasswordComponent as RChangePasswordComponent} from './restaurant/change-password/change-password.component'
 import { UserLandingComponent } from './customer/user-landing';
-import { RestaurantDetailComponent } from './restaurant/restaurant-detail/restaurant-detail.component';
+import { RestaurantDetailComponent } from './customer/restaurant-detail/restaurant-detail.component';
 import { MenuComponent } from './restaurant/menu/menu.component';
 import { CategoryComponent } from './restaurant/menu/category/category.component';
-import { ItemComponent } from './restaurant/menu/item/item.component'
+import { ItemComponent } from './restaurant/menu/item/item.component';
+import { RestaurantsComponent } from './customer/restaurants/restaurants.component'
 
 @NgModule({
   imports: [
@@ -60,6 +61,7 @@ import { ItemComponent } from './restaurant/menu/item/item.component'
     MenuComponent,
     CategoryComponent,
     ItemComponent,
+    RestaurantsComponent,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
