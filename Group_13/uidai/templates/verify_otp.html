@@ -1,0 +1,24 @@
+{% extends 'test.html' %}
+
+{% block content %}
+
+  <div class="container">
+    <h5>Verification</h5>
+    <div class="card hoverable">
+      <form class="" action="{% url 'service:verify_otp' %}" method="post">
+        {% csrf_token %}
+      <input type="hidden" name="aadhar_num" value="{{ aadhar_num }}"/>
+      {% if 'email' %}
+        <input type="hidden" name="email" value="{{ email }}"/>
+      {% endif %}
+      {% if 'number' %}
+        <input type="hidden" name="number" value="{{ number }}"/>
+      {% endif %}
+        Enter OTP: <input type="number" name="otp" id="otp" maxlength="6">
+        <div class="card-content grey lighten-4">
+          <button type="submit" name="button" class="waves-effect waves-light btn Center">Verify</button>
+        </div>
+      </form>
+  </div>
+</div>
+{% endblock %}

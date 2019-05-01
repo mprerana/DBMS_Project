@@ -1,0 +1,27 @@
+{% extends 'basic_layout1.html' %}
+
+{% block content %}
+          <script src="../ckeditor/ckeditor.js"></script>
+          <div class="container">
+            <div class="card hoverable">
+              <div class="card-content">
+              <center>  <h5>Complaint Reply</h5> </center>
+                <form class="" action="{% url 'complaint_reply' id %}" method="post">
+                  {% csrf_token %}
+                  complaint ID: {{ id }}<br/>
+                  Complaint Reply:
+                  <textarea name="reply" id="reply" rows="10" cols="80">
+
+                  </textarea>
+                  <div class="card-action">
+                    <button type="submit" name="button">Submit</button>
+                  </div>
+                  <script>
+                      CKEDITOR.replace( 'reply' );
+                  </script>
+              </form>
+              </div>
+            </div>
+          </div>
+
+{% endblock %}

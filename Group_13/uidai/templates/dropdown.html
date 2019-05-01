@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form class="" action="test" method="post">
+      <select name="test" id="my_select" onchange="showOptions(this)">
+        <option value="1" id="id1">Option1</option>
+        <option value="1" id="id2">Option2</option>
+      </select>
+
+      <script type="text/javascript">
+        function showOptions(s) {
+          console.log(s[s.selectedIndex].value); // get value
+          console.log(s[s.selectedIndex].id); // get id
+        }
+      </script>
+
+      <button type="submit" name="button"></button>
+    </form>
+
+  </body>
+</html>

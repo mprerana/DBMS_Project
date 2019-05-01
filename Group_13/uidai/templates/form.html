@@ -1,0 +1,28 @@
+<html>
+<body>
+  <form method="post" action="">
+    First name: <input type="text" name="fname" required/><br />
+    Middle name: <input type="text" name="mname" required/><br />
+    {% csrf_token %}
+    Last name: <input type="text" name="lname" required/><br />
+    Father name: <input type="text" name="faname" required/><br />
+    Mother name: <input type="text" name="moname" required/><br />
+    Phone Number: <input type="number" name="phone_no" required/><br />
+    Email: <input type="email" name="email" required/><br />
+    Birthplace: <input type="text" name="birthplace" required/><br />
+    Residential address: <input type="text" name="res_addr" required/><br />
+    City: <input type="text" name="city" required/><br />
+    PINCODE: <input type="number" name="pincode" required/><br />
+    State: <input type="text" name="state" required/><br />
+    District: <input type="text" name="dist" required/><br />
+    County: <input type="text" name="country" required/><br />
+    Date of birth: <input type="date" name="dob" required/><br />
+    Gender: <select name="gender" required>
+      <option>Male</option>
+      <option>Female</option>
+      <option>Other</option>
+    </seect>
+  </form>
+</body>
+</html>
+<br /><input type="submit" />

@@ -1,0 +1,15 @@
+{% extends 'test.html' %}
+
+{% block content %}
+
+  <div class="container">
+    <h5></h5>
+      <div class="card hoverable">
+        {% for x,y,z in update_verify_result %}
+          {{ x }}
+          {{ y }}
+          <embed src="{{ z }}">
+        {% endfor%}
+      </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>ServiceRegister</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        body{
+            background-image:url('{{ STATIC_URL }}static/images/kyc_bgImg1.png');
+            background-repeat:no-repeat;
+            background-position: center;
+            background-size: 50%;
+        }
+        .card{
+            background: rgba(255,255,255,0.8);
+            {#background-size:40% ;#}
+            /* You must set a specified height */
+            margin-top: 1%;
+            margin-left: 5%;
+            width : 90%;
+            height: 20%;
+            color: black ;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+        }
+        .card table{
+            margin-right: 5%;
+            width:100%;
+            border-collapse: collapse;
+        }
+        .card .table1 td{
+            padding-top: 3%;
+            font-size: 20px;
+            padding-right: 3%;
+            padding-bottom: 2%;
+        }
+        .card .table2 td{
+            width: 50%;
+            height: 20%;
+            padding: 2%;
+            font-size: 20px;
+        }
+
+        input[type=text],input[type=email],input[type=number] {
+            width: 100%;
+            padding: 12px 20px;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type=text]:hover,input[type=email]:hover,input[type=number]:hover{
+            border: 1px solid #ccc;
+        }
+        input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number],input[type=text],input[type=email]{
+            -moz-appearance:textfield;
+        }
+        input[type=submit] {
+            width: 40%;
+            background-color: rgb(255,255,255);
+            color: black;
+            padding: 14px 20px;
+            margin-left: 30%;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .col1{
+            width : 30%;
+            height: 5%;
+            padding-left: 5%;
+            padding-right: 0;
+        }
+        #othersblock,#othersblock1{
+            display: none;
+            width: 100%;
+        }
+        ul li{
+            list-style: none;
+            width: 100%;
+            margin-bottom: 2%;
+        }
+        li input{
+            margin-right: 5%;
+        }
+        .card img{
+            margin-left: 20%;
+            margin-bottom: 5%;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div><img src="{% static 'images/Aadharcardlogo.jpg' %}"></div>
+        <form action="/history/validation" method="post">
+            {% csrf_token %}
+            <table class="table1" style="background-color:rgba(255,117,26,0.6);">
+                <tr>
+                    <td class="col1">Service name</td><td><input type="text" name='service_name' placeholder="Name of the service" required="required"></td>
+                </tr>
+
+                <tr>
+                    <td class="col1">Administarator name</td><td><input type="text" name='Administrator' placeholder="Name of the Administrator" required="required"></td>
+                </tr>
+                <tr>
+                    <td class="col1">Email Id</td><td><input type="email" name='email' placeholder="johnsmith@gmail.com" required="required"></td>
+                </tr>
+                <tr>
+                    <td class="col1">Phone number</td><td><input type="number" name='ContNo' placeholder="10 digit mobile number" required="required" minlength="10"></td>
+                </tr>
+                <tr>
+                    <td class="col1">Description</td><td><input type="text" name="desc" placeholder="Description of service" required="required"></td>
+                </tr>
+            </table>
+            <table class="table2" style="background-color:rgba(255,255,255,0.6);">
+                <tr >
+                    <td>
+                    <p>Details Taken from the customers:</p>
+                        <ul>
+                            <li><input type="checkbox" name="a">Phone Number</li>
+                            <li><input type="checkbox" name="b">Address of customer</li>
+                            <li><input type="checkbox" name="c">Date of birth</li>
+                            <li><input type="checkbox" name="d">Academic details</li>
+                            <li><input type="checkbox" name="e">Voter Id details</li>
+                            <li><input type="checkbox" name="f">Aadhar card details</li>
+                            <li><input type="checkbox" name="g">License</li>
+                            <li><input type="checkbox" name="h">Ration card details</li>
+                            <li><input type="checkbox" name="i">Pancard details</li>
+                            <li><input type="checkbox" name="j">Cast certificate details</li>
+                            <li><input type="checkbox" name="k">Bank Details</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+            <table class="table2" style="background:rgba(0,179,0,0.6);">
+                <tr>
+                    <td>
+                        <p>Details needed from uidai:</p>
+                        <ul>
+                            <li><input type="checkbox" name="A">Phone Number</li>
+                            <li><input type="checkbox" name="B">Address</li>
+                            <li><input type="checkbox" name="C">Date of birth</li>
+                            <li><input type="checkbox" name="D">First Name</li>
+                        </ul>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="submit"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
+<script>
+    $(document).ready(function(){
+        $('#others').change(function () {
+            if ($('#others').is(':checked'))
+                $("#othersblock").slideDown(400);
+                else
+                $('#othersblock').slideUp(500);
+        });
+        $('#others1').change(function () {
+            if ($('#others1').is(':checked'))
+                $("#othersblock1").slideDown(400);
+                else
+                $('#othersblock1').slideUp(500);
+        });
+    });
+</script>

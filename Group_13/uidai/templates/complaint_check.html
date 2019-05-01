@@ -1,0 +1,95 @@
+{% extends 'basic_layout1.html' %}
+
+  {% block content %}
+    <div class="container">
+      <div class="">
+
+        SORT BY:
+        <form class="" action="{% url 'complaint_check' %}" method="post">
+          {% csrf_token %}
+          <select class="browser-default" name="complaint_type" id="complaint_type">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="0" disabled>select</option>
+    				<option value="1">Rude Operator</option>
+    				<option value="2">Operator denying enrollment</option>
+    				<option value="3">Ackwnoledgement receipt not provided</option>
+    				<option value="4">Form not available</option>
+    				<option value="5">Operator staff not available</option>
+    				<option value="6">Inadequate facilities in premises</option>
+    				<option value="7">Operator entering incorrect data despite being alerted</option>
+    				<option value="8">Agency not available despite mentioning in UIDAI website</option>
+    				<option value="9">Corruption</option>
+    				<option value="10">card delivery issues</option>
+          </select>
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              var elems = document.querySelectorAll('select');
+              var instances = M.FormSelect.init(elems, options);
+            });
+          </script>
+          <button type="submit" name="submit">Sort</button>
+        </form>
+
+      </div>
+    </div>
+    <div class="container">
+
+    <table>
+      <tr>
+        <th> Complaint ID </th>
+        <th> Aadhar No. </th>
+        <th> Complaint Type </th>
+        <th> Reply </th>
+      </tr>
+      {% for x in all_complaints %}
+        <tr>
+          <td>{{ x.0 }}</td>
+          <td>{{ x.1 }}</td>
+          <td>
+          {% if x.3 == 1 %}
+          Rude Operator
+          {% endif %}
+          </td>
+          {% if x.3 == 2 %}
+          <td>Operator denying enrollment</td>
+          {% endif %}
+
+          {% if x.3 == 3 %}
+          <td>Ackwnoledgement receipt not provided</td>
+          {% endif %}
+
+          {% if x.3 == 4 %}
+          <td>Form not available</td>
+          {% endif %}
+
+          {% if x.3 == 5 %}
+          <td>Operator staff not available</td>
+          {% endif %}
+
+          {% if x.3 == 6 %}
+          <td>Inadequate facilities in premises</td>
+          {% endif %}
+
+          {% if x.3 == 7 %}
+          <td>Operator entering incorrect data despite being alerted</td>
+          {% endif %}
+
+          {% if x.3 == 8 %}
+          <td>Agency not available despite mentioning in UIDAI website</td>
+          {% endif %}
+
+          {% if x.3 == 9 %}
+          <td>Corruption</td>
+          {% endif %}
+
+          {% if x.3 == 10 %}
+          <td>card delivery issues</td>
+          {% endif %}
+
+          <td><a href="{% url 'complaint_reply' x.0 %}">Reply</a></td>
+        </tr>
+      {% endfor%}
+    </table>
+
+  </div>
+  {% endblock %}

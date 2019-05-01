@@ -1,0 +1,19 @@
+{% extends 'test.html' %}
+
+{% block content %}
+
+  <div class="container">
+    <h5>Verification Status</h5>
+    <div class="card hoverable">
+      {% if verify_email %}
+        Email: {{ email }}<br/>
+        Status: {{ msg }}
+      {% endif %}
+      {% if verify_mobile %}
+        Phone Number: {{ mobile }}<br/>
+        Status: {{ msg }}
+      {% endif %}
+    </div>
+  </div>
+
+{% endblock %}

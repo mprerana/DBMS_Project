@@ -1,0 +1,18 @@
+{% extends 'test.html' %}
+
+{% block content %}
+
+  <div class="container">
+    <h5>Offline-ekyc</h5>
+    <div class="card hoverable">
+      <form class="" action="{% url 'service:offline_ekyc' %}" method="post">
+        {% csrf_token %}
+        Aadhar Number: <input type="number" name="aadhar_num"  id="aadhar_num" maxlength="12">
+        Security Code: {{ form }}
+        <div class="card-content grey lighten-4">
+          <button type="submit" name="button" class="waves-effect waves-light btn Center">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

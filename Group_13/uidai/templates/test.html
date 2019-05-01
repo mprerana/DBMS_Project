@@ -1,0 +1,133 @@
+{% load static from staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <title>home</title>
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"></head>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" rel="stylesheet" />
+
+  <style>
+    .nav-wrapper {
+      background: linear-gradient(to right, #000000 , #908F8F);
+    }
+  </style>
+  <script>
+    $(document).ready(function(){
+      $('.dropdown-trigger').dropdown({
+        coverTrigger: false,
+        constrainWidth: false,
+        hover:true,
+        alignment: 'right',
+      });
+
+    });
+
+  </script>
+  <body>
+    <img src="https://www.sikkim.gov.in/portal-core/themes/SikkimBlueTheme/images/emblemofindia.png" hspace="30" alt="" width="50" height='70'>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTP36-2wtUIx19Y0Kqe77Jl-sGMQqcm5FeHf0ROUr26TFrF8W-H" hspace="440" alt="" width="150" height='70'>
+    <img src="https://s3.ap-southeast-1.amazonaws.com/images.asianage.com/images/aa-Cover-aivfq0gfscfg175onlqgpl9392-20171222054546.Medi.jpeg" align="right" hspace="30" alt="" width="120" height='70'>
+
+    <nav>
+
+      <div class="nav-wrapper">
+        <ul>
+          <li><a class='dropdown-trigger' href="{% url 'uidai_home' %}" data-target='dropdown1'>Get Aadhar</a></li>
+          <li ><a class='dropdown-trigger' href="{% url 'uidai_home' %}" data-target='dropdown2'>Aadhar Services</a></li>
+          <li ><a class='dropdown-trigger' href="{% url 'uidai_home' %}" data-target='dropdown3'>Update Your Aadhar</a></li>
+          <li ><a href="#test2">Complaints</a></li>
+        </ul>
+      </div>
+    </nav>
+            <ul id='dropdown1' class='dropdown-content'>
+              <div class="row">
+                <div class="col s6">
+                  <li><a href="{% url 'nearest_centre' %}" style="font-size:15px;color:black;">Locate an Enrolment Center</a></li>
+                  <li><a href="{% url 'service:verify_aadhar' %}" style="font-size:15px;color:black;">Check Aadhaar Status</a></li>
+                </div>
+
+                <div class="col s6 center">
+                  <li><a href="{% url 'aadharcard:download' %}" style="font-size:15px;color:black;">Download Aadhar</a></li>
+                  <li><a href="{% url 'aadharcard:find' %}" style="font-size:15px;color:black;">Rretieve lost of forgotten EID/UID</a></li>
+                </div>
+              </div>
+            </ul>
+            <ul id='dropdown2' class='dropdown-content'>
+              <div class="row">
+                <div class="col s6">
+                  <li><a href="{% url 'service:verify_aadhar' %}" style="font-size:15px;color:black;">Verify an Aadhar number</a></li>
+                  <li><a href="{% url 'service:verify_mobile_mail' %}" style="font-size:15px;color:black;">Verify Email/Mobile number</a></li>
+                </div>
+
+                <div class="col s6 center">
+                  <li><a href="{% url 'service:bank_linking' %}" style="font-size:15px;color:black;">Check Aadhar Bank linking status</a></li>
+                  <li><a href="{% url 'service:offline_ekyc' %}" style="font-size:15px;color:black;">Offline e-KYC</a></li>
+                </div>
+
+              </div>
+            </ul>
+            <ul id='dropdown3' class='dropdown-content'>
+              <div class="row">
+                <div class="col s6">
+                  <li><a href="{% url 'update:update_address' %}" style="font-size:15px;color:black;">Update address online</a></li>
+                  <li><a href="{% url 'service:address_status' %}" style="font-size:15px;color:black;">Check address update status</a></li>
+
+                </div>
+
+                <div class="col s6 center">
+                  <li><a href="{% url 'service:complaint_status' %}" style="font-size:15px;color:black;">Complaint Status</a></li>
+                  <li><a href="{% url 'history' %}" style="font-size:15px;color:black;">Check Aadhaar Update history</a></li>
+                </div>
+
+              </div>
+            </ul>
+            {% block content %}
+            {% endblock %}
+<footer class="page-footer" style="width:100%;background-color: #060404;">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Contact Us</h5>
+            <p class="grey-text text-lighten-4">Toll free:1947</p>
+            <p class="grey-text text-lighten-4">help@uidai.gov.in</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Government of India</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="https://www.mygov.in/">My Gov!</a></li>
+              <li><a class="grey-text text-lighten-3" href="https://www.india.gov.in/">National Portal of India</a></li>
+              <li><a class="grey-text text-lighten-3" href="https://www.digitalindia.gov.in/">Digital India</a></li>
+              <li><a class="grey-text text-lighten-3" href="https://www.gst.gov.in/">GST.gov.in</a></li>
+            </ul>
+          </div>
+          <div class="col l6 s12">
+            <h5 class="white-text">UIDAI Head Office</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#">Unique Identification Authority of India</a></li>
+              <li><a class="grey-text text-lighten-3" href="#">Government of India (GoI)</a></li>
+              <li><a class="grey-text text-lighten-3" href="#">Bangla Sahib Road, Behind Kali Mandir, Gole Market,</a></li>
+              <li><a class="grey-text text-lighten-3" href="#">New Delhi - 110001</a></li>
+            </ul>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Policies</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="https://uidai.gov.in/website-policy.html">Website Policy</a></li>
+              <li><a class="grey-text text-lighten-3" href="https://uidai.gov.in/terms-conditions.html">Terms & Conditions</a></li>
+              <li><a class="grey-text text-lighten-3" href="https://uidai.gov.in/privacy-policy.html">Privacy Policy</a></li>
+              <li><a class="grey-text text-lighten-3" href="https://uidai.gov.in/copyright-policy.html">Copyright Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        © 2019 Copyright
+        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+      </div>
+    </footer>
+    </body>
+</html>

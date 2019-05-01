@@ -1,0 +1,34 @@
+{% extends 'test.html' %}
+
+{% block content %}
+
+  <div class="container">
+    <h5>Verify Email&Mobile:</h5>
+    <div class="card hoverable">
+      <div class="card-content grey lighten-4">
+        <button onclick="email()">Email Verification</button>
+        <button onclick="mobile()">Mobile Verification</button>
+      </div>
+      <form class="" action="{% url 'service:verify_mobile_mail' %}" method="post">
+        {% csrf_token %}
+        Aadhar Number: <input type="number" name="aadhar_num" id="aadhar_num" placeholder="Aadhar Number" maxlength="12"/>
+        Email: <input type="email" placeholder="Email" name="email" id="email">
+        Number: <input type="number"placeholder="Number" name="number" id="number">
+        {{ form }}
+        <div class="card-content grey lighten-4">
+          <button type="submit" name="button" class="waves-effect waves-light btn Center">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+  function email() {
+    document.getElementById("email").disabled = false;
+    document.getElementById("number").disabled = true;
+  }
+  function mobile() {
+    document.getElementById("number").disabled = false;
+    document.getElementById("email").disabled = true;
+  }
+  </script>
+{% endblock %}

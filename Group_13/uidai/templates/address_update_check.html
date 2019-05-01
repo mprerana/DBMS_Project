@@ -1,0 +1,46 @@
+{% extends 'basic_layout1.html' %}
+
+
+{% block content %}
+  <div class="container">
+    SORT BY:
+    <form class="" action="{% url 'address_update_check' %}" method="post">
+      {% csrf_token %}
+
+      <select class="browser-default" name="address_proof" id="address_proof">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="birthcertificate">Birth Certificate</option>
+        <option value="Pan Card">Pan Card</option>
+        <option value="Driving License">Driving License</option>
+        <option value="All">All</option>
+      </select>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var elems = document.querySelectorAll('select');
+          var instances = M.FormSelect.init(elems, options);
+        });
+      </script>
+
+      <button type="submit" name="submit">Sort</button>
+    </form>
+
+  </div>
+  
+    <table>
+      <tr>
+         <th> Aadhar Number </th>
+         <th> Proof Type </th>
+         <th> verification </th>
+      </tr>
+      {% for x in details_proof %}
+        <tr>
+          <td>{{ x.0 }}</td>
+          <td>{{ x.1 }}</td>
+          <td><a href="{% url 'address_update_check_reply' x.0 %}">Verify</a></td>
+        </tr>
+      {% endfor%}
+    </table>
+
+
+{% endblock %}

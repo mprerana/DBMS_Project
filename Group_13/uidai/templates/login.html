@@ -1,0 +1,17 @@
+{% extends 'basic_layout1.html' %}
+
+{% block content %}
+  <div class="container">
+    <center><h5>Agent Login</h5></center>
+    <div class="card hoverable">
+      <div class="card-content">
+
+        <form class="site-form" action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            {{form}}
+            <center><input type="submit" value="Login"></center>
+          </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

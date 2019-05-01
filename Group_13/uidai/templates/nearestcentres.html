@@ -1,0 +1,149 @@
+{% extends 'test.html' %}
+{% block content %}
+<html>
+<head>
+
+<style>
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  height: 600px;
+  margin: 10px auto;
+  width: 100%;
+}
+
+
+</style>
+</head>
+<body>
+
+
+<script>
+var map;
+var x=[];
+            function initMap() {
+              if (navigator.geolocation) {
+                try {
+                  navigator.geolocation.getCurrentPosition(function(position) {
+                    var myLocation = {
+                      lat:position.coords.latitude,//17.3850,
+                      lng:position.coords.longitude,//78.4867,
+                    };
+                    setPos(myLocation);
+                  });
+                } catch (err) {
+                  var myLocation = {
+                    lat:17.3850,//hyderabad
+                    lng:78.4867,//hyderabad
+                  };
+                  setPos(myLocation);
+                }
+              } else {
+                var myLocation = {
+                  lat:17.3850,//hyderabad
+                  lng:78.4867, //hyderabad
+                };
+                setPos(myLocation);
+              }
+            }
+
+            function setPos(myLocation) {
+              map = new google.maps.Map(document.getElementById('map'), {
+                center: myLocation,
+                zoom: 10,
+              });
+
+              var marker = new google.maps.Marker({
+              position: myLocation,
+               map: map,
+               draggable: false,
+               animation: google.maps.Animation.BOUNCE,
+               lable:"your location",
+
+              });
+
+              var service = new google.maps.places.PlacesService(map);
+              service.nearbySearch({
+                location: myLocation,
+                radius: 60000,
+                keyword: ['aadhar card']
+              }, processResults);
+
+            }
+
+            function processResults(results, status, pagination) {
+              if (status !== google.maps.places.PlacesServiceStatus.OK) {
+                return;
+              } else {
+                createMarkers(results);
+
+
+              }
+            }
+
+            function createMarkers(places) {
+              var bounds = new google.maps.LatLngBounds();
+              // var placesList = document.getElementById('places');
+
+              for (var i = 0, place; place = places[i]; i++) {
+
+
+                var marker = new google.maps.Marker({
+                  map: map,
+                  //icon:image,
+                  title: place.name,
+                  position: place.geometry.location,
+
+
+
+                });
+
+                console.log(place.geometry.location.lat(),place.geometry.location.lng())
+                GetAddress(place.name,place.geometry.location.lat(),place.geometry.location.lng())
+
+                bounds.extend(place.geometry.location);
+              }
+              map.fitBounds(bounds);
+            }
+
+
+
+
+
+
+ function GetAddress(name,lat,lng) {
+            var lat = parseFloat(lat);
+            var lng = parseFloat(lng);
+            var latlng = new google.maps.LatLng(lat, lng);
+            var geocoder = geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    if (results[1]) {
+                        document.getElementById("list").innerHTML+=name+results[1].formatted_address+"<br><br>";
+                    }
+
+
+                }
+                else
+                {document.getElementById("list").innerHTML+=name+"<br><br>";}
+
+            });
+        }
+
+</script>
+
+<div id="map"></div>
+<div><h5> ADDRESSES OF NEAREST AADHAR CENTRES </h5></div>
+<div id="list"></div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn9qYWaZci2Yfrky-fN7l75Mu1Kk9Ra4Q&signed_in=true&libraries=places&callback=initMap" async defer></script>
+
+
+</body>
+
+</html>
+{% endblock %}
