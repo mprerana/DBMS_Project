@@ -1,0 +1,144 @@
+{% extends "homepage/base.html" %}
+{% block content %}
+{% load staticfiles %}
+
+    <!--Links for materialize css-->
+    <!-- Compiled and minified CSS -->
+
+
+{#        <a class="waves-effect waves-light btn" href="{% url 'plot:see' %}"><button>ALL PLOTS</button></a>#}
+
+        <a class="waves-effect waves-light btn" href="{% url 'plot:rent' %}"><button>PLOTS FOR RENT</button></a>
+        <a class="waves-effect waves-light btn" href="{% url 'plot:buy' %}"><button>PLOTS FOR PURCHASE</button></a>
+{#{% if plots == "all" %}#}
+{#    <h6>ALL PLOTS</h6>#}
+{# <div>#}
+{#{% for a in t %}#}
+{#    <form id="myform" method="POST" action="{% url 'plot:view' p_id=a.0 %}">#}
+{#        {% csrf_token %}#}
+{# <div class="row">#}
+{#    <div class="col s12 m6">#}
+{#      <div class="card blue-grey darken-1" >#}
+{#        <div class="card-content white-text" >#}
+{#          <span class="card-title">{{ a.0 }}</span>#}
+{#            <p>#}
+{#             Available for:  <input type="text" name="mode" style="border:none;color:white;" value="{{ a.6 }}" readonly>#}
+{#            Area:<input type="text" name="area" style="border:none;color:white;" value="{{ a.2 }} sqft" readonly>#}
+{#            Floor:<input type="text" name="floor" style="border:none;color:white;" value="{{ a.1 }}" readonly>#}
+{#            Cost:<input type="text" name="cost" style="border:none;color:white;" value="{{ a.5 }}" readonly>#}
+{##}
+{##}
+{#            </p>#}
+{#        </div>#}
+{#        <div class="card-action">#}
+{##}
+{#           <center>#}
+{#          <a class="waves-effect waves-light btn"><input type="submit" value="VIEW">#}
+{#          </a></center>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+{#  </div>#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#</form>#}
+{##}
+{##}
+{#            {% endfor %}#}
+{##}
+{# </div>#}
+{#        {% endif %}#}
+ {% if plots == "rent" %}
+          <h6>PLOTS AVAILABLE FOR RENT</h6>
+
+ <div>
+{% for a in t %}
+    {% if a.6 == "rent" %}
+    <form id="myform" method="POST" action="{% url 'plot:final' p_id=a.0 %}">
+        {% csrf_token %}
+ <div class="row">
+    <div class="col s12 m6">
+      <div class="card blue-grey darken-1" >
+        <div class="card-content white-text" >
+          <span class="card-title">{{ a.0 }}</span>
+            <p>
+             Available for:   <input type="text" name="mode" style="border:none;color:white;" value="{{ a.6 }}" readonly>
+            Area:<input type="text" name="area" style="border:none;color:white;" value="{{ a.2 }} sqft" readonly>
+            Floor:<input type="text" name="floor" style="border:none;color:white;" value="{{ a.1 }}" readonly>
+            Cost:<input type="text" name="cost" style="border:none;color:white;" value="{{ a.5 }}" readonly>
+
+
+            </p>
+        </div>
+        <div class="card-action">
+
+           <center>
+          <a class="waves-effect waves-light btn"><input type="submit" value="TAKE_FOR_RENT" name="TAKE_FOR_RENT">
+          </a></center>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+</form>
+{% endif %}
+
+            {% endfor %}
+
+ </div>
+        {% endif %}
+ {% if plots == "buy" %}
+          <h6>PLOTS AVAILABLE FOR PURCHASE</h6>
+
+ <div>
+{% for a in t %}
+    {% if a.6 == "buy" %}
+    <form id="myform" method="POST" action="{% url 'plot:final' p_id=a.0 %}">
+        {% csrf_token %}
+ <div class="row">
+    <div class="col s12 m6">
+      <div class="card blue-grey darken-1" >
+        <div class="card-content white-text" >
+          <span class="card-title">{{ a.0 }}</span>
+            <p>
+             Available for:   <input type="text" name="mode" style="border:none;color:white;" value="{{ a.6 }}" readonly>
+            Area:<input type="text" name="area" style="border:none;color:white;" value="{{ a.2 }} sqft" readonly>
+            Floor:<input type="text" name="floor" style="border:none;color:white;" value="{{ a.1 }}" readonly>
+            Cost:<input type="text" name="cost" style="border:none;color:white;" value="{{ a.5 }}" readonly>
+
+
+            </p>
+        </div>
+        <div class="card-action">
+
+           <center>
+          <a class="waves-effect waves-light btn"><input type="submit" value="BUY" name="BUY">
+          </a></center>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+</form>
+{% endif %}
+
+            {% endfor %}
+
+ </div>
+        {% endif %}
+
+{% endblock %}

@@ -1,0 +1,172 @@
+{% extends "homepage/base.html" %}
+{% block content %}
+{% load staticfiles %}
+
+<h1 class="center-align">Welcome {{ user }}</h1>
+<br>
+<ol>
+
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">Details</span>
+              <p><b>Name: {{ user }} <br>Bio: {{ bio }} <br>Contact Number : {{ phone }}<br>City : {{ city }}</b></p>
+              <br><br>
+               <a class="btn" href="{% url 'homepage:edit_profile' %}">Edit Profile </a><br><br>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+</ol>
+
+<h3 class="center-align">Your Plots For Sale</h3>
+
+     <div class="carousel">
+         {% for plot in buy %}
+    <div class="carousel-item " >
+
+        <div class="card blue-grey darken-1">
+
+        <div class="card-content white-text">
+          <span class="card-title">Plot : {{ plot.p_id }}</span>
+          <p>
+              Floor &nbsp: {{ plot.floor }} <br> Area &nbsp: {{ plot.area }}&nbspsq.ft <br> price&nbsp: {{ plot.cost }} INR
+          </p>
+
+        </div>
+            <div class="card-action">
+          <a href="{% url 'homepage:earn_rent' value=plot.p_id  %}">Earn Rent </a>
+          <a href="{% url 'homepage:remove_this' value=plot.p_id  %}">Remove This</a>
+        </div>
+        </div>
+    </div>
+         {% endfor %}
+  </div>
+
+    <h3 class="center-align">Your Plots For Rent</h3>
+
+     <div class="carousel">
+         {% for plot in rent %}
+    <div class="carousel-item " >
+
+        <div class="card blue-grey darken-1">
+
+        <div class="card-content white-text">
+          <span class="card-title">Plot : {{ plot.p_id }}</span>
+          <p>
+              Floor &nbsp: {{ plot.floor }} <br> Area &nbsp: {{ plot.area }}&nbspsq.ft <br> price&nbsp: {{ plot.cost }} INR
+          </p>
+
+        </div>
+            <div class="card-action">
+          <a href="{% url 'homepage:sell_this' value=plot.p_id  %}">Sell This </a>
+          <a href="{% url 'homepage:remove_this' value=plot.p_id  %}">Remove This</a>
+        </div>
+        </div>
+    </div>
+         {% endfor %}
+  </div>
+
+ <h3 class="center-align">Available plots to make a Shop</h3>
+
+     <div class="carousel">
+         {% for plot in shop %}
+    <div class="carousel-item " >
+
+        <div class="card blue-grey darken-1">
+
+        <div class="card-content white-text">
+          <span class="card-title">Plot : {{ plot.p_id }}</span>
+          <p>
+              Floor &nbsp: {{ plot.floor }} <br> Area &nbsp: {{ plot.area }}&nbspsq.ft <br> price&nbsp: {{ plot.cost }} INR
+          </p>
+
+        </div>
+            <div class="card-action">
+          <a href="{% url 'homepage:sell_this' value=plot.p_id  %}">Sell This</a>
+          <a href="{% url 'homepage:earn_rent' value=plot.p_id  %}">Earn Rent</a>
+          <a href="{% url 'shop:create_shop' %}">Create Shop</a>
+        </div>
+        </div>
+    </div>
+         {% endfor %}
+  </div>
+<br>
+    <h3 class="center-align">Plots Gave For Rent</h3>
+
+     <div class="carousel">
+         {% for plot in tenant_plots %}
+    <div class="carousel-item " >
+
+        <div class="card blue-grey darken-1">
+
+        <div class="card-content white-text">
+          <span class="card-title">Plot : {{ plot.p_id }}</span>
+          <p>
+              Floor &nbsp: {{ plot.floor }} <br> Area &nbsp: {{ plot.area }}&nbspsq.ft <br>  tenant_id&nbsp: {{ plot.tenant_id }}
+          </p>
+
+        </div>
+            <div class="card-action">
+          <a href="{% url 'homepage:sell_this' value=plot.p_id  %}"></a>
+
+        </div>
+        </div>
+    </div>
+         {% endfor %}
+  </div>
+    <br>
+
+
+
+       <h3 class="center-align">Plots Took For Rent</h3>
+
+     <div class="carousel">
+         {% for plot in my_rented_plots %}
+    <div class="carousel-item " >
+
+        <div class="card blue-grey darken-1">
+
+        <div class="card-content white-text">
+          <span class="card-title">Plot : {{ plot.p_id }}</span>
+          <p>
+              Floor &nbsp: {{ plot.floor }} <br> Area &nbsp: {{ plot.area }}&nbspsq.ft <br>  admin_id&nbsp: {{ plot.admin_id }}
+          </p>
+
+        </div>
+            <div class="card-action">
+          <a href="#"></a>
+
+        </div>
+        </div>
+    </div>
+         {% endfor %}
+  </div>
+
+<br>
+<center><a class="btn" href="{% url 'shop:create_shop' %}">Make a Shop </a></center>
+    <center><a class="btn" href="{% url 'advertisements:create_adv' %}">Make a advertisement </a></center>
+
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.carousel');
+    var instances = M.Carousel.init(elems, options);
+  });
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.carousel').carousel();
+  });
+
+    </script>
+
+
+
+
+{% endblock %}

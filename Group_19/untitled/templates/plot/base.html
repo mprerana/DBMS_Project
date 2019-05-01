@@ -1,0 +1,40 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+      <!--Import Google Icon Font-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+ <link rel="stylesheet" href="{% static 'plot/css/basic.css' %}">    </head>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-link" href="{% url 'plot:register' %}">Register</a></li>
+                {% if user.is_authenticated %}
+                <li><a class="navbar-link" href="{% url 'plot:logout' %}">Logout</a></li>
+                <li><a class="navbar-link" href="{% url 'plot:see' %}">Special</a></li>
+
+
+                {% else %}
+                <li><a class="navbar-link" href="{% url 'plot:user_login' %}">Login</a></li>
+                {% endif %}
+
+
+
+            </ul>
+
+        </div>
+    </nav>
+    <div>
+        {% block body_block %}
+        {% endblock %}
+
+    </div>
+</body>
+</html>

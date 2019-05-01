@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript" >
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
+    </script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/index.css" >
+    <style>
+    body {margin:0;}
+    table {margin: 130px;}
+    .tabletype{margin: 130px;}
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 30px 16px;
+        text-decoration: none;
+        width: 305px;
+        font-size: x-large;
+        font-family: "Malgun Gothic";
+    }
+
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+
+    .active {
+        background-color: #ffb300;
+    }
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li><a href="/credits/statement">Transactions</a></li>
+            <li><a href="/credits/crowdsourcing">Crowd Sourcing</a></li>
+            <li><a href="/credits/contact">Contact</a></li>
+            <li><a class="active" href="/credits">Credits</a></li>
+        </ul>
+    </div>
+        <img src="/static/underconstruction1.jpeg" alt="Under Construction">
+</body>
+</html>

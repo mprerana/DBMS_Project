@@ -1,0 +1,81 @@
+{% extends "homepage/base.html" %}
+{% block content %}
+{% load staticfiles %}
+<div class="row">
+    <div class="col s4 ">
+      <div class="card medium">
+        <div class="card-image">
+          <img src={% static 'shop/images/apprales.png' %}>
+
+        </div>
+        <div class="card-content">
+          <p>Get the latest fashion at least prices</p>
+        </div>
+        <div class="card-action">
+          <a href='{% url "shop:categlistshops" 4 %}'>Apparels</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s4 ">
+      <div class="card medium">
+        <div class="card-image">
+          <img src={% static 'shop/images/games.png' %}>
+
+        </div>
+        <div class="card-content">
+          <p>Have best fun with your friends</p>
+        </div>
+        <div class="card-action">
+          <a href='{% url "shop:categlistshops" 5 %}'>Games</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s4 ">
+      <div class="card medium">
+        <div class="card-image">
+          <img src={% static 'shop/images/movie.png' %}>
+
+        </div>
+        <div class="card-content">
+          <p>Enjoy the best cinematic experience</p>
+        </div>
+        <div class="card-action">
+          <a href='{% url "shop:categlistshops" 2 %}'>Movies</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="row">
+    <div class="col s4">
+      <div class="card medium">
+        <div class="card-image">
+          <img src={% static 'shop/images/electronics.png' %}>
+
+        </div>
+        <div class="card-content">
+          <p>Electronics</p>
+        </div>
+        <div class="card-action">
+          <a href='{% url "shop:categlistshops" 3 %}'>Visit Us</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s4 ">
+      <div class="card medium">
+        <div class="card-image">
+          <img src={% static 'shop/images/food.png' %}>
+        </div>
+        <div class="card-content">
+          <p>Food</p>
+        </div>
+        <div class="card-action">
+          <a href='{% url "shop:categlistshops" 1 %}'>Visit us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{%  endblock %}

@@ -1,0 +1,71 @@
+{% extends 'authentication/layout.html' %}
+{% load static from staticfiles %}
+
+{% block headblock %}
+    <script type="text/javascript" >
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
+    </script>
+    <meta charset="UTF-8">
+    <title>Credits</title>
+    <style>
+    body{
+        background-image: url("{% static 'payment.jpeg' %}");
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    .div1{
+        background-color: white;
+        width:40%;
+        height: 470px;
+        opacity: 0.9;
+        margin-top: 10px;
+        border-radius: 30px;
+
+    }
+        .button3{
+            background-color: #237d80;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: 0.5s;
+        }
+        .button3:hover{
+            background-color: #063e68;
+
+        }
+    </style>
+    {% endblock %}
+{% block content %}
+
+    <center>
+<div class="div1">
+
+            <h2>Welcome to Payment Section</h2>
+
+        <table>
+            {% if bal %}
+
+            {% else %}
+                <p class="tabletype">Account not found.</p>
+            {% endif %}
+            </table>
+
+    <form action="{% url 'credits.pending_transactions_paypal' %}" method="post">
+             {% csrf_token %}
+            <input type="number" step="any"  name="add_amount" value="5" id="add_amount" style="border:none;color:white;">
+{#            <input type="email" name="email" placeholder="Enter your email here.." id="email" required>#}
+            <input type="submit" class="button3" value="Add through paypal">
+        </form>
+</div>
+    </center>
+{% endblock %}

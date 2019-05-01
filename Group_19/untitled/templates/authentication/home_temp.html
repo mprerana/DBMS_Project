@@ -1,0 +1,591 @@
+{% extends 'authentication/layout.html' %}
+{% load static from staticfiles %}
+
+{% block headblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <title>Title</title>
+    <style>
+        body{
+            margin:0px;
+            background-color:green;
+            background-image: url("{% static 'bg2.jpg' %}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100%;
+            color: white;
+            height: 3000px;
+        }
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: red;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 40px;
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+        }
+
+
+
+
+        #box {
+            width: 100%;
+            color: black;
+            background-color: #5B7BD5;
+
+        }
+        #box1 {
+            width: 100%;
+            color: black;
+            background-color: #5B7BD5;
+        }
+
+        #box2 {
+            width: 100%;
+            color: black;
+            background-color: #5B7BD5;
+        }
+
+        #box3 {
+            width: 100%;
+            color: black;
+            background-color: #5B7BD5;
+        }
+
+        #box4 {
+            width: 100%;
+            color: black;
+            background-color: #5B7BD5;
+        }
+
+        #box5 {
+            width: 100%;
+            color: black;
+            background-color: #5B7BD5;
+        }
+        #box6 {
+            width: 100%;
+            color: black;
+            background-color: #5B7BD5;
+        }
+        #box7 {
+            width: 100%;
+            color: black;
+            background-color: #5B7BD5;
+        }
+
+        #box8 {
+            width: 100%;
+            color: black;
+            background-color: #5B7BD5;
+        }
+
+
+        #box9 {
+            width: 100%;
+            color: black;
+            background-color: #5B7BD5;
+        }
+
+
+        input{
+            width:10%;
+            float: right;
+        }
+
+        body {font-family: Verdana, sans-serif;}
+        img {vertical-align: middle;}
+
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+            width:850px;
+            height:6414px;
+            box-shadow: 0 4px 10px 4px rgba(19, 35, 47, .3);
+            background-color: white;
+            border-radius: 10px;
+
+        }
+
+        .text {
+            color: black;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+
+
+
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+
+
+        /* Fading animation */
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @-webkit-keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+            .text {font-size: 11px}
+        }
+
+        .mySlides {display:none;}
+    </style>
+
+{% endblock headblock %}
+
+{% block content %}
+
+
+<div class="slideshow-container">
+    <div class="mySlides fade">
+        <br>
+        <center>
+            <img src="{% static 'collage.jpg' %}" style="width:70%;height: 300px;">
+        </center>
+        <div class="text"> Avengers</div>
+    </div>
+
+
+    <div class="mySlides fade">
+        <br>
+        <center>
+            <a href="#top1"><img src="{% static 'baahubali.PNG' %}" style="width:70%;height: 300px;"></a>
+        </center>
+        <div class="text"> Avengers</div>
+    </div>
+
+    <div class="mySlides fade">
+        <br>
+        <center>
+            <a href="#top2"><img src="{% static 'batman.JPG' %}" style="width:70%;height: 300px;"></a>
+        </center>
+
+    </div>
+
+    <div class="mySlides fade">
+        <br>
+        <center>
+            <a href="#top3"> <img src="{% static '3idiots.JPG' %}" style="width:70%;height: 300px;"></a>
+        </center>
+
+    </div>
+    <div class="mySlides fade">
+        <br>
+        <center>
+            <a href="#top4"> <img src="{% static 'deadpool.JPG' %}" style="width:70%;height: 300px;"></a>
+        </center>
+
+    </div>
+    <div class="mySlides fade">
+        <br>
+        <center>
+            <a href="#top5"> <img src="{% static 'avengers.JPG' %}" style="width:70%;height: 300px;"></a>
+        </center>
+
+    </div>
+    <div style="text-align:center">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+    <div id="box">
+        <h3 id="top1">Baahubali</h3>
+        <h5> 2h 47min | Action, Drama, Fantasy | 27th April 2017 </h5>
+        <table>
+            <tr>
+                <td><img src="{%static 'baahubali.PNG'%}" style="height: 300px;width: 300px"></td>
+                <td><iframe width="500" height="300" src="https://www.youtube.com/embed/qD-6d8Wo3do" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </td></tr>
+
+        </table>
+        <p>When Shiva, the son of Bahubali, learns about his heritage, he begins to look for answers. His story is juxtaposed with past events that unfolded in the Mahishmati Kingdom.</p>
+    </div>
+
+
+    <!--/* 2nd*/-->
+    <div id="box1">
+        <h3 id="top2">Batman</h3>
+        <h5> 2h 20min | Action, Adventure, Thriller | 15th June 2015 </h5>
+        <table>
+            <tr>
+                <td><img src="{% static 'batman.JPG' %}" style="height: 300px;width: 300px"></td>
+                <td><iframe width="500" height="300" src="https://www.youtube.com/embed/EXeTwQWrcwY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </td></tr>
+        </table>
+        <p>After training with his mentor, Batman begins his fight to free crime-ridden Gotham City from corruption.</p>
+    </div>
+    <!--3rd-->
+    <div id="box2">
+        <h3 id="top3">3 Idiots</h3>
+        <h5> 2h 50min | Comedy, Drama | 25th December 2009 </h5>
+        <table>
+            <tr>
+                <td><img src="{% static '3idiots.JPG' %}" style="height: 300px;width: 300px"></td>
+                <td><iframe width="500" height="300" src="https://www.youtube.com/embed/K0eDlFX9GMc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </td></tr>
+        </table>
+        <p>Two friends are searching for their long lost companion. They revisit their college days and recall the memories of their friend who inspired them to think differently, even as the rest of the world called them "idiots".</p>
+    </div>
+    <!--4th-->
+    <div id="box3">
+        <h3 id="top4">DeadPool</h3>
+        <h5> 1h 48min | Action, Adventure, Comedy | 12th February 2016 </h5>
+        <table>
+            <tr>
+                <td><img src="{% static 'deadpool.JPG' %}" style="height: 300px;width: 300px"></td>
+                <td><div style="position:relative;height:0;padding-bottom:56.24%"><iframe width="500" height="300" src="https://www.youtube.com/embed/ONHBaC-pfsk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                </td></tr>
+        </table>
+        <p>A fast-talking mercenary with a morbid sense of humor is subjected to a rogue experiment that leaves him with accelerated healing powers and a quest for revenge</p>
+    </div>
+    <!--5th-->
+    <div id="box4">
+        <h3 id="top5">Avengers:Infinity War</h3>
+        <h5> 2h 50min | Action, Adventure, Fantasy | 27th April 2018 </h5>
+        <table>
+            <tr>
+                <td><img src="{% static 'avengers.jpg' %}" style="height: 300px;width: 300px"></td>
+                <td><iframe width="500" height="300" src="https://www.youtube.com/embed/QwievZ1Tx-8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </td></tr>
+        </table>
+        <p>The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe</p>
+    </div>
+
+
+    <!--as-->
+    <div class="w3-content w3-display-container">
+        <center>
+
+            <a href="#rest1"><img class="mySlides1" src="{% static 'rest1.jpg' %}" style="width:300px;height: 300px"></a>
+            <a href="#rest2"><img class="mySlides1" src="{% static 'rest2.jpg' %}" style="width:300px;height: 300px"></a>
+            <a href="#rest3"><img class="mySlides1" src="{% static 'rest3.jpg' %}" style="width:300px;height: 300px"></a>
+            <a href="#rest4"><img class="mySlides1" src="{% static 'rest4.jpg' %}" style="width:300px;height: 300px"></a>
+            <a href="#rest5"><img class="mySlides1" src="{% static 'rest5.jpg' %}" style="width:300px;height: 300px"></a></center>
+        <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+        <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+    </div>
+    <div id="box5">
+        <h3 id="rest1">Mama's Too</h3>
+        <h5>2750 Broadway<br>
+            (106th Street)<br>
+            Upper West Side<br>
+            212-510-7256</h5>
+        <table>
+            <tr>
+                <td><img src="{% static 'rest11.jpg' %}" style="height: 300px;width: 380px"></td>
+                <td style="width: 63%;"><div id="googleMap" style="width:110%;height:300px;float: right"></div></td>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width: 50%"><br>
+                    <b>Atmosphere</b> :A white-tiled neighborhood slice joint with a handful of counter seats; everything is shiny and new for the time being. You order and pick up at the counter; the system is not a model of efficiency, but it gets the job done.
+                </td>
+                <td>
+                    <b>Recommended Dishes</b>: House slice; pepperoni square; cacio e pepe square; pear-Gorgonzola square; mozzarella crescents. Regular slice, $3.50; squares, $4.50; regular pies, $21; square pies, $25 to $29.
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <b>Drinks and Wine</b>: A handful of bottled beers and Italian sodas.
+                </td>
+                <td>
+                    <b>Noise Level</b>: Tranquil, punctuated by pie talk from the kitchen.
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!--<&#45;&#45;!secon&ndash;&gt;-->
+    <div id="box6">
+        <h3 id="rest2"> Henry at Life Hotel</h3>
+        <h5>19 West 31st Street<br>
+            (Fifth Avenue)<br>
+
+            Midtown<br>
+            212-615-9910</h5>
+        <table>
+            <tr>
+                <td><img src="{% static 'rest21.jpg' %}" style="height: 300px;width: 380px"></td>
+                <td style="width: 63%;"><div id="googleMap1" style="width:110%;height:300px;float: right"></div></td>
+            </tr>
+
+            <tr>
+                <td style="width: 50%">
+                    <b>Atmosphere</b> :
+
+                    The bistro-like dining room manages some comfort despite having been shoehorned into a small, busy lobby. Service is warm, welcoming, and on board with the restaurant’s program.
+                </td>
+                <td>
+                    <br>
+                    <b>Recommended Dishes</b>: Tuna tartare; roti; piri-piri clams; mushroom yassa; concón; pan roasted scallops; beef short rib; sweet potato pie. Appetizers, $12 to $16; main courses, $28 to $42; higher for dishes that serve more than one.
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <b>Drinks and Wine</b>: The sophisticated cocktail menu picks up the kitchen’s global theme, and seems to have been given more thought than the lackluster wine list.
+                </td>
+                <td>
+                    <b>Noise Level</b>: Moderately loud
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="box7">
+        <h3 id="rest3"> Hunan Slurp</h3>
+        <h5>112 First Avenue<br>
+            (East Seventh Street)<br>
+            East Village<br>
+            646-585-9585</h5>
+        <table>
+            <tr>
+                <td><img src="{% static 'rest31.jpg' %}" style="height: 300px;width: 380px"></td>
+                <td style="width: 63%;"><div id="googleMap2" style="width:110%;height:300px;float: right"></div></td>
+            </td>
+            </tr>
+
+            <tr>
+                <td style="width: 50%">
+                    <b>Atmosphere</b> :
+
+                    As the long, informal, stylish dining room tunnels back from a picture window, communal tables give way to individual ones. The service is fast and professional.
+                </td>
+                <td>
+                    <br>
+                    <b>Recommended Dishes</b>: Marinated cherry tomatoes; chicken feet; Hunan charcuterie; stir-fried cabbage; chicken with young ginger; all noodles. Appetizers, $8 to $18; noodles and main courses (some of which will feed two or more), $15 to $38.
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <b>Drinks and Wine</b>: No alcohol is served, but the teas are better than average.
+                </td>
+                <td>
+                    <b>Noise Level</b>:Taxing at times.
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="box8">
+        <h3 id="rest4"> Atomix</h3>
+        <h5>104 East 30th Street<br>
+            (Park Avenue South),<br>
+            Murray Hill</h5>
+        <table>
+            <tr>
+                <td><img src="{% static 'rest41.jpg' %}" style="height: 300px;width: 380px"></td>
+                <td style="width: 63%;"><div id="googleMap3" style="width:110%;height:300px;float: right"></div></td>
+
+            </tr>
+
+
+            <tr>
+                <td style="width: 50%"><br>
+                    <b>Atmosphere</b> :
+
+                    Upstairs is an airy, civilized bar for snacks and cocktails; downstairs is a snug, Zen-inspired 14-seat tasting counter. Service is warm, gracious and eager to share the stories behind the food and the setting.            </td>
+                <td>
+
+                    <b>Recommended Dishes</b>: Bar: scallop jerky; beef tartare; chicken wings. Dining room: The 10-course tasting menu is the only option. Bar: $7 to $15. Dining room: $175.            </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <b>Drinks and Wine</b>  :The wine list is deep and rewarding, if not particularly value-focused; selections can be paired course-for-course with the menu for $155. The Korean teas and infusions, such as wild pear and white-lotus leaf, are exceptional.
+                </td>
+                <td>
+                    <b>Noise Level</b>:Ambient music plays at ambient volumes.
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div id="box9">
+        <h3 id="rest5"> Manhatta</h3>
+        <h5>28 Liberty Street<br>
+            (William Street)<br>
+            Financial District<br>
+            212-230-5788</h5>
+        <table>
+            <tr>
+                <td><img src="{% static 'rest51.jpg' %}" style="height: 300px;width: 380px"></td>
+                <td style="width: 63%;"><div id="googleMap4" style="width:110%;height:300px;float: right"></div></td>
+
+            </tr>
+
+            <tr>
+                <td style="width: 50%"> <br> <br>
+                    <b>Atmosphere</b> :
+
+                    A restrained, almost somber dining room where the thrills are provided by floor-to-ceiling windows facing north and east toward Brooklyn. Servers are wholesome and cheerful, with occasional flashes of intuition.            <td>
+
+                <b>Recommended Dishes</b>: The menu changes too frequently for meaningful recommendations. $78 prix-fixe, gratuity included, for a three-course dinner.
+            </tr>
+            <tr>
+                <td>
+                    <b>Drinks and Wine</b>  :Cocktails and a deep, versatile, non-doctrinal wine list that can bend to most budgets; prices seem expensive at first glance because a gratuity has been factored in.                </td>
+                <td>
+                    <b>Noise Level</b>:Moderate
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">&uArr;</button>
+
+
+</div>
+
+<script>
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("myBtn").style.display = "block";
+        } else {
+            document.getElementById("myBtn").style.display = "none";
+        }
+    }
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+
+
+
+
+
+
+<script>
+    var slideIndex = 0;
+
+    showSlides();
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+        setTimeout(showSlides,2000);
+    }
+
+    var slideIndex1 = 1;
+    showDivs(slideIndex1);
+
+    function plusDivs(n) {
+        showDivs(slideIndex1 += n);
+    }
+
+    function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides1");
+        if (n > x.length) {slideIndex1 = 1}
+        if (n < 1) {slideIndex1 = x.length}
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        x[slideIndex1-1].style.display = "block";
+    }
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxpI4Sl1hM7TEu1eoWgYqz8NJwRmdbl6s
+&callback=myMap1"></script>
+
+<script>
+        function myMap() {
+        var mapProp= {
+            center:new google.maps.LatLng(40.800834,-73.967586),
+            zoom:20,
+        };
+        var mapProp1= {
+            center:new google.maps.LatLng(40.747265,-73.987009),
+            zoom:20,
+        };
+        var mapProp2= {
+            center:new google.maps.LatLng(40.726706,-73.985638),
+            zoom:20,
+        };
+        var mapProp3= {
+            center:new google.maps.LatLng(40.744304,-73.982815),
+            zoom:20,
+        };
+                var mapProp4= {
+            center:new google.maps.LatLng(40.707878,-74.008970),
+            zoom:20,
+        };
+
+        var map1=new google.maps.Map(document.getElementById("googleMap1"),mapProp1);
+
+        var map4=new google.maps.Map(document.getElementById("googleMap4"),mapProp4);
+
+        var map3=new google.maps.Map(document.getElementById("googleMap3"),mapProp3);
+        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+        var map2=new google.maps.Map(document.getElementById("googleMap2"),mapProp2);
+    }
+
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCe2otGPKiUf4Qq35MmOfDWHaQm-Cjtopw
+&callback=myMap"></script>
+{% endblock content %}

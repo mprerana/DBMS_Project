@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Video chat</title>
+    <script src="https://cdn.jsdelivr.net/npm/peerjs@0.3.20/dist/peer.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+    <style>
+        body{
+            margin-left:4%;
+            margin-top: 50px;
+            background-color: rgb(150, 150, 150);
+            text-align: center;
+
+        }
+
+
+    #codehead {
+        font-family: 'Montserrat', sans-serif;
+       font-size: 40px; 
+    }
+    #codeenter  {
+        font-family: 'Montserrat', sans-serif;
+       font-size: 30px; 
+    }
+    #warning {
+        margin-bottom: 50px;
+        font-family: 'Satisfy', cursive;
+        font-size: 25px;
+    }
+    #local {
+        border-radius: 25%;
+
+    }
+    #remote {
+        border-radius: 20%;
+    }
+    #connect {
+       
+  background-color: rgb(0, 0, 0);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 15%;
+}
+video{
+    margin-left: 50px;
+    margin-top:40px;
+}
+
+    </style>
+
+
+
+</head>
+<body>
+<div id="codehead">
+    Share this Code: <span id="code"></span>
+</div>
+<div id="warning">Only users can access this page.</div>
+        <script src="main.js"></script>
+        <span id="codeenter">Enter the code given by other party:</span><br><br>
+    <textarea name="remoteid" id="remoteid" cols="30" rows="1"></textarea>
+    <button id="connect">Connect</button><br>
+    <div style="display:flex;flex-wrap:wrap;">
+    <video id="remote" autoplay></video>
+    <video id="local" autoplay style="width:16%;height:9%;"></video>
+</div>
+    <script>
+var peer = new Peer({key: 'lwjd5qra8257b9'});
+window.onload = ()=>{
+
+  peer.on('open', function(id) {
+    console.log('My peer ID is: ' + id);
+    document.getElementById("code").innerText = id;
+  });
+navigator.mediaDevices.getUserMedia({
+    video: true
+  }).then((stream) => {document.getElementById("local").srcObject = stream});
+
+  peer.on('call', function(call) {
+    navigator.mediaDevices.getUserMedia({
+      video:true,
+      audio:true
+      }).then((stream)=>{
+      // document.getElementById("local").srcObject = stream;
+      call.answer(stream);
+        });
+    // Answer the call, providing our mediaStream
+});
+
+
+
+document.getElementById("connect").addEventListener("click", ()=>{
+      let remId = document.getElementById("remoteid").value;
+      console.log('Rem id :' +remId);
+      navigator.mediaDevices.getUserMedia({
+        video:true,
+        audio:true
+        }).then((stream)=>{
+      var call = peer.call(remId,stream);
+      call.on('stream', function(stream) {
+    // `stream` is the MediaStream of the remote peer.
+    // Here you'd add it to an HTML video/canvas element.
+    document.getElementById("remote").srcObject = stream;
+  });});
+});
+
+
+}
+
+
+
+</script>
+</body>
+</html>

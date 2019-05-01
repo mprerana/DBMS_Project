@@ -1,0 +1,113 @@
+{% extends 'authentication/layout.html' %}
+{% load static from  staticfiles %}
+{% block headblock %}
+    <meta charset="UTF-8">
+    <title>Transactions</title>
+    <link rel="stylesheet" href="/static/index.css" >
+    <style>
+
+    body{
+        background-image: url("{% static 'payment.jpeg' %}");
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    .div1{
+        background-color: white;
+        width:40%;
+        height:400px;
+        opacity: 0.9;
+        margin-top: 10px;
+        border-radius: 30px;
+        overflow: auto;
+    }
+    table,td,tr,th{
+       font-size: 20px;
+        border: 1px solid gray;
+        border-collapse: collapse;
+        padding:10px;
+    }
+
+    </style>
+{% endblock %}
+{% block content %}
+    <center>
+<div class="div1">
+                {% if trans %}
+                <table>
+                <tr>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        Amount
+                    </th>
+                    <th>
+                        Transaction ID
+                    </th>
+                </tr>
+                {% for acc in trans %}
+                <tr>
+                    <td>
+{#                      {{ acc.date | date:'N j, Y, r'}}#}
+                        {{ acc.date | date:"d-M-Y" }} {{ acc.date | time:"H:i:s" }}
+                    </td>
+                    <td>
+                        {{ acc.amount }}
+                    </td>
+                    <td>
+                        {{ acc.transaction_id }}
+                    </td>
+                </tr>
+{#                <tr>#}
+{#                    <td>#}
+{#                        {{ acc.date2 }}#}
+{#                    </td>#}
+{#                    <td>#}
+{#                        {{ acc.last2 }}#}
+{#                    </td>#}
+{#                    <td>#}
+{#                        {{ acc.transaction_id_2 }}#}
+{#                    </td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td>#}
+{#                        {{ acc.date3 }}#}
+{#                    </td>#}
+{#                    <td>#}
+{#                        {{ acc.last3 }}#}
+{#                    </td>#}
+{#                    <td>#}
+{#                        {{ acc.transaction_id_3 }}#}
+{#                    </td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td>#}
+{#                        {{ acc.date4 }}#}
+{#                    </td>#}
+{#                    <td>#}
+{#                        {{ acc.last4}}#}
+{#                    </td>#}
+{#                    <td>#}
+{#                        {{ acc.transaction_id_4 }}#}
+{#                    </td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td>#}
+{#                        {{ acc.date5 }}#}
+{#                    </td>#}
+{#                    <td>#}
+{#                        {{ acc.last5 }}#}
+{#                    </td>#}
+{#                    <td>#}
+{#                        {{ acc.transaction_id_5 }}#}
+{#                    </td>#}
+{#                </tr>#}
+            {% endfor %}
+            </table>
+            {% else %}
+                <p class="err">No recent transactions.</p>
+            {% endif %}
+</div>
+    </center>
+{% endblock %}

@@ -1,0 +1,153 @@
+{% extends 'authentication/layout.html' %}
+{% load static from staticfiles %}
+{% block headblock %}
+    <meta charset="UTF-8">
+    <title>Edit Profile</title>
+
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+    td {
+        padding: 5px;
+        color: crimson;
+    }
+    /* css class for the edit profile generated errors */
+    .profilepress-edit-profile-status {
+      width: 400px;
+      text-align: center;
+      background-color: #e74c3c;
+      color: #ffffff;
+      border: medium none;
+      border-radius: 4px;
+      font-size: 17px;
+      font-weight: normal;
+      line-height: 1.4;
+      padding: 8px 5px;
+      margin: auto;
+    }
+
+    body{
+            margin:0px;
+            background-image: url("{% static 'edit.jpg' %}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100%;
+            color: white;
+
+        }
+
+    .memo-edprofile-success {
+      width: 400px;
+      text-align: center;
+      background-color: #2ecc71;
+      color: #ffffff;
+      border: medium none;
+      border-radius: 4px;
+      font-size: 17px;
+      font-weight: normal;
+      line-height: 1.4;
+      padding: 8px 5px;
+      margin: auto;
+    }
+
+    #sc-edprofile {
+      background: #f0f0f0;
+      width: 50%;
+      margin: 0 auto;
+      margin-top: 8px;
+      margin-bottom: 2%;
+      transition: opacity 1s;
+      -webkit-transition: opacity 1s;
+    }
+
+    #sc-edprofile h1 {
+      background: #564f4f;
+      padding: 20px 0;
+      font-size: 140%;
+      font-weight: 300;
+      text-align: center;
+      color: #fff;
+    }
+
+    div#sc-edprofile .sc-container {
+      background: #f0f0f0;
+      padding: 6% 4%;
+    }
+
+    div#sc-edprofile input[type="email"],
+    div#sc-edprofile input[type="text"],
+    div#sc-edprofile input[type="password"], div#sc-edprofile select {
+      width: 92%;
+      background: #fff;
+      margin-bottom: 4%;
+      border: 1px solid #ccc;
+      padding: 4%;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 95%;
+      color: #555;
+    }
+
+    div#sc-edprofile select {
+      width: 92%;
+    }
+
+    div#sc-edprofile textarea {
+      height: 100px;
+    }
+
+    div#sc-edprofile input[type="submit"] {
+      width: 100%;
+      background: #564f4f;
+      border: 0;
+      padding: 4%;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 100%;
+      color: #fff;
+      cursor: pointer;
+      transition: background .3s;
+      -webkit-transition: background .3s;
+    }
+
+    div#sc-edprofile input[type="submit"]:hover {
+      background: #5B7BD5;
+    }
+</style>
+
+
+
+{% endblock %}
+{% block content %}
+    <div class="div1">
+    <br>
+        <form method="POST" action="{% url 'editprofile' %}" enctype="multipart/form-data" style="width:100%; padding:5%;">
+            {% csrf_token %}
+
+
+                <div id="sc-edprofile">
+  <h1>Edit Profile</h1>
+  <div class="sc-container">
+       <table>
+                {%for field in uform%}
+                <tr>
+                    <td style="text-align:left;font-family: 'Century Gothic';color:black;text-transform: capitalize">{{field.label_tag}}</td><td>{{field}}</td>
+                </tr>
+                {%endfor%}
+                {%for field in pform%}
+                <tr>
+                    <td style="text-align:left;font-family: 'Century Gothic';color:black;text-transform: capitalize">{{field.label_tag}}</td><td>{{field}}</td>
+                </tr>
+                {%endfor%}
+       </table>
+  </div>
+           <input type="submit" value="Update" />
+
+</div>
+                <!-- {{ uform }} {{ pform }}-->
+
+{#            <input type="submit" class="button3" value="update" style="width: 50%">#}
+
+
+        </form>
+
+    </div>
+
+{% endblock %}

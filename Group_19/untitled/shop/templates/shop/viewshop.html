@@ -1,0 +1,76 @@
+{% extends "homepage/base.html" %}
+{% block content %}
+{% load staticfiles %}
+    {% for a in t %}
+        <div class="row">
+        <div class="col s6 offset-s3">
+            <div class="card-panel teal lighten-2"><h2>{{ a.11 }}</h2></div>
+            <div class="row">
+            <div class="col s7">
+                <h4> <p class="red-text">About us:</p><p class="flow-text" > {{ a.9 }}</p></h4>
+            </div>
+            <div class="col s3 ">
+            <img style="width:280px;height:195px;" src="{% static 'shop/images/image.png' %}"/></div>
+            </div>
+
+                <h5><div class="row">
+                        <div class="col s3 red-text">Admin ID:</div>
+                    <div class="col s1 ">{{ a.1 }}</div>
+                </div></h5>
+
+                <div class="row">
+                    <div class="col s4 push-s7"><h4>
+                        <div class="row">
+                        <div class="col s2 red-text">Opens:</div>
+                            <div class="col s3 offset-s3 ">  {{ a.2 }}am </div>
+                        </div>
+                         <div class="row">
+                        <div class="col s2 red-text">
+                        Closes:</div>
+                             <div class="col s3 offset-s3 ">  {{ a.3 }}pm </div></h4></div>
+                <div class="col s6 pull-s4">
+                <h5>
+                {%  if a.5 != NULL %}
+                <div class="row">
+                        <div class="col s6 red-text">Tenant ID:</div>
+                    <div class="col s1 ">{{ a.5 }}</div> </div>
+                {% endif %}
+                <div class="row">
+                        <div class="col s6 red-text">Floor:</div>
+                    <div class="col s1 ">{{ a.8 }}</div></div>
+                {%  if a.5 != NULL %}
+                <div class="row">
+                        <div class="col s6 red-text">Owner name:</div>
+                    <div class="col s1 ">{{ a.6 }}</div> </div>
+                {% endif %}
+                <div class="row">
+                        <div class="col s6 red-text">Tenant name:</div>
+                    <div class="col s1 ">{{ a.7 }}</div> </div>
+
+                </h5></div>
+
+
+
+        </div>
+
+        </div>
+        </div>
+        <div class="row">
+        <div class="col s6 offset-s3">
+        <div class="col s6 offset-s9 "><a href='{% url "shop:writereview" a.0 %}'><h5>Write a review</h5></a></div>
+    {% endfor %}
+
+
+    <blockquote><h3>Reviews:</h3></blockquote><br>
+    {% for b in x %}
+        <div class="col s6 "><h5>{{ b.1 }}</h5></div>
+
+        <div class="col s6 offset-s3 ">by:{{ b.3 }}</div>
+
+    {% endfor %}
+            </div>
+            </div>
+
+
+{% endblock %}
+

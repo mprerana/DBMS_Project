@@ -1,0 +1,249 @@
+{#{% extends "homepage/base.html" %}#}
+{#{% block content %}#}
+{#{% load staticfiles %}#}
+{##}
+{#{% load mytags %}#}
+{##}
+{#<!--Slider-->#}
+{#  <div class="slider">#}
+{#    <ul class="slides">#}
+{#      <li>#}
+{#        <img  src="{% static 'homepage/images/slider1.jpeg'%}"> <!-- random image -->#}
+{#        <div class="caption center-align">#}
+{#          <h3>Welcome!</h3>#}
+{#          <h5 >To The Rapidly Growing Community</h5>#}
+{#        </div>#}
+{#      </li>#}
+{#      <li>#}
+{#        <img  src="{% static 'homepage/images/slider2.jpeg'%}"> <!-- random image -->#}
+{#        <div class="caption left-align " >#}
+{#          <h3>Download From The Millions Of Stock Images</h3>#}
+{#          <h5 >And It's Free!</h5>#}
+{#        </div>#}
+{#      </li>#}
+{#      <li>#}
+{#        <img src="{% static 'homepage/images/slider3.jpeg'%}"> <!-- random image -->#}
+{#        <div class="caption right-align">#}
+{#          <h3>Become A Contributer</h3>#}
+{#          <h5 >Show Your Skills</h5>#}
+{#        </div>#}
+{#      </li>#}
+{#    </ul>#}
+{#  </div>#}
+{#<!--push and pull-->#}
+{#<section class="container section" id="photos" style="padding-top:4vw;padding-bottom:4vw;">#}
+{#  <div class="row">#}
+{#    <div class="col s12 l4">#}
+{#        <img src="{% static 'homepage/images/journey.jpeg'%}" alt="" class="responsive-img materialboxed">#}
+{#    </div>#}
+{#    <div class="col s12 l6 offset-l1">#}
+{#      <h2 class="blue-grey-text text-darken-3">Contribute</h2>#}
+{#      <p>Contribute by uploading your photographs and showcase your amazing photography skills</p>#}
+{#    </div>#}
+{#  </div>#}
+{#  <div class="row">#}
+{#    <div class="col s12 l4 offset-l1 push-l7">#}
+{#        <img src="{% static 'homepage/images/portrait.jpg'%}" alt="" class="responsive-img materialboxed">#}
+{#    </div>#}
+{#    <div class="col s12 l6 offset-l1 pull-l5 right-align">#}
+{#      <h2 class="blue-grey-text text-darken-3">Search</h2>#}
+{#      <p>Search from the millions of images in our collection</p>#}
+{#    </div>#}
+{#  </div>#}
+{##}
+{#</section>#}
+{#<!--Parallax-->#}
+{##}
+{#    <div class="parallax-container" style="height:25vw;">#}
+{#      <div class="parallax responsive-img"><img src="{% static 'homepage/images/parallax.jpeg'%}"></div>#}
+{#    </div>#}
+{##}
+{#<!--carousel-->#}
+{#<div class="container">#}
+{#<p >#}
+{#  <h3 class="center-align blue-grey-text text-darken-3"> Popular Categories</h3>#}
+{#</p>#}
+{##}
+{#  <div class="carousel">#}
+{##}
+{#    <a class="carousel-item" href="{">#}
+{#        <img src="{% static 'homepage/images/animals.jpg' %}">#}
+{#        <p ><h5 class="center-align black-text flow-text">Animals</h5></p>#}
+{#    </a>#}
+{##}
+{##}
+{##}
+{#    <a class="carousel-item"  href="">#}
+{##}
+{#        <img src="{% static 'homepage/images/abstract.jpg'%}">#}
+{#        <p ><h5 class="center-align black-text flow-text">Abstract</h5></p>#}
+{#    </a>#}
+{##}
+{##}
+{##}
+{#    <a class="carousel-item"  href="">#}
+{##}
+{#        <img src="{% static 'homepage/images/festivals.jpg'%}">#}
+{#        <p ><h5 class="center-align black-text flow-text">Festivals</h5></p>#}
+{#    </a>#}
+{##}
+{#]#}
+{##}
+{#    <a class="carousel-item"  href="">#}
+{##}
+{#        <img src="{% static 'homepage/images/food.jpg'%}">#}
+{#        <p ><h5 class="center-align black-text flow-text">Food</h5></p>#}
+{#    </a>#}
+{##}
+{##}
+{#    <a class="carousel-item"  href="">#}
+{##}
+{#        <img src="{% static 'homepage/images/lifestyle.jpg'%}">#}
+{#        <p ><h5 class="center-align black-text flow-text">Lifestyle</h5></p>#}
+{#    </a>#}
+{##}
+{##}
+{##}
+{##}
+{#    <a class="carousel-item"  href="">#}
+{##}
+{#        <img src="{% static 'homepage/images/nature.jpg'%}">#}
+{#        <p ><h5 class="center-align black-text flow-text">Nature</h5></p>#}
+{#    </a>#}
+{##}
+{##}
+{##}
+{##}
+{#    <a class="carousel-item"  href="">#}
+{##}
+{#        <img src="{% static 'homepage/images/people.jpg'%}">#}
+{#        <p ><h5 class="center-align black-text flow-text">People</h5></p>#}
+{#    </a>#}
+{##}
+{##}
+{##}
+{##}
+{#    <a class="carousel-item"  href="">#}
+{##}
+{#        <img src="{% static 'homepage/images/objects.jpg'%}">#}
+{#        <p ><h5 class="center-align black-text flow-text">Objects</h5></p>#}
+{#    </a>#}
+{#  </div>#}
+{##}
+{#</div>#}
+{##}
+{#<!--parallax2-->#}
+{#<div class="parallax-container" style="height:25vw;">#}
+{#  <div class="parallax responsive-img"><img src="{% static 'homepage/images/parallax1.jpeg'%}"></div>#}
+{#</div>#}
+{##}
+{##}
+{##}
+{#  <script>#}
+{##}
+{#  $(document).ready(function(){#}
+{#    $('.slider').slider({#}
+{#      duration:500,#}
+{#      interval:3000,#}
+{#      indicators:false,#}
+{#    });#}
+{#     $('.materialboxed').materialbox();#}
+{#     $('.parallax').parallax();#}
+{#      $('.carousel').carousel();#}
+{#  });#}
+{##}
+{#  </script>#}
+{##}
+{#{% endblock %}#}
+
+
+{% extends "homepage/base.html" %}
+{% block content %}
+{% load staticfiles %}
+
+{#{% load mytags %}#}
+
+<!--Slider-->
+  <div class="slider">
+    <ul class="slides">
+      <li>
+        <img  src="{% static 'homepage/images/apparels1.jpeg'%}"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>Welcome!</h3>
+          <h5 >To The Best Mall in SriCity</h5>
+        </div>
+      </li>
+      <li>
+        <img  src="{% static 'homepage/images/gaming2.jpg'%}"> <!-- random image -->
+        <div class="caption left-align " >
+          <h3>All the best stores from around the world.</h3>
+          <h5></h5>
+        </div>
+      </li>
+      <li>
+        <img src="{% static 'homepage/images/movie4.jpg'%}"> <!-- random image -->
+        <div class="caption right-align">
+          <h3>Everything you want is here</h3>
+          <h5 >3D Dolby Atmos Theatres for best experience</h5>
+        </div>
+      </li>
+    </ul>
+  </div>
+<!--push and pull-->
+<section class="container section" id="photos" style="padding-top:4vw;padding-bottom:4vw;">
+  <div class="row">
+    <div class="col s12 l4">
+        <img src="{% static 'homepage/images/spmall.jpg'%}" alt="" class="responsive-img materialboxed">
+    </div>
+    <div class="col s12 l6 offset-l1">
+      <h2 class="blue-grey-text text-darken-3">Explore</h2>
+        <p><a class="btn"  href="{% url 'plot:see' %}">Buy/Sell Plots</a></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12 l4 offset-l1 push-l7">
+        <img src="{% static 'homepage/images/food7.jpg'%}" alt="" class="responsive-img materialboxed">
+    </div>
+    <div class="col s12 l6 offset-l1 pull-l5 right-align">
+      <h2 class="blue-grey-text text-darken-3">Food</h2>
+      <p>Tens of restuarants with cuisines from around the world </p>
+    </div>
+  </div>
+
+</section>
+<!--Parallax-->
+
+    <div class="parallax-container" style="height:25vw;">
+      <div class="parallax responsive-img"><img src="{% static 'homepage/images/spmall5.jpg'%}"></div>
+    </div>
+
+<!--carousel-->
+<div class="container">
+<p >
+  <h3 class="center-align blue-grey-text text-darken-3">Explore Our Shops</h3>
+</p>
+
+    <center><a class="btn" href="{% url 'shop:category' %}">Click Here</a></center>
+<!--parallax2-->
+    <div class="parallax-container" style="height:25vw;">
+      <div class="parallax responsive-img"><img src="{% static 'homepage/images/spmall5.jpg'%}"></div>
+    </div>
+
+
+  <script>
+
+  $(document).ready(function(){
+    $('.slider').slider({
+      duration:500,
+      interval:3000,
+      indicators:false,
+    });
+     $('.materialboxed').materialbox();
+     $('.parallax').parallax();
+      $('.carousel').carousel();
+  });
+
+  </script>
+
+{% endblock %}
+

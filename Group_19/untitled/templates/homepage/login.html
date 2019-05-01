@@ -1,0 +1,38 @@
+{% extends 'homepage/base.html' %}
+{% block content %}
+<div class="row">
+<form class="col s12" method="POST" action="{% url 'homepage:user_login' %}" name="user_login" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="row">
+    <div class="input-field col s4 offset-s4">
+      <input id="username" type="text" class="validate" name="username" required>
+      <label for="username">User Name</label>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="input-field col s4 offset-s4">
+      <input id="password" type="password" class="validate" name="password" required>
+      <label for="password">Password</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class=" col s2 offset-s5">
+      <a href="{% url 'homepage:password_reset' %}">Forgot Password?</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s4 offset-s5">
+      <button class="  btn waves-effect waves-light" type="submit" name="submit">Submit
+     </button>
+    </div>
+  </div>
+
+</form>
+</div>
+
+
+
+{% endblock %}

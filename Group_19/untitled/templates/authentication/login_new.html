@@ -1,0 +1,198 @@
+{% extends "authentication/layout.html" %}
+{% load static from staticfiles %}
+
+{% block headblock %}
+    <title>Login </title>
+    <style>
+
+        .login-page {
+            width: 360px;
+            padding: 8% 0 0;
+            margin: auto;
+        }
+        .form {
+            position: relative;
+            z-index: 1;
+            background: #FFFFFF;
+            max-width: 360px;
+            margin: 0 auto 100px;
+            padding: 45px;
+            left:75%;
+            text-align: center;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        }
+        .form input {
+            font-family: "Roboto", sans-serif;
+            outline: 0;
+            background: #f2f2f2;
+            width: 100%;
+            border: 0;
+            margin: 0 0 15px;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        .loginpage-loginbutton {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 12px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            width: 210px;
+
+        }
+        .form .message {
+            margin: 15px 0 0;
+            color: #b3b3b3;
+            font-size: 12px;
+        }
+        .form .message a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .form .register-form {
+            display: none;
+        }
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        .container:before, .container:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .container .info {
+            margin: 50px auto;
+            text-align: center;
+        }
+        .container .info h1 {
+            margin: 0 0 15px;
+            padding: 0;
+            font-size: 36px;
+            font-weight: 300;
+            color: #1a1a1a;
+        }
+        .container .info span {
+            color: #4d4d4d;
+            font-size: 12px;
+        }
+        .container .info span a {
+            color: #000000;
+            text-decoration: none;
+        }
+        .container .info span .fa {
+            color: #EF3B3A;
+        }
+        body {
+                background-image: url("{% static 'thor.png' %}");
+            background-size: 100% ;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+        .loginBtn {
+            box-sizing: border-box;
+            position: relative;
+            /* width: 13em;  - apply for fixed size */
+            margin: 0.2em;
+            padding: 0 15px 0 46px;
+            border: none;
+            text-align: left;
+            line-height: 34px;
+            white-space: nowrap;
+            border-radius: 0.2em;
+            font-size: 16px;
+            color: #FFF;
+        }
+        .loginBtn:before {
+            content: "";
+            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 34px;
+            height: 100%;
+        }
+        .loginBtn:focus {
+            outline: none;
+        }
+        .loginBtn:active {
+            box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
+        }
+
+
+        /* Facebook */
+        .loginBtn--facebook {
+            background-color: #4C69BA;
+            background-image: linear-gradient(#4C69BA, #3B55A0);
+            /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
+            text-shadow: 0 -1px 0 #354C8C;
+        }
+        .loginBtn--facebook:before {
+            border-right: #364e92 1px solid;
+            background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png') 6px 6px no-repeat;
+        }
+        .loginBtn--facebook:hover,
+        .loginBtn--facebook:focus {
+            background-color: #5B7BD5;
+            background-image: linear-gradient(#5B7BD5, #4864B1);
+        }
+
+
+        /* Google */
+        .loginBtn--google {
+            /*font-family: "Roboto", Roboto, arial, sans-serif;*/
+            background: #DD4B39;
+        }
+        .loginBtn--google:before {
+            border-right: #BB3F30 1px solid;
+            background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png') 6px 6px no-repeat;
+        }
+        .loginBtn--google:hover,
+        .loginBtn--google:focus {
+            background: #E74B37;
+
+        }
+    </style>
+{% endblock headblock %}
+
+{% block content %}
+
+<div class="login-page">
+
+    <div class="form">
+    <img src="{% static 'logo_new3.png' %}">
+    <br>
+        <form class="login-form" method="post" action="{% url 'signin' %}">
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+               {{ error }}
+            {% endif %}
+            {{ form}}
+            {% if request.GET.next %}
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
+            {% endif %}
+            <br>
+            <button class="loginpage-loginbutton">Login</button><br><br>
+            <a href="{% url 'password_reset' %}" style="color: #28a745; text-decoration: none">Forgot/reset password? </a>
+            <p class="message">Not registered? <a href="{% url 'register' %}">Create an account</a></p><br>
+            <hr>
+
+        </form>
+        <a href="{% url 'social:begin' 'facebook' %}"> <button class="loginBtn loginBtn--facebook">
+            Login with Facebook
+        </button></a>
+
+        <br>
+        <a href="{% url 'social:begin' 'google-oauth2' %}"><button class="loginBtn loginBtn--google">Login with Google
+        </button></a>
+
+
+    </div>
+</div>
+{% endblock content %}
