@@ -26,6 +26,7 @@ To run the project do the following:
 
 1. Configure your MySQL database NAME, USER, PASSWORD inside eventManagement > settings.py
 
+            
             DATABASES = {   
                 'default': {
                     'ENGINE': 'django.db.backends.mysql',
