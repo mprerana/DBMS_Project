@@ -1,0 +1,44 @@
+{% extends 'shop/base.html' %}
+{#<title>{% block title %}checked out{% endblock %}</title>#}
+{% block body %}
+
+<div class="" style="padding-top: 100px; padding-bottom: 100px; padding-left: 150px; padding-right: 150px; background-color: gainsboro ">
+<br>
+
+<div class="row" style="background-color: white; padding-left:50px; padding-right:50px; padding-top: 40px; padding-bottom: 40px">
+        <div class="col-md-12 order-md-1">
+{#         <p style="color:#1D466A; font-size: 25px">{{ order.user.first_name }}</p>#}
+            <p style="color:#1D466A; font-size: 35px; font-weight: bold; text-align: center; letter-spacing: 1px">ORDER &nbspCONFIRMATION</p>
+            <hr style="border: 1px solid #afd9ee;  width: 150px; " size="5">
+{#            <p style="color:#1D466A; font-size: 35px; text-align: center; letter-spacing: 2px">_______</p>#}
+            <br>
+<p style="color:#1D466A; font-size: 28px; text-align: center">Hi {{ order.user.username }}, Thank You for shopping at &nbsp<span style="font-family: Satisfy; font-size: 32px">XYZ store&nbsp</span>.</p>
+           <br><br><br> <p style="color:#1D466A; font-size: 32px; font-weight: bold; text-align: center; letter-spacing: 1px">View Your Order Details</p></p>
+            <hr style="border: 1px solid #afd9ee;  width: 145px; " size="5">
+        <br>
+            <p style="color:#1D466A; font-size: 28px; text-align: center">Items Ordered</p><br>
+        {% for item in order.get_cart_items %}
+
+            <div class="col-sm-4 col-xs-12 " style="padding-left: 80px; padding-bottom: 50px"> <img src="{{ item.product.image.url }}" width="150px" height="150px" style="padding-bottom: 20px">
+                <p style="color:#1D466A; font-size: 18px;">{{ item.product.name }}<br><span style="font-size: 16px"> Price : Rs {{ item.product.price }} <br>(Quantity : {{ item.quantity }})</span></p></div>
+    {%  endfor %}
+<br>
+
+        </div>
+
+    <hr style="border: 1px solid #afd9ee;  width: 980px; " size="5"></div>
+    <div class="row" style="background-color: white; padding-left:50px; padding-right:50px; padding-top: 0px; padding-bottom: 40px">
+        <p style="color:#1D466A; font-size: 28px; text-align: center; font-weight: bold">Order Total &nbsp;: &nbsp;<span style="font-weight: normal"> Rs {{ order.get_cart_total }}</span></p>
+        <p style="color:#1D466A; font-size: 28px; text-align: center; font-weight: bold">Shipping Address &nbsp;: &nbsp;<span style="font-weight: normal">{{ order.billing_add }}</span></p>
+        <p style="color:#1D466A; font-size: 28px; text-align: center; font-weight: bold">Date Ordered &nbsp;: &nbsp;<span style="font-weight: normal">{{ order.date_ordered }}</span></p>
+        <p style="color:#1D466A; font-size: 28px; text-align: center; font-weight: bold">Estimated Delivery date&nbsp;: &nbsp;<span style="font-weight: normal">{{ order.get_estimated_date }}</span></p>
+<a href="{% url 'shop:index' %}" class="btn btn-warning pull-left">
+            go to home
+</a>
+<br><br>
+</div>
+
+</div>
+
+
+{% endblock %}

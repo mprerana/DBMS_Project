@@ -1,0 +1,778 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block head %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        {#height: 100%;#}
+         height:400px;
+          width:600px;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+
+      }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+  <!-- The Grid -->
+  <div class="w3-row">
+    <!-- Left Column -->
+    <div class="w3-col m3">
+      <!-- Profile -->
+      <div class="w3-card w3-round w3-white">
+        <div class="w3-container">
+         <h4 class="w3-center">My Profile</h4>
+            <p class="w3-center"><a href="{% url 'home:profile' request.user.username %}"> <img src="/media/home/default-img.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></a></p>
+         <hr>
+         <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i></p>
+        </div>
+      </div>
+      <br>
+
+      <!-- Accordion -->
+      <div class="w3-card w3-round">
+        <div class="w3-white">
+          <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups</button>
+          <div id="Demo1" class="w3-hide w3-container">
+              {% for group in groups %}
+            <p>{{ group.name }}</p>
+              {% endfor %}
+          </div>
+          <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
+          <div id="Demo2" class="w3-hide w3-container">
+            <p>Some other text..</p>
+          </div>
+          <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> Pending Requests</button>
+          <div id="Demo3" class="w3-hide w3-container">
+         <div class="w3-row-padding">
+         <br>
+           <div class="w3-half">
+             <img src="#" style="width:100%" class="w3-margin-bottom">
+           </div>
+           <div class="w3-half">
+             <img src="#" style="width:100%" class="w3-margin-bottom">
+           </div>
+           <div class="w3-half">
+             <img src="#" style="width:100%" class="w3-margin-bottom">
+           </div>
+           <div class="w3-half">
+             <img src="#" style="width:100%" class="w3-margin-bottom">
+           </div>
+           <div class="w3-half">
+             <img src="#" style="width:100%" class="w3-margin-bottom">
+           </div>
+           <div class="w3-half">
+             <img src="#" style="width:100%" class="w3-margin-bottom">
+           </div>
+         </div>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <!-- Interests -->
+      <div class="w3-card w3-round w3-white w3-hide-small">
+        <div class="w3-container" style="padding: 30px;">
+            <a href="{% url 'groups:creategroup' %}" ><strong>Create a group</strong></a>
+        </div>
+      </div>
+      <br>
+
+      <!-- Alert Box -->
+      <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
+        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
+          <i class="fa fa-remove"></i>
+        </span>
+        <p><strong>Hey!</strong></p>
+        <p>People are looking at your profile. Find out who.</p>
+      </div>
+
+    <!-- End Left Column -->
+    </div>
+
+    <!-- Middle Column -->
+    <div class="w3-col m7">
+
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <h6 class="w3-opacity">Upcoming events</h6>
+              <p class="w3-border w3-padding">Explore and join our various exciting events</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">1 min</span>
+        <h4>John Doe</h4><br>
+        <hr class="w3-clear">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <div class="w3-row-padding" style="margin:0 -16px">
+            <div class="w3-half">
+              <img src="https://images.pexels.com/photos/699558/pexels-photo-699558.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+            </div>
+            <div class="w3-half">
+              <img src="https://cdn.wallpapersafari.com/28/68/ARwF8H.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
+          </div>
+        </div>
+          <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom" style="background-color: black;opacity: 0.9;color: white"><a href="#" style="text-decoration: none;">View event details</a></button>
+          <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" style="background-color: black;opacity: 0.9;color: white"><a href="{% url 'chat:index' %}" style="text-decoration: none;"><i class="fa fa-comment"></i> Chat with event manager</a></button>
+      </div>
+
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <img src="https://www.w3schools.com/w3images/avatar5.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">16 min</span>
+        <h4>Jane Doe</h4><br>
+        <hr class="w3-clear">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+       <div class="w3-row-padding" style="margin:0 -16px">
+            <div class="w3-half">
+              <img src="https://images.pexels.com/photos/699558/pexels-photo-699558.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+            </div>
+            <div class="w3-half">
+              <img src="https://cdn.wallpapersafari.com/28/68/ARwF8H.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
+          </div>
+        </div>
+
+          <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom" style="background-color: black;opacity: 0.9;color: white"><a href="#" style="text-decoration: none;">View event details</a></button>
+          <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" style="background-color: black;opacity: 0.9;color: white"><a href="{% url 'chat:index' %}" style="text-decoration: none;"><i class="fa fa-comment"></i> Chat with event manager</a></button>
+      </div>
+
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <img src="https://www.w3schools.com/w3images/avatar5.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">32 min</span>
+        <h4>Angie Jane</h4><br>
+        <hr class="w3-clear">
+        <p>Have you seen this?</p>
+        <img src="https://cdn.londonandpartners.com/visit/london-organisations/alexandra-palace/92923-640x360-alexandra-palace-gig-640.jpg" style="width:100%" class="w3-margin-bottom">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom" style="background-color: black;opacity: 0.9;color: white"><a href="#" style="text-decoration: none;">View event details</a></button>
+          <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" style="background-color: black;opacity: 0.9;color: white"><a href="{% url 'chat:index' %}" style="text-decoration: none;"><i class="fa fa-comment"></i> Chat with event manager</a></button>
+      </div>
+
+    <!-- End Middle Column -->
+    </div>
+
+    <!-- Right Column -->
+    <div class="w3-col m2">
+      <div class="w3-card w3-round w3-white w3-center">
+        <div class="w3-container">
+          <p>Past Events:</p>
+          <img src="/media/marathon.jpg" alt="Forest" style="width:100%;">
+          <p><strong>10k Marathon</strong></p>
+          <p><a href="{% url 'events:pastevents' %}">View all past events</a></p>
+        </div>
+      </div>
+      <br>
+
+      <div class="w3-card w3-round w3-white w3-center">
+        <div class="w3-container">
+          <table>
+        {% for i in group_invites %}
+             {% if i.status == False %}
+                <tr>
+                    <td>{{ i.group.name }}</td>
+                    <td>{{ i.group.description }}</td>
+                    <td>{{ i.group.creator }}</td>
+                    <td><a href="{% url 'groups:accept' i.id %}">Accept</a></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+        </div>
+      </div>
+      <br>
+
+      <div class="w3-card w3-round w3-white w3-padding-16 w3-center">
+        <p>
+            <ul>
+        {% for i in group_requests_rcvd %}
+            <li>Request from {{ i.request_from }} to join {{ i.group.name }}
+                <p class="accept" id="acc-write" acc="{{ i.id }}"><u id="rem1">Accept this request</u></p>
+                <p class="decline" id="dec-write" dec="{{ i.id }}"><u id="rem2">Decline this request</u></p>
+            </li>
+        {% endfor %}
+    </ul>
+          </p>
+      </div>
+      <br>
+
+
+    <!-- End Right Column -->
+    </div>
+
+  <!-- End Grid -->
+  </div>
+
+<!-- End Page Container -->
+</div>
+<br>
+<div style="margin-top: 100px"></div>
+    <h2>Event Requests</h2>
+    <table>
+        <tr>
+            <th>Eventname</th>
+            <th>By</th>
+            <th>message</th>
+            <th></th>
+        </tr>
+        {% for i in eventreq %}
+            {% if i.status == False %}
+                <tr>
+                    <td>{{ i.event.name }}</td>
+                    <td>{{ i.by }}</td>
+                    <td><button class="acceptreq" reqid="{{ i.id }}">Accept</button></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+    <h2>Invites</h2>
+    <table>
+        <tr>
+            <th>Eventname</th>
+            <th>By</th>
+            <th>message</th>
+            <th></th>
+        </tr>
+        {% for i in invites %}
+            {% if i.status == False %}
+                <tr>
+                    <td>{{ i.event.name }}</td>
+                    <td>{{ i.sender }}</td>
+                    <td>{{ i.msg }}</td>
+                    <td><a href="{% url 'events:accept' i.id %}">Accept</a></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+    <h2>Upcoming Events</h2>
+    <table>
+        <tr>
+            <th>By</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>venue</th>
+            <th>State</th>
+            <th>City</th>
+            <th>Date</th>
+            <th>Time</th>
+        </tr>
+        {% for e in events %}
+
+            <tr>
+                <td>{{ e.user }}</td>
+                <td><a href="{% url "events:details" e.id %}">{{ e.name }}</a></td>
+                <td>{{ e.description }}</td>
+                <td>{{ e.venue }}</td>
+                <td>{{ e.state }}</td>
+                <td>{{ e.city }}</td>
+                <td>{{ e.date }}</td>
+                <td>{{ e.time }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h2>Group_invites</h2>
+    <table>
+        {% for i in group_invites %}
+            {% if i.status == False %}
+                <tr>
+                    <td>{{ i.group.name }}</td>
+                    <td>{{ i.group.description }}</td>
+                    <td>{{ i.group.creator }}</td>
+                    <td>
+
+                        <p class="accept_inv" id="acc-inv-write" acc-inv="{{ i.id }}"><u id="rem1-inv">Accept this invitation</u></p></td>
+                    <td>
+                <p class="decline_inv" id="dec-inv-write" dec-inv="{{ i.id }}"><u id="rem2-inv">Decline this request</u></p></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+    <h2>Requests to join your groups</h2>
+    <ul>
+        {% for i in group_requests_rcvd %}
+            <li>Request from {{ i.request_from }} to join {{ i.group.name }}
+                <p class="accept" id="acc-write" acc="{{ i.id }}"><u id="rem1">Accept this request</u></p>
+                <p class="decline" id="dec-write" dec="{{ i.id }}"><u id="rem2">Decline this request</u></p>
+            </li>
+        {% endfor %}
+    </ul>
+
+
+
+    <h3>Pending requests:</h3>
+    <ul>
+        {% for i in sent_group_requests %}
+            <li>{{ i.group.name }} - Request sent</li>
+
+        {% endfor %}
+        <ul id="write"></ul>
+
+    </ul>
+    <h3>You may like:</h3>
+    <ul>
+        {% if not send_group_request.count == 0 %}
+            {% for i in send_group_request %}
+                <li id="blah">
+{#                    <button class="r" type='submit' name='add friend' k='{{ i.id }}'>Send request</button>#}
+                    <a href="{% url 'groups:grp-page' i.id %}"> {{ i.name }}</a>
+
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            --No new groups to show--
+        {% endif %}
+    {% csrf_token %}
+    <script>
+
+        $(".accept").click(function () {
+            console.log('jskdnfls');
+            let li = $(this).parent();
+            $.ajax({
+                type: 'POST',
+                url: '/groups/accept-req/',
+                data: {
+                    //csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    req: $(this).attr("acc"),
+                },
+                success: function (data) {
+                    {#$("#rem1").remove();#}
+                    {#$("#rem2").remove();#}
+                    {#                    $("#acc-write").append(data);#}
+
+                    $(li).html(data);
+
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+
+            });
+        });
+
+        $(".accept_inv").click(function () {
+            console.log('jskdnfls');
+            let li = $(this).parent();
+            $.ajax({
+                type: 'POST',
+                url: '/groups/accept-invite/',
+                data: {
+                    //csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    req: $(this).attr("acc-inv"),
+                },
+                success: function (data) {
+                    {#$("#rem1").remove();#}
+                    {#$("#rem2").remove();#}
+                    {#                    $("#acc-write").append(data);#}
+
+                    $(li).html(data);
+
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+
+            });
+        });
+
+
+        $(".decline_inv").click(function () {
+            console.log('jskdnfls');
+            let li = $(this).parent();
+            $.ajax({
+                type: 'POST',
+                url: '/groups/decline-invite/',
+                data: {
+                    //csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    req: $(this).attr("dec-inv"),
+                },
+                success: function (data) {
+                    {#$("#rem1").remove();#}
+                    {#$("#rem2").remove();#}
+                    {#                    $("#acc-write").append(data);#}
+
+                    $(li).html(data);
+
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+
+            });
+        });
+        $(".decline").click(function () {
+            let li = $(this).parent();
+
+            $.ajax({
+                type: 'POST',
+                url: '/groups/decline-req/',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    req: $(this).attr("dec"),
+                },
+                success: function (data) {
+
+                    $(li).html(data);
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+
+            });
+        });
+        $(".acceptreq").click(function () {
+            console.log('jskdnfls');
+            let td = $(this).parent();
+            $.ajax({
+                type: 'POST',
+                url: '{% url "events:acceptreq" %}',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    pk: $(this).attr("reqid"),
+                },
+                success: function (data) {
+                    $(td).html(data);
+
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+
+            });
+        });
+    </script>
+
+<script>
+// Accordion
+function myFunction(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+    x.previousElementSibling.className += " w3-theme-d1";
+  } else {
+    x.className = x.className.replace("w3-show", "");
+    x.previousElementSibling.className =
+    x.previousElementSibling.className.replace(" w3-theme-d1", "");
+  }
+}
+
+// Used to toggle the menu on smaller screens when clicking on the menu button
+function openNav() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+
+
+
+
+
+{#{% extends 'home/base.html' %}#}
+{#{% load static %}#}
+{#{% block title %}#}
+{##}
+{#{% endblock %}#}
+{#{% block body %}#}
+{#    <div style="margin-top: 100px"></div>#}
+{#    <h2>Event Requests</h2>#}
+{#    <table>#}
+{#        <tr>#}
+{#            <th>Eventname</th>#}
+{#            <th>By</th>#}
+{#            <th>message</th>#}
+{#            <th></th>#}
+{#        </tr>#}
+{#        {% for i in eventreq %}#}
+{#            {% if i.status == False %}#}
+{#                <tr>#}
+{#                    <td>{{ i.event.name }}</td>#}
+{#                    <td>{{ i.by }}</td>#}
+{#                    <td><button class="acceptreq" reqid="{{ i.id }}">Accept</button></td>#}
+{#                </tr>#}
+{#            {% endif %}#}
+{#        {% endfor %}#}
+{#    </table>#}
+{#    <h2>Invites</h2>#}
+{#    <table>#}
+{#        <tr>#}
+{#            <th>Eventname</th>#}
+{#            <th>By</th>#}
+{#            <th>message</th>#}
+{#            <th></th>#}
+{#        </tr>#}
+{#        {% for i in invites %}#}
+{#            {% if i.status == False %}#}
+{#                <tr>#}
+{#                    <td>{{ i.event.name }}</td>#}
+{#                    <td>{{ i.sender }}</td>#}
+{#                    <td>{{ i.msg }}</td>#}
+{#                    <td><a href="{% url 'events:accept' i.id %}">Accept</a></td>#}
+{#                </tr>#}
+{#            {% endif %}#}
+{#        {% endfor %}#}
+{#    </table>#}
+{#    <h2>Upcoming Events</h2>#}
+{#    <table>#}
+{#        <tr>#}
+{#            <th>By</th>#}
+{#            <th>Name</th>#}
+{#            <th>Description</th>#}
+{#            <th>venue</th>#}
+{#            <th>State</th>#}
+{#            <th>City</th>#}
+{#            <th>Date</th>#}
+{#            <th>Time</th>#}
+{#        </tr>#}
+{#        {% for e in events %}#}
+{##}
+{#            <tr>#}
+{#                <td>{{ e.user }}</td>#}
+{#                <td><a href="{% url "events:details" e.id %}">{{ e.name }}</a></td>#}
+{#                <td>{{ e.description }}</td>#}
+{#                <td>{{ e.venue }}</td>#}
+{#                <td>{{ e.state }}</td>#}
+{#                <td>{{ e.city }}</td>#}
+{#                <td>{{ e.date }}</td>#}
+{#                <td>{{ e.time }}</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{#    </table>#}
+{#    <h2>Group_invites</h2>#}
+{#    <table>#}
+{#        {% for i in group_invites %}#}
+{#            {% if i.status == False %}#}
+{#                <tr>#}
+{#                    <td>{{ i.group.name }}</td>#}
+{#                    <td>{{ i.group.description }}</td>#}
+{#                    <td>{{ i.group.creator }}</td>#}
+{#                    <td><a href="{% url 'groups:accept' i.id %}">Accept</a></td>#}
+{#                </tr>#}
+{#            {% endif %}#}
+{#        {% endfor %}#}
+{#    </table>#}
+{#    <h2>Requests to join your groups</h2>#}
+{#    <ul>#}
+{#        {% for i in group_requests_rcvd %}#}
+{#            <li>Request from {{ i.request_from }} to join {{ i.group.name }}#}
+{#                <p class="accept" id="acc-write" acc="{{ i.id }}"><u id="rem1">Accept this request</u></p>#}
+{#                <p class="decline" id="dec-write" dec="{{ i.id }}"><u id="rem2">Decline this request</u></p>#}
+{#            </li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+{##}
+{##}
+{#    <h3>Pending requests:</h3>#}
+{#    <ul>#}
+{#        {% for i in sent_group_requests %}#}
+{#            <li>{{ i.group.name }} - Request sent</li>#}
+{##}
+{#        {% endfor %}#}
+{#        <ul id="write"></ul>#}
+{##}
+{#    </ul>#}
+{#    <h3>You may like:</h3>#}
+{#    <ul>#}
+{#        {% if not send_group_request.count == 0 %}#}
+{#            {% for i in send_group_request %}#}
+{#                <li id="blah">#}
+{#                    <button class="r" type='submit' name='add friend' k='{{ i.id }}'>Send request</button>#}
+{#                    <a href="{% url 'groups:grp-page' i.id %}"> {{ i.name }}</a>#}
+{##}
+{#                </li>#}
+{#            {% endfor %}#}
+{#            </ul>#}
+{#        {% else %}#}
+{#            --No new groups to show--#}
+{#        {% endif %}#}
+{#    {% csrf_token %}#}
+{#    <script>#}
+{##}
+{#        $(".accept").click(function () {#}
+{#            console.log('jskdnfls');#}
+{#            let li = $(this).parent();#}
+{#            $.ajax({#}
+{#                type: 'POST',#}
+{#                url: '/groups/accept-req/',#}
+{#                data: {#}
+{#                    //csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),#}
+{#                    csrfmiddlewaretoken: '{{ csrf_token }}',#}
+{#                    req: $(this).attr("acc"),#}
+{#                },#}
+{#                success: function (data) {#}
+                    {#$("#rem1").remove();#}
+                    {#$("#rem2").remove();#}
+                    {#                    $("#acc-write").append(data);#}
+{##}
+{#                    $(li).html(data);#}
+{##}
+{#                },#}
+{##}
+{#                error: function (jqXHR, textStatus, errorThrown) {#}
+{#                    alert(errorThrown);#}
+{#                }#}
+{##}
+{#            });#}
+{#        });#}
+{#        $(".decline").click(function () {#}
+{#            let li = $(this).parent();#}
+{##}
+{#            $.ajax({#}
+{#                type: 'POST',#}
+{#                url: '/groups/decline-req/',#}
+{#                data: {#}
+{#                    csrfmiddlewaretoken: '{{ csrf_token }}',#}
+{#                    req: $(this).attr("dec"),#}
+{#                },#}
+{#                success: function (data) {#}
+{##}
+{#                    $(li).html(data);#}
+{#                },#}
+{##}
+{#                error: function (jqXHR, textStatus, errorThrown) {#}
+{#                    alert(errorThrown);#}
+{#                }#}
+{##}
+{#            });#}
+{#        });#}
+{#        $(".acceptreq").click(function () {#}
+{#            console.log('jskdnfls');#}
+{#            let td = $(this).parent();#}
+{#            $.ajax({#}
+{#                type: 'POST',#}
+{#                url: '{% url "events:acceptreq" %}',#}
+{#                data: {#}
+{#                    csrfmiddlewaretoken: '{{ csrf_token }}',#}
+{#                    pk: $(this).attr("reqid"),#}
+{#                },#}
+{#                success: function (data) {#}
+{#                    $(td).html(data);#}
+{##}
+{#                },#}
+{##}
+{#                error: function (jqXHR, textStatus, errorThrown) {#}
+{#                    alert(errorThrown);#}
+{#                }#}
+{##}
+{#            });#}
+{#        });#}
+{#    </script>#}
+{#{% endblock %}#}
+    <script>
+     var address = []
+     var labels=[]
+         var ids=[]
+
+    </script>
+{% for event in events %}
+    <script>
+    ids.push({{ event.id }});
+        labels.push('{{ event.name }}');
+        address.push('{{ event.venue }}' + ', ' +  '{{ event.city }}' + ', ' +  '{{ event.state }}')</script>
+
+
+{% endfor %}
+
+    <div id="map"></div>
+<script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 5,
+          //center: {lat: -34.397, lng: 150.644}
+          center: new google.maps.LatLng(28, 77),
+
+        });
+        //var geocoder = new google.maps.Geocoder();
+
+        //document.getElementById('submit').addEventListener('click', function() {
+          //geocodeAddress(geocoder, map);
+                    {#var geocoder = new google.maps.Geocoder();#}
+                    {#var add = '{{ e.venue }}' + ',' + '{{ e.city }}' + ',' + '{{ e.state }}';#}
+                    {#geocodeAddress(geocoder,map);#}
+          for (i = 0; i < address.length; i++) {
+                            var geocoder = new google.maps.Geocoder();
+                            var add = address[i];
+                            var label = labels[i];
+                            var id = ids[i];
+                            geocodeAddress(geocoder,map,add,label,id);
+
+                        }
+
+        //});
+      }
+
+      function geocodeAddress(geocoder, resultsMap, add, label,id) {
+        //var address = document.getElementById('address').value;
+                {#var address = '{{ e.venue }}' + ',' +  '{{ e.city }}' + ',' + '{{ e.state }}';#}
+                    var address = add;
+                    geocoder.geocode({'address': address}, function(results, status) {
+                  if (status === 'OK') {
+                    var infowindow = new google.maps.InfoWindow({});
+                    resultsMap.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                      map: resultsMap,
+                      position: results[0].geometry.location,
+                      title: label,
+                      url: 'http://127.0.0.1:8000/events/detail/' + id
+                    });
+                    google.maps.event.addListener(marker, 'click', (function (marker) {
+                                return function () {
+                                    infowindow.setContent(label);
+                                    infowindow.open(map, marker);
+                                        window.location.href = this.url;
+
+                                }
+                            })(marker));
+
+                  } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                  }
+                });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDU_kJ3UUPCV-HLOaTfDf9zfqBBAXQ0VHE&callback=initMap">
+    </script>
+
+{% endblock %}

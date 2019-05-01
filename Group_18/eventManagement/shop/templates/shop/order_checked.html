@@ -1,0 +1,82 @@
+{% extends 'shop/base.html' %}
+
+{% block body %}
+<div class="container">
+<br>
+    <p style="color:#1D466A; font-size: 25px">User name : {{ request.user }}</p>
+    <p style="color:#1D466A; font-size: 25px; font-weight: bold; letter-spacing: 1px">You Bought:</p>
+    <br><br>
+<section>
+   <div class="row" style="padding-left: 50px;padding-right: 50px">
+    <table class="table table-hover table-bordered text-center">
+      <tr class="text-center" style="background-color: #DEECF8;">
+          <th class="text-center">No.</th>
+        <th class="text-center">Date ordered</th>
+        <th class="text-center">Merch</th>
+        <th class="text-center">Price</th>
+          <th class="text-center">Quantity</th>
+          <th class="text-center">Order&nbsp;total</th>
+          <th class="text-center">Estimated delivery date</th>
+          <th class="text-center">Remove Order</th>
+         </tr>
+{#      {% for item in order.get_cart_items %}#}
+        {% for itemno in order %}
+            {% for item in itemno.get_cart_items %}
+
+        <tr style="background-color: white">
+{#        <td>{{ forloop.counter }}</td>#}
+           {% if forloop.counter == 1 %}
+        <td rowspan="{{ itemno.get_no_of_purchase }}" style="padding-top:{{ itemno.get_no_of_purchase }}9px; " class="text-center" >
+              {{forloop.parentloop.counter}}
+            </td>
+
+        {% endif %}
+        {% if forloop.counter == 1 %}
+          <td rowspan="{{ itemno.get_no_of_purchase }}" style="padding-top:{{ itemno.get_no_of_purchase }}9px; " class="text-center">{{ itemno.date_ordered }}</td>
+   {% endif %}
+          <td>
+            {{ item.product.name }}
+
+          </td>
+          <td>{{ item.product.price }}</td>
+        <td>{{ item.quantity }}</td>
+        {% if forloop.counter == 1 %}
+        <td rowspan="{{ itemno.get_no_of_purchase }}" style="padding-top:{{ itemno.get_no_of_purchase }}9px; " class="text-center">Rs {{ itemno.get_cart_total }}</td>
+        {% endif %}
+        {% if forloop.counter == 1 %}
+        <td rowspan="{{ itemno.get_no_of_purchase }}" style="padding-top:{{ itemno.get_no_of_purchase }}9px; " class="text-center">{{ itemno.get_estimated_date }}</td>
+        {% endif %}
+
+        {% if forloop.counter == 1 %}
+        <td rowspan="{{ itemno.get_no_of_purchase }}" style="padding-top: {{ itemno.get_no_of_purchase }}9px">
+              <a href="{% url 'shop:delete_order' itemno.id %}" data-balloon="remove this order from cart" class="text-danger" >
+                Cancel This Order
+              </a>
+            </td>
+
+        {% endif %}
+        </tr>
+        {% empty %}
+
+      {% endfor %}
+    {% endfor %}
+
+    <tr style="background-color: white">
+        <td colspan=1 >
+          <a href="{% url 'shop:index' %}" class="btn btn-warning pull-left btn-success active">
+            Wanna Shop some more?
+
+          </a>
+        </td>
+        <td colspan=7 style="font-size: 20px">
+            <strong>{% if order %}Thanks for purchasing!{% else %}You haven't ordered anything yet {% endif %}</strong>
+        </td>
+      </tr>
+    </table>
+   </div>
+ </section>
+</div>
+    <br>
+    <br>
+
+{% endblock %}

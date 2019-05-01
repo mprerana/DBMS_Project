@@ -1,0 +1,706 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+  <!--<title>Bootstrap Example</title>-->
+  <!--<meta charset="utf-8">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">-->
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>-->
+  <!--<style>    -->
+    <!--/* Set black background color, white text and some padding */-->
+    <!--footer {-->
+      <!--background-color: #555;-->
+      <!--color: white;-->
+      <!--padding: 15px;-->
+    <!--}-->
+  <!--</style>-->
+<!--</head>-->
+{% extends 'home/testbase.html' %}
+{% load static %}
+{% block head %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+
+      #map {
+        {#height: 100%;#}
+         height:400px;
+          width:600px;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+
+      }
+      .card{
+        background-color: white;
+        border-radius: 3px;
+        border-color: #ced4da;
+        mso-border-shadow: yes;
+      }
+    </style>
+{% endblock %}
+
+{% block body %}
+<br><br>
+
+
+<div class="container text-center">
+  <div class="row">
+    <!--<div class="col-sm-3 well">-->
+      <!--<div class="well">-->
+        <!--<p><a href="#">My Profile</a></p>-->
+        <!--<img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">-->
+      <!--</div>-->
+      <!--<div class="well">-->
+        <!--<p><a href="#">Interests</a></p>-->
+        <!--<p>-->
+          <!--<span class="label label-default">News</span>-->
+          <!--<span class="label label-primary">W3Schools</span>-->
+          <!--<span class="label label-success">Labels</span>-->
+          <!--<span class="label label-info">Football</span>-->
+          <!--<span class="label label-warning">Gaming</span>-->
+          <!--<span class="label label-danger">Friends</span>-->
+        <!--</p>-->
+      <!--</div>-->
+      <!--<div class="alert alert-success fade in">-->
+        <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>-->
+        <!--<p><strong>Ey!</strong></p>-->
+        <!--People are looking at your profile. Find out who.-->
+      <!--</div>-->
+      <!--<p><a href="#">Link</a></p>-->
+      <!--<p><a href="#">Link</a></p>-->
+      <!--<p><a href="#">Link</a></p>-->
+    <!--</div>-->
+
+    <div class="col-sm-3">
+      <div class="card" style="background-color: white;">
+        <div class="container-fluid">
+          <h4>My Profile</h4>
+          <p><a href="{% url 'home:profile' request.user.username %}"> <img src="/media/home/default-img.png" class="rounded-circle" style="height:106px;width:106px" alt="Avatar"></a></p>
+            <p>Rating: {{ rating.rating }} stars</p>
+        </div>
+      </div>
+      <br>
+    <div class="card">
+      <div class="container-fluid" style="background-color: white;padding: 10px;">
+        <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">My Groups</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse ">
+        <div class="panel-body">
+          {% for group in groups %}
+            <a href="{%url 'groups:grp-page' group.id%}">{{ group.name }}</a>
+          {% endfor %}</div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Pending Requests</a>
+        </h4>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body">
+          <ul>
+        {% for i in group_requests_rcvd %}
+            <li>Request from {{ i.request_from }} to join {{ i.group.name }}
+                <button class="accept" id="acc-write" acc="{{ i.id }}"><b id="rem1">Accept this request</b></button>
+                <button class="decline" id="dec-write" dec="{{ i.id }}"><b id="rem2">Decline this request</b></button>
+            </li>
+        {% endfor %}
+    </ul>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Group Invites</a>
+        </h4>
+      </div>
+      <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body"><table>
+        {% for i in group_invites %}
+            {% if i.status == False %}
+                <tr>
+                    <td>{{ i.group.name }}</td>
+                    <td>{{ i.group.description }}</td>
+                    <td>{{ i.group.creator }}</td>
+                    <td>
+
+                        <button class="accept_inv" id="acc-inv-write" acc-inv="{{ i.id }}"><b id="rem1-inv">Accept this invitation</b></button></td>
+                    <td>
+                <button class="decline_inv" id="dec-inv-write" dec-inv="{{ i.id }}"><b id="rem2-inv">Decline this request</b></button></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table></div>
+      </div>
+    </div>
+  </div>
+      </div>
+    </div>
+      <br>
+
+      <div class="card round card-white ">
+        <div class="container-fluid" style="padding: 30px;">
+            <a href="{% url 'groups:creategroup' %}" ><strong>Create a group</strong></a>
+        </div>
+      </div>
+
+     <div class="card round card-white ">
+        <div class="container-fluid" style="padding: 30px;">
+            <a href="{% url 'events:calendar' %}" ><strong>View all events</strong></a>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-sm-6">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default text-left">
+            <div class="panel-body">
+             <h1>Upcoming Events</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% for event in attending_ev %}
+
+      <div class="container-fluid well" style="padding-bottom: 10px;background-color: white;"><br>
+        <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" class="img-circle" style="width:60px;float: left;padding-right:3px; ">
+        <span class="w3-right w3-opacity" style="float: right;">1 min</span>
+        &nbsp;&nbsp;<h4 style="float: left;position: relative;padding-left: 10px;">{{event.event.user}}</h4><br><br><br>
+        <hr class="w3-clear">
+        <p>{{event.event.description}}</p>
+          <div class="row" style="margin:0 -16px">
+            <div class="col-lg-5">
+              <img src="https://images.pexels.com/photos/699558/pexels-photo-699558.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+            </div>
+            <div class="col-lg-5">
+              <img src="https://cdn.wallpapersafari.com/28/68/ARwF8H.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
+          </div>
+        </div>
+          <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom" style="background-color: black;opacity: 0.9;color: white"><a href="{% url 'events:details' event.event.id%}" style="text-decoration: none;">View event details</a></button>
+          <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" style="background-color: black;opacity: 0.9;color: white"><a href="{% url 'chat:index' event.user.username%}" style="text-decoration: none;"><i class="fa fa-comment"></i> Chat with event manager</a></button>
+      </div>
+    {% endfor %}
+    </div>
+
+    <div class="col-sm-3 well">
+      <div class="thumbnail">
+        <p>Past Events:</p>
+          <img src="/media/marathon.jpg" alt="Forest" style="width:100%;">
+          <p><strong>10k Marathon</strong></p>
+        <p>Fri. 27 November 2015</p>
+{#          <p><a href="{% url 'events:pasteventdetails' %}">View all past events</a></p>#}
+          {% for event in past_events %}
+          <p><a href="{% url 'events:pasteventdetails' event.id%}">{{ event.ev_name }}</a></p>
+          {% endfor %}
+      </div>      
+      <div class="card">
+      <div class="container-fluid" style="background-color: white;padding: 10px;">
+        <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">My Events</a>
+        </h4>
+      </div>
+      <div id="collapse4" class="panel-collapse collapse ">
+        <div class="panel-body">
+          {% for event in myevents %}
+            <a href="{%url 'events:details' event.id%}">{{ event.name }}</a>
+          {% endfor %}</div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Pending Requests</a>
+        </h4>
+      </div>
+      <div id="collapse5" class="panel-collapse collapse">
+        <div class="panel-body">
+          <table>
+        <tr>
+            <th>Eventname</th>
+            <th>By</th>
+
+        </tr>
+        {% for i in eventreq %}
+            {% if i.status == False %}
+                <tr>
+                    <td>{{ i.event.name }}</td>
+                    <td>{{ i.by }}</td>
+                    <td><button class="acceptreq" reqid="{{ i.id }}"><b>Accept</b></button></td>
+                    <td><button class="declinereq" reqid="{{ i.id }}"><b>Decline</b></button></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">Event Invites</a>
+        </h4>
+      </div>
+      <div id="collapse6" class="panel-collapse collapse">
+        <div class="panel-body"><table>
+        <tr>
+            <th>Eventname</th>
+            <th>By</th>
+            <th>message</th>
+            <th></th>
+        </tr>
+        {% for i in invites %}
+            {% if i.status == False %}
+                <tr>
+                    <td>{{ i.event.name }}</td>
+                    <td>{{ i.sender }}</td>
+                    <td>{{ i.msg }}</td>
+                    <!--<td><a href="{% url 'events:accept' i.id %}">Accept</a></td>-->
+                    <td><button class="accept_ev_inv" id="acc-ev-inv-write" acc-ev-inv="{{ i.id }}"><b id="rem1-ev-inv">Accept this invitation</b></button></td>
+                    <td><button class="decline_ev_inv" id="dec-ev-inv-write" dec-ev-inv="{{ i.id }}"><b id="rem2-ev-inv">Decline this invitation</b></button></td>
+
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table></div>
+      </div>
+    </div>
+  </div>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</div>
+
+<br>
+{#<div style="margin-top: 100px"></div>#}
+{#    <h2>Event Requests</h2>#}
+{#    <table>#}
+{#        <tr>#}
+{#            <th>Eventname</th>#}
+{#            <th>By</th>#}
+{#            <th>message</th>#}
+{#            <th></th>#}
+{#        </tr>#}
+{#        {% for i in eventreq %}#}
+{#            {% if i.status == False %}#}
+{#                <tr>#}
+{#                    <td>{{ i.event.name }}</td>#}
+{#                    <td>{{ i.by }}</td>#}
+{#                    <td><button class="acceptreq" reqid="{{ i.id }}">Accept</button></td>#}
+{#                </tr>#}
+{#            {% endif %}#}
+{#        {% endfor %}#}
+{#    </table>#}
+{#    <h2>Invites</h2>#}
+{#    <table>#}
+{#        <tr>#}
+{#            <th>Eventname</th>#}
+{#            <th>By</th>#}
+{#            <th>message</th>#}
+{#            <th></th>#}
+{#        </tr>#}
+{#        {% for i in invites %}#}
+{#            {% if i.status == False %}#}
+{#                <tr>#}
+{#                    <td>{{ i.event.name }}</td>#}
+{#                    <td>{{ i.sender }}</td>#}
+{#                    <td>{{ i.msg }}</td>#}
+{#                    <td><a href="{% url 'events:accept' i.id %}">Accept</a></td>#}
+{#                </tr>#}
+{#            {% endif %}#}
+{#        {% endfor %}#}
+{#    </table>#}
+{#    <h2>Upcoming Events</h2>#}
+{#    <table>#}
+{#        <tr>#}
+{#            <th>By</th>#}
+{#            <th>Name</th>#}
+{#            <th>Description</th>#}
+{#            <th>venue</th>#}
+{#            <th>State</th>#}
+{#            <th>City</th>#}
+{#            <th>Date</th>#}
+{#            <th>Time</th>#}
+{#        </tr>#}
+{#        {% for e in events %}#}
+{##}
+{#            <tr>#}
+{#                <td>{{ e.user }}</td>#}
+{#                <td><a href="{% url "events:details" e.id %}">{{ e.name }}</a></td>#}
+{#                <td>{{ e.description }}</td>#}
+{#                <td>{{ e.venue }}</td>#}
+{#                <td>{{ e.state }}</td>#}
+{#                <td>{{ e.city }}</td>#}
+{#                <td>{{ e.date }}</td>#}
+{#                <td>{{ e.time }}</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{#    </table>#}
+{#    <h2>Group_invites</h2>#}
+{#    <table>#}
+{#        {% for i in group_invites %}#}
+{#            {% if i.status == False %}#}
+{#                <tr>#}
+{#                    <td>{{ i.group.name }}</td>#}
+{#                    <td>{{ i.group.description }}</td>#}
+{#                    <td>{{ i.group.creator }}</td>#}
+{#                    <td>#}
+{##}
+{#                        <p class="accept_inv" id="acc-inv-write" acc-inv="{{ i.id }}"><u id="rem1-inv">Accept this invitation</u></p></td>#}
+{#                    <td>#}
+{#                <p class="decline_inv" id="dec-inv-write" dec-inv="{{ i.id }}"><u id="rem2-inv">Decline this request</u></p></td>#}
+{#                </tr>#}
+{#            {% endif %}#}
+{#        {% endfor %}#}
+{#    </table>#}
+{#    <h2>Requests to join your groups</h2>#}
+{#    <ul>#}
+{#        {% for i in group_requests_rcvd %}#}
+{#            <li>Request from {{ i.request_from }} to join {{ i.group.name }}#}
+{#                <p class="accept" id="acc-write" acc="{{ i.id }}"><u id="rem1">Accept this request</u></p>#}
+{#                <p class="decline" id="dec-write" dec="{{ i.id }}"><u id="rem2">Decline this request</u></p>#}
+{#            </li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+{##}
+{##}
+{##}
+{#    <h3>Pending requests:</h3>#}
+{#    <ul>#}
+{#        {% for i in sent_group_requests %}#}
+{#            <li>{{ i.group.name }} - Request sent</li>#}
+{##}
+{#        {% endfor %}#}
+{#        <ul id="write"></ul>#}
+{##}
+{#    </ul>#}
+{#    <h3>You may like:</h3>#}
+{#    <ul>#}
+{#        {% if not send_group_request.count == 0 %}#}
+{#            {% for i in send_group_request %}#}
+{#                <li id="blah">#}
+{#                    <button class="r" type='submit' name='add friend' k='{{ i.id }}'>Send request</button>#}
+{#                    <a href="{% url 'groups:grp-page' i.id %}"> {{ i.name }}</a>#}
+{##}
+{#                </li>#}
+{#            {% endfor %}#}
+{#            </ul>#}
+{#        {% else %}#}
+{#            --No new groups to show--#}
+{#        {% endif %}#}
+    {% csrf_token %}
+    <script>
+
+        $(".accept").click(function () {
+            console.log('jskdnfls');
+             let li = $(this).parent().parent();
+            $.ajax({
+                type: 'POST',
+                url: '/groups/accept-req/',
+                data: {
+                    //csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    req: $(this).attr("acc"),
+                },
+                success: function (data) {
+                    {#$("#rem1").remove();#}
+                    {#$("#rem2").remove();#}
+                    {#                    $("#acc-write").append(data);#}
+
+                    $(li).html(data);
+
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+
+            });
+        });
+
+        $(".accept_inv").click(function () {
+            console.log('jskdnfls');
+            let li = $(this).parent().parent();
+            $.ajax({
+                type: 'POST',
+                url: '/groups/accept-invite/',
+                data: {
+                    //csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    req: $(this).attr("acc-inv"),
+                },
+                success: function (data) {
+                    {#$("#rem1").remove();#}
+                    {#$("#rem2").remove();#}
+                    {#                    $("#acc-write").append(data);#}
+
+                    $(li).html(data);
+
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+
+            });
+        });
+
+        $(".accept_ev_inv").click(function () {
+            console.log('jskdnfls');
+            let li = $(this).parent().parent();
+            $.ajax({
+                type: 'POST',
+                url: '/events/accept-invite/',
+                data: {
+                    //csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    req: $(this).attr("acc-ev-inv"),
+                },
+                success: function (data) {
+                    {#$("#rem1").remove();#}
+                    {#$("#rem2").remove();#}
+                    {#                    $("#acc-write").append(data);#}
+
+                    $(li).html(data);
+
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+
+            });
+        });
+
+        $(".decline_ev_inv").click(function () {
+            console.log('jskdnfls');
+            let li = $(this).parent().parent();
+            $.ajax({
+                type: 'POST',
+                url: '/events/decline-invite/',
+                data: {
+                    //csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    req: $(this).attr("dec-ev-inv"),
+                },
+                success: function (data) {
+                    {#$("#rem1").remove();#}
+                    {#$("#rem2").remove();#}
+                    {#                    $("#acc-write").append(data);#}
+
+                    $(li).html(data);
+
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+
+            });
+        });
+
+
+        $(".decline_inv").click(function () {
+            console.log('jskdnfls');
+            let li = $(this).parent().parent();
+            $.ajax({
+                type: 'POST',
+                url: '/groups/decline-invite/',
+                data: {
+                    //csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    req: $(this).attr("dec-inv"),
+                },
+                success: function (data) {
+                    {#$("#rem1").remove();#}
+                    {#$("#rem2").remove();#}
+                    {#                    $("#acc-write").append(data);#}
+
+                    $(li).html(data);
+
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+
+            });
+        });
+        $(".decline").click(function () {
+            let li = $(this).parent().parent();
+            $.ajax({
+                type: 'POST',
+                url: '/groups/decline-req/',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    req: $(this).attr("dec"),
+                },
+                success: function (data) {
+
+                    $(li).html(data);
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+
+            });
+        });
+        $(".acceptreq").click(function () {
+            console.log('jskdnfls');
+            let td = $(this).parent();
+            let li = $(this).parent().parent();
+            $.ajax({
+                type: 'POST',
+                url: '{% url "events:acceptreq" %}',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    pk: $(this).attr("reqid"),
+                },
+                success: function (data) {
+                    $(li).html(data);
+
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+
+            });
+        });
+
+        $(".declinereq").click(function () {
+            console.log('jskdnfls');
+            let td = $(this).parent().parent();
+            $.ajax({
+                type: 'POST',
+                url: '{% url "events:deletereq" %}',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    pk: $(this).attr("reqid"),
+                },
+                success: function (data) {
+                    $(li).html(data);
+
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+
+            });
+        });
+    </script>
+
+{#<script>#}
+{#     var address = []#}
+{#     var labels=[]#}
+{#         var ids=[]#}
+{##}
+{#    </script>#}
+{#{% for event in events %}#}
+{#    <script>#}
+{#    ids.push({{ event.id }});#}
+{#        labels.push('{{ event.name }}');#}
+{#        address.push('{{ event.venue }}' + ', ' +  '{{ event.city }}' + ', ' +  '{{ event.state }}')</script>#}
+{##}
+{##}
+{#{% endfor %}#}
+{##}
+{#    <div id="map"></div>#}
+{#<script>#}
+{#      function initMap() {#}
+{#        var map = new google.maps.Map(document.getElementById('map'), {#}
+{#          zoom: 5,#}
+{#          //center: {lat: -34.397, lng: 150.644}#}
+{#          center: new google.maps.LatLng(28, 77),#}
+{##}
+{#        });#}
+{#        //var geocoder = new google.maps.Geocoder();#}
+{##}
+{#        //document.getElementById('submit').addEventListener('click', function() {#}
+{#          //geocodeAddress(geocoder, map);#}
+                    {#var geocoder = new google.maps.Geocoder();#}
+                    {#var add = '{{ e.venue }}' + ',' + '{{ e.city }}' + ',' + '{{ e.state }}';#}
+                    {#geocodeAddress(geocoder,map);#}
+{#          for (i = 0; i < address.length; i++) {#}
+{#                            var geocoder = new google.maps.Geocoder();#}
+{#                            var add = address[i];#}
+{#                            var label = labels[i];#}
+{#                            var id = ids[i];#}
+{#                            geocodeAddress(geocoder,map,add,label,id);#}
+{##}
+{#                        }#}
+{##}
+{#        //});#}
+{#      }#}
+{##}
+{#      function geocodeAddress(geocoder, resultsMap, add, label,id) {#}
+{#        //var address = document.getElementById('address').value;#}
+                {#var address = '{{ e.venue }}' + ',' +  '{{ e.city }}' + ',' + '{{ e.state }}';#}
+{#                    var address = add;#}
+{#                    geocoder.geocode({'address': address}, function(results, status) {#}
+{#                  if (status === 'OK') {#}
+{#                    var infowindow = new google.maps.InfoWindow({});#}
+{#                    resultsMap.setCenter(results[0].geometry.location);#}
+{#                    var marker = new google.maps.Marker({#}
+{#                      map: resultsMap,#}
+{#                      position: results[0].geometry.location,#}
+{#                      title: label,#}
+{#                      url: 'http://127.0.0.1:8000/events/detail/' + id#}
+{#                    });#}
+{#                    google.maps.event.addListener(marker, 'click', (function (marker) {#}
+{#                                return function () {#}
+{#                                    infowindow.setContent(label);#}
+{#                                    infowindow.open(map, marker);#}
+{#                                        window.location.href = this.url;#}
+{##}
+{#                                }#}
+{#                            })(marker));#}
+{##}
+{#                  } else {#}
+{#                    alert('Geocode was not successful for the following reason: ' + status);#}
+{#                  }#}
+{#                });#}
+{#      }#}
+{#    </script>#}
+{#    <script async defer#}
+{#    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDU_kJ3UUPCV-HLOaTfDf9zfqBBAXQ0VHE&callback=initMap">#}
+{#    </script>#}
+
+{% endblock %}
+
+

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load staticfiles %}
+    <title>{% block title %}QuickWell{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="js/bootstrap-transition.js"></script>
+    <script type="text/javascript" src="/shop/static/shop/index.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/style.css' %}">
+ <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+      <style>
+
+  body {
+      font: 400 15px/1.8 Lato, sans-serif;
+      background-color: gainsboro;
+
+  }
+
+  .container {
+      padding: 80px 120px;
+  }
+  .person {
+      border: 10px solid transparent;
+      margin-bottom: 25px;
+      width: 80%;
+      height: 80%;
+      opacity: 0.7;
+  }
+  .person:hover {
+      border-color: #f1f1f1;
+  }
+
+  .carousel-caption h3 {
+      color: #2c3e50 !important;
+      font-size: 50px; !important;
+  }
+
+  .carousel-caption p{
+      color: #060E2F;
+      font-size: 25px;
+  }
+  @media (max-width: 600px) {
+    .carousel-caption {
+        ;
+        display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+  }
+
+
+  .bg-1 h3 {color: #fff;}
+  .bg-1 p {font-style: italic;}
+  .list-group-item:first-child {
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+  }
+  .list-group-item:last-child {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+  }
+  .thumbnail {
+      padding: 0 0 15px 0;
+      border: none;
+      border-radius: 0;
+  }
+  .thumbnail p {
+      margin-top: 15px;
+      color: #555;
+  }
+  .btn {
+      {#padding: 10px 20px;#}
+      {#background-color: #333;#}
+      {#color: #f1f1f1;#}
+      {#border-radius: 0;#}
+      transition: .2s;
+  }
+
+
+  .btn1:hover, .btn1:focus {
+      border: none;
+      background-color: white;
+      color: #000;
+  }
+
+
+  .btn:hover, .btn:focus {
+      border: 1px solid #333;
+      background-color: #fff;
+      color: #000;
+  }
+  .modal-header, h4, .close {
+      background-color: #333;
+      color: #fff !important;
+      text-align: center;
+      font-size: 30px;
+  }
+  .modal-header, .modal-body {
+      padding: 40px 50px;
+  }
+  .nav-tabs li a {
+      color: #777;
+  }
+
+  .navbar {
+      font-family: Montserrat, sans-serif;
+      margin-bottom: 0;
+     {#background: -webkit-linear-gradient(to right, #3573A9, #00002C);#}
+     {# background: linear-gradient(to right, #3573A9, #00002C);#}
+      background-color: black;
+      border: 0;
+      font-size: 15px !important;
+      {#letter-spacing: 1px;#}
+      opacity: 0.8;
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+  .navbar li a, .navbar .navbar-brand {
+      color: #d5d5d5 !important;
+  }
+  .navbar-nav li a:hover {
+      color: #fff !important;
+  }
+  .navbar-nav li.active a {
+      color: #fff !important;
+      background-color: #29292c !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+  }
+  .open .dropdown-toggle {
+      color: #fff;
+      background-color: #555 !important;
+  }
+  .dropdown-menu li a {
+      color: #000 !important;
+  }
+  .dropdown-menu li a:hover {
+      background-color: red !important;
+  }
+  footer {
+      background: -webkit-linear-gradient(to right, #31BDE6, #00003E);
+      background: linear-gradient(to right, #31BDE6, #00003E);
+      color: #f5f5f5;
+      padding: 32px;
+  }
+
+  .form-control {
+      border-radius: 0;
+  }
+  textarea {
+      resize: none;
+  }
+
+.overlay {
+  position: absolute;
+  {#bottom:200px;#}
+  left: 0px;
+  right: 0px;
+   top:0px;
+  background-color: black;
+  overflow: hidden;
+  width: 300px;
+
+  height:0;
+  transition: 1s ease ;
+text-align: center;
+}
+.conti:hover .overlay {
+  bottom: 0;
+  height: 284px;
+  opacity: 0.8;
+}
+
+.texting{
+    white-space: nowrap;
+  color: white;
+  font-size: 18px;
+    font-weight: bold;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+          #story-freext1 > div:nth-of-type(1) {
+    {#background: url(https://stmed.net/sites/default/files/concert-wallpapers-30311-4082334.jpg) 50% 0 no-repeat fixed;#}
+    background: url(/media/slider1.png) 50% 0 no-repeat fixed;
+     position: absolute;
+    width: 100%;
+     min-height : 100%;
+  min-width : 100%;
+  background-size:100% 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+          #story-freext2 > div:nth-of-type(1) {
+    {#background: url(https://stmed.net/sites/default/files/concert-wallpapers-30311-4082334.jpg) 50% 0 no-repeat fixed;#}
+    background: url(/media/marathon22.jpg) 50% 0 no-repeat fixed;
+     position: absolute;
+    width: 100%;
+     min-height : 100%;
+  min-width : 100%;
+  background-size:100% 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+          #story-freext3 > div:nth-of-type(1) {
+    {#background: url(https://stmed.net/sites/default/files/concert-wallpapers-30311-4082334.jpg) 50% 0 no-repeat fixed;#}
+    background: url(/media/marriage1.jpg) 50% 0 no-repeat fixed;
+     position: absolute;
+    width: 100%;
+
+     min-height : 100%;
+  min-width : 100%;
+  background-size:100% 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+          #story-freext4 > div:nth-of-type(1) {
+    {#background: url(https://stmed.net/sites/default/files/concert-wallpapers-30311-4082334.jpg) 50% 0 no-repeat fixed;#}
+    background: url(/media/camping.jpg) 50% 0 no-repeat fixed;
+     position: absolute;
+    width: 100%;
+     min-height : 100%;
+  min-width : 100%;
+  background-size:100% 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+#story-two > div:nth-of-type(2) {
+    {#background: url(https://userscontent2.emaze.com/images/8d3b8e01-f219-4b53-a7e4-eb8157f18f75/98207cafd45ab22768755392b00ca8f9.jpg) 50% 0 no-repeat fixed;#}
+    background: url(/media/hero_2.jpg) 50% 0 no-repeat fixed;
+    position: absolute;
+    width: 100%;
+    min-height : 100%;
+  min-width : 100%;
+  background-size:100% 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+     filter: brightness(50%);
+}
+          section {
+    position: relative;
+    width: 100% !important;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+    section:nth-of-type(1) {
+        height: 1000px; {# specify height of section #}
+    }
+
+    section:nth-of-type(2) {
+        height: 600px;  {# specify height of section #}
+    }
+
+          section article {
+    position: absolute;
+              text-align: center;
+              padding-top: 300px;
+    {#left: 80px;#}
+              font-family: "Brush Script MT";
+              letter-spacing: 2px;
+              background: -webkit-linear-gradient(#00d0ff, #25ffbf);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 100%;
+    z-index: 4;
+    font-size: 80px;
+
+}
+
+    section article span {
+        line-height: 40px;
+        font-weight: 600!important;
+    }
+.c1{
+     {#background: url(/media/middle-cover.jpg);#}
+    background-color: gainsboro;
+    position: relative;
+
+    min-height : 100%;
+    min-width : 100%;
+
+  overflow-y: hidden;
+  overflow-x: hidden;
+          }
+/* [1] The container */
+.img-hover-zoom {
+  height: 500px; /* [1.1] Set it as per your need */
+    width: 334px;
+  overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+}
+
+.img-hover-zoom img {
+  transition: transform .5s ease-in-out;
+  transform: scale(1.4);
+  transform-origin: 100% 0;
+}
+
+/* The Transformation */
+.img-hover-zoom:hover img {
+  transform: scale(1.5) translateX(30%);
+}
+</style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+      <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url 'home:index' %}" style="font-family: 'Satisfy', cursive; font-size:25px">EventBrite</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li>
+                    <a href="{% url 'shop:index' %}">
+                        <span class="fa fa-medkit" aria-hidden="true"></span>&nbsp
+                        All Products
+                    </a>
+        </li>
+                <li class="">
+                    <a href="{% url 'shop:checked' %}">
+                        <span class="fa fa-ambulance" aria-hidden="true"></span>&nbsp
+                        Your Orders
+                    </a>
+                </li>
+      </ul>
+                    <form class="navbar-form  navbar-left" method="get" action="/shop/">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="q" value="" placeholder="Search medicines" size="25px">
+                    <div class="input-group-btn">
+                      <button class="btn btn-default" type="submit">
+                        <i class="glyphicon glyphicon-search"></i>
+                      </button>
+                    </div>
+                </div>
+            </form>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="">
+                    <a href="{% url 'shop:order_summary' %}">
+                        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp
+                        View Your Cart
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href="{% url 'home:logout' %}">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp
+                        LogOut
+                    </a>
+                </li>
+
+                <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Visit Other Pages
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="">Book an appointment</a></li>
+            <li><a href="">Chat with a doctor</a></li>
+            <li><a href="#">Video Call</a></li>
+            <li><a href="">Book lab tests</a></li>
+            <li><a href="">Funding</a></li>
+          </ul>
+        </li>
+            </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+{% block body %}
+{% endblock %}
+
+<footer class="text-center">
+    <div class="center copyright">Copyright © 2018, Practo. All rights reserved.</div>
+    <div class="center copyright">Call: +91 9513733001 | Email: support@practo.com</div>
+    <div class="center copyright">Practo Technologies Pvt. Ltd., RPS Green, 165/5, Krishna Raju Layout, JP Nagar 4th Phase, Bengaluru, Karnataka - 560076</div>
+</footer>
+<script>
+
+   AOS.init();
+</script>
+</body>
+
+</html>

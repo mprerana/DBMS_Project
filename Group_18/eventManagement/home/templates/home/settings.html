@@ -1,0 +1,15 @@
+{% extends 'home/base.html' %}
+{% block body %}
+<br><br><br><br><br><br>
+<center>
+<div>
+
+  <h1 style="font-size:45px">Settings</h1>
+  <br><br>
+
+      <a href='{% url "home:change_password" %}' style="font-size:25px">Change Password</a><br>
+      <a href='{% url "home:delete" %}' style="font-size:25px">Delete Your Account</a><br>
+      <a href='{% url "home:dashboard" %}' style="font-size:25px">Go Back</a>
+    </div></center>
+    <br><br><br><br><br><br>
+    {% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<br><br><br><br><br>
+<div class="" style="padding-left:40px;padding-right:1000px">
+<h1>
+      Edit your profile
+</h1>
+  <br>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ user_form|crispy}}
+    <button type="submit" id="Submit">Submit</button>
+  </form>
+  <br>
+</div>
+<br><br><br><br><br>
+{% endblock %}

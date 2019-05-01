@@ -1,0 +1,49 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+{% block head %}
+    <style>
+    body{
+        background-image: url("https://www.freegreatpicture.com/files/photo63/31339-wwf-world-wide-fund-for-nature-wwf-psas-wallpaper.jpg");
+
+        background-size: cover;
+    }
+        </style>
+{% endblock %}
+
+{% block body %}
+<br><br><br><br><br><br><br>
+    <div class="panel panel-primary" style="width:650px; margin-left: 120px">
+ <div class="container" style="width:600px">
+    <p style="color:#1D466A; font-size: 35px; font-weight: bold; text-align: center; letter-spacing: 2px">Start A Fundraiser</p>
+    <br>
+    {% if form.errors %}
+        <p style="color:red;">
+            Please correct the error{{ form.errors|pluralize }} below.
+        </p>
+    {% endif %}
+
+    {% if error %}
+        <h4 style="color:red;">
+            {{ error }}
+        </h4>
+    {% endif %}
+
+    <form action="{% url 'funding:startproject' %}" method="post" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        <!--<p>Eventname</p><input type="text" name="eventname" >-->
+        Eventname*:<br>
+        <select name="eventname" style="width:500px;height:35px">
+            {% for event in eventlist %}
+                <option name="event.id">{{ event.name }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        {{ form|crispy }}
+
+        <br><br><button type="submit" class="btn btn-primary">Create Fundraiser</button>
+    </form>
+    </div>
+    <br>
+    </div>
+    {% endblock %}

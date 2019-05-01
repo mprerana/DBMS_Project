@@ -1,0 +1,68 @@
+body
+{
+    height:100%;
+    position: relative;
+}
+
+/*.navbar{*/
+    /*border: none;*/
+    /*border-radius: 0;*/
+    /*margin-bottom: 0;*/
+    /*position:fixed;*/
+    /*width: 100%;*/
+    /*z-index: 500;*/
+/*}*/
+
+/*.navbar-brand{*/
+    /*font-family: 'Satisfy', cursive;*/
+/*}*/
+
+
+
+/*.container{*/
+    /*position: relative;*/
+/*}*/
+
+/*.container-fluid{*/
+      /*padding-top: 15px;*/
+      /*padding-bottom: 15px;*/
+      /*background-color: #060E2F;*/
+    /*!*background-color: #2b669a;*!*/
+    /*!*opacity:0.9;*!*/
+
+  /*}*/
+
+/*.container-fluid-form{*/
+      /*padding-top: 15px;*/
+      /*padding-bottom: 15px;*/
+
+  /*}*/
+
+/*footer {*/
+    /*background-color: #2d2d30;*/
+    /*color: #f5f5f5;*/
+    /*!*padding: 32px;*!*/
+   /*left:0px;*/
+   /*bottom:0px;*/
+   /*height:30px;*/
+   /*width:100%;*/
+    /*!*z-index: 500;*!*/
+/*}*/
+
+
+
+/*.bg-1 {*/
+       /*background-color: #1abc9c; !* Green *!*/
+        /*color: #ffffff;*/
+        /*padding-top: 30px;*/
+        /*padding-bottom: 30px;*/
+        /*margin-bottom: 15px;*/
+    /*}*/
+
+.panel {
+    margin: 0 !important;
+    padding:0 !important;
+}
+
+
+

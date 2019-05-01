@@ -1,0 +1,141 @@
+{% extends 'home/testbase.html' %}
+
+{% block body %}
+
+    <div class="container" style="position: relative;text-align: center;color: white;width: 100%;margin-top: -20px;">
+{#  <img src="https://wallpapercave.com/wp/wp2553455.jpg" alt="Snow" style="width:100%;">#}
+{#  <img src="https://images.pexels.com/photos/1448371/pexels-photo-1448371.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Snow" style="width:100%;">#}
+  <img src="/media/black-and-white-daylight-enjoyment-1448371.png" alt="Snow" style="width:100%;">
+
+  <div class="bottom-left"style="  position: absolute;bottom: 8px;left: 16px;">Bottom Left</div>
+  <div class="top-left" style="  position: absolute;top: 18px;left: 36px;font-size: 100px;">{{ grp.name }}</div>
+  <div class="top-right" style="  position: absolute;top: 8px;right: 16px;"></div>
+  <div class="bottom-right" style="  position: absolute;bottom: 50%;right: 30px;font-size: 70px;">{{ grp.description }}</div>
+  <div class="centered" style="position: absolute;top: 80%;left: 50%;transform: translate(-50%, -50%);">
+      {% if flag == 1 %}
+    <button class="r btn-info" type='submit' k='{{ grp.id }}' style="font-size: 30px;">Join us</button>
+    <p id="write"></p>
+{% endif %}
+</div>
+</div>
+
+<h1>{{ grp.id }}:{{ grp.name }}</h1>
+    <h3>Group Details</h3>
+<h4>{{ grp.description }}</h4>
+
+
+{% if flag == 1 %}
+    <button class="r" type='submit' k='{{ grp.id }}'>Send request</button>
+    <p id="write"></p>
+{% endif %}
+
+{% if admin_flg == 1 %}
+    You are the admin of this group
+{% elif mem_flg == 1 %}
+    You are already a member of this group
+{% elif inv_flg == 1 %}
+    You have an invite for this group:
+<ul>
+        {% for i in group_invites %}
+            {% if i.status == False %}
+                <li>
+                     {{ i.group.name }}<br>
+                    Admin: {{ i.group.creator }}<br>
+                    has invited you<br>
+
+                        <p class="accept_inv" id="acc-inv-write" acc-inv="{{ i.id }}"><u id="rem1-inv">Accept this invitation</u></p>
+
+                <p class="decline_inv" id="dec-inv-write" dec-inv="{{ i.id }}"><u id="rem2-inv">Decline this invitation</u></p>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+{% elif req_flg == 1 %}
+    Request is on its way !
+{% endif %}
+
+
+
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+   $(".r").click(function () {
+            console.log('jskdnfls');
+            //alert("Riya");
+            $.ajax({
+                type: 'POST',
+                url: '/groups/sendr/',
+                data: {
+                    //csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    req: $(this).attr("k"),
+                },
+                success: function (data) {
+                    $("#write").html(data);
+                    $(".r").remove()
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+
+            });
+        });
+
+
+        $(".accept_inv").click(function () {
+            console.log('jskdnfls');
+            let li = $(this).parent();
+            $.ajax({
+                type: 'POST',
+                url: '/groups/accept-invite/',
+                data: {
+                    //csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    req: $(this).attr("acc-inv"),
+                },
+                success: function (data) {
+                    {#$("#rem1").remove();#}
+                    {#$("#rem2").remove();#}
+                    {#                    $("#acc-write").append(data);#}
+
+                    $(li).html(data);
+
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+
+            });
+        });
+
+
+        $(".decline_inv").click(function () {
+            console.log('jskdnfls');
+            let li = $(this).parent();
+            $.ajax({
+                type: 'POST',
+                url: '/groups/decline-invite/',
+                data: {
+                    //csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    req: $(this).attr("dec-inv"),
+                },
+                success: function (data) {
+                    {#$("#rem1").remove();#}
+                    {#$("#rem2").remove();#}
+                    {#                    $("#acc-write").append(data);#}
+
+                    $(li).html(data);
+
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+
+            });
+        });
+</script>
+{% endblock %}

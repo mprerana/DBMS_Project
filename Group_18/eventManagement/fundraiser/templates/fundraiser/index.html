@@ -1,0 +1,33 @@
+{% extends 'home/base.html' %}
+{% block body %}<br><br><br>
+
+    <div class="w3-container">
+
+        <strong><a href="{% url 'funding:startproject' %}" style="text-decoration: none;float: right;">Want crowd funding for your event? create a fundraiser here!</a></strong>
+</div>
+
+   {% for project in fundraiser %}
+
+<!--
+        <h2>Event name: {{ project.eventname }}</h2><br>
+        <h2>Description: {{ project.description }}</h2><br>
+        <form action="{% url 'funding:donate' %}" method="post">{% csrf_token %}
+        <input type="hidden" name="eventname" value="{{ project.eventname.name }}">
+        <button type="submit">Donate</button>
+        </form>-->
+
+  <div class="w3-container">
+    <div class="w3-panel" style="background-color: white;width: 40%; padding: 20px;">
+        <h2>Event name: {{ project.eventname }}</h2><br>
+        <h2>Description: {{ project.description }}</h2><br>
+        <form action="{% url 'funding:donate' %}" method="post">{% csrf_token %}
+        <input type="hidden" name="eventname" value="{{ project.eventname.name }}">
+        <button type="submit">Donate</button>
+        </form>
+    </div>
+      </div>
+
+
+  {% endfor %}
+
+     {% endblock %}

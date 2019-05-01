@@ -1,0 +1,19 @@
+{% extends 'home/base.html' %}
+{% block body %}
+<br><br><br><br><br>
+<center>
+<div>
+<h1>Are you sure you want to delete this account?</h1>
+<br><br>
+
+<button id="Submit" class="r" style="width:250px;height:35px;font-size:18px">Yes, I am sure</button><br><br>
+<button style="width:250px;height:35px;font-size:18px" id="Submit" onclick="window.location.href='{% url "home:settings" %}'" >No, go back</button>
+<script src="https://cdn.rawgit.com/mgalante/jquery.redirect/master/jquery.redirect.js"></script>
+<script type="text/javascript">
+    $(".r").click(function() {
+        $.redirect('{% url "home:delete_account" %}', { 'confirm': 'ok', 'arg2': 'value2' });
+    });
+</script>
+</div></center>
+<br><br><br><br><br><br><br>
+{% endblock %}

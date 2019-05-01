@@ -1,0 +1,453 @@
+{% extends 'home/testbase.html' %}
+{% load static %}
+{% block head %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDU_kJ3UUPCV-HLOaTfDf9zfqBBAXQ0VHE&callback=initMap">
+    </script>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+        {#height: 100%;#} height: 400px;
+            width: 600px;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #floating-panel {
+            position: absolute;
+            top: 10px;
+            left: 25%;
+            z-index: 5;
+            background-color: #fff;
+            padding: 5px;
+            border: 1px solid #999;
+            text-align: center;
+            font-family: 'Roboto', 'sans-serif';
+            line-height: 30px;
+            padding-left: 10px;
+
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid" style="padding-left: 0px; padding-right: 0px;height: 75vh;">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="https://www.wits.ac.za/media/wits-university/campus-life/wits-arts-museum/images/Website%20Banner%20for%20exhibition.jpg" alt="Los Angeles" style="height:75vh;width:100%;">
+      <div class="carousel-caption" >
+          <h3 style="font-size: 50px;">{{e.name}}</h3>
+          <p style="font-size: 30px;">Conducted by:{{e.user}}</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="https://www.skyfish.com/p/copenhagenmediacenter/630608/35540658/download/1200px" alt="Chicago" style="height:75vh;width:100%;">
+      <div class="carousel-caption">
+          <h3 style="font-size: 50px;">{{e.venue}}</h3>
+          <p>{{e.venue}} is always so much fun!</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="https://www.wits.ac.za/media/wits-university/campus-life/wits-arts-museum/images/Website%20Banner%20for%20exhibition.jpg" alt="New york" style="width:100%;height: 75vh;">
+      <div class="carousel-caption">
+          <h3>Los Angeles</h3>
+          <p>LA is always so much fun!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+<div class="panel" style="background-color: white">
+    <h2 style="margin-left: 45%;padding: 10px;">Event Details</h2><hr>
+    <p style="text-align: center">{{e.description}}</p>
+    <p style="text-align: center">Join us at {{e.venue}} on {{e.date}} at {{e.time}}</p>
+    <p style="text-align: center">Event Address: {{e.venue}}, {{e.city}}, {{e.state}}</p>
+
+    {% if e.private == 1 %}
+
+                    This is a private event
+                {% else %}
+                    {% if flag == 1 %}
+                        <button class="r" type='submit' k='{{ e.id }}'>Send request</button>
+                        <p id="write"></p>
+                    {% endif %}
+                {% endif %}
+                {% if admin_flg == 1 %}
+                    *You are the admin of this event
+                {% elif mem_flg == 1 %}
+                    *You are already a member of this event
+                {% elif inv_flg == 1 %}
+                    You have an invite for this event:
+                    <ul>
+                        {% for i in event_invites %}
+                            {% if i.status == False %}
+                                <li>
+                                    {{ i.event.name }}<br>
+                                    Admin: {{ i.event.user }}<br>
+                                    has invited you<br>
+
+                                    <p class="accept_inv" id="acc-inv-write" acc-inv="{{ i.id }}"><u id="rem1-inv">Accept
+                                        this invitation</u></p>
+
+                                    <p class="decline_inv" id="dec-inv-write" dec-inv="{{ i.id }}"><u id="rem2-inv">Decline
+                                        this invitation</u></p>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+
+                {% elif req_flg == 1 %}
+                    Request is on its way !
+                {% endif %}
+
+
+</div>
+
+
+    <div style="margin-top: 100px"></div>
+    <!--<table border="10">-->
+        <!--<tr>-->
+            <!--<th>By</th>-->
+            <!--<th>Name</th>-->
+            <!--<th>Description</th>-->
+            <!--<th>venue</th>-->
+            <!--<th>State</th>-->
+            <!--<th>City</th>-->
+            <!--<th>Date</th>-->
+            <!--<th>Time</th>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>{{ e.user }}</td>-->
+            <!--<td>{{ e.name }}</td>-->
+            <!--<td>{{ e.description }}</td>-->
+            <!--<td>{{ e.venue }}</td>-->
+            <!--<td>{{ e.state }}</td>-->
+            <!--<td>{{ e.city }}</td>-->
+            <!--<td>{{ e.date }}</td>-->
+            <!--<td>{{ e.time }}</td>-->
+            <!--<td>-->
+                <!--{#                {% if invite %}#}-->
+                <!--{#                    {% for i in invite %}#}-->
+                <!--{#                    {% if i.status == False %}#}-->
+                <!--{#                        <a href="{% url 'events:accept' i.id %}">Accept</a>#}-->
+                <!--{#                    {% else %}going{% endif %}#}-->
+                <!--{#                    {% endfor %}#}-->
+                <!--{#                {% else %}#}-->
+                <!--{#                    {% if sent == 1%}#}-->
+                <!--{#                        {% if sentreq.status %}#}-->
+                <!--{#                            Going#}-->
+                <!--{#                        {% else %}#}-->
+                <!--{#                            Pending#}-->
+                <!--{#                        {% endif %}#}-->
+                <!--{##}-->
+                <!--{#                    {% elif sent == 0 %}#}-->
+                <!--{#                        <button type="submit" class="r" k="{{ e.id }}">send</button>#}-->
+                <!--{#                    {% endif %}#}-->
+                <!--{#                {% endif %}#}-->
+                <!--{#                {% if e.private == 0%}#}-->
+                <!--{##}-->
+                <!--{#                    {% if sent == 1 %}#}-->
+                <!--{#                        {% if sentreq.status %}#}-->
+                <!--{#                            Going#}-->
+                <!--{#                        {% else %}#}-->
+                <!--{#                            Pending#}-->
+                <!--{#                        {% endif %}#}-->
+                <!--{##}-->
+                <!--{#                    {% elif sent == 0 %}#}-->
+                <!--{#                        <button type="submit" class="r" k="{{ e.id }}">send</button>#}-->
+                <!--{#                    {% else %}#}-->
+                <!--{#                        You are an admin of this event#}-->
+                <!--{#                    {% endif %}#}-->
+                <!--{#                {% endif %}#}-->
+                <!--{% if e.private == 1 %}-->
+
+                    <!--This is a private event-->
+                <!--{% else %}-->
+                    <!--{% if flag == 1 %}-->
+                        <!--<button class="r" type='submit' k='{{ e.id }}'>Send request</button>-->
+                        <!--<p id="write"></p>-->
+                    <!--{% endif %}-->
+                <!--{% endif %}-->
+                <!--{% if admin_flg == 1 %}-->
+                    <!--You are the admin of this event-->
+                <!--{% elif mem_flg == 1 %}-->
+                    <!--You are already a member of this event-->
+                <!--{% elif inv_flg == 1 %}-->
+                    <!--You have an invite for this event:-->
+                    <!--<ul>-->
+                        <!--{% for i in event_invites %}-->
+                            <!--{% if i.status == False %}-->
+                                <!--<li>-->
+                                    <!--{{ i.event.name }}<br>-->
+                                    <!--Admin: {{ i.event.user }}<br>-->
+                                    <!--has invited you<br>-->
+
+                                    <!--<p class="accept_inv" id="acc-inv-write" acc-inv="{{ i.id }}"><u id="rem1-inv">Accept-->
+                                        <!--this invitation</u></p>-->
+
+                                    <!--<p class="decline_inv" id="dec-inv-write" dec-inv="{{ i.id }}"><u id="rem2-inv">Decline-->
+                                        <!--this invitation</u></p>-->
+                                <!--</li>-->
+                            <!--{% endif %}-->
+                        <!--{% endfor %}-->
+                    <!--</ul>-->
+
+                <!--{% elif req_flg == 1 %}-->
+                    <!--Request is on its way !-->
+                <!--{% endif %}-->
+
+                {% if admin_flg %}
+                    <a href="{% url 'events:add_product' e.id%}"><button type="button" value="Add product">Add Product</button></a>
+                {% endif %}
+            <!--</td>-->
+        <!--</tr>-->
+    <!--</table>-->
+<h1 style="text-align: center">Locate the event</h1>
+    <script>
+
+        var address = '';
+        {#address = '{{ e.venue }}' + ',' + '{{ e.city }}' + ',' + {{ e.state }};#}
+    </script>
+
+    {#    <div id="floating-panel">#}
+    {#      <input id="address" type="textbox" value="Sydney, NSW">#}
+    {#      <input id="submit" type="button" value="Geocode">#}
+    {#    </div>#}
+    <div id="map"></div>
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 5,
+                //center: {lat: -34.397, lng: 150.644}
+                center: new google.maps.LatLng(28, 77),
+
+            });
+            //var geocoder = new google.maps.Geocoder();
+
+            //document.getElementById('submit').addEventListener('click', function() {
+            //geocodeAddress(geocoder, map);
+            var geocoder = new google.maps.Geocoder();
+            var add = '{{ e.venue }}' + ',' + '{{ e.city }}' + ',' + '{{ e.state }}';
+            geocodeAddress(geocoder, map);
+
+            //});
+        }
+
+        function geocodeAddress(geocoder, resultsMap) {
+            //var address = document.getElementById('address').value;
+            var address = '{{ e.venue }}' + ',' + '{{ e.city }}' + ',' + '{{ e.state }}';
+            geocoder.geocode({'address': address}, function (results, status) {
+                if (status === 'OK') {
+                    var infowindow = new google.maps.InfoWindow({});
+
+                    resultsMap.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: resultsMap,
+                        position: results[0].geometry.location,
+                        title: '{{ e.venue }}' + ',' + '{{ e.city }}' + ',' + '{{ e.state }}'
+
+                    });
+
+                    google.maps.event.addListener(marker, 'click', (function (marker) {
+                        return function () {
+                            infowindow.setContent('{{ e.venue }}' + ',' + '{{ e.city }}' + ',' + '{{ e.state }}');
+                            infowindow.open(map, marker);
+                        }
+                    })(marker));
+                } else {
+                    console.log('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDU_kJ3UUPCV-HLOaTfDf9zfqBBAXQ0VHE&callback=initMap">
+    </script>
+    {% csrf_token %}
+    <script>
+        $(".r").click(function () {
+            console.log('jndalknl')
+            $.ajax({
+                type: 'POST',
+                url: '{% url "events:send" %}',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    id: $(this).attr("k"),
+                },
+                success: function (data) {
+                    $("#write").html(data);
+                    $(".r").remove()
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+
+            });
+        });
+        $(".accept_inv").click(function () {
+            console.log('jskdnfls');
+            let li = $(this).parent();
+            $.ajax({
+                type: 'POST',
+                url: '/events/accept-invite/',
+                data: {
+                    //csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    req: $(this).attr("acc-inv"),
+                },
+                success: function (data) {
+                    {#$("#rem1").remove();#}
+                    {#$("#rem2").remove();#}
+                    {#                    $("#acc-write").append(data);#}
+
+                    $(li).html(data);
+
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+
+            });
+        });
+
+
+        $(".decline_inv").click(function () {
+            console.log('jskdnfls');
+            let li = $(this).parent();
+            $.ajax({
+                type: 'POST',
+                url: '/events/decline-invite/',
+                data: {
+                    //csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    req: $(this).attr("dec-inv"),
+                },
+                success: function (data) {
+                    {#$("#rem1").remove();#}
+                    {#$("#rem2").remove();#}
+                    {#                    $("#acc-write").append(data);#}
+
+                    $(li).html(data);
+
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+
+            });
+        });
+    </script>
+    {% if flag == 1 %}
+        <h2>Requests to join this event:</h2>
+        {% for i in eventreq %}
+            {#            <h3>Lalal<br></h3>#}
+            <ol>
+                {% if i.status == False %}
+                    <ul>
+                        <li>{{ i.event.name }}
+                            {{ i.by }}
+                            <button class="acceptreq" reqid="{{ i.id }}">Accept</button>
+                        </li>
+                    </ul>
+                {% endif %}
+            </ol>
+        {% endfor %}
+
+        <h3>Guests in this event:</h3>
+        <ul>
+
+            {% for i in guests %}
+                <li>{{ i.user.username }}
+                    <button class="deleteguest" reqid="{{ i.user.id }}" eventid="{{ e.id }}">Delete this guest</button>
+                </li>
+
+            {% endfor %}
+        </ul>
+
+
+
+    {% endif %}
+
+
+    <script>
+
+        $(".acceptreq").click(function () {
+            console.log('jskdnfls');
+            let td = $(this).parent();
+            $.ajax({
+                type: 'POST',
+                url: '{% url "events:acceptreq" %}',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    pk: $(this).attr("reqid"),
+                },
+                success: function (data) {
+                    $(td).html(data);
+
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+
+            });
+        });
+
+        $(".deleteguest").click(function () {
+            console.log('jskdnfls');
+            let td = $(this).parent();
+            $.ajax({
+                type: 'POST',
+                url: '{% url "events:deleteguest" %}',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    pk: $(this).attr("reqid"),
+                    eventid: $(this).attr("eventid"),
+                },
+                success: function (data) {
+                    $(".deleteguest").html(data);
+
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+
+            });
+        });
+    </script>
+{% endblock %}
