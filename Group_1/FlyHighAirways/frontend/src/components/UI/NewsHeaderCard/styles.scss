@@ -1,0 +1,26 @@
+.card1 {
+  padding: 10px;
+  height: 50%;
+}
+.news-header-card {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 10px 30px rgba(black, 0.9);
+
+  .news-header-background {
+    z-index: 1;
+  }
+
+  .news-header {
+    position: absolute;
+    z-index: 2;
+    text-decoration: none;
+  }
+}
+.space {
+  padding-left: 3%;
+  padding-right: 3%;
+}

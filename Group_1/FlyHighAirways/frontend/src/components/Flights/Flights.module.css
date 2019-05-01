@@ -1,0 +1,9 @@
+.FlightList {
+    padding: 1rem 2rem;
+}
+
+.FlightList > * {
+    margin-top: 1rem;
+}
+
+

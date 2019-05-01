@@ -1,0 +1,16 @@
+.back {
+  /* background-image: url("https://protocol46.com/wp-content/uploads/2016/04/Grey-Texture-Background-and-Wallpaper-22.jpg"); */
+  background-image: radial-gradient(
+    circle,
+    #f4f4f4,
+    #e1e1e1,
+    #cdcece,
+    #babbbc,
+    #a7a9a9
+  );
+  width: 100%;
+  height: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

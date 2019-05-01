@@ -1,0 +1,48 @@
+.Page {
+    height: 100vh;
+    position: relative;
+    background: #eee;
+}
+
+.Plane {
+    width: 30%;
+    height: 100%;
+    margin: auto;
+}
+
+.Cockpit {
+    height: 100px;
+}
+
+.Body {
+    padding: 1rem 1rem;
+    height: 80%;
+    background: #fff;
+}
+
+.Body > * {
+    margin: 1rem 0rem;
+}
+
+.Reference {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+}
+
+.Reference > * {
+    margin: 1rem 0; 
+}
+
+.RefBlock {
+    display: block;
+}
+
+.BlockInfo {
+    display: flex;
+    align-items: center;
+}
+
+.BlockInfo div {
+    margin-left: 1rem;
+}

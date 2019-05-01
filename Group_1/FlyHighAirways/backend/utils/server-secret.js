@@ -1,0 +1,1 @@
+module.exports = "super-secure-server-secret";
