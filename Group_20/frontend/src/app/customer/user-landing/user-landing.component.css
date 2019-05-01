@@ -1,0 +1,4 @@
+#slide1,#slide2{
+    transition: visibility 0s, opacity 0.5s linear;
+    -webkit-transition: visibility 0s, opacity 0.5s linear;
+}

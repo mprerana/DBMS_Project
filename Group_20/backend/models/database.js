@@ -235,6 +235,9 @@ client.addRestaurantCategory = restaurants.addRestaurantCategory;
 client.getRestaurantCategories = restaurants.getRestaurantCategories;
 client.getRestaurantItem = restaurants.getRestaurantItem;
 client.addRestaurantItem = restaurants.addRestaurantItem;
+client.createOrder = restaurants.createOrder;
+client.addOrderItem = restaurants.addOrderItem;
+client.getLastOrder = restaurants.getLastOrder;
 
 client.trackOrder = tracking.trackOrder;
 client.updateLocation = deliveryAgent.updateLocation;

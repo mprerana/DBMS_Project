@@ -1,19 +1,246 @@
-<h2>All Restaurants</h2>
-<ul class="restaurants">
-  <li *ngFor="let restaurant of restaurants">
-    <div class="logo">
-      <img src={{restaurant.logo}} height="100px" width="100px"/>
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html"><span class="flaticon-pizza-1 mr-1"></span>Tomato<br></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active"><a [routerLink]="['../landing']" class="nav-link">Home</a></li>
+          <li class="nav-item"><a [routerLink]="['../restaurants']" class="nav-link">Restaurants</a></li>
+          <li class="nav-item"><a [routerLink]="['../profile']" class="nav-link">My Account</a></li>
+          <li class="nav-item"><a class="nav-link" (click)="logout()">Log out</a></li>
+        </ul>
+      </div>
     </div>
-    <a [routerLink]="['../restaurant/', restaurant.username]">
-      <span class="badge">{{restaurant.name}}</span>
-    </a>
-    <br>
-    Opening Hours: {{restaurant.openinghrs}}
-    <br>
-    Closing Hours: {{restaurant.closinghrs}}
-    <br>
-    Address: {{restaurant.address}}
-    <br>
-    Phone No. {{restaurant.phone}}
-  </li>
-</ul>
+  </nav>
+  <!-- END nav -->
+
+  <section class="home-slider owl-carousel img" style="background-image: url(assets/customer/images/bg_1.jpg);">
+    <div class="slider-item" id='slide1'>
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row slider-text align-items-center">
+          <div class="col-md-6 col-sm-12">
+            <span class="subheading">Delicious</span>
+            <h1 class="mb-4">Italian Cuizine</h1>
+            <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+            <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a></p>
+          </div>
+          <div class="col-md-6">
+            <img src="assets/customer/images/bg_1.png" class="img-fluid" alt="">
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="slider-item" id='slide2' style="display: none;visibility:hidden;opacity: 0;">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text align-items-center" data-scrollax-parent="true">
+
+            <div class="col-md-6 col-sm-12 order-md-last">
+            	<span class="subheading">Crunchy</span>
+              <h1 class="mb-4">Italian Pizza</h1>
+              <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+              <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+            </div>
+            <div class="col-md-6">
+            	<img src="assets/customer/images/bg_2.png" class="img-fluid" alt="">
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="slider-item" id='slide3' style="display: none;opacity: 0; visibility:hidden;background-image: url(assets/customer/images/bg_3.jpg);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+            <div class="col-md-7 col-sm-12 text-center">
+            	<span class="subheading">Welcome</span>
+              <h1 class="mb-4">We cooked your desired Pizza Recipe</h1>
+              <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+              <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+            </div>
+
+          </div>
+        </div>
+        </div>
+  </section>
+
+  <section class="ftco-intro" style="background-image: url(assets/customer/images/bg_4.jpg);">
+    <div class="container-wrap">
+      <div class="wrap d-md-flex">
+        <div class="info">
+          <div class="row no-gutters">
+            <div class="col-md-4 d-flex ">
+              <div class="icon"><span class="icon-phone"></span></div>
+              <div class="text">
+                <h3>1800 111 1111</h3>
+                <p>24/7 Customer Care</p>
+              </div>
+            </div>
+            <div class="col-md-4 d-flex ">
+              <div class="icon"><span class="icon-my_location"></span></div>
+              <div class="text">
+                <h3>1000+ Stores</h3>
+                <p>and still counting..</p>
+              </div>
+            </div>
+            <div class="col-md-4 d-flex ">
+              <div class="icon"><span class="icon-clock-o"></span></div>
+              <div class="text">
+                <h3>Delivery through the night</h3>
+                <p>Orders open until 3:00AM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="social d-md-flex pl-md-5 p-4 align-items-center">
+          <ul class="social-icon">
+            <li class=""><a href="https://twitter.com"><span class="icon-twitter"></span></a></li>
+            <li class=""><a href="https://facebook.com"><span class="icon-facebook"></span></a></li>
+            <li class=""><a href="https://instagram.com"><span class="icon-instagram"></span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ftco-about d-md-flex" style="background-image: url(assets/customer/images/bg_4.jpg);">
+    <div class="one-half img" style="background-image: url(assets/customer/images/about.jpg);"></div>
+    <div class="one-half ">
+      <div class="heading-section  ">
+        <h2 class="mb-4">Welcome to <span class="flaticon-pizza">Tomato</span></h2>
+      </div>
+      <div>
+        <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ftco-section ftco-services">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row justify-content-center mb-5 pb-3">
+        <div class="col-md-7 heading-section  text-center">
+          <h2 class="mb-4">Our Services</h2>
+          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 ">
+          <div class="media d-block text-center block-6 services">
+            <div class="icon d-flex justify-content-center align-items-center mb-5">
+              <span class="flaticon-diet"></span>
+            </div>
+            <div class="media-body">
+              <h3 class="heading">Healthy Foods</h3>
+              <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+            </div>
+          </div>      
+        </div>
+        <div class="col-md-4 ">
+          <div class="media d-block text-center block-6 services">
+            <div class="icon d-flex justify-content-center align-items-center mb-5">
+              <span class="flaticon-bicycle"></span>
+            </div>
+            <div class="media-body">
+              <h3 class="heading">Fastest Delivery</h3>
+              <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+            </div>
+          </div>      
+        </div>
+        <div class="col-md-4 ">
+          <div class="media d-block text-center block-6 services">
+            <div class="icon d-flex justify-content-center align-items-center mb-5"><span class="flaticon-pizza-1"></span></div>
+            <div class="media-body">
+              <h3 class="heading">Original Recipes</h3>
+              <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+            </div>
+          </div>    
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="ftco-counter ftco-bg-dark img" id="section-counter" style="background-image: url(assets/customer/images/bg_2.jpg);" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <div class="row">
+            <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ">
+              <div class="block-18 text-center">
+                <div class="text">
+                  <div class="icon"><span class="flaticon-pizza-1"></span></div>
+                  <strong class="number" data-number="100">1293</strong>
+                  <span>Stores</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ">
+              <div class="block-18 text-center">
+                <div class="text">
+                  <div class="icon"><span class="flaticon-medal"></span></div>
+                  <strong class="number" data-number="85">21</strong>
+                  <span>Awards</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ">
+              <div class="block-18 text-center">
+                <div class="text">
+                  <div class="icon"><span class="flaticon-laugh"></span></div>
+                  <strong class="number" data-number="10567">23k</strong>
+                  <span>Happy Customers</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ">
+              <div class="block-18 text-center">
+                <div class="text">
+                  <div class="icon"><span class="flaticon-chef"></span></div>
+                  <strong class="number" data-number="900">128</strong>
+                  <span>Staff</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="ftco-section" style="background-image: url(assets/customer/images/bg_4.jpg);">
+    <div class="container">
+      <div class="row justify-content-center mb-5 pb-3">
+        <div class="col-md-7 heading-section  text-center">
+          <h2 class="mb-4">Top Restaurants Near You</h2>
+          <p>The Best-Selling restaurants on our platform that are guaranteed to get you drooling in no time, based on your location.</p>
+        </div>
+      </div>
+      <div class="row d-flex">
+        <div class="col-md-4 d-flex " *ngFor="let restaurant of restaurants">
+          <div class="blog-entry align-self-stretch">
+            <img class="block-20" src={{restaurant.logo}}>
+            <div class="text py-4 d-block">
+              <div class="meta">
+                <div><span class="icon-clock-o"></span> {{restaurant.openinghrs}} - {{restaurant.closinghrs}}</div>
+              </div>
+              <h3 class="heading mt-2"><a [routerLink]="['../restaurant/', restaurant.username]">{{restaurant.name}}</a></h3>
+              <p>{{restaurant.address}}
+              <br><span class="icon-phone"></span> +91 {{restaurant.phone}}
+              </p>
+              <a [routerLink]="['../restaurant/', restaurant.username]" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

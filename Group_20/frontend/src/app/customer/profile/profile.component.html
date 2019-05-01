@@ -1,51 +1,80 @@
-<h1>Hello {{currentUser.username}}!</h1>
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <label for="firstname">First Name</label>
-        <input type="text" formControlName="firstname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" />
-        <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
-            <div *ngIf="f.firstname.errors.required">Required</div>
-            <div *ngIf="f.firstname.errors.nameValidator">Only alphabets are supported</div>
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><span class="flaticon-pizza-1 mr-1"></span>Tomato<br></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="oi oi-menu"></span> Menu
+            </button>
+          <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item"><a [routerLink]="['../landing']" class="nav-link">Home</a></li>
+              <li class="nav-item"><a [routerLink]="['../restaurants']"  class="nav-link">Restaurants</a></li>
+              <li class="nav-item active"><a [routerLink]="['../profile']" class="nav-link">My Account</a></li>
+              <li class="nav-item"><a class="nav-link" (click)="logout()">Log out</a></li>
+            </ul>
+          </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label for="lastname">Last Name</label>
-        <input type="lastname" formControlName="lastname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" />
-        <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
-            <div *ngIf="f.lastname.errors.required">Required</div>
-            <div *ngIf="f.lastname.errors.nameValidator">Only alphabets are supported</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label>Email</label>
-        <span class="form-control"> {{currentUser.email}} </span>
-    </div>
-    <div class="form-group">
-        <label for="phone">Phone</label>
-        <input type="" formControlName="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
-        <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-            <div *ngIf="f.phone.errors.required">Required</div>
-            <div *ngIf="f.phone.errors.phoneValidator">Please enter a valid number</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="address">Address</label>
-        <input type="address" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
-        <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
-            <div *ngIf="f.address.errors.required">required</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="picture">Picture</label>
-        <input type="file" (change)="onFileChange($event)" />
-        <div *ngIf="submitted && f.picture.errors" class="invalid-feedback">
-            <div *ngIf="f.picture.errors.required">required</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <button [disabled]="loading" class="btn btn-primary">Submit</button>
-        <img *ngIf="loading" class="pl-2" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-    </div>
-    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
-  </form>
-  <img src="{{picture}}">
+      </nav>
+      <!-- END nav -->
+      <section class="ftco-intro" style="background-image: url(assets/customer/images/bg_4.jpg); padding-left: 100px">
+                    <h1>Hello {{currentUser.username}}!</h1>
+  <img src="{{picture}}" height="200px">
+
+                              <div class="row">
+                                    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+                                        <div class="col-md-12 mb-4 d-flex">
+                                            <div class="form-group">
+                                                <label for="firstname">First Name</label>
+                                                <input type="text" formControlName="firstname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" />
+                                                <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.firstname.errors.required">Required</div>
+                                                    <div *ngIf="f.firstname.errors.nameValidator">Only alphabets are supported</div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="lastname">Last Name</label>
+                                                <input type="lastname" formControlName="lastname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" />
+                                                <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.lastname.errors.required">Required</div>
+                                                    <div *ngIf="f.lastname.errors.nameValidator">Only alphabets are supported</div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <span class="form-control"> {{currentUser.email}} </span>
+                                            </div>
+                                        </div>
+                                        <div class="col col-md-12 mb-4 d-flex">
+                                            <div class="form-group">
+                                                <label for="phone">Phone</label>
+                                                <input type="" formControlName="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+                                                <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.phone.errors.required">Required</div>
+                                                    <div *ngIf="f.phone.errors.phoneValidator">Please enter a valid number</div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="address">Address</label>
+                                                <input type="address" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
+                                                <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.address.errors.required">required</div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="picture">Picture</label>
+                                                <br/>
+                                                <input type="file" (change)="onFileChange($event)" />
+                                                <div *ngIf="submitted && f.picture.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.picture.errors.required">required</div>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+                                        </div>
+
+                                        <div class="form-group">
+                                                <button [disabled]="loading" class="btn btn-primary">Submit</button>
+                                                <img *ngIf="loading" class="pl-2" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                                            </div>
+                                    </form>
+                                    <a [routerLink]="['../changePassword']" class="nav-link">Change Password</a>
+            </div>
+    </section>

@@ -11,7 +11,20 @@ import * as customValidators from '@/custom-validators';
 @Component({
   selector: 'app-change-password',
   templateUrl: './change-password.component.html',
-  styleUrls: ['./change-password.component.css']
+  styleUrls: ['./change-password.component.css',
+                '../assets/css/open-iconic-bootstrap.min.css',
+              "../assets/css/animate.css",
+              // "./assets/css/owl.carousel.min.css",
+              "../assets/css/owl.theme.default.min.css",
+              "../assets/css/magnific-popup.css",
+              "../assets/css/aos.css",
+              "../assets/css/ionicons.min.css",
+              "../assets/css/bootstrap-datepicker.css",
+              "../assets/css/jquery.timepicker.css",
+              "../assets/css/flaticon.css",
+              "../assets/css/icomoon.css",
+              "../assets/css/style.css"
+  ]
 })
 export class ChangePasswordComponent implements OnInit {
   changePasswordForm: FormGroup;
@@ -65,4 +78,8 @@ export class ChangePasswordComponent implements OnInit {
           );
   }
 
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
+  }
 }

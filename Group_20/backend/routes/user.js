@@ -173,25 +173,81 @@ router.get('/landing', passport.authenticate('jwt', { session: false}), function
     }
 });
 
-router.get('/restaurant/:id', function(req, res) {
-    console.log(req.params.id);
-    db.getRestaurantItems(req.params.id)
-    .then(resolve => {
-        for(var element in resolve){
-            if(resolve[element].photourl){
-                var data = fs.readFileSync(resolve[element].photourl)
-                resolve[element].photo = data.toString();
-                delete resolve[element]["photourl"];
-            }
-        };
-        return res.status(200).send(resolve);
-    })
-    .catch(e => {
-        console.log(e);
-        return res.status(403).send({success: false, msg: 'Unauthorized.'})
-    })
+router.get('/restaurant/:id', passport.authenticate('jwt', { session: false}), function(req, res) {
+    var token = getToken(req.headers);
+    if(token) {
+        console.log(req.params.id);
+        db.getRestaurantItems(req.params.id)
+        .then(resolve => {
+            for(var element in resolve){
+                if(resolve[element].photourl){
+                    var data = fs.readFileSync(resolve[element].photourl)
+                    resolve[element].photo = data.toString();
+                    delete resolve[element]["photourl"];
+                }
+            };
+            return res.status(200).send(resolve);
+        })
+        .catch(e => {
+            console.log(e);
+            return res.status(403).send({success: false, msg: 'Unauthorized.'})
+        })
+    }
+    else {
+        return res.status(403).send({success: false, msg: 'Unauthorized.'});
+    }
 });
 
+router.post('/order', passport.authenticate('jwt', { session: false}), function(req, res) {
+    var token = getToken(req.headers);
+    if(token) {
+        db.addOrderItem(req.body.orderid,req.body.itemid,req.body.quantity)
+        .then(resolve => {
+            return res.status(200).send({success: true, msg: 'Added to order.'});
+        })
+        .catch(e => {
+            console.log(e)
+            return res.status(403).send({success: false, msg: 'Unauthorized.'})
+        })
+    }
+    else {
+        return res.status(403).send({success: false, msg: 'Unauthorized.'});
+    }
+});
+
+router.post('/createorder', passport.authenticate('jwt', { session: false}), function(req, res) {
+    var token = getToken(req.headers);
+    if(token) {
+        db.createOrder(req.body.orderid, req.user.username, req.body.restname, req.body.lat, req.body.lon, req.body.deliveryname)
+        .then(resolve => {
+            return res.status(200).send({success: true, msg: 'Created.'});
+        })
+        .catch(e => {
+            console.log(e)
+            return res.status(403).send({success: false, msg: 'Unauthorized.'})
+        })
+    }
+    else {
+        return res.status(403).send({success: false, msg: 'Unauthorized.'});
+    }
+});
+
+router.get('/lastorder', passport.authenticate('jwt', { session: false}), function(req, res) {
+    var token = getToken(req.headers);
+    if(token){
+        db.getLastOrder()
+        .then( resolve => {
+            return res.status(200).send(resolve);
+        })
+        .catch( e => {
+            console.log(e);
+            return res.status(403).send({success: false, msg: 'Unauthorized.'});
+        })
+    }
+    else {
+        return res.status(403).send({success: false, msg: 'Unauthorized.'});
+    }
+});
 
 getToken = function (headers) {
   if (headers && headers.authorization) {
