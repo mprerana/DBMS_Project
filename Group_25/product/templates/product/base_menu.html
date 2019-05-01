@@ -1,0 +1,33 @@
+{% extends "customer/base.html" %}
+
+{% block Home %}
+{% endblock %}
+
+{% block content %}
+    <div class="popular-restaurents" id="Popular-Restaurants" >
+        <div class="container" style="" >
+            <div class="col-md-8 top-cuisines" style="width: 100%;margin-left: 70px" >
+                <div class="top-cuisine-head">
+                    <h3>Menu </h3>
+                </div>
+                {% if categories %}
+                <div class="top-cuisine-grids" style="width: 100%;">
+                    {% for category in categories  %}
+                        <div class="top-cuisine-grid wow bounceIn" style="width: 15%; height: 200px; margin-left: 30px;box-shadow: 5px 5px 5px grey;" data-wow-delay="0.4s">
+                            <a href="{% url 'product:items' category.id %}">
+                                {% if category.category_image %}
+                                    <div style="width: 100%; height: 130px;" >
+                                        <img src="{{ category.category_image.url}}" width="100%" height="100%"  style="border-radius: 3px;" class="img-responsive" alt="Image" />
+                                    </div>
+                                {% endif %}
+                                <label>{{ category.category_name }}</label></a>
+                        </div>
+                    {% endfor %}
+                    <div class="clearfix"></div>
+                </div>
+            {% endif %}
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+{% endblock %}

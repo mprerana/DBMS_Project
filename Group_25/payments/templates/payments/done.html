@@ -1,0 +1,30 @@
+{% extends 'customer/base.html' %}
+
+{% block Home %}
+{% endblock %}
+{% block content %}
+
+    <h2 style="text-align: center; margin-top: 20px">Your payment was successful!</h2><hr>
+
+    {% if payment and status %}
+    <div class="jumbotron" style="width: 80%; margin: 50px 0px 100px 10%;padding:20px; background-color: lightgray; box-shadow: 5px 5px 5px grey;">
+        <h3 style="text-align: center;display: inline-block;">Payment Details</h3><hr>
+        <table class="table table-bordered" style="font-size: medium; background-color: white;">
+            <thead class="thead header">
+                <td><b>Payment ID</b></td>
+                <td><b>Customer ID</b></td>
+                <td><b>Order ID</b></td>
+                <td>Date</td>
+                <td><b>Status</b></td>
+            </thead>
+            <tr class="">
+                <td>{{ payment.payment_id }}</td>
+                <td>{{ payment.customer_id }}</td>
+                <td>{{ payment.order_id.id }}</td>
+                <td>{{ payment.payment_date }}</td>
+                <td>{{ status }}</td>
+            </tr>
+        </table>
+    </div>
+    {% endif %}
+{% endblock %}

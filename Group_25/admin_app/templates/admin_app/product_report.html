@@ -1,0 +1,69 @@
+{% extends 'admin_app/admin.html' %}
+
+{% block Home %}
+{% endblock %}
+
+{% block  content%}
+    {% if items %}
+    <div class="jumbotron" style="width: 90%; margin-left: 50px">
+        <h3 style="text-align: center"> Product Report </h3><hr>
+    <center>
+    {% if items.has_other_pages %}
+            <ul class="pagination">
+        {% if items.has_previous %}
+            <li><a href="?page={{ items.previous_page_number }}">&laquo;</a></li>
+        {% else %}
+            <li class="disabled"><span>&laquo;</span></li>
+        {% endif %}
+                {% for i in items.paginator.page_range %}
+                    {% if items.number == i %}
+                        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                    {% else %}
+                        <li><a href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if items.has_next %}
+                    <li><a href="?page={{ items.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                    <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    </center>
+        <table class="table table-striped" style="font-size: large">
+            <thead class="thead header">
+                <th><b>Product Id</b></th>
+                <th>Image</th>
+                <th><b>Name</b></th>
+                <th><b>Category</b></th>
+                <th><b>Price per Unit</b></th>
+                <th><b>In Stock</b></th>
+                <th><b>Action</b></th>
+            </thead>
+            {% for item in items %}
+            <tr class="">
+                <td>{{ item.id }}</td>
+                {% if item.item_image %}
+                <td style="height: 120px;width: 200px;">
+                    <img src="{{ item.item_image.url }}" class="img-responsive" alt="Image" style="width: 100%; display: block; height: 100%;" />
+                </td>
+                {% else %}
+                <td>Image not available</td>
+                {% endif %}
+                <td>{{ item.item_name }}</td>
+                <td>{{ item.item_category }}</td>
+                <td>{{ item.item_price }}</td>
+                <td>{{ item.stock_quantity }} Items Available</td>
+                <td>
+                    <div style="margin: 40px; font-size: small">
+                        <a class="morebtn hvr-rectangle-in" href="{% url 'admin_app:update_product' item.id %}">Edit</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+
+
+{% endblock %}

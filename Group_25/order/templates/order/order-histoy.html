@@ -1,0 +1,99 @@
+{% extends 'customer/base.html' %}
+
+{% block Home %}
+{% endblock %}
+{% block content %}
+    {% if message %}
+        <div class="jumbotron" style="height: 240px;text-align: center;padding: 180px;">
+            <h2>{{ message }}</h2>
+        </div>
+    {% endif %}
+    {% if zipped_data1 %}
+    <div class="jumbotron">
+
+    <div style="border-radius: 10px;width: 80%; margin: 10px 0px 50px 10%;padding:20px; background-color: lightgray; box-shadow: 5px 5px 5px grey;">
+        <h3 style="text-align: center">Your Orders</h3><hr>
+        <table class="table table-bordered" style="font-size: medium; background-color: white">
+            <thead class="thead header">
+                <td><b>Order ID</b></td>
+                <td><b>Customer ID</b></td>
+                <td><b>Total Price</b></td>
+                <td><b>Date</b></td>
+                <td><b>Status</b></td>
+                <td colspan="2"><b>Action</b></td>
+            </thead>
+            {% for order, status, customer_id in zipped_data1 %}
+            <tr class="">
+                <td>{{ order.0 }}</td>
+                <td>{{ customer_id }}</td>
+                <td>{{ order.1 }}</td>
+                <td>{{ order.2 }}</td>
+                <td>{{ status }}</td>
+                <td>
+                    <div style="font-size: x-small">
+                        <a class="morebtn hvr-rectangle-in" href="{% url 'order:history_items' order.0 %}">Check Items</a>
+                    </div>
+                </td>
+                <td>
+                    <div style="font-size: x-small">
+                        <a class="morebtn hvr-rectangle-in" href="{% url 'order:payment_details' order.0 %}">Payment details</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+
+    {% if payment and status %}
+        <div style="border-radius: 10px;width: 70%; margin: 100px 0px 150px 15%; padding:20px; background-color: lightgray; box-shadow: 5px 5px 5px grey;">
+            <h3 style="text-align: center;display: inline-block">Payment Details</h3>
+            <h4 style="display: inline-block;float: right;"><a style="color: green;font-weight: bold" href="{% url 'order:history' %}">Back to Previous Page</a></h4>
+            <hr>
+            <table class="table table-bordered" style="font-size: medium; background-color: white">
+                <thead class="thead header">
+                    <td><b>Payment ID</b></td>
+                    <td><b>Customer ID</b></td>
+                    <td><b>Order ID</b></td>
+                    <td>Date</td>
+                    <td><b>Status</b></td>
+                </thead>
+                <tr class="">
+                    <td>{{ payment.payment_id }}</td>
+                    <td>{{ payment.customer_id }}</td>
+                    <td>{{ payment.order_id.id }}</td>
+                    <td>{{ payment.payment_date }}</td>
+                    <td>{{ status }}</td>
+                </tr>
+            </table>
+        </div>
+            <div class="clearfix"></div>
+        {% endif %}
+
+    {% if item_list %}
+    <div style="width: 70%; margin: 70px 0px 100px 15% ;padding:40px; background-color: lightgray; box-shadow: 5px 5px 5px grey;border-radius: 10px;" >
+        <h3 style="text-align: center;display: inline-block;"> Order Items</h3>
+        <h4 style="display: inline-block;float: right;"><a style="color: green;font-weight: bold" href="{% url 'order:history' %}">Back to Previous Page</a></h4>
+        <hr>
+        <table class="table table-bordered" style="font-size: medium; background-color: white;">
+            <thead class="header">
+                <td><b>Order ID</b></td>
+                <td><b>Item name</b></td>
+                <td><b>Price per quantity</b></td>
+                <td><b>Item Quantity</b></td>
+                <td><b>Total Price</b></td>
+            </thead>
+            {% for item in item_list %}
+            <tr class="">
+                <td>{{ item.order_id }}</td>
+                <td>{{ item.item_id.item_name }}</td>
+                <td>{{ item.item_id.item_price }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.price }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

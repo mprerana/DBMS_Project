@@ -1,0 +1,52 @@
+{% extends 'customer/base.html' %}
+
+{% block Home %}
+{% endblock %}
+{% block content %}
+
+    {% if order %}
+    <div class="jumbotron" style="width: 50%; margin-left: 350px">
+        <h3 style="text-align: center"> Order </h3><hr>
+        <table class="table table-bordered" style="font-size: medium">
+            <thead class="thead header">
+                <th>Order ID</th>
+                <th>Customer ID</th>
+                <th>Total Price</th>
+                <th>Date</th>
+                <th>Status</th>
+            </thead>
+
+            <tr class="">
+                <td>{{ order.id }}</td>
+                <td>{{ order.cust_id.user.username }}</td>
+                <td>{{ order.order_total_price }}</td>
+                <td>{{ order.order_date }}</td>
+                <td>{{ status }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="jumbotron" style="width: 50%; margin-left: 350px;" >
+        <h3 style="text-align: center"> Order Items</h3><hr>
+        <table class="table table-bordered" style="font-size: medium">
+            <thead class="thead header">
+                <th>Order ID</th>
+                <th>Item name</th>
+                <th>Price per quantity</th>
+                <th>Item Quantity</th>
+                <th>Total Price</th>
+            </thead>
+            {% for item in item_list %}
+            <tr class="">
+                <td>{{ item.order_id }}</td>
+                <td>{{ item.item_id.item_name }}</td>
+                <td>{{ item.item_id.item_price }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.price }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+
+{% endblock %}

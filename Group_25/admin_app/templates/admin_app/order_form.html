@@ -1,0 +1,18 @@
+{% extends 'admin_app/admin.html' %}
+{% load crispy_forms_tags %}
+{% block Home %}
+{% endblock %}
+
+{% block  content%}
+
+    <div style="margin-left: 320px;margin-top: 80px;margin-bottom: 80px;width: 50%;background-color: lightsalmon;padding: 50px;font-size: 18px;border-radius: 10px" class="register-but">
+    <form method="post" action="{% url 'admin_app:update_order' order_id %}">
+    {% csrf_token %}
+        {{ order_form|crispy }}
+        <center>
+            <input type="submit" value="Update Order" style="font-size: 1.2em;margin-top: 30px">
+        </center>
+    </form>
+    </div>
+
+{% endblock %}

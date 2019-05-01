@@ -1,0 +1,65 @@
+{% extends 'customer/base.html'%}
+
+{% block Home %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="cart-items" >
+	<div class="container">
+         <h1>My Cart</h1>
+
+        {% for item in cart_items %}
+         <div class="cart-header" >
+             <div class=""> </div>
+             <div class="cart-sec simpleCart_shelfItem">
+                 {% if item.cart_item.item_image %}
+                 <div class="cart-item cyc">
+                     <img src="{{ item.cart_item.item_image.url }}" class="img-responsive" alt="">
+                 </div>
+                 {% else %}
+                     <div class="cart-item cyc">
+                         <img src="" class="img-responsive" alt="Image Not Available">
+                     </div>
+                 {% endif %}
+                 <div class="cart-item-info">
+                     <h2>{{ item.cart_item.item_name}}</h2><br><hr>
+                     <ul class="qty" style="font-size: medium">
+                         <li><span><b>Price per quantity : {{ item.cart_item.item_price }}</b></span></li>
+                         <li><span><b>Item Quantity : {{ item.item_quantity }}</b></span></li>
+                     </ul>
+                     <ul class="qty" style="float: right">
+                         <div class="col-md-7 buy" >
+                             <a class="morebtn hvr-rectangle-in" style="background-color: #E24425" href="{% url 'order:remove' item.cart_item.id %}">Remove</a>
+                         </div>
+                     </ul>
+                     <div class="delivery">
+                         <h3>Total Price : {{ item.item_price }}</h3>
+                         <div class="clearfix"></div>
+                     </div>
+                 </div>
+                 <div class="clearfix"></div>
+             </div>
+         </div>
+        {% endfor %}
+    <center>
+        <div style="margin-left: 20px">
+           <div class="col-md-5" style="font-size: medium">
+               <a class="morebtn hvr-rectangle-in" href="{% url 'order:order' %}">Proceed to Checkout</a>
+           </div>
+           <div class="col-md-2"><h3><b></b></h3></div>
+           <div class="col-md-5" style="font-size: medium">
+               <a class="morebtn hvr-rectangle-in" href="{% url 'product:menu' %}">Add More Items</a>
+           </div><br><hr>
+       </div>
+    </center>
+        {% if message %}
+        <div class="jumbotron" style="height: 240px;text-align: center;padding: 100px;">
+            <h2>{{ message }}</h2>
+        </div>
+        {% endif %}
+    </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends 'customer/base.html' %}
+
+{% block Home %}
+{% endblock %}
+{% block  content%}
+<div class="cart-items" >
+	<div class="container">
+        {% if items and category_name %}
+         <h1 style="display: inline-block;font-family: 'Lobster Two', cursive;">{{ category_name }}</h1>
+            <h4 style="display: inline-block;float: right;"><a style="color: green;font-weight: bold" href="{% url 'product:menu' %}">Back to Previous Page</a></h4>
+        {% for item in items %}
+            <div class="cart-header" >
+                <div class=""> </div>
+                <div class="cart-sec simpleCart_shelfItem">
+                    {% if item.item_image %}
+                        <div class="cart-item cyc">
+                            <img src="{{ item.item_image.url }}" class="img-responsive" alt="">
+                        </div>
+                    {% else %}
+                        <div class="cart-item cyc">
+                            <img src="" class="img-responsive" alt="Image Not Available">
+                        </div>
+                    {% endif %}
+                    <div class="cart-item-info">
+                        <h2>{{ item.item_name }}</h2><h3>Price : &nbsp; Rs. {{ item.item_price }}</h3><br><hr >
+                        <ul class="qty" style="width: 70%;display: inline-block; font-size: medium">
+                            <li><span><b>Decription</b> : {{ item.item_desc }}</span></li>
+                        </ul>
+                        <ul class="qty" style="float: right;">
+                             <div class="register-but" style="margin-top: 0px;">
+                                 {% if user.is_authenticated %}
+                                     <form method="post" action="{% url 'order:pick' item.id %}">
+                                 {% else %}
+                                     <form action="{% url 'customer:user_login' %}">
+                                 {% endif %}
+                                 {% csrf_token %}
+                                 <input type="number" name="qnty" placeholder="Select Quantity" min="1" max="20" required>
+                                 <input type="submit" value="Pick" style="font-size: 1.4em;font-family: 'Lobster Two', cursive" >
+                                 </form>
+                             </div>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        {% endfor %}
+        {% endif %}
+
+    </div>
+    </div>
+
+
+    {#    {% if error_message %}#}
+{#        <h2>{{ error_message }}</h2>#}
+{#    {% endif %}#}
+{#{% if items and category_name %}#}
+{#    <div class="jumbotron" style="width: 92%; margin-left: 55px">#}
+{#        <h3 style="text-align: center"> {{ category_name }} </h3><hr>#}
+{#        <table class="table table-striped" style="font-size: large;border: 1px solid green;box-shadow: 5px 5px 10px gray">#}
+{#            <thead class="table header">#}
+{#                <th>Image</th><th></th><th></th>#}
+{#                <th>Item Name</th>#}
+{#                <th>Item Description</th>#}
+{#                <th>Price per Unit</th>#}
+{#                <th>Action</th>#}
+{#            </thead>#}
+{#            {% for item in items %}#}
+{#            <tr>#}
+{#                {% if item.item_image %}#}
+{#                <td style="height: 120px;width: 200px;">#}
+{#                    <img src="{{ item.item_image.url }}" class="img-responsive" alt="Image" style="width: 100%; display: block; height: 100%;" />#}
+{#                </td>#}
+{#                {% else %}#}
+{#                <td>Image not available</td>#}
+{#                {% endif %}<td></td><td></td>#}
+{#                <td>#}
+{#                    <div class="col-md-2 restaurent-title">#}
+{#                        <h4 style="font-size: 25px; width: 180px;">{{ item.item_name }}</h4>#}
+{#                    </div>#}
+{#                </td>#}
+{#                <td style="width: 300px;">{{ item.item_desc }}</td>#}
+{#                <td>#}
+{#                    <div class="col-md-7 buy">#}
+{#                        <span style="font-size: 25px">Rs.{{ item.item_price }}</span>#}
+{#                    </div>#}
+{#                </td>#}
+{#                <td>#}
+{#                    <div class="register-but">#}
+{#                        {% if user.is_authenticated %}#}
+{#                            <form method="post" action="{% url 'order:pick' item.id %}">#}
+{#                        {% else %}#}
+{#                            <form action="{% url 'customer:user_login' %}">#}
+{#                        {% endif %}#}
+{#                            {% csrf_token %}#}
+{#                                <input type="number" name="qnty" placeholder="Select Quantity" min="1" max="20" required>#}
+{#                                <input type="submit" value="Pick" style="font-size: 1.02em" >#}
+{#                            </form>#}
+{#                    </div>#}
+{#                </td>#}
+{#            </tr>#}
+{#            {% endfor %}#}
+{#        </table>#}
+{#    </div>#}
+{#{% endif %}#}
+
+{% endblock %}
