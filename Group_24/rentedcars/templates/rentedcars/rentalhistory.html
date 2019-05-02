@@ -1,0 +1,159 @@
+
+{% extends 'index.html'%}
+
+
+
+{% load static %}
+
+{% block slidecss %}
+
+
+<style>
+  .history_btn{
+    position:absolute;
+    top:450px;
+    left:250px;
+  }
+  .container{
+      padding-left:40px;
+    }
+
+    .card{
+      width:150px;
+      height:150px;
+    }
+    .card-flip > div {
+        backface-visibility: hidden;
+        transition: transform 400ms;
+        transition-timing-function: linear;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        display: flex;
+    }
+
+    .card-front {
+        transform: rotateY(0deg);
+        color:rgba(54,193,226,0.85);
+        padding:5px;
+        text-align:center;
+    }
+
+    .card-back {
+        transform: rotateY(180deg);
+        position: absolute;
+        top: 0;
+    }
+
+    .card-flip:hover .card-front {
+        transform: rotateY(-180deg);
+    }
+
+    .card-flip:hover .card-back {
+        transform: rotateY(0deg);
+        padding:10px;
+    }
+
+</style>
+
+
+{% endblock slidecss %}
+
+
+{% block body_block %}
+
+<div class="image_block">
+  <img src="https://images.pexels.com/photos/2132603/pexels-photo-2132603.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="height:500px;width:100%">
+  <div class="btn-group history_btn" role="group" aria-label="Basic example">
+    <div class="container" style="display:inline-block;">
+        <div class="card" style="display:inline-block;">
+            <div class="card card-flip h-100">
+                <div class="card-front">
+                    <div class="card-body">
+                        <h5 class="card-title">Rented Cars History</h5>
+                    </div>
+                </div>
+                <div class="card-back bg-white">
+                    <div class="card-body" style="color:rgba(54,193,226,0.85);">
+                        <a href="{%url 'rentedcars:rentcardisplay'%}" class="btn btn-outline-primary">History</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="display:inline-block;">
+            <div class="card card-flip h-100">
+                <div class="card-front">
+                    <div class="card-body" >
+                        <h5 class="card-title">Booked Cars History</h5>
+                    </div>
+                </div>
+                <div class="card-back bg-white">
+                    <div class="card-body" style="color:rgba(54,193,226,0.85);">
+                        <a href="{%url 'rentedcars:car_history'%}" class="btn btn-outline-primary">History</a>
+                    </div>
+                </div>
+            </div>
+        </diV>
+        <div class="card" style="display:inline-block;">
+            <div class="card card-flip h-100">
+                <div class="card-front">
+                    <div class="card-body">
+                        <h5 class="card-title">Booked Weddingcars</h5>
+                    </div>
+                </div>
+                <div class="card-back bg-white">
+                    <div class="card-body" style="color:rgba(54,193,226,0.85);">
+                        <a href="{% url 'weddingcars:weddingcars_history' %}" class="btn btn-outline-primary">History</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="display:inline-block;">
+            <div class="card card-flip h-100">
+                <div class="card-front">
+                    <div class="card-body">
+                        <h5 class="card-title">Booked Tourist cars</h5>
+                    </div>
+                </div>
+                <div class="card-back bg-white">
+                    <div class="card-body" style="color:rgba(54,193,226,0.85);">
+                        <a href="{%url 'touristcars:touristcars_history'%}" class="btn btn-outline-primary">History</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="display:inline-block;">
+            <div class="card card-flip h-100">
+                <div class="card-front">
+                    <div class="card-body">
+                        <h5 class="card-title">Booked Airportcars</h5>
+                    </div>
+                </div>
+                <div class="card-back bg-white">
+                    <div class="card-body" style="color:rgba(54,193,226,0.85);">
+                        <a href="{%url 'airportcars:airportcars_history'%}" class="btn btn-outline-primary">History</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="display:inline-block;">
+            <div class="card card-flip h-100">
+                <div class="card-front">
+                    <div class="card-body">
+                        <h5 class="card-title">Booked Taxi History</h5>
+                    </div>
+                </div>
+                <div class="card-back bg-white">
+                    <div class="card-body" style="color: rgba(54,193,226,0.85)">
+                        <!--{%url 'taxis:taxi_view_history'%}-->
+                        <a href="{%url 'taxis:taxi_view_history'%}" class="btn btn-outline-primary">History</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+  </div>
+
+</div>
+
+{% endblock body_block %}

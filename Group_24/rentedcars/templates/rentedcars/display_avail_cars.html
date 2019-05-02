@@ -1,0 +1,104 @@
+
+{% extends 'index.html' %}
+{% load static %}
+
+
+{% block slidecss %}
+
+<style>
+.container {
+  position: relative;
+  width: 50%;
+
+}
+
+.flag{
+    float:right;
+	color:#48cfad;
+	font-size:22px;
+	font-weight:600;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background-color: #0069d985;
+  overflow: hidden;
+  width: 100%;
+  height:0;
+  transition: .5s ease;
+}
+
+.container:hover .overlay {
+  bottom: 0;
+  height: 100%;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+</style>
+{% endblock slidecss %}
+
+
+{% block body_block %}
+
+<div style="position:relative;text-align:center;color:black;">
+  <img src="https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg?cs=srgb&dl=automobile-cars-headlights-120049.jpg&fm=jpg" style="opacity:0.7;height:400px;width:100%;">
+  <div style="position: absolute;bottom: 0;background: transparent;color: white;width: 100%;padding: 20px;">
+  <h1 style="color:#155f99">Rented Cars</h1>
+  </div>
+</div>
+
+<div style="padding:100px;">
+{% for item in cars_avail %}
+    {% if item.user_rented == u %}
+    {% elif item.is_booked == False %}
+<div style="display:inline-block;padding-bottom:150px;">
+  <div class="container" style="width:400px;height:350px;">
+
+    <div class="card" >
+      <img class="card-img-top" src="{{ item.car_details.car_pic.url }}" alt="Card image" style="width:100%;height:350px;">
+      <div class="card-body">
+        <h4 class="card-title">{{ item.car_details.car_name }}<span class="flag">Rs {{ item.price }}</span></h4>
+      <h5 class="date">Service To:{{ item.car_location }}</h5>
+     <div class="overlay">
+      <div class="text">
+          <h5 class="seats">Car No:{{ item.car_details.car_num }}</h5>
+        <h5 class="seats">Mileage:{{ item.car_details.mileage }}</h5>
+        <h5 class="seats">Owner Name:{{ item.user_rented.user }}</h5><br><br>
+           <a href="{% url 'rentedcars:book_my_car' item.auto_increment_id %}" class="btn btn-primary stretched-link">Send request</a>
+
+      </div>
+    </div>
+</div>
+
+
+
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% endfor %}
+
+</div>
+
+
+
+{% endblock body_block %}

@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+
+{%load static%}
+{% block body_block %}
+    <div style="position:relative;text-align:center;color:black;">
+        <img src="{% static 'images/2.jpeg' %}" style="opacity:0.7;height:250px;width:100%;">
+        <div style="position: absolute;bottom: 0;background: transparent;color: #f1f1f1;width: 100%;padding: 20px;">
+            <h1>Requested Cars</h1>
+        </div>
+    </div>
+
+        {% for item in cars_req %}
+
+        <div style="display:inline-block;">
+
+          <div class="container" style="padding-top:30px;">
+                {% if item.car_rented.user_rented == u %}
+                        <div class="card flex-row" style="width:600px;margin-bottom: 2rem;">
+                            <div class="card-header border-0">
+                                <img src="{{ item.car_rented.car_details.car_pic.url}}" style="width:250px;height: 200px;">
+                            </div>
+                            <div class="card-block" style="padding:30px;float: right;display: inline-block">
+                                <h5 class="card-title">Requested User:&nbsp;{{ item.booking_Details.user_booked.user }}</h5>
+                                <p class="card-text">{{item.car_rented.car_details.car_name}}<span style="font-size:15px;opacity:0.8;">({{item.car_rented.car_details.car_num}})</span>&nbsp;&nbsp;&nbsp;&nbsp;{{item.car_rented.car_details.car_type}}
+                                    <br>Location:&nbsp;{{item.car_rented.car_location}}&nbsp;&nbsp;&nbsp;&nbsp;Price:&nbsp;{{item.car_rented.price}}
+                                </p>
+                                <div style="display:inline-block;">
+                                  <a href="{% url 'rentedcars:display_req_accept' item.auto_increment_id %}" class="btn btn-primary">ACCEPT</a>
+                                  &nbsp;<br><br>
+				                          <form class="" action="{% url 'rentedcars:display_req_accept' item.auto_increment_id %}" method="post">
+                                    {% csrf_token %}
+                                    <input class="btn btn-primary" type="submit" name="decline" value="DECLINE">
+                                  </form>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+</div>
+
+                {% endif %}
+        {% endfor %}
+
+{% endblock body_block %}

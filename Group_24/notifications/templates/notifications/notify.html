@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+
+
+{% block body_block %}
+        <div class="container" style="border-radius: 20px;padding: 25px;">
+
+
+<center>
+    <h3>Notifications</h3><hr>
+</center>
+
+
+  {% if latest.message %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+
+    <strong>{{ latest.message }}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+  {% endif %}
+  </div>
+
+  {% if rev_all  %}
+  <ul class="list-group">
+
+  {% for item in rev_all %}
+      {% if item.read %}
+            <li class="list-group-item disabled">{{ item.message }} </li>
+      {% elif item.read == False %}
+
+             <li class="list-group-item">{{ item.message }}
+
+             </li>
+      {% endif %}
+  {% endfor %}
+</ul>
+
+  {% else %}
+            <h3>no notifications</h3>
+  {% endif %}
+
+
+        </div>
+{% endblock body_block%}

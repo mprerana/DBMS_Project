@@ -1,0 +1,12 @@
+
+{% load crispy_forms_tags %}
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<form method="post">
+  {% csrf_token %}
+  {{ emergency|crispy }}
+  <input type="submit" value="Add Contacts">
+
+</form>
