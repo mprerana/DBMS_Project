@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>home</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <style media="screen">
+      .navbar_bgcolor{
+        background-color:#00695c;
+      }
+      .jumbotron_box{
+        margin-bottom: 0;
+        padding-top: 0.005px;
+        padding-bottom: 0.005px;
+        border-top-left-radius:50%;
+        border-top-right-radius:50%;
+      }
+      .jumbotron_box1{
+        border-bottom-left-radius:50%;
+        border-bottom-right-radius:50%;
+      }
+      .account-img {
+        height: 125px;
+        width: 125px;
+        margin-right: 20px;
+        margin-bottom: 16px;
+      }
+      .slick-slide {
+         margin: 0px 20px;
+      }
+
+      .slick-slide img {
+          width: 100%;
+      }
+
+      .slick-slider
+      {
+          position: relative;
+          display: block;
+          box-sizing: border-box;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+                  user-select: none;
+          -webkit-touch-callout: none;
+          -khtml-user-select: none;
+          -ms-touch-action: pan-y;
+              touch-action: pan-y;
+          -webkit-tap-highlight-color: transparent;
+      }
+
+      .slick-list
+      {
+          position: relative;
+          display: block;
+          overflow: hidden;
+          margin: 0;
+          padding: 0;
+      }
+      .slick-list:focus
+      {
+          outline: none;
+      }
+      .slick-list.dragging
+      {
+          cursor: pointer;
+          cursor: hand;
+      }
+
+      .slick-slider .slick-track,
+      .slick-slider .slick-list
+      {
+          -webkit-transform: translate3d(0, 0, 0);
+             -moz-transform: translate3d(0, 0, 0);
+              -ms-transform: translate3d(0, 0, 0);
+               -o-transform: translate3d(0, 0, 0);
+                  transform: translate3d(0, 0, 0);
+      }
+
+      .slick-track
+      {
+          position: relative;
+          top: 0;
+          left: 0;
+          display: block;
+      }
+      .slick-track:before,
+      .slick-track:after
+      {
+          display: table;
+          content: '';
+      }
+      .slick-track:after
+      {
+          clear: both;
+      }
+      .slick-loading .slick-track
+      {
+          visibility: hidden;
+      }
+
+      .slick-slide
+      {
+          display: none;
+          float: left;
+          height: 100%;
+          min-height: 1px;
+      }
+      [dir='rtl'] .slick-slide
+      {
+          float: right;
+      }
+      .slick-slide img
+      {
+          display: block;
+      }
+      .slick-slide.slick-loading img
+      {
+          display: none;
+      }
+      .slick-slide.dragging img
+      {
+          pointer-events: none;
+      }
+      .slick-initialized .slick-slide
+      {
+          display: block;
+      }
+      .slick-loading .slick-slide
+      {
+          visibility: hidden;
+      }
+      .slick-vertical .slick-slide
+      {
+          display: block;
+          height: auto;
+          border: 1px solid transparent;
+      }
+      .slick-arrow.slick-hidden {
+          display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse navbar_bgcolor">
+
+      <div class="container">
+        <a class="navbar-brand mr-4" href="#">READSforYou</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+          <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link" href="#dev">Contact</a>
+          </div>
+          <!-- Navbar Right Side -->
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/signin">Login</a>
+          </div>
+        </div>
+      </div>
+
+
+    </nav>
+    <!--<header>
+      <div id="brand" >
+        <h1>CLUBSportal</h1>
+      </div>
+    </header>
+      <nav>
+        <ul>
+          <li class="current"><a href="index.html">Home</a></li>
+          <li><a href="#">Login/Registration</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
+    -->
+      <div class="jumbotron jumbotron-fluid text-white text-center navbar_bgcolor jumbotron_box1">
+        <div class="container">
+            <h1 class="display-1">READS for You <sup>&trade;</sup></h1>
+            <p class="lead">Your personalised space...</p>
+        </div>
+      </div>
+      <div class="container">
+            <h1 style="color:#001a33" >About</h1>
+            <p style="font-size:20px;">How we work for you?
+            	Ever felt that you need a break from the genre of books you tend to read? Here we are to address this monotony by connecting your tastes with people's who share similar tastes with you. You will be recommended books not based on what you always read, but on the basis of your book tastes irrespective of genres. Go conquer the world of books!!!
+        </p><br>
+        </div>
+
+      <div class="container">
+            <h1 style="color:#001a33">Genres</h1>
+            <section class="customer-logos slider">
+               <div class="slide"><img class="rounded-circle account-img" src="assets/0.jpg"></div>
+               <div class="slide"><img class="rounded-circle account-img" src="assets/1.jpg"></div>
+               <div class="slide"><img class="rounded-circle account-img" src="assets/2.jpg"></div>
+               <div class="slide"><img class="rounded-circle account-img" src="assets/3.jpg"></div>
+               <div class="slide"><img class="rounded-circle account-img" src="assets/4.jpg"></div>
+               <div class="slide"><img class="rounded-circle account-img" src="assets/5.jpg"></div>
+               <div class="slide"><img class="rounded-circle account-img" src="assets/6.jpg"></div>
+               <div class="slide"><img class="rounded-circle account-img" src="assets/7.jpg"></div>
+             </section>
+        </div>
+
+        <div class="container">
+                <br><br>
+                <h1 style="color:#001a33">Moto</h1>
+                <p style="font-size:20px;">
+                	'READS for You' is a sincere attempt by us, the students of IIIT, Sri City to provide you your personal space, a space you could build the craziest of dimensions with, in a world of books that is seemingly vast.
+                	We present with great keeness and enthusiasm 'READS for You'. Hope you like it.
+                </p>
+        </div>
+
+      <!-- navs -->
+<footer class="jumbotron jumbotron_box footer">
+      <h4 class="display-4 py-5 mt-5 text-center" id="dev">The developers</h2>
+
+      <nav class="nav justify-content-center nav-pills flex-column flex-md-row ">
+          <a class="nav-link active" href="#ninja" data-toggle="tab">Debapriya</a>
+          <a class="nav-link" href="#wizard" data-toggle="tab">Rahul</a>
+          <a class="nav-link" href="#captain" data-toggle="tab">Sravan</a>
+          <a class="nav-link" href="#avenger" data-toggle="tab">Akshay</a>
+          <a class="nav-link" href="#avenger2" data-toggle="tab">Suraj</a>
+          <a class="nav-link" href="#avenger3" data-toggle="tab">Vijendra</a>
+      </nav>
+
+      <div class="container tab-content py-5">
+          <div class="tab-pane active" id="ninja">
+              <h3>Debapriya Tula</h3>
+              <p>I present to you with great enthusiasm 'READS for You'. Hope you enjoy our work</p>
+          </div>
+          <div class="tab-pane fade" id="wizard">
+              <h3>Rahul Prasad</h3>
+              <p>I present to you with great enthusiasm 'READS for You'. Hope you enjoy our work</p>
+          </div>
+          <div class="tab-pane fade" id="captain">
+              <h3>Sravan Kumar Vinakota</h3>
+              <p>I present to you with great enthusiasm 'READS for You'. Hope you enjoy our work</p>
+          </div>
+          <div class="tab-pane fade" id="avenger">
+              <h3>Akshay Kumar</h3>
+              <p>I present to you with great enthusiasm 'READS for You'. Hope you enjoy our work</p>
+          </div>
+          <div class="tab-pane fade" id="avenger2">
+              <h3>Suraj Agarwal</h3>
+              <p>I present to you with great enthusiasm 'READS for You'. Hope you enjoy our work</p>
+          </div>
+
+          <div class="tab-pane fade" id="avenger3">
+              <h3>Vijendra Kumar Saini</h3>
+              <p>I present to you with great enthusiasm 'READS for You'. Hope you enjoy our work</p>
+          </div>
+      </div>
+</footer>
+      <!-- jQuery first, then Tether, then Bootstrap JS. -->
+      <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+      <script>
+        $(document).ready(function(){
+          $('.customer-logos').slick({
+              slidesToShow: 6,
+              slidesToScroll: 1,
+              autoplay: true,
+              autoplaySpeed: 1500,
+              arrows: false,
+              dots: false,
+              pauseOnHover: true,
+              responsive: [{
+                  breakpoint: 768,
+                  settings: {
+                      slidesToShow: 4
+                  }
+              }, {
+                  breakpoint: 520,
+                  settings: {
+                      slidesToShow: 3
+                  }
+              }]
+          });
+      });
+    </script>
+    </body>
+</html>

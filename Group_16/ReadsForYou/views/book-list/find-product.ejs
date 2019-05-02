@@ -1,0 +1,30 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body 
+    style="background-image: linear-gradient(rgba(255,255,255, .2), rgba(255, 255, 255, .2)), url(https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);"
+
+>
+   <%- include('../includes/navigation.ejs') %>
+    
+    <div>
+        <main class="formDiv">
+            <form class="product-form" action="/book" method="POST">
+                <div class="form-control">
+                    <label for="title"><h3 style="color: cyan" class="searchtext">Search your book</h3></label>
+                    <div class="underline">&nbsp;</div>
+                    <br><br>
+                    <input type="text" class="inputText" name="param" id="param" placeholder="By title, ASIN or filename">
+                </div>
+                <button class="btn btn-primary-custom" type="submit">Submit</button>
+            </form>
+        </main>
+
+
+    <main>
+        <form class="product-form" action="/admin/" >
+    </main>
+    </div>
+<%- include('../includes/end.ejs') %>

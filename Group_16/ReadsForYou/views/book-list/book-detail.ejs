@@ -1,0 +1,142 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/product.css">
+    <link rel="stylesheet" href="/css/onlyForDetail.css">
+</head>
+
+<body>
+    <div class="backdrop"></div>
+    <header class="main-header" id="onlyForDetailPage">
+        <img class="main-header__nav" src="https://i.ibb.co/Wp42Mfd/logo.png" alt="logo" border="0">
+        <button id="side-menu-toggle">Menu</button>
+        <nav class="main-header__nav">
+            <ul class="main-header__item-list">
+                <li class="main-header__item">
+                    <a class="<%= path === '/' ? 'active' : '' %>" href="/">Home</a>
+                </li>
+                
+                <li class="main-header__item">
+                    <a class="<%= path === '/profile' ? 'active' : '' %>" href="/profile/:UserId">My Profile</a>
+                </li>
+                
+                <li class="main-header__item">
+                    <a class="<%= path === '/favorites' ? 'active' : '' %>" href="/favorites">My Favorites</a>
+                </li>
+                <li class="main-header__item">
+                    <a class="<%= path === '/logout' ? 'active' : '' %>" href="/logout">Logout</a>
+                </li>
+                <li class="main-header__item">
+                        <a class="<%= path === '/upload' ? 'active' : '' %>" href="/upload">Upload Book</a>
+                </li>
+                <li class="main-header__item">
+                    <a class="<%= path === '/contact' ? 'active' : '' %>" href="/contact">Contact us
+                    </a>
+                </li>
+                
+                <li class="main-header__item">
+                    <a class="<%= path === '/book' ? 'active' : '' %>" href="/book">Search book
+                    </a>
+                </li>
+                <!--
+                <li class="main-header__item">
+                    <a class="<%= path === '/admin/products' ? 'active' : '' %>" href="/admin/products">Admin Products
+                    </a>
+                </li>
+                -->
+            </ul>
+        </nav>
+    </header>
+        
+
+    <main>
+        <div class="custom-card">
+            <div class="row row-custom-card">
+                <div class="col-lg-1 col-sm-2 col-xs-2">
+                    <div class="suggestion-card">
+                        <div class="suggestion-book">
+                            <img src="https://images-eu.ssl-images-amazon.com/images/I/517v7YP0v6L.jpg" alt="">
+                        </div>
+                        <div class="suggestion-book">
+                            <img src="https://images-na.ssl-images-amazon.com/images/I/51IpHUkHttL._SX326_BO1,204,203,200_.jpg" alt="">
+                        </div>
+                        <div class="suggestion-book">
+                            <img src="https://images-na.ssl-images-amazon.com/images/I/81Fn5HStrKL.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-sm-10 col-xs-10">
+                    <div class="left-card">
+                        <div class="image-card">
+                            <img src="<%= items.ImageURL %>" alt="Subtle">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <div class="right-card">
+                        <div class="info-card">
+                        
+                            <div class="book-title">
+                                <h3 class="book-title-text"><%= items.Title %></h3>
+                            </div>
+                            <h4><b>Author:</b> <%= items.Author %></h4>
+                            <h4><b>Category:</b> <%= items.CategoryName %></h4> 
+                            <h3 class="ratings">
+                                
+
+                                <span class="ratings-text">
+                                    (<%= rate %> Ratings)
+                                </span>
+                            </h3>  
+                            <p class="description">
+                                <span
+                                    style="font-weight: bold;font-size: 2rem;"
+                                >Description : </span> <%= temp %>
+                            </p> 
+                            <div class="user-rating">
+                                <span style="font-size: 2rem;font-weight: bold;margin-right: 10px">Rate It Now: </span>
+                                <i class="far rateStar fas-custom fa-star" data-value="1"></i>
+                                <i class="far rateStar fas-custom fa-star" data-value="2"></i>
+                                <i class="far rateStar fas-custom fa-star" data-value="3"></i>
+                                <i class="far rateStar fas-custom fa-star" data-value="4"></i>
+                                <i class="far rateStar fas-custom fa-star" data-value="5"></i>
+                            </div>
+                            <div class="form-group form-custom">
+                                <form action="/detail/<%= items.ASIN %>" method="POST">
+                                    <input type="submit" class="btn custom-btn btn-primary" value="Rate">
+                                </form>
+                                
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </main>
+
+    <script>
+        var ratings = <%= rate %> 
+        console.log(ratings);
+
+        let starString = '';
+
+        for (var i = 0; i < 5; i++) {
+            if (ratings < 0.25) {
+                starString += '<i class="far rateStar fas-custom fa-star"></i>';
+            }
+            else if (ratings >= 0.25 && ratings <= 0.75) {
+                starString += '<i class="fas fas-custom fa-star-half-alt"></i>';
+            }
+            else {
+                starString += '<i class="fas fas-custom fa-star"></i>';
+            }
+            ratings -= 1;
+        }
+
+        starString += `<span class="ratings-text">(${<%= rate %>} Ratings)</span>`
+
+        document.querySelector('.ratings').innerHTML = starString
+    </script>
+
+<%- include('../includes/end.ejs') %>

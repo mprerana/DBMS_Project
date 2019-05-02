@@ -1,0 +1,178 @@
+<%- include('../includes/head.ejs') %>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link rel="stylesheet" href="/css/profile.css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+</head>
+
+<%- include('../includes/navigation.ejs') %>
+
+<div class="container emp-profile">
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img src="data:image/jpeg;base64,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" alt=""/>
+                            <div class="file btn btn-lg btn-primary">
+                                Change Photo
+                                <input type="file" name="file"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h5>
+                                        <%= profile.FirstName %> &nbsp <%= profile.LastName %>
+                                    </h5>
+                                    <h6>
+                                        Web Developer and Designer
+                                    </h6>
+                                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-work">
+                            <p>WORK LINK</p>
+                            <a href="">Website Link</a><br/>
+                            <a href="">Bootsnipp Profile</a><br/>
+                            <a href="">Bootply Profile</a>
+                            <p>SKILLS</p>
+                            <a href="">Web Designer</a><br/>
+                            <a href="">Web Developer</a><br/>
+                            <a href="">WordPress</a><br/>
+                            <a href="">WooCommerce</a><br/>
+                            <a href="">PHP, .Net</a><br/>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>User Id</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><%= profile.UserId %></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><%= profile.FirstName %> &nbsp <%= profile.LastName %></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Age</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><%= profile.Age %></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Sex</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><%= profile.Sex %></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Email</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><%= profile.Email %></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Phone</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>123 456 7890</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Profession</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Web Developer and Designer</p>
+                                            </div>
+                                        </div>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Experience</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Expert</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Hourly Rate</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>10$/hr</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Total Projects</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>230</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>English Level</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Expert</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Availability</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>6 months</p>
+                                            </div>
+                                        </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Your Bio</label><br/>
+                                        <p>Your detail description</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+<%- include('../includes/end.ejs') %>

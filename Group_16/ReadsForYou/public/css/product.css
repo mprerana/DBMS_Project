@@ -1,0 +1,204 @@
+.product-form {
+    width: 15rem;
+    height: 20rem;
+    max-width: 90%;
+    margin: auto;
+    display: block;
+}
+
+.product-item {
+    width: 15rem;
+    max-width: 95%;
+    margin: 1rem;
+}
+
+.product__title {
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.product__price {
+    text-align: center;
+    color: #4d4d4d;
+    margin-bottom: 0.5rem;
+}
+
+.product__description {
+    text-align: center;
+}
+
+.custom-card {
+    width: 95%;
+    margin: auto;
+    height: 90vh;
+    background: linear-gradient(to right bottom, #48D1CC, #0000FF);
+}
+
+
+.left-card {
+    height: 100%;
+    width: 110%;
+    margin-left: 5rem;
+}
+
+.right-card {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-left: 5rem;
+    margin-left: -3rem;
+}
+
+
+
+.image-card img {
+    margin-top: 3.5rem;
+    margin-left: 10rem;
+    max-width: 300px;
+    box-shadow: 9px 6px 12px 0px rgba(0,0,0,0.75);
+}
+
+.suggestion-book {
+    background: white;
+    margin: 0 1rem;
+    margin-top: 1rem;
+}
+
+.suggestion-book img {
+    width: 120px;  
+    height: 160px;
+    border: 1px solid gray;
+}
+
+.suggestion-book img:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.book-title {
+    margin-top: 4rem;
+}
+
+.book-title-text {
+    font-size: 3rem;
+}
+
+.info-card {
+    height: 40%;
+    margin-left: 6rem;
+    margin-right: 6rem;
+}
+
+.fas-custom {
+    color: yellow;
+    font-size: 2.5rem;
+}
+
+.ratings-text {
+    font-size: 1.6rem;
+    margin-left: 3rem;
+}
+
+.ratings {
+    display: flex;
+    align-items: center;
+}
+
+.description {
+    height: 125px;
+    overflow: auto;
+    font-size: 1.6rem;
+    margin-top: 1.5rem;
+}
+
+.rateStar:hover {
+    cursor: pointer;
+}
+
+.custom-btn {
+    margin-top: 1rem;
+}
+
+.form-custom {
+    margin-top: 1rem;
+}
+
+.card{
+box-shadow: 0 2px 8px rgb(255, 255, 255);
+}
+
+.underline {
+    height: .5rem;
+    background: blue;
+    border-radius: 16px;
+    overflow: hidden;
+    width: 30%;
+    margin-top: -1.5rem;
+}
+
+.searchtext {
+    font-size: 1.7rem;
+}
+
+.inputText {
+    padding: 0.5rem;
+}
+
+.btn-primary-custom {
+    background: blue;
+    color: white;
+}
+
+.formDiv {
+    background: rgba(128, 128, 0, 0.7);
+    width: 30%;
+    margin: auto;
+    border-radius: 20px;
+    margin-top: 4rem;
+}
+
+.heading-custom {
+    clip-path: polygon(80% 0%, 100% 50%, 80% 100%, 0 100%, 0 0);
+    background: rgb(177, 177, 177);
+    width: 40%;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    padding-left: 1rem;
+    margin-left: 3rem;
+    font-size: 1.8rem;
+    color: black;
+    font-weight: 700;
+}
+
+/* ======================== */
+/* TODO */
+/* .cart__item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin: auto;
+  width: 40rem;
+  max-width: 90%;
+}
+
+.cart__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+.cart__item h1,
+.cart__item h2 {
+  margin-right: 1rem;
+  font-size: 1.2rem;
+  margin: 0;
+}
+ */
