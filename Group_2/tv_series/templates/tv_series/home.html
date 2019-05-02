@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <form action="{% url 'tv_series:home' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="search_name" placeholder="Enter movies,TV series names... " size="55">
+            <button type="submit" value="search" >Search</button>
+        </form>
+        <h2> movie details </h2>
+        <p> <strong> TV Series Name :{{ ip }} </strong> <br><br> <strong>year :{{ year }} <br><br><br>Genre:  {{ genre }} <br><br><br>Released: {{ released }} <br><br><br>Rating: {{ imdbrating }}  <br><br><br>Seasons: {{ seasons }}</strong></p>
+    </body>
+
+</html>

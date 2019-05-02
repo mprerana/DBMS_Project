@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <form action="{% url 'print:home' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="type_of_file">
+        <button type="submit" value="create">Create</button>
+    </form>
+</body>
+</html>
