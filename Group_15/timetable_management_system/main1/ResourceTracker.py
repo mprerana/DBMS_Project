@@ -1,0 +1,23 @@
+import os
+import psutil
+
+def getMemoryPercentage(memoryUsage):
+    return round((memoryUsage[0] / memoryUsage[1]) * 100, 2)
+
+
+
+def getMemoryUsage():
+    return [psutil.Process(os.getpid()).memory_info()[0], psutil.virtual_memory()[0]]
+
+
+
+def byteToMegabyte(byte):
+    return round(byte / 1048576, 2)
+
+
+
+def getCPUUsage():
+    return psutil.cpu_percent(1)    
+
+
+
