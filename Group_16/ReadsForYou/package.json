@@ -1,0 +1,27 @@
+{
+  "name": "readsforyou",
+  "version": "1.0.0",
+  "description": "Reads for you",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "deb",
+  "license": "ISC",
+  "dependencies": {
+    "apac": "^3.0.2",
+    "body-parser": "^1.18.3",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "dotenv": "^7.0.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "express-validator": "^5.3.1",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0",
+    "mysql2": "^1.6.5",
+    "passport": "^0.4.0"
+  }
+}

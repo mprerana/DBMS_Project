@@ -1,0 +1,41 @@
+<div class="backdrop"></div>
+<header class="main-header">
+    <img class="main-header__nav" src="https://i.ibb.co/Wp42Mfd/logo.png" alt="logo" border="0">
+    <button id="side-menu-toggle">Menu</button>
+    <nav class="main-header__nav" id="onlyForDetailPage">
+        <ul class="main-header__item-list">
+            <li class="main-header__item">
+                <a class="<%= path === '/dashboard' ? 'active' : '' %>" href="/dashboard">Home</a>
+            </li>
+            
+            <li class="main-header__item">
+                <a class="<%= path === '/profile' ? 'active' : '' %>" href="/profile">My Profile</a>
+            </li>
+            
+            <li class="main-header__item">
+                <a class="<%= path === '/favorites' ? 'active' : '' %>" href="/favorites/">My Favorites</a>
+            </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/logout' ? 'active' : '' %>" href="/logout">Logout</a>
+            </li>
+            <li class="main-header__item">
+                    <a class="<%= path === '/upload' ? 'active' : '' %>" href="/upload">Upload Book</a>
+            </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/contact' ? 'active' : '' %>" href="/contact">Contact us
+                </a>
+            </li>
+            
+            <li class="main-header__item">
+                <a class="<%= path === '/book' ? 'active' : '' %>" href="/book">Search book
+                </a>
+            </li>
+            <!--
+            <li class="main-header__item">
+                <a class="<%= path === '/admin/products' ? 'active' : '' %>" href="/admin/products">Admin Products
+                </a>
+            </li>
+            -->
+        </ul>
+    </nav>
+</header>

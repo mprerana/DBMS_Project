@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+ <link rel="stylesheet" 
+ href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+ <style>
+  html{
+   padding:50px;
+  }
+  ul {
+    list-style-type: none;
+  }
+  
+  li {
+    display: inline-block;
+  }
+  
+  input[type="checkbox"][id^="cb"] {
+    display: none;
+  }
+  
+  label {
+    border: 1px solid #fff;
+    padding: 10px;
+    display: block;
+    position: relative;
+    margin: 10px;
+    cursor: pointer;
+  }
+  
+  label:before {
+    background-color: white;
+    color: white;
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    border: 1px solid grey;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 28px;
+    transition-duration: 0.4s;
+    transform: scale(0);
+  }
+  
+  label img {
+    height: 200px;
+    width: 200px;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+    border-radius: 8px;
+  }
+  
+  :checked + label {
+    border-color: #ddd;
+  }
+  
+  :checked + label:before {
+    content: "✓";
+    background-color: grey;
+    transform: scale(1);
+  }
+  
+  :checked + label img {
+    transform: scale(0.9);
+    box-shadow: 0 0 5px #333;
+    z-index: -1;
+  }
+ </style>
+</head>
+<body>
+    <center>
+        <div class = "container">
+            <h1>Choose Categories</h1>
+            <div class="col-sm-12">  
+                <form method="post" action="/usercategory">
+                <ul>
+                    <li>
+                        <input type="checkbox" id="cb1" name="categories[]" value=0 />
+                        <label for="cb1"><img src="assets/0.jpg" /></label>
+                        <p style="text-align :center">Arts & Photography</p>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="cb2" name="categories[]" value=1 />
+                        <label for="cb2"><img src="assets/1.jpg" /></label>
+                        <p style="text-align :center">Biographies & Memoirs</p>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="cb3" name="categories[]" value=2 />
+                        <label for="cb3"><img src="assets/2.jpg" /></label>
+                        <p style="text-align :center">Business & Money</p>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="cb4" name="categories[]" value=3 />
+                        <label for="cb4"><img src="assets/3.jpg" /></label>
+                        <p style="text-align :center">Calendars</p>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="cb5" name="categories[]" value=4 />
+                        <label for="cb5"><img src="assets/4.jpg" /></label>
+                        <p style="text-align :center">Children’’s Books</p>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="cb6" name="categories[]" value=5 />
+                        <label for="cb6"><img src="assets/5.jpg" /></label>
+                        <p style="text-align :center">Comics & Graphic Novels</p>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="cb7" name="categories[]" value=6 />
+                        <label for="cb7"><img src="assets/6.jpg" /></label>
+                        <p style="text-align :center">Computers & Technology</p>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="cb8" name="categories[]" value=7 />
+                        <label for="cb8"><img src="assets/7.jpg" /></label>
+                        <p style="text-align :center">Cookbooks, Food & Wine</p>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="cb9" name="categories[]" value=8 />
+                        <label for="cb9"><img src="assets/8.jpg" /></label>
+                        <p style="text-align :center">Crafts, Hobbies & Home</p>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="cb10" name="categories[]" value=9 />
+                        <label for="cb10"><img src="assets/9.png" /></label>
+                        <p style="text-align :center">Christian Books & Bibles</p>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="cb11" name="categories[]" value=10 />
+                        <label for="cb11"><img src="assets/10.jpg" /></label>
+                        <p style="text-align :center">Engineering & Transportation</p>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="cb12" name="categories[]" value=11 />
+                        <label for="cb12"><img src="assets/11.jpg" /></label>
+                        <p style="text-align :center">Health, Fitness & Dieting</p>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="cb13" name="categories[]" value=12 />
+                        <label for="cb13"><img src="assets/12.png" /></label>
+                        <p style="text-align :center">History</p>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="cb14" name="categories[]" value=13 />
+                        <label for="cb14"><img src="assets/13.jpg" /></label>
+                        <p style="text-align :center">Humor & Entertainment</p>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="cb15" name="categories[]" value=14 />
+                        <label for="cb15"><img src="assets/14.jpg" /></label>
+                        <p style="text-align :center">Law</p>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="cb16" name="categories[]" value=15 />
+                        <label for="cb16"><img src="assets/15.jpg" /></label>
+                        <p style="text-align :center">Literature & Fiction</p>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="cb17" name="categories[]" value=16 />
+                        <label for="cb17"><img src="assets/16.jpg" /></label>
+                        <p style="text-align :center">Medical Books</p>
+                    </li>
+                    <li><input type="checkbox" id="cb18" name="categories[]" value=17 />
+                        <label for="cb18"><img src="assets/17.jpeg" /></label>
+                        <p style="text-align :center">Mystery, Thriller & Suspense</p>
+                    </li>
+                    <li><input type="checkbox" id="cb19" name="categories[]" value=18 />
+                        <label for="cb19"><img src="assets/18.jpg" /></label>
+                        <p style="text-align :center">Parenting & Relationships</p>
+                    </li>
+                    <li><input type="checkbox" id="cb20" name="categories[]" value=19 />
+                        <label for="cb20"><img src="assets/19.jpeg" /></label>
+                        <p style="text-align :center">Politics & Social Sciences</p>
+                    </li>
+      
+                    <li><input type="checkbox" id="cb21" name="categories[]" value=20 />
+                        <label for="cb21"><img src="assets/20.jpg" /></label>
+                        <p style="text-align :center">Reference</p>
+                    </li>
+                    <li><input type="checkbox" id="cb22" name="categories[]" value=21 />
+                    <label for="cb22"><img src="assets/21.jpg" /></label>
+                    <p style="text-align :center">Religion & Spirituality</p>
+                    </li>
+                    <li><input type="checkbox" id="cb23" name="categories[]" value=22 />
+                    <label for="cb23"><img src="assets/22.jpg" /></label>
+                    <p style="text-align :center">Romance</p>
+                    </li>
+                    <li><input type="checkbox" id="cb4" name="categories[]" value=23 />
+                    <label for="cb24"><img src="assets/23.jpg" /></label>
+                    <p style="text-align :center">Science & Math</p>
+                    </li>
+        
+                    <li><input type="checkbox" id="cb25" name="categories[]" value=24 />
+                    <label for="cb25"><img src="assets/24.jpg" /></label>
+                    <p style="text-align :center">Science Fiction & Fantasy</p>
+                    </li>
+                    <li><input type="checkbox" id="cb26" name="categories[]" value=25 />
+                    <label for="cb26"><img src="assets/25.jpg" /></label>
+                    <p style="text-align :center">Self-Help</p>
+                    </li>
+                    <li><input type="checkbox" id="cb27" name="categories[]" value=26 />
+                    <label for="cb27"><img src="assets/26.jpg" /></label>
+                    <p style="text-align :center">Sports & Outdoors</p>
+                    </li>
+                    <li><input type="checkbox" id="cb28" name="categories[]" value=27 />
+                    <label for="cb28"><img src="assets/27.jpg" /></label>
+                    <p style="text-align :center">Teen & Young Adult</p>
+                    </li>
+        
+                    <li><input type="checkbox" id="cb29" name="categories[]" value=28 />
+                    <label for="cb29"><img src="assets/28.png" /></label>
+                    <p style="text-align :center">Test Preparation</p>
+                    </li>
+                    <li><input type="checkbox" id="cb30" name="categories[]" value=29 />
+                    <label for="cb30"><img src="assets/29.jpg" /></label>
+                    <p style="text-align :center">Travel</p>
+                    </li>
+                    <li><input type="checkbox" id="cb31" name="categories[]" value=30 />
+                    <label for="cb31"><img src="assets/30.png" /></label>
+                    <p style="text-align :center">Gay & Lesbian</p>
+                    </li>
+                    <li><input type="checkbox" id="cb32" name="categories[]" value=31 />
+                    <label for="cb32"><img src="assets/31.jpg" /></label>
+                    <p style="text-align :center">Education & Teaching</p>
+                </li>
+            </ul>
+            <input type="submit" class="btn btn-succcess btn-lg" value="Submit" />
+        </form>
+    </div>
+</div>
+</center>
+</body>
+</html>

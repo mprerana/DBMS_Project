@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>Login Register</title>
+ <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+ <link rel="stylesheet" 
+ href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+ <style>
+  html{
+   padding:50px;
+  }
+ </style>
+</head>
+<body>
+<div class="container">
+  <div class="col-sm-6 col-sm-offset-3">
+   <h2>Register</h2>
+   <% if(message.length > 0) { %>
+    <div class="alert alert-danger"><%= message %></div> 
+   <% } %>
+
+<form id="signup" name="signup" method="post" action="/signup">
+    <div class="form-group">
+  <label for="email">Email Address</label>
+    <input class="form-control" name="email" type="email" required="true"/>
+    </div>
+    <div class="form-group">
+      <label for="firstname">Firstname</label>
+  <input class="form-control" name="firstname" type="text" required="true" />
+    </div>
+    <div class="form-group">
+      <label for="lastname">Lastname</label>
+  <input class="form-control" name="lastname" type="text" required="true" />
+    </div>
+<div class="form-group">
+      <label for="password">Password</label>
+  <input class="form-control" name="password" type="password"  required="true"/>
+    </div>
+<div class="form-group">
+      <label for="dob">Date Of Birth</label>
+  <input class="form-control" name="dob" type="date" required="true" />
+    </div>
+<div class="form-group">
+      <label for="Sex">Sex</label><br>
+  <input type="radio" name="sex" value="M" checked> Male<br>
+            <input type="radio" name="sex" value="F"> Female<br>
+            <input type="radio" name="sex" value="O"> Other <br>
+    </div>
+    
+
+    <!-- <button type="submit" class="btn btn-succcess btn-lg">Register</button> -->
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3"><input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+   </form>
+   <br><br>
+   <hr>
+
+   <p>Already have an account <a href="/signin">LogIn</a></p>
+   <p>Go Back <a href="/">Home</a>.</p>
+</body>
+</html>

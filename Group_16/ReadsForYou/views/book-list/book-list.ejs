@@ -1,0 +1,47 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/product.css">
+    </head>
+
+    <body style="background-image: url(http://anetteh.net/wp-content/themes/clockstone/images/bgs/bg_i_11.jpg)">
+        <%- include('../includes/navigation.ejs') %>
+
+            <main>
+                <div class="heading-custom">
+                    Trending...
+                </div>
+            
+                
+                <% if (items.length > 0) { %>
+                    <div class="grid">
+
+                        <% for (let product of items) { %>
+                            <article class="card product-item" style="background-color: whitesmoke">
+                                <header class="card__header" style="background-color: #bd9942">
+                                    <h1 class="product__title">
+                                        <%= product.Title %>
+                                    </h1>
+                                </header>
+                                <div class="card__image">
+                                    <img src="<%= product.ImageURL %>" height=300px alt="<%= product.title %>">
+                                </div>
+                                <!-- <div class="card__content">
+                                    <p class="product__description">
+                                        <%= product.description %>
+                                    </p>
+                                </div> -->
+                                <div class="card__actions">
+                                    <a href="/detail/<%= product.ASIN %>" class="btn">Details</a>
+                                    <%- include('../includes/add-to-favorites.ejs', {product: product}) %>
+                                    <a href="/fileupload/<%= product.ASIN %>" class="btn">Upload PDF</a>
+                                    
+                                </div>
+                            </article>
+                            <% } %>
+                    </div>
+                    <br>
+
+                    <% } else { %>
+                        <h1>No Books Found!</h1>
+                        <% } %>
+            </main>
+            <%- include('../includes/end.ejs') %>
