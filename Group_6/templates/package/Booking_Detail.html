@@ -1,0 +1,73 @@
+{% extends 'nav.html' %}
+{% block content %}
+{% load staticfiles %}
+
+			<!-- start banner Area -->
+			<section class="about-banner relative">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								Booking
+							</h1>
+							<p class="text-white link-nav"><a href="index.html">Packages </a>  <span class="fa fa-long-arrow-right"></span>  <a href="packages.html">Booking</a></p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->
+
+			<!-- Start destinations Area -->
+			<section class="destinations-area section-gap">
+				<div class="container">
+		            <div class="row">
+
+						<div class="col-lg-4 offset-lg-4">
+							<div class="single-destinations">
+								<div class="thumb">
+									<img src="img/packages/d6.jpg" alt="">
+								</div>
+								<div class="details">
+
+									<ul class="package-list">
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Adults</span>
+											<span>{{ Adults }} </span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Child</span>
+											<span>{{ Child }} </span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+												<span>Infant</span>
+												<span>{{ Infant }}</span>
+
+
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Extras</span>
+											<span>All Inclusive</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Total Fare</span>
+											<a href="#" class="price-btn">Rs {{ Fare }}</a>
+										</li>
+
+										<li class="d-flex justify-content-between align-items-center" style="margin-left:55px;">
+											<a class="newbox" href="{% url 'package:book_package3' %}" >Confirm Booking</a>
+										</li>
+
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</section>
+			<!-- End destinations Area -->
+
+
+
+  {% endblock %}

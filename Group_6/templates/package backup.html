@@ -1,0 +1,135 @@
+{% extends 'nav.html' %}
+{% block content %}
+{% load staticfiles %}
+
+			<!-- start banner Area -->
+			<section class="about-banner relative">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								Tour Packages
+							</h1>
+							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="packages.html"> Tour Packages</a></p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->
+	{% for package in packages %}
+<p>1</p>
+
+
+				{% if details.Package_Id in package.id %}
+				{{ details }}
+				{% endif %}
+
+            {% endfor %}
+			<!-- Start destinations Area -->
+			<section class="destinations-area section-gap">
+				<div class="container">
+		            <div class="row d-flex justify-content-center">
+		                <div class="menu-content pb-40 col-lg-8">
+		                    <div class="title text-center">
+		                        <h1 class="mb-10">Popular Destinations</h1>
+		                        <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast, day to.</p>
+		                    </div>
+		                </div>
+		            </div>
+					<div class="row">
+
+						{% for package in packages %}
+						<div class="col-lg-4">
+							<div class="single-destinations">
+								<div class="thumb">
+									<img src="img/packages/d6.jpg" alt="">
+								</div>
+								<div class="details">
+									<h4> {{ package.Title }}</h4>
+									<p>
+										{{ package.Description}}
+									</p>
+									<ul class="package-list">
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Duration</span>
+											<span>{{ package.Day}} days and {{ package.Night}} nights</span>
+										</li>
+										<!--<li class="d-flex justify-content-between align-items-center">-->
+											<!--<span>Key features</span>-->
+											<!--<span></span>-->
+										<!--</li>-->
+										<li class="d-flex justify-content-between align-items-center">
+											<span>City</span>
+											<!--{% for cities in city_id %}-->
+												<!--{% if forloop.first %}-->
+													<!--<span>{{ cities.Name}}</span>-->
+												<!--{% endif %}-->
+											<!--{% endfor %}-->
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Extras</span>
+											<span>All Inclusive</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Price per person</span>
+											<a href="#" class="price-btn">Rs {{ package.Cost }}</a>
+										</li>
+										{% for details in package_detail %}
+										<!--{% if details.Package_Id in package.id %}-->
+										{{ details.Package_Id }}
+											{{ details.Title }}
+										<li class="d-flex justify-content-between align-items-center">
+											<span>view details</span>
+											<a href="{% url 'package:details_trip_package' pk=details.id %}" >{{ details.Title }}</a>
+										</li>
+										<!--{% endif %}-->
+										{% endfor %}
+										<!--<li class="d-flex justify-content-between align-items-center">-->
+											<!--{% for details in package_detail %}
+												{{ details.Title }}
+												{% if details.Package_Id in package.id %}-->
+											<!--<span>	View Details</span>-->
+												<!--	<a href="{% url 'package:details_trip_package' pk=details.id %}" >{{details.Title}}</a>
+												--><!--{% endif %}-->
+											<!--{% endfor %}-->
+										<!--</li>-->
+
+									</ul>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</section>
+			<!-- End destinations Area -->
+
+
+			<!-- Start home-about Area -->
+			<section class="home-about-area">
+				<div class="container-fluid">
+					<div class="row align-items-center justify-content-end">
+						<div class="col-lg-6 col-md-12 home-about-left">
+							<h1>
+								Did not find your Package? <br>
+								Feel free to ask us. <br>
+								We‘ll make it for you
+							</h1>
+							<p>
+								inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach. inappropriate behavior is often laughed.
+							</p>
+							<a href="#" class="primary-btn text-uppercase">request custom price</a>
+						</div>
+						<div class="col-lg-6 col-md-12 home-about-right no-padding">
+							<img class="img-fluid" src="img/packages/about-img.jpg" alt="">
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End home-about Area -->
+
+
+  {% endblock %}
+		</body>
+	</html>

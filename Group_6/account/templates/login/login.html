@@ -1,0 +1,106 @@
+{% extends 'nav.html' %}
+{% block content %}
+    {% load widget_tweaks %}
+
+{#<h2>Login</h2>#}
+{#  <form method="post">#}
+{#    {% csrf_token %}#}
+{##}
+{#    {{ form.as_p }}#}
+{#    <button type="submit">Login</button>#}
+{#  </form>#}
+
+
+			<!-- start banner Area -->
+			<section class="banner-area relative">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row fullscreen align-items-center justify-content-between">
+						<div class="col-lg-6 offset-lg-3 col-md-6 banner-right">
+						 	<div class="tab-content" id="myTabContent">
+							  <div class="tab-pane fade show active" id="flight" role="tabpanel" aria-labelledby="flight-tab">
+                  <form class="text-center border border-light p-5 form-wrap" method="post">
+  {% csrf_token %}
+      <p class="h4 mb-4">Login</p>
+
+      {% for field in form %}
+              {{ field.label_tag }}<br>
+          {{ field|add_class:"form-control mb-4" }}
+       <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+           {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+          {% endfor %}
+      </small>
+      {% endfor %}
+      {% for error in form.non_field_errors %}
+      <p style="color: red">{{ error }}</p>
+      {% endfor %}
+
+   <div class="d-flex justify-content-around">
+          <div>
+              <!-- Forgot password -->
+              <a href="/accounts/password/reset/">Forgot password?</a>
+          </div>
+      </div>
+
+      <!-- Sign in button -->
+      <button class="btn btn-info btn-block my-4" type="submit">Login</button>
+
+      <!-- Register -->
+      <p>Not a member?
+          <a href="{% url 'account:register' %}">Register</a>
+      </p>
+
+  </form>
+
+							</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->
+
+
+        <!--
+<div>
+<center>
+<div style="width: 40% ">
+<form method="post">
+{% csrf_token %}
+    <p>Login</p>
+
+    {% for field in form %}
+            {{ field.label_tag }}<br>
+        {{ field|add_class:"form-control mb-4" }}
+     <small id="defaultRegisterFormPasswordHelpBlock">
+         {% for error in field.errors %}
+          <p>{{ error }}</p>
+        {% endfor %}
+    </small>
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+    <p>{{ error }}</p>
+    {% endfor %}
+
+ <div>
+        <div>
+
+            <a href="/accounts/password/reset/">Forgot password?</a>
+        </div>
+    </div>
+
+
+    <button type="submit">Login</button>
+
+
+    <p>Not a member?
+        <a href="{% url 'account:register' %}">Register</a>
+    </p>
+
+</form>
+</div>
+</center>
+</div>
+-->
+{% endblock %}
