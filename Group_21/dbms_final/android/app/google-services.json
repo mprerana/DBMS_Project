@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "251517052707",
+    "firebase_url": "https://neeha-aa811.firebaseio.com",
+    "project_id": "neeha-aa811",
+    "storage_bucket": "neeha-aa811.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:251517052707:android:258ecc908f049476",
+        "android_client_info": {
+          "package_name": "com.example.login_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUxmrGZb-5IhbTdmLPa_dQM7m1UxM6FJg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "251517052707-gajfcsc8g89a5pchvcd86iu64fr7hbp5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
