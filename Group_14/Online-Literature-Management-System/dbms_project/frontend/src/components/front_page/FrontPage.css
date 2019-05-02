@@ -1,0 +1,181 @@
+.fp {
+  background: url("https://i.ibb.co/vYLZQPq/fp-bg.png") no-repeat center center
+    fixed;
+  /* -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain; */
+  background-size: 100% auto;
+  font-family: "Righteous", cursive;
+  overflow-x: hidden;
+}
+
+/* .bg_1 {
+  height: 99vh;
+  background: url("https://i.ibb.co/NrJgy65/fp-bg.png") no-repeat center center
+    fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: "Righteous", cursive;
+  overflow: hidden;
+} */
+
+/* div.owl1 {
+  position: fixed;
+  top: 1.5%;
+  left: 3%;
+} */
+
+/* img.o1 {
+  max-width: 45%;
+} */
+
+.fpregrow {
+  padding-left: 5vw;
+}
+
+div.fixed1 {
+  /* background: rgba(129, 192, 82, 0.9); */
+  padding-top: 6vh;
+  padding-left: 1.6vw;
+  padding-right: 9.7vw;
+  height: 100%;
+  /* padding-bottom: 7%; */
+  /* padding-right: 4%; */
+  /* border-radius: 17px; */
+  /* position: fixed; */
+  /* top: 7%;
+  left: 5.4%; */
+  text-align: center;
+  color: white;
+  /* font-family: "Barlow Semi Condensed", sans-serif;
+  font-weight: bold; */
+  font-size: 1em;
+  overflow: hidden;
+}
+
+div.fixed2 {
+  /* background-color: rgba(255, 205, 64, 0.8); */
+  padding-top: 68vh;
+  /* padding-bottom: 5%; */
+  /* padding-left: 6%; */
+
+  /* border-radius: 17px; */
+  /* position: fixed; */
+  /* bottom: 1%; */
+  /* right: 1%; */
+  text-align: center;
+  color: white;
+  /* font-family: "Barlow Semi Condensed", sans-serif; */
+  font-size: 1em;
+  overflow: hidden;
+}
+
+div.marigins {
+  /* vertical-align */
+  padding-top: 11%;
+  padding-bottom: 12%;
+  /* horizontal align */
+  margin: auto;
+  /* width: 50%;
+  height: 100%; */
+  text-align: center;
+  font-size: 20px;
+  overflow: hidden;
+}
+
+img.l1 {
+  padding: 0;
+  max-width: 40%;
+  max-height: 40%;
+  visibility: inherit;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Sign Up Button */
+.animated-button.thar-two {
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  border: 2px solid #ffffff;
+  transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+.animated-button.thar-two:hover {
+  color: #81c052 !important;
+  background-color: transparent;
+  text-shadow: ntwo;
+}
+.animated-button.thar-two:hover:before {
+  top: 0%;
+  bottom: auto;
+  height: 100%;
+}
+.animated-button.thar-two:before {
+  display: block;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  height: 0px;
+  width: 100%;
+  z-index: -1;
+  content: "";
+  color: #81c052 !important;
+  background: #ffffff;
+  transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+
+/* Sign in button */
+.animated-button.thar-four {
+  max-width: 70%;
+  margin: auto;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  border: 2px solid #ffffff;
+  transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+}
+.animated-button.thar-four:hover {
+  color: #ffcd40 !important;
+  background-color: transparent;
+  text-shadow: nfour;
+}
+.animated-button.thar-four:hover:before {
+  right: 0%;
+  left: auto;
+  width: 100%;
+}
+.animated-button.thar-four:before {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 0px;
+  z-index: -1;
+  content: "";
+  color: #ffcd40 !important;
+  background: #ffffff;
+  transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.fpregtab {
+  background: url("https://i.ibb.co/ZgmTSz5/reg-bg.png") no-repeat;
+  background-size: contain;
+}
+
+.fplogtab {
+  background: url("https://i.ibb.co/Mg2vXFf/log-bg.png") no-repeat bottom;
+  background-size: contain;
+}
+
+.fplogtext {
+  /* padding-right: 5vw; */
+  position: fixed;
+  bottom: 10vh;
+  right: 6vw;
+}

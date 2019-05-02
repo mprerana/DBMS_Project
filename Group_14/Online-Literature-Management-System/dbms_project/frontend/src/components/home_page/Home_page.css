@@ -1,0 +1,105 @@
+.hp {
+  background: url("https://i.ibb.co/hXSJLxF/home-page-bg.png") no-repeat center
+    center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: "Righteous", cursive;
+  overflow-x: hidden;
+}
+
+img.halfowl {
+  max-width: 100%;
+  max-height: 100%;
+  right: 15px;
+  position: relative;
+  padding-top: 20px;
+}
+
+.quotebox {
+  padding-top: 30vh;
+}
+
+.homepagequotes {
+  width: 85%;
+  margin: 50px;
+  font-family: "Kalam", cursive;
+  font-weight: 900;
+  font-size: 1.4em;
+  color: #e6e6e6;
+  padding: 3.4em 132px 2.4em 82px;
+  /* border-left: 8px solid #eb1c3a; */
+  /* border-top-right-radius: 30px; */
+  /* border-bottom-right-radius: 30px; */
+  line-height: 1.6;
+  position: relative;
+  /* background: #16263de8; */
+}
+
+/* .homepagequotes::before {
+  font-family: "Times New Roman", Times, serif;
+  content: "\201C";
+  color: #eb1c3a;
+  font-size: 4em;
+  position: absolute;
+  left: 10px;
+  top: -10px;
+} */
+
+.homepagequotes::after {
+  content: "";
+}
+
+.homepagequotes span {
+  display: block;
+  color: #e6e6e6;
+  font-family: "Righteous", cursive;
+  text-align: right;
+  font-style: normal;
+}
+
+blockquote.homepagequotes {
+  background: url("https://i.ibb.co/dc4gL2X/quoteboxbg.png") no-repeat;
+  background-size: contain;
+}
+
+.hpb2 {
+  background: url("https://i.ibb.co/kX7t6Rq/hpb2bg.png") no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+.hpb2img {
+  max-width: 100%;
+  max-height: 100%;
+  left: 15px;
+  position: relative;
+  padding-top: 20px;
+}
+
+img.friendimg {
+  max-width: 100%;
+  max-height: 100%;
+  right: 15px;
+  position: relative;
+}
+
+.hpb3 {
+  background: url("https://i.ibb.co/cDS0GFv/hpb3bg.png") no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  margin-top: -1.5px;
+}
+
+.hpb2t {
+  color: white;
+  font-family: "Quicksand", sans-serif;
+  font-size: xx-large;
+}
+
+.hpb4 {
+  /* background-color: #63d2e8; */
+}

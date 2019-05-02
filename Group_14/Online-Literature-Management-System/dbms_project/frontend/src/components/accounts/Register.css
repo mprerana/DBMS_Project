@@ -1,0 +1,18 @@
+.rp {
+  background: url("https://i.ibb.co/j4gkhFF/register-bg.png") no-repeat center
+    center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: "Righteous", cursive;
+  overflow-x: hidden;
+}
+
+.reg_form {
+  padding: 3%;
+}
+
+.signup {
+  font-size: 35px;
+}

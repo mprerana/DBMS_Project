@@ -1,0 +1,61 @@
+nav {
+  font-family: "Oswald", sans-serif;
+  font-size: large;
+}
+
+/* unvisited link */
+.nav-link:link {
+  color: #1f304c;
+}
+
+/* visited link */
+.nav-link:visited {
+  color: #1f304c;
+}
+
+/* mouse over link */
+.nav-link:hover {
+  color: #eb1c3a;
+  margin-bottom: 4px solid #eb1c3a;
+}
+
+.navbar.scrolled {
+  background-color: #fff !important;
+  transition: background-color 200ms linear;
+}
+
+.dropdown-menu {
+  margin-top: 8px;
+}
+
+.navbar {
+  padding-top: 3px;
+  padding-bottom: 0;
+}
+
+.dropdown-menu-center {
+  right: auto;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+}
+
+.dropdown-menu {
+  border: transparent;
+  border-radius: 0;
+}
+
+.dropdown-item {
+  color: #16263d;
+}
+
+.dropdown-item:hover {
+  color: #e6e6e6;
+  background-color: #1f304c;
+}
+
+/* on hover navbar */
+/* .dropdown:hover .dropdown-menu {
+  display: block;
+} */
