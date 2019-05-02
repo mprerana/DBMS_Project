@@ -1,0 +1,250 @@
+{% extends 'userlogin/base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load static %}
+<html lang="en">
+  <head>
+    {% block extrahead %}
+
+    <title>Welfare - Free Bootstrap 4 Template by Colorlib</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
+    <style>
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+</style>
+
+
+    <link rel="stylesheet" href = {% static "User/css/owl.carousel.min.css" %} >
+    <link rel="stylesheet" href={% static "User/css/owl.theme.default.min.css" %}>
+    <link rel="stylesheet" href={% static "User/css/magnific-popup.css" %}>
+
+    <link rel="stylesheet" href={% static "User/css/aos.css" %}>
+
+    <link rel="stylesheet" href={% static "User/css/ionicons.min.css" %}>
+
+    <link rel="stylesheet" href={% static "User/css/bootstrap-datepicker.css" %}>
+    <link rel="stylesheet" href={% static "User/css/jquery.timepicker.css" %}>
+
+
+    <link rel="stylesheet" href={% static "User/css/flaticon.css" %}>
+    <link rel="stylesheet" href={% static "User/css/icomoon.css" %}>
+    <link rel="stylesheet" href={% static "User/css/style.css" %}>
+    <link rel="stylesheet" href={% static "User/css/open-iconic-bootstrap.min.css" %}>
+    <link rel="stylesheet" href={% static "User/css/animate.css" %}>
+    <link rel="stylesheet" href={% static "User/css/flaticon.css" %}>
+    <link rel="stylesheet" href={% static "User/css/icomoon.css" %}>
+{% endblock %}
+  </head>
+  <body>
+{% block body %}
+
+      <div class="container-fluid" >
+        <!-- <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section ftco-animate text-center">
+            <h2 class="mb-4">Our Latest Events</h2>
+          </div>
+        </div> -->
+        <!-- <img src="https://2.bp.blogspot.com/-R_KhK5-utCw/XHzFv09f2vI/AAAAAAAAARo/3m5JsQvQTrITz9SMmVUEgSiCo04B7CsagCLcBGAs/s1600/iris-uijttewaal-1111847-unsplash.jpg" alt="ERROR!" style="width:100%;height:560px;display:block;margin:auto;"> -->
+        <div class="row" style="width:102%;height:900px;margin-top: -25%;background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://2.bp.blogspot.com/-R_KhK5-utCw/XHzFv09f2vI/AAAAAAAAARo/3m5JsQvQTrITz9SMmVUEgSiCo04B7CsagCLcBGAs/s1600/iris-uijttewaal-1111847-unsplash.jpg');">
+
+        </div>
+        <div class="row" style="margin-top:-10%;">
+        	<div class="col-md-9 d-flex ftco-animate">
+            <div style="overflow-y: visible;overflow-x: scroll;white-space: nowrap;">
+              {% for event in events %}
+              <div style="white-space: normal;display: inline-block;">
+                <div class="blog-entry align-self-stretch">
+                  <a href="blog-single.html" class="block-20" style="background-image: url('https://www.thenewsminute.com/sites/default/files/styles/news_detail/public/Kerala_rain_trivandrum_750_3_1.jpg?itok=CaW5cLWi');">
+                  </a>
+
+                  <div class="text p-4 d-block">
+                    <div class="meta mb-3">
+                      <div><a href="#">{{event.title}}</a></div>
+
+
+                    </div>
+
+                    <h3 class="heading mb-4"><a href="#">{{event.place}}</a></h3>
+                    <p class="time-loc"><span class="mr-2">{{event.state}}</span> </p>
+                    <p>Started On:{{event.started_on}}</p>
+                    <p>Target : {{event.target}}</p>
+                    <p><a href="{% url 'funds:home_with_pk' pk=event.pk %}"><button  type="submit" id="submit" value="submit"  name="addcart" class = "btn btn-primary" >More Info </button></a> </p>
+                    <p><button type="button" class="btn btn-warning" name="button">Payment</button> </p>
+                    <!-- <form method="POST" action="{% url 'User:cart' %}">
+                      {% csrf_token %}
+                      <center style="padding:5px 5px 5px ;">
+                      <b>Quantity : </b>
+                      <input type="number" name="quantity" min="1" max={{event.2}}  id="{{event.0.eventid}}" style="padding:10px 10px 10px ;width:80px;height:30px" placeholder="0" required/><br>
+                      <b style="color: orange;padding:0px 20px;font-size: 20px;">  <i>Rs</i>/<i style="font-size: 15px;">product</i> </b>
+                      <br><br>
+                      <input  name="eventid" value="{{event.0.eventid}}" type="hidden" />
+
+                      </center>
+
+                    </form> -->
+
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+
+            </div>
+          </div>
+          <div class="col-md-3 d-flex ftco-animate" style="margin-top:15%;text-align:center">
+            <table class="table table-borderless">
+<tbody>
+  <tr>
+    <th scope="row"><a href="{% url 'User:events' %}" style="padding:20px 10px;color:#8c8c8c;">All</a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="{% url 'Blood_blog:Blog' %}" style="padding:20px 10px;color:#8c8c8c;">Blood</a><br></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="{% url 'customer:personal' %}" style="padding:20px 10px;color:#8c8c8c;">Medical</a><br></th>
+  </tr>
+  </tr>
+  <tr>
+    <th scope="row"><a href="{% url 'Blood_blog:DonationFormView' %}" style="padding:20px 10px;color:#8c8c8c;">BloodRequest</a>
+</th>
+  </tr>
+  <tr>
+    <th scope="row"> <a href="{% url 'bcamp:BcampHome' %}" style="padding:20px 10px;color:#8c8c8c;">Blood Camps</a><br></th>
+  </tr>
+  </tr>
+  <tr>
+    <th scope="row"> <a href="{% url 'User:natdis'  %}" style="padding:20px 10px;color:#8c8c8c;">Natural Disasters</a><br></th>
+  </tr>
+
+</tbody>
+</table>
+          </div>
+        </div>
+      </div>
+
+
+    <footer class="ftco-footer ftco-section img">
+    	<div class="overlay"></div>
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-3">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">About Us</h2>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Recent Blog</h2>
+              <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
+                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
+                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+             <div class="ftco-footer-widget mb-4 ml-md-4">
+              <h2 class="ftco-heading-2">Site Links</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">Home</a></li>
+                <li><a href="#" class="py-2 d-block">About</a></li>
+                <li><a href="#" class="py-2 d-block">Donate</a></li>
+                <li><a href="#" class="py-2 d-block">Causes</a></li>
+                <li><a href="#" class="py-2 d-block">Event</a></li>
+                <li><a href="#" class="py-2 d-block">Blog</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src={% static "User/js/jquery.min.js" %}></script>
+  <script src={% static "User/js/jquery-migrate-3.0.1.min.js" %}></script>
+  <script src={% static "User/js/popper.min.js" %}></script>
+  <script src={% static "User/js/bootstrap.min.js" %}></script>
+  <script src={% static "User/js/jquery.easing.1.3.js" %}></script>
+  <script src={% static "User/js/jquery.waypoints.min.js" %}></script>
+  <script src={% static "User/js/jquery.stellar.min.js" %}></script>
+  <script src={% static "User/js/owl.carousel.min.js" %}></script>
+  <script src={% static "User/js/jquery.magnific-popup.min.js" %}></script>
+  <script src={% static "User/js/aos.js" %}></script>
+  <script src={% static "User/js/jquery.animateNumber.min.js" %}></script>
+  <script src={% static "User/js/bootstrap-datepicker.js" %}></script>
+  <script src={% static "User/js/jquery.timepicker.min.js" %}></script>
+  <script src={% static "User/js/scrollax.min.js" %}></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src={% static "User/js/google-map.js" %}></script>
+  <script src={% static "User/js/main.js" %}></script>
+{% endblock %}
+  </body>
+</html>

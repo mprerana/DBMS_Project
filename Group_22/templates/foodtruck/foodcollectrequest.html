@@ -1,0 +1,82 @@
+{% extends 'userlogin/base.html' %}
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+<html lang="en">
+<head>
+  {% block extrahead %}
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% endblock %}
+</head>
+<body>
+  {% block body%}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-7" style="color:#f6f6f6;background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('http://btdtdevelopmenttrust.org/image/service_images/big-image3.jpg');">
+        <div class="row">
+          <div class="col-7">
+            <br>
+            <h5>About Us</h5>
+            <p style="text-align:justify;">No Food Waste is a mission to end food waste and hunger to make the “World Hunger Free”. We recover surplus food from weddings, parties and functions and donate it to needy and hungry people.</p>
+            <p style="text-align:justify;">Dedicated Food Recovery Units including Helpline Number, Food Recovery Vehicles, Vessels, Mobile Application and Volunteers are involved for effective process execution.</p>
+          </div>
+        </div>
+        <div>
+          <div class="col-6"></div>
+          <div class="col-6">
+            <br>
+            <ul style="list-style-type:none;">
+              <li> HOURS OF OPERATION : 9:00AM to 10:00PM </li>
+              <li>Can also call to : +91 9121018699</li>
+              <li>Email : roshanreddyy@gmail.com</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-5">
+        <form method="post" style="font-size:16px;">
+          {% csrf_token %}
+          <div class="container" style="width:100%;margin-top:1%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <div style="padding:5%;">
+              <div class="form-row">
+                <div class="form-group col-md-12 mb-0">
+                  {{form.name|as_crispy_field }}
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-12 mb-0">
+                  {{ form.phone_number|as_crispy_field }}
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-12 mb-0">
+                  {{ form.address|as_crispy_field }}
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-12 mb-0">
+                  {{ form.country|as_crispy_field }}
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6 mb-0">
+                  {{ form.city|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-6 mb-0">
+                  {{ form.pincode|as_crispy_field }}
+                </div>
+              </div>
+              <div>
+                <center><button style="width:50%;" type="submit" class="btn btn-primary">submit</button></center>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+</body>
+</html>

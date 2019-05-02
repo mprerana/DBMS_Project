@@ -1,0 +1,378 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#navbar {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 70px 100px;
+  transition: 0.2s;
+  position: fixed;
+  width: 100%;
+  top: 50px;
+  z-index: 70;
+}
+
+#navbar a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 30px;
+  text-decoration: none;
+  font-size: 35px;
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+#navbar #logo {
+  font-size: 60px;
+  font-weight: bold;
+  transition: 0.4s;
+}
+
+#navbar a:hover {
+
+  color: #FF8C00;
+}
+
+#navbar a.active {
+
+  color: #FF8C00;
+}
+
+#navbar-right {
+  float: right;
+}
+
+@media screen and (max-width: 580px) {
+  #navbar {
+    padding: 20px 10px !important;
+  }
+  #navbar a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  #navbar-right {
+    float: none;
+  }
+#div1 {
+  font-size:40px;
+}
+}
+</style>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+  border: 0px solid #e7e7e7;
+
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #666;
+  text-align: center;
+  padding: 50px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #ddd;
+}
+
+li a.active {
+  color: white;
+  background-color: #4CAF50;
+}
+</style>
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width:450px;
+  height: 750px;
+  margin: 2.5rem;
+  text-align: center;
+  font-family: arial;
+  float:left;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+  .quantity {
+    position: relative;
+  }
+
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button
+  {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type=number]
+  {
+    -moz-appearance: textfield;
+  }
+
+  .quantity input {
+    width: 100px;
+    height: 50px;
+    line-height: 1.65;
+    float: left;
+    display: block;
+    padding: 0;
+    margin: 0;
+    padding-left: 20px;
+    border: 1px solid #eee;
+    background-color:#e6e6e6;
+  }
+
+  .quantity input:focus {
+    outline: 0;
+  }
+
+  .quantity-nav {
+    float: left;
+    position: relative;
+    height: 50px;
+  }
+
+  .quantity-button {
+    position: relative;
+    cursor: pointer;
+    border-left: 0px #eee;
+    width: 30px;
+    text-align: center;
+    color: #333;
+    font-size: 17px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+    line-height: 1.7;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+  }
+
+  .quantity-button.quantity-up {
+    position: absolute;
+    height: 50%;
+    top: 0;
+    background-color:#32CD32;
+    border-bottom: 1px solid #eee;
+  }
+
+  .quantity-button.quantity-down {
+    position: absolute;
+    bottom: -1px;
+    background-color:grey;
+    height: 50%;
+  }
+
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+.cartbtn{
+  background-color: #FF8C00;
+  border: none;
+  width:300px;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 20%;
+
+
+}
+
+.cartbtn:hover{
+  background-color:#e36100 ;
+  width:350px;
+  border-radius: 30%;
+  transition: 0.4s;
+}
+
+
+</style>
+
+<link rel="stylesheet" href={% static "login/css/style.css" %}>
+<link rel="stylesheet" href={% static "login/css/open-iconic-bootstrap.min.css" %}>
+<link rel="stylesheet" href={% static "login/css/animate.css" %}>
+<link rel="stylesheet" href={% static "login/css/flaticon.css" %}>
+
+</head>
+<body style="background-color:#e6e6e6;">
+
+
+
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark " id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Donation Kart</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"><a href="{% url 'User:home' %}" class="nav-link">Home</a></li>
+
+            <li class="nav-item active" ><a href="{% url 'User:events' %}" class="nav-link">Events</a></li>
+            <li class="nav-item active"><a href="{% url 'User:cart' %}" class="nav-link">Cart</a></li>
+            <li class="nav-item active"><a href="{% url 'foodtruck:foodtruck.foodrequest' %}" class="nav-link">Foodtruck</a></li>
+            <li class="nav-item active"><a href="{% url 'userlogin:userlogin.edit_profile' %}" class="nav-link">Profile</a></li>
+            <li class="nav-item active"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+
+
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+<table style="width:100%;padding:50px 0px 50px;margin-top:300px;" >
+  <tr>
+    <td style="width:70%;padding:50px 100px  150px 200px">
+
+
+{% for event in events %}
+<form method="POST" action="{% url 'User:cart' %}">
+{% csrf_token %}
+    <div class="card">
+    <div style="border-bottom: 3px solid #e6e6e6;">
+    <img src="{{event.0.img.url}}" alt="pic" style="width:100%;height:250px;padding:15px 15px 15px 15px">
+    </div>
+    <div style="border-bottom: 3px solid #e6e6e6;padding:10px 5px 10px 5px">
+    <h1 style="color: #FF8C00">{{event.0.requestedorganization}}</h1>
+    <p class="title" >{{event.0.description}}</p>
+    </div>
+    <div style="border-bottom: 1px solid #e6e6e6;padding:10px 5px 10px 5px">
+    <h3>{{event.0.subtype}} : {{event.0.requesteditem}}</h3>
+<center>
+  <div class="container" style="padding:20px 30px 20px 30px ">
+    <div class="progress"  style="height:25px">
+      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{event.3}}%;height:25px;background-color:green;color:black">
+        {{event.3}}% Complete
+      </div>
+    </div>
+  </div>
+</center>
+</div>
+<center>
+    <h4 style="padding:10px;color: #4dff4d">End Date : {{event.0.enddate}}</h4>
+</center>
+<center style="padding:5px 5px 5px ;">
+<b>Quantity : </b>
+<input type="number" name="quantity" min="1" max={{event.2}}  id="{{event.0.eventid}}" style="padding:20px 30px 20px ;" placeholder="0" required/>
+<b style="color: #4dff4d;padding:0px 20px;font-size: 20px;">  {{event.0.costperitem}} <i>Rs</i>/<i style="font-size: 15px;">product</i> </b>
+<br><br>
+<input  name="eventid" value="{{event.0.eventid}}" type="hidden" />
+<button  class="cartbtn" type="submit" id="submit" value="submit"  name="addcart" ><b>Add To Cart</b></button>
+</center>
+  </div>
+</form>
+{% endfor %}
+
+</td>
+    <td valign="top" style="width:20%;padding:50px 10px  50px 10px">
+      <h2 style="color:grey">Categories </h2><br>
+      <div style="border-top: 3px solid #bfbfbf;padding:30px;border-bottom: 3px solid #bfbfbf;padding:30px 0px 30px">
+      <a href="{% url 'User:events' %}" style="padding:20px 10px;color:#8c8c8c;">All</a><br>
+      <a href="{% url 'User:filter' "education" %}" style="padding:20px 10px;color:#8c8c8c;">Education</a><br>
+      <a href="{% url 'User:filter' "Ngo" %}" style="padding:20px 10px;color:#8c8c8c;">Support NGOs</a><br>
+      <a href="{% url 'User:filter' "desasters" %}" style="padding:20px 10px;color:#8c8c8c;">Natural Disasters</a><br>
+      <a href="{% url 'Blood_blog:Blog' %}" style="padding:20px 10px;color:#8c8c8c;">Blood</a><br>
+      <a href="{% url 'Blood_blog:DonationFormView' %}" style="padding:20px 10px;color:#8c8c8c;">BloodRequest</a><br>
+
+    </div>
+    </td>
+<td style="width:20%"></td>
+  </tr>
+</table>
+<!-- <div style="margin-top:210px;padding:15px 15px 2500px;font-size:30px"></div> -->
+
+<script>
+// When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    document.getElementById("navbar").style.padding = "20px 100px";
+    document.getElementById("navbar").style.top = "0";
+    document.getElementById("logo").style.fontSize = "40px";
+  } else {
+    document.getElementById("navbar").style.padding = "70px 100px";
+    document.getElementById("logo").style.fontSize = "60px";
+    document.getElementById("navbar").style.top = "50px";
+  }
+}
+</script>
+
+<script>
+function hourglass() {
+  var a;
+  a = document.getElementById("div1");
+  a.innerHTML = "&#xf251;";
+  setTimeout(function () {
+      a.innerHTML = "&#xf252;";
+    }, 1000);
+  setTimeout(function () {
+      a.innerHTML = "&#xf253;";
+    }, 2000);
+}
+hourglass();
+setInterval(hourglass, 3000);
+</script>
+</body>
+</html>

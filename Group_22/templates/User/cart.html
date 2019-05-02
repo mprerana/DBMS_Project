@@ -1,0 +1,299 @@
+{% extends 'userlogin/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  {% block extrahead %}
+  <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#div1 {
+  font-size:40px;
+}
+}
+</style>
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width:100%;
+  height: 200px;
+  margin: 2.5rem;
+  text-align: center;
+  font-family: arial;
+  float:left;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+
+  .quantity {
+    position: relative;
+  }
+
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button
+  {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type=number]
+  {
+    -moz-appearance: textfield;
+  }
+
+  .quantity input {
+    width: 100px;
+    height: 50px;
+    line-height: 1.65;
+    float: left;
+    display: block;
+    padding: 0;
+    margin: 0;
+    padding-left: 20px;
+    border: 1px solid #eee;
+    background-color:#e6e6e6;
+  }
+
+  .quantity input:focus {
+    outline: 0;
+  }
+
+  .quantity-nav {
+    float: left;
+    position: relative;
+    height: 50px;
+  }
+
+  .quantity-button {
+    position: relative;
+    cursor: pointer;
+    border-left: 0px #eee;
+    width: 30px;
+    text-align: center;
+    color: #333;
+    font-size: 17px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+    line-height: 1.7;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+  }
+
+  .quantity-button.quantity-up {
+    position: absolute;
+    height: 50%;
+    top: 0;
+    background-color:#32CD32;
+    border-bottom: 1px solid #eee;
+  }
+
+  .quantity-button.quantity-down {
+    position: absolute;
+    bottom: -1px;
+    background-color:grey;
+    height: 50%;
+  }
+
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+.remove-item{
+  background-color:white;
+  border: none;
+  color: grey;
+  text-align: center;
+  padding:5px 0px 5px 0px;
+  font-size: 45px;
+  opacity: 0.6;
+  transition: 0.3s;
+
+}
+.remove-item:hover {
+  color:red;
+  transition: 0.3s;
+}
+
+</style>
+{% endblock %}
+</head>
+{% block body %}
+<body >
+  <div class="container-fluid" style="color:black">
+    <br>
+    <h3 style="text-align:center;">{{request.user}}'s CART</h3>
+    <br>
+    <div class="row">
+        <div class="col-9">
+          <br>
+              {% for c in cartlist %}
+              <div class="row" style="background:white;margin-left:10px;height:200px;width:100%; box-shadow: 5px 10px 18px #888888;padding-bottom:1%;padding-top:1%;">
+                <div class="col-3">
+                  <img src="{{c.1.img.url}}" alt="pic" style="width:100%;">
+                </div>
+                <div class="col-8"   >
+                  <br>
+                  <table style="width:100%;margin-left:6%;padding:20px;font-size:20px" class="table borderless">
+                    <tr>
+                    <th>
+                      Name
+                      </th>
+                      <th>Item</th>
+                      <th>Cost</th>
+                      <th>Quantity</th>
+                      <th>Total</th>
+                      </tr>
+                      <tr >
+                        <td>{{c.1.requestedorganization}}</td>
+                        <td>{{c.1.requesteditem}}</td>
+                        <td>{{c.1.costperitem}}</td>
+                        <td>{{c.0.Quantity}}</td>
+                        <td>{{c.0.amount}}</td>
+
+                      </tr>
+                      </table>
+                </div>
+                <div class="col-1" >
+                  <a href="{% url 'User:delete' c.1.eventid %}"  class="remove-item" style="margin-top:30%;margin-left:25%;background-color:rgba(0,0,0,0)"><i  class="fa fa-times-circle-o"></i></a>
+                </div>
+              </div>
+              {% endfor %}
+        </div>
+        <div class="col-3">
+          <div class="container" style="margin-top:6%;width:100%;box-shadow:10px 8px 18px #888888">
+          <ul style="color:black;margin-left:10%;list-style-type:none;font-size:18px">
+            <br>
+            <li>Total Items In Cart : {{count}} </li>
+            <li>Net Amount          : {{cartcost}} Rs/-</li><br>
+            <li><a type="button" href="{% url 'User:proceed' %}" class="btn btn-warning"><i>Proceed To Payment</i></a></li>
+          </ul>
+          </div>
+        </div>
+    </div>
+  </div>
+<!-- <table style="width:100%;padding:50px 0px 50px;margin-top:300px;" >
+  <tr>
+    <td style="width:70%;padding:50px 100px  150px 200px;top: 0;" valign="top">
+
+    {% for c in cartlist %}
+    <div class="card" style="border-bottom: 10px solid #bfbfbf">
+<table style="width:100%;height=190px">
+  <tr style="width:100%;height:100%;">
+    <td style="width:25%;height:100%;">
+      <div style="padding:5px 5px 5px 5px;"><img src="{{c.1.img.url}}" alt="pic" style="width:100%"></div>
+    </td>
+    <td style="width:35%;height:100%;">
+      <div style="padding:25px 5px 5px 5px;">
+        <center>
+        <h3><b>{{c.1.requestedorganization}} : {{c.1.requesteditem}}</b></h3><br>
+        <i  style="color:#4dff4d;font-size:20px;">Cost : {{c.1.costperitem}} Rs/-</i><br><br>
+        <h4><b>Quantity : {{c.0.Quantity}}</b></h4>
+        </center>
+      </div>
+    </td>
+    <td>
+      <div>
+      <center>
+      <h2 style="color:green"><i>Amount : {{c.0.amount}} Rs/-</i></h2>
+      </center>
+      </div>
+    </td>
+    <td style="width:10%;height:100%;">
+      <a href="{% url 'User:delete' c.1.eventid %}"  class="remove-item" style="padding:5px 15px 5px 5px;" ><i class="fa fa-times-circle-o"></i></button>
+    </td>
+  </tr>
+
+</table>
+
+  </div>
+{%endfor%}
+</td>
+    <td style="top: 0;">
+<table style="widht:90%;padding:5px 5px 5px 5px; height:1000px;border-collapse:separate;border-spacing:15px 15px; ">
+  <td style="widht:90%;height:100%">
+    <tr style=" ">
+      <center style="background-color:grey;padding:30px 10px 30px 10px;">
+        <h2>Total Items In Cart : {{count}} </h2>
+        <h2>Net Amount          : {{cartcost}} Rs/-</h2>
+      </center>
+    </tr>
+    <tr>
+      <center style="background-color:grey;padding:30px 20px 30px 10px;">
+            <a type="button" href="{% url 'User:proceed' %}" class="btn btn-success"  style="color:black;width:70%;height:60px;padding:15px"><h4><i>Proceed To Payment</i></h4></a>
+      </center>
+    </tr>
+    <tr>
+    </tr>
+  </td>
+</table>
+    </td>
+
+  </tr>
+</table> -->
+<!-- <div style="margin-top:210px;padding:15px 15px 2500px;font-size:30px"></div> -->
+
+<script>
+// When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    document.getElementById("navbar").style.padding = "20px 100px";
+    document.getElementById("navbar").style.top = "0";
+    document.getElementById("logo").style.fontSize = "40px";
+  } else {
+    document.getElementById("navbar").style.padding = "70px 100px";
+    document.getElementById("logo").style.fontSize = "60px";
+    document.getElementById("navbar").style.top = "50px";
+  }
+}
+</script>
+
+<script>
+function hourglass() {
+  var a;
+  a = document.getElementById("div1");
+  a.innerHTML = "&#xf251;";
+  setTimeout(function () {
+      a.innerHTML = "&#xf252;";
+    }, 1000);
+  setTimeout(function () {
+      a.innerHTML = "&#xf253;";
+    }, 2000);
+}
+hourglass();
+setInterval(hourglass, 3000);
+</script>
+</body>
+{% endblock %}
+</html>

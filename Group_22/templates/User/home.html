@@ -1,0 +1,193 @@
+{% extends 'userlogin/base.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  {% block extrahead%}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Agency - Start Bootstrap Theme</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href={% static 'home/css/agency.css' %} rel="stylesheet">
+  <link rel="stylesheet" href={% static 'home/Icon-font-7-stroke-PIXEDEN-v-1.2.0/pe-icon-7-stroke/css/pe-icon-7-stroke.css ' %} >
+  <link rel="stylesheet" href={% static 'home/Icon-font-7-stroke-PIXEDEN-v-1.2.0/pe-icon-7-stroke/css/helper.css' %}>
+<style>
+.dk-advantage {
+    padding: 15px 60px 15px 76px;
+    position: relative;
+}
+.dk-advantage i{position:absolute;top:10px;left:0px;font-size:45px;color:#ff7400}
+i{color:#ff7400}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+p {
+    margin: 0 0 5px;
+}
+p {
+    line-height: 22px;
+    letter-spacing: 1px;
+
+}
+body {
+  text-align: justify;
+}
+/* * {
+  box-sizing: border-box;
+} */
+</style>
+
+  {% endblock %}
+</head>
+<body id="page-top" style="background-color:#e6e6e6;">
+{% block body %}
+<header class="masthead" style="background-image:url({% static 'home/images/header-bg.jpg' %})">
+  <div class="container">
+    <div class="intro-text">
+      <div class="intro-lead-in">How DonateKart Works?</div>
+      <div class="intro-heading">DonateKart is one of it kind platform in India which is transforming
+        the way people give to charities with the help of e-commerce.</div>
+      <!-- <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a> -->
+    </div>
+  </div>
+</header>
+
+
+<!-- Services -->
+<section id="services">
+  <div class="container" >
+    <div class="row ">
+      <div class="col-lg-12 text-center">
+        <h2 class=" text-left  text-light">How DonateKart Works?</h2>
+      </div>
+    </div>
+    <div class="row text-left">
+      <div class="col-md-3">
+        <span class="fa-stack fa-4x">
+          <i class="fas fa-circle fa-stack-2x "></i>
+          <i class="fas fa-stack-1x fa-inverse"><img src={% static 'home/images/how-1-choose-a-cause.png' %}></i>
+
+        </span>
+        <h4 class="service-heading text-light">Choose A Cause</h4>
+        <p class="text-light text-center">Browse different campaigns and select a cause.</p>
+      </div>
+      <div class="col-md-3">
+        <span class="fa-stack fa-4x">
+          <i class="fas fa-circle fa-stack-2x "></i>
+          <i class="fas fa-stack-1x fa-inverse"><img src={% static 'home/images/how-2-select-products.png' %}></i>
+        </span>
+        <h4 class="service-heading text-light">Select Products</h4>
+        <p class="text-light">Select products and quantity you wish to donate.</p>
+      </div>
+      <div class="col-md-3">
+        <span class="fa-stack fa-4x">
+          <i class="fas fa-circle fa-stack-2x "></i>
+          <i class="fas fa-stack-1x fa-inverse"><img src={% static 'home/images/how-3-order-processing.png' %}></i>
+        </span>
+        <h4 class="service-heading text-light">Order Processing</h4>
+        <p class="text-light">Checkout and pay for your contributions.</p>
+      </div>
+      <div class="col-md-3">
+        <span class="fa-stack fa-4x">
+          <i class="fas fa-circle fa-stack-2x "></i>
+          <i class="fas fa-stack-1x fa-inverse"><img src={% static 'home/images/how-4-delivery-report.png' %}></i>
+        </span>
+        <h4 class="service-heading text-light">Delivery Report</h4>
+        <p class="text-light">Donatekart delivers the products and the organisation updates about product utilization.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--Advantages  -->
+<section class="bg-light" id="portfolio">
+    <div class="container">
+            <div class="row">
+                <div class="col-xs-12 section-heading">
+                    <h3>DonateKart Advantage</h3>
+                    <p>Donatekart is India's first social enterprise which is providing a unique platform for social organisations to easily procure products in need. </p>
+                </div>
+            </div>
+        </div>
+    <div class = "container">
+    <div class="row text-left">
+      <div class="col-sm-6">
+        <div class ="dk-advantage">
+          <i  class=" pe-7s-albums pe-3x pe-va "></i> <h4>Transperancy</h4>
+          <p >No money involved and products will be
+                          delivered directly by donatekart
+             thus complete transparency.</p>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class ="dk-advantage">
+          <i class=" pe-7s-timer pe-3x pe-va "></i> <h4>Low Cost</h4>
+          <p>As we list down the least cost and durable
+            products on donatekart your money
+            will be spent effectively.
+          </p>
+      </div>
+      </div>
+      <div class="col-sm-6">
+        <div class ="dk-advantage">
+          <i class="pe-3x pe-7s-like  pe-va "></i><h4>Timely Updates</h4>
+          <p>Donor gets timely updates from
+             beneficiaries on how your
+             products are being used.
+          </p>
+      </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class ="dk-advantage">
+            <i class="pe-3x pe-7s-piggy  pe-va  "></i><h4>Donor Management</h4>
+            <p>We will empower and provide tools to
+               NGO’s to manage their donors which will
+               increase the donor retention rate.
+            </p>
+        </div>
+        </div>
+        <div class="col-sm-6">
+          <div class ="dk-advantage">
+            <i class="pe-3x pe-7s-users  pe-va "></i><h4>Need Based Donation</h4>
+            <p>Just tell us the products that are in need
+               to your organisation we will make sure that
+                you get them all and you just focus on the work you do.
+            </p>
+        </div>
+        </div>
+        <div class="col-sm-6">
+          <div class ="dk-advantage">
+            <i class="pe-3x pe-7s-gift pe-va "></i><h4>Free Platform</h4>
+            <p>Completely free for organisations to run any number
+               of campaigns where as crowdfunding platforms
+               charges more than 10% of raised money as fees.
+            </p>
+        </div>
+        </div>
+      </div>
+
+    </div>
+
+
+{% endblock%}
+</body>
+</html>
