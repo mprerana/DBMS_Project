@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+    <meta charset="utf-8">
+    <title>hello</title>
+
+  </head>
+  <body>
+
+
+
+  {% for package in packages123 %}
+  <div class="package">
+  <h1> {{ package.origin }} - {{ package.destination }} Package : {{package.package_id}}</h1>
+    <p style="color:slateblue;">TRAIN NAME:{{ package.train }}</p>
+    <p style="color:slateblue;">HOTEL NAME:{{ package.hotel }}</p>
+
+  </div>
+  {% endfor %}
+  <div class="container">
+    <a href="{% url 'create' %}"><button type="button" class="btn btn-outline-primary">CREATE PACKAGE</button></a>
+    <button type="button" class="btn btn-outline-primary">ADMIN</button>
+    <button type="button" class="btn btn-outline-secondary">USER</button>
+
+  </div>
+
+
+
+
+  </body>
+</html>

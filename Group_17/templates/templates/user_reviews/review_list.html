@@ -1,0 +1,325 @@
+
+<meta charset="UTF-8">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="one.css" type="text/css">
+<link rel="stylesheet" href="buttons.css" type="text/css">
+
+
+
+
+ <!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">-->
+    <style>
+html,body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  margin: 0 auto; /* Center website */
+  max-width: 800px; /* Max width */
+  padding: 20px;
+}
+
+.heading {
+  font-size: 25px;
+  margin-right: 25px;
+}
+
+.fa {
+  font-size: 25px;
+}
+
+.checked {
+  color: orange;
+}
+
+/* Three column layout */
+.side {
+  float: left;
+  width: 15%;
+  margin-top:10px;
+}
+
+.middle {
+  margin-top:10px;
+  float: left;
+  width: 70%;
+}
+
+/* Place text to the right */
+.right {
+  text-align: right;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The bar container */
+.bar-container {
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+  color: white;
+}
+
+/* Individual bars */
+.bar-5 {width: {{ p5 }}%; height: 18px; background-color: #4CAF50;}
+.bar-4 {width: {{ p4 }}%; height: 18px; background-color: #2196F3;}
+.bar-3 {width: {{ p3 }}%; height: 18px; background-color: #00bcd4;}
+.bar-2 {width: {{ p2 }}%; height: 18px; background-color: #ff9800;}
+.bar-1 {width: {{ p1 }}%; height: 18px; background-color: #f44336;}
+
+/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+@media (max-width: 400px) {
+  .side, .middle {
+    width: 100%;
+  }
+  .right {
+    display: none;
+  }
+}
+/* Buttons styling */
+
+.container {
+  overflow: hidden;
+}
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+
+}
+
+.filterDiv {
+  float: left;
+  background-color: #2196F3;
+  color: #ffffff;
+  width: 100px;
+  line-height: 100px;
+  text-align: center;
+  margin: 2px;
+  display: none; /* Hidden by default */
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}
+label {
+  padding: 12px 12px 12px 12px;
+  display: inline-block;
+}
+
+/* Style the buttons */
+.btn {
+  border: 1px;
+  outline: none;
+  padding: 12px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 40px 12px 12px;
+  border: 100px;
+  border-radius: 40px;
+  cursor: pointer;
+  position: center;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+/* Add a light grey background on mouse-over */
+.btn:hover {
+  background-color: #ddd;
+}
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Add a dark background to the active button */
+.btn.active {
+  background-color: #666;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+</style>
+</head>
+<body class="w3-theme-l5">
+
+
+<center>
+<h2>User reviews</h2>
+</center>
+
+<div>
+<span class="heading">User Rating</span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+
+<hr style="border:3px solid #f1f1f1">
+
+<div class="row">
+  <div class="side">
+    <div>5 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-5"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>{{ five }}</div>
+  </div>
+  <div class="side">
+    <div>4 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-4"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>{{ four }}</div>
+  </div>
+  <div class="side">
+    <div>3 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-3"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>{{ three }}</div>
+  </div>
+  <div class="side">
+    <div>2 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-2"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>{{ two }}</div>
+  </div>
+  <div class="side">
+    <div>1 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-1"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>{{ one }}</div>
+  </div>
+</div>
+</div>
+
+
+
+
+<h4>Average rating is {{ avg }} based on {{ t }} reviews</h4>
+<br>
+
+
+
+
+<div id="myBtnContainer">
+<form action="{% url 'review_list'%}" method="POST">
+    {% csrf_token %}
+  <input type="submit" class="" name = "latest" value="Latest First">&nbsp;&nbsp;
+  <input type="submit" class="" name = "positive" value="Positive First">&nbsp;&nbsp;
+  <input type="submit" class="" name = "critical" value="Critical First">&nbsp;&nbsp;
+</form>
+</div>
+
+<br><br><br>
+{% if latest_review_list %}
+<div>
+{% for i in latest_review_list %}
+<div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+    <!--<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">-->
+        <img src="C:\Users\Phani\Desktop\download.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">{{ i.2 }} out of 5</span>
+        <h4>{{ i.1 }} was rated by {{ i.5 }} </h4><br>
+        <hr class="w3-clear">
+        <p>{{ i.3 }}</p>
+        <!--<button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+        <span class="w3-right w3-opacity">5 likes</span>-->
+
+      </div>
+{% endfor %}
+</div>
+{% else %}
+<p>There are no reviews yet. Be the first one to share your experience!</p>
+{% endif %}
+
+
+
+
+    <h3>Add your review</h3>
+
+<form action="{% url 'add_review'%}" method="POST", autocomplete="off">
+    {% csrf_token %}
+    <input type="hidden" name="hotel" value="{{ hotel }}">
+    {% for field in form %}
+        {{ field.label }}
+        {{ field }}
+    {% endfor %}
+    <br><br>
+    <center>
+    <input type="submit" value="Add the review" />
+        </center>
+</form>

@@ -1,0 +1,136 @@
+{% load static from  staticfiles %}
+{% block headblock %}
+    <meta charset="UTF-8">
+    <title>Transactions</title>
+    <link rel="stylesheet" href="/static/index.css" >
+    <style>
+
+    body{
+        background-image: url("{% static 'payment.jpeg' %}");
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    .button3{
+            background-color: #17d5c7;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: 0.5s;
+        }
+        .button3:hover{
+            background-color: #063e68;
+
+        }
+    .div1{
+        background-color: white;
+        width:40%;
+        height:400px;
+        opacity: 0.9;
+        margin-top: 10px;
+        border-radius: 30px;
+        overflow: auto;
+    }
+    table,td,tr,th{
+       font-size: 20px;
+        border: 0px solid gray;
+        border-collapse: collapse;
+        padding:10px;
+    }
+    .a{
+        text-decoration: none;
+        color: white;
+    }
+    </style>
+{% endblock %}
+{% block content %}
+    <center>
+<div class="div1">
+                {% if trans %}
+                <table>
+                <tr>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        Amount
+                    </th>
+                    <th>
+                        Transaction ID
+                    </th>
+                </tr>
+                {% for acc in trans %}
+                <tr>
+                    <td>
+{#                      {{ acc.date | date:'N j, Y, r'}}#}
+                        {{ acc.date | date:"d-M-Y" }} {{ acc.date | time:"H:i:s" }}
+                    </td>
+                    <td>
+                        {{ acc.amount }}
+                    </td>
+                    <td>
+                        {{ acc.transaction_id }}
+                    </td>
+                </tr>
+{#                <tr>#}
+{#                    <td>#}
+{#                        {{ acc.date2 }}#}
+{#                    </td>#}
+{#                    <td>#}
+{#                        {{ acc.last2 }}#}
+{#                    </td>#}
+{#                    <td>#}
+{#                        {{ acc.transaction_id_2 }}#}
+{#                    </td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td>#}
+{#                        {{ acc.date3 }}#}
+{#                    </td>#}
+{#                    <td>#}
+{#                        {{ acc.last3 }}#}
+{#                    </td>#}
+{#                    <td>#}
+{#                        {{ acc.transaction_id_3 }}#}
+{#                    </td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td>#}
+{#                        {{ acc.date4 }}#}
+{#                    </td>#}
+{#                    <td>#}
+{#                        {{ acc.last4}}#}
+{#                    </td>#}
+{#                    <td>#}
+{#                        {{ acc.transaction_id_4 }}#}
+{#                    </td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td>#}
+{#                        {{ acc.date5 }}#}
+{#                    </td>#}
+{#                    <td>#}
+{#                        {{ acc.last5 }}#}
+{#                    </td>#}
+{#                    <td>#}
+{#                        {{ acc.transaction_id_5 }}#}
+{#                    </td>#}
+{#                </tr>#}
+            {% endfor %}
+            </table>
+            {% else %}
+                <p class="err">No recent transactions.</p>
+            {% endif %}
+            <form action="{% url 'credits.index' %}">
+                <input type="submit" class="button3" value="Redeeem">
+            </form>
+
+</div>
+    </center>
+{% endblock %}

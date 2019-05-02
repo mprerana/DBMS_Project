@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .button {
+            background: linear-gradient(92deg ,  #f0772c,#f95776);
+           {#background: linear-gradient(45deg ,  #ace143,#219393);#}
+           {#background: linear-gradient(45deg ,  #ff684a,#219393)#}
+           {#background: linear-gradient(45deg ,  #53b2fe,#d65af3)#}
+
+
+            border: none;
+            border-style: hidden;
+            box-shadow: 4px 3px 3px  dimgrey;
+            border-radius: 50px;
+            {#background-color: #4CAF50; /* Green */#}
+
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<form method="POST" action="{%  url 'hotel_details' %}" >
+    {% csrf_token %}
+    <table id="flightsTable" style="border-collapse: collapse">
+        {#    <tr>#}
+        {#        <td style="padding-right: 100px">flight_name</td>#}
+        {#        <td style="padding-right: 100px">flight_code</td>#}
+        {#        <td style="padding-right: 100px">dept_city</td>#}
+        {#        <td style="padding-right: 100px">dept_time</td>#}
+        {#        <td style="padding-right: 100px">no_of_stops</td>#}
+        {#        <td style="padding-right: 100px">reach_time</td>#}
+        {#        <td style="padding-right: 100px">duration</td>#}
+        {#        <td style="padding-right: 100px">arrival_city</td>#}
+        {#        <td style="padding-right: 100px">price</td>#}
+        {#        <td style="padding-right: 100px">Book now</td>#}
+        {#    </tr>#}
+        {% for i in names2 %}
+            {#    {% s='input'+str(i) %}#}
+            <div>
+
+
+
+                <tr style="background-color: whitesmoke;padding-bottom: 10px">
+
+                    <td style="padding-right: 50px"><img src="{{ i.0.3 }}" alt="image not found">
+                    <td style="padding-right: 50px;"><h2>{{ i.0.0 }}</h2><br><h4>{{ i.0.1 }}</h4></td>
+
+                        <input type="hidden" name="{{ i.1.2 }}" value="{{ i.0.2 }}">
+                        <h2><td><button class="button" name="button" value="{{ i.1.4 }}">BOOK NOW</button></td></h2>
+                    <input type="hidden" value={{ adults }} name="adults">
+                    <input type="hidden" value={{ check_in_date }} name="check_in_date">
+                    <input type="hidden" value={{ check_out_date }} name="check_out_date">
+                </tr>
+            </div>
+
+        {% endfor %}
+    </table>
+</form>
+</body>
+</html>

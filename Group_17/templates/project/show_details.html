@@ -1,0 +1,65 @@
+{% extends 'travelers/layout.html' %}
+{% block headblock %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+    body{
+        background:linear-gradient(45deg, #53b2fe,#d65af3);
+    }
+    </style>
+
+{% endblock%}
+{% block content %}
+    <center>
+    <!-- <div style="background-color:white;"> -->
+      <div style="background-color:white;padding-top:100px;margin-top:100px;height:500px;width:40%;box-shadow: 3px 3px 3px grey;border-radius:25px;">
+        <div >
+          <h2 style="margin-left:-68px">Origin     : {{details.0}}</h2>
+        </div>
+        <div >
+          <h2>destination     : {{details.1}}</h2>
+        </div>
+        <div >
+          <h2 style="margin-left:-85px">transport     : {{details.2}}</h2>
+        </div>
+        <div >
+          <h2  style="margin-left:-58px">hotel     : {{details.3}}</h2>
+        </div>
+        <div >
+          <h2 style="margin-left:-89px"> no_of_days     : {{details.4}}</h2>
+        </div><div >
+          <h2 style="margin-left:-110px">money      : {{details.5}}</h2>
+        </div>
+          <button type="button" class="btn btn-outline-primary" style="width:50%"><a href="{% url 'credits.index' %}">pay</a></button>
+        <!-- <tr>
+          <td>
+     <h2><br>Origin      : {{details.0}}<br></h2>
+     </td>
+     </tr>
+     <tr>
+       <td>
+     <h2><br>destination : {{details.1}}<br></h2>
+     </td>
+     </tr>
+     <tr><td>
+     <h2><br>transport   : {{details.2}}<br></h2></td></tr>
+     <tr><td><h2><br>hotel       : {{details.3}}<br></h2></td></tr>
+     <tr><td><h2><br>no of days  : {{details.4}}<br></h2></td></tr>
+     <tr><td><h2><br>money       : {{details.5}}<br></h2></td></tr> -->
+     <!-- <div> -->
+     <!-- <center><tr><td style="padding-left:100px;"><button type="button" class="btn btn-outline-primary" style="width:50%">pay</button></td></tr></center> -->
+   </div>
+    <!-- </div> -->
+  <!-- </div> -->
+    </center>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+
+
+.name {color: ghostwhite;margin-top: 30px;font-family: monospace;font-size: 17px;}
+.splitleft{
+    height: 100%;
+    width: 15%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+   /* padding-top: 20px;*/
+    left: 0;
+    background-color:#424a5d;
+}
+
+.splitright{
+    height: 100%;
+    width: 85%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    /*padding-top: 20px;*/
+     right: 0;
+    background-color: #f1f1f1;
+}
+
+.centered {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.centered img {
+    width: 150px;
+    border-radius: 50%;
+}

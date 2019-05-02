@@ -1,0 +1,95 @@
+{% extends 'travelers/layout.html' %}
+
+{% load static from staticfiles %}
+{% block headblock %}
+    <script type="text/javascript" >
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
+    </script>
+    <meta charset="UTF-8">
+    <title>Credits</title>
+    <style>
+    body{
+        background-image: url("{% static 'payment.jpeg' %}");
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    .div1{
+        background-color: white;
+        width:40%;
+        height: 470px;
+        opacity: 0.9;
+        margin-top: 10px;
+        border-radius: 30px;
+
+    }
+        .button3{
+            background-color: #237d80;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: 0.5s;
+        }
+        .button3:hover{
+            background-color: #063e68;
+
+        }
+    </style>
+    {% endblock %}
+{% block content %}
+    <center>
+<div class="div1">
+
+
+        <table>
+            {% if bal %}
+                {% for acc in bal %}
+                <tr>
+                     <td>
+                        Total credits
+                    </td>
+                    <td>
+                           {{ acc.balance }}
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <p class="tabletype">Account not found.</p>
+            {% endif %}
+            </table>
+        <form action="{% url 'credits.pending_redeem' %}" method="post">
+            {% csrf_token %}
+            Enter amount to redeem : <br>
+            <input type="number" step="any" required name="redeem_amount" value = "{{ cost }}" id="redeem_amount">
+            <h6> You need to have atleast 200 credits to redeem </h6>
+            <br><input type="submit" class="button3" value="Redeem"><br><br>
+        </form>
+        <form action="{% url 'credits.statement' %}" method="post">
+            {% csrf_token %}
+            <input type="submit" class="button3"  value="Transaction">
+        </form>
+        <form action="{% url 'credits.pending_transactions' %}" method="post">
+             {% csrf_token %}
+            Enter credits to add into wallet: <br>
+            <input type="number" step="any" name="add_amount"  required id="add_amount">
+{#            <input type="email" name="email" placeholder="Enter your email here.." id="email" required>#}
+            <input type="submit" class="button3" value="Add into wallet">
+        </form> <br> <br>
+    <form action="{% url 'credits.pending_transactions_paypal' %}" method="post">
+             {% csrf_token %}
+            <input type="number" step="any" name="add_amount" required id="add_amount">
+{#            <input type="email" name="email" placeholder="Enter your email here.." id="email" required>#}
+            <input type="submit" class="button3" value="Add through paypal">
+        </form>
+</div>
+    </center>
+{% endblock %}
