@@ -1,0 +1,11 @@
+{% block home %}
+<html>
+<body>
+                          {% for data1 in data %}
+                            <h1>{{data1.1}}</h1>
+                                <a href='{% url "blog:show_blog" blog_id=data1.0 %}'> clickhere </a>
+
+                          {% endfor %}
+{% endblock %}
+</body>
+</html>

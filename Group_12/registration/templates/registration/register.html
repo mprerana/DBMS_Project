@@ -1,0 +1,18 @@
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-3 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Sign In</h5>
+<form method='POST'> {% csrf_token %}
+  {{ form.as_p }}
+  <button type='submit'class='btn btn-default'>register</button>
+</form>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+

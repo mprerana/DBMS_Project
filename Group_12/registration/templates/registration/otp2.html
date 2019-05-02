@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		otp
+	</title>
+</head>
+<body>
+	<form action = 'reset_otp_verify/' method='POST' onsubmit="myfunction()">
+		{ % csrf_token %}
+		Enter Otp: <input type="text" name="otp" id="otp" placeholder="otp" value="
+		">
+		<button type="submit">Verify</button>
+
+		
+	</form>
+		
+
+</body>
+</html>

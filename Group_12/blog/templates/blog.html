@@ -1,0 +1,138 @@
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+{% block blog %}
+<html>
+<body>
+         <h1>{{blog.1}}</h1>
+                                {{blog.2|safe}}
+<h3>Upvotes :<code id="comment">  {{blog1.upvotes.count}} </code><code> &nbsp&nbsp </code><a class='like-btn' data-href='{{blog1.get_upvote_api_url }}' href='{{blog1.get_upvote_url }}'>Upvote </a></h3>
+{#<textarea id="txt" style="width:600px; height:200px;"></textarea>#}
+{#<p id="preview">  {{blog.upvotes.count}}</p>#}
+
+    <h3>Comments</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <input type="submit" value="Go!">
+    </form>
+    {% for comment in comments %}
+        <blockquote>
+            {% if not comment.parent %}
+                <p>{{comment.content|safe}}</p>
+                <footer>
+                via {{ comment.author }} | {{ comment.timestamp|timesince }} ago | {% if comment.children.count > 0 %}{{ comment.children.count }}
+               comment{% if comment.children.count > 1 %}s{% endif %}{% endif %} <button onclick="comment_show({{ comment }})">reply</button>
+                </footer>
+                <div class="comment-reply" id="{{ comment }}" style='display:none;'>
+                    {% for child_comment in comment.children %}
+                        <blockquote>
+                        {{child_comment.content|safe}}
+                        <footer>
+                        via {{ child_comment.author }} | {{ child_comment.timestamp|timesince }} ago | <button onclick="reply_show({{ child_comment }})">reply</button>
+                        </footer>
+                            <div class="comment-reply" id="{{ child_comment }}" style='display:none;'>
+                                <form method="post">
+                                    {% csrf_token %}
+                                    {{ form.media }}
+                                    <input type="hidden" name="parent_id" value = {{ comment.id }}>
+                                    <input type="text"  name="content" value="@{{ child_comment.author }} ">
+                                    <input type="submit" value="Reply!">
+                                </form>
+                            </div>
+                        </blockquote>
+                        <br>
+                    {% endfor %}
+
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.media }}
+                        <input type="hidden" name="parent_id" value = {{ comment.id }}>
+                        {{ form.as_p }}
+                        <input type="submit" value="Reply!">
+                    </form>
+                </div>
+            {% endif %}
+    </blockquote>
+    <br>
+    {% endfor %}
+
+    <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
+    <script>
+        function comment_show(z)
+        {
+            var x = document.getElementById(z);
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+function reply_show(z)
+        {
+            var x = document.getElementById(z);
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+    </script>
+</body>
+</html>
+
+
+
+<script>
+function updatetext(btn,val){
+    btn.text(val)
+    }
+
+$(".like-btn").click(function(e){
+  e.preventDefault()
+  var this_= $(this)
+  var likeUrl=this_.attr("data-href")
+  $.ajax({
+    url:likeUrl,
+    method:"GET",
+    data:{},
+    success: function(data){
+      console.log(data)
+      $('#comment').contents()[0].nodeValue = data.upvotes;
+      if(data.liked){
+      updatetext(this_,"Upvoted")
+    } else {
+      updatetext(this_,"Upvote")
+    }
+
+    }, error: function(error){
+      console.log(error)
+      console.log('error')
+    }
+  })
+})
+</script>
+{% endblock %}
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script language="JavaScript">
+    $(document).ready(function() {
+        $('#comment_form').submit(function() {
+          console.log('dsdsds') // catch the form's submit event
+            $.ajax({ // create an AJAX call...
+                data: $(this).serialize(), // get the form data
+                type: $(this).attr('method'), // GET or POST
+                url: $(this).attr('action'), // the file to call
+                success: function(response) { // on success..
+                    console.log('ok')
+                  }
+                });
+              })
+            };
+          ); -->
+
