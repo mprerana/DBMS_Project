@@ -1,0 +1,109 @@
+{% load crispy_forms_tags %}
+
+<style>
+  body{
+      background-image: url("https://images.pexels.com/photos/535986/pexels-photo-535986.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+      background-size: cover;
+      background-repeat: no-repeat;
+      font-family: sans-serif;
+  }
+  .taxibox p{
+      margin: 0;
+      padding: 0;
+      font-weight: bold;
+  }
+
+  .taxibox input{
+      width: 100%;
+      margin-bottom: 20px;
+  }
+
+  .taxibox input[type="text"], input[type="number"]{
+      border: none;
+      border-bottom: 1px solid #000000;
+      background: transparent;
+      outline: none;
+      height: 40px;
+      color:#ffffff;
+      font-size: 16px;
+
+  }
+
+  .taxipro_class1{
+    border: none;
+    border-bottom: 1px solid #000000;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color:#ffffff;
+    font-size: 16px;
+  }
+
+  .taxibox input[type="submit"]{
+      border: none;
+      outline: none;
+      height: 40px;
+      background: rgba(54,193,226,0.85);
+      color: #fff;
+      font-size: 18px;
+      border-radius: 20px;
+
+  }
+
+  .taxibox input[type="submit"]:hover{
+      cursor: pointer;
+      background: #3f907a;
+      color: #000;
+  }
+
+
+  .taxibox a:hover{
+      color: #ffc107;
+  }
+  .taxibox{
+      background: #406073b3;
+  }
+  ::placeholder{
+      color: white;
+  }
+
+</style>
+
+
+<div class="taxibox" style="width: 320px;height: 500px;top:50%;left: 50%; position: absolute;transform: translate(-50%,-50%);color: black;padding: 30px;">
+    <h1 style="margin: 0px;padding-top:20px;;padding-bottom:15px;text-align: center;font-size: 22px;color: white;">Enter Taxi Details</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+          <p style="font-family: sans-serif;color:white;">
+                  Taxi name
+                </p>
+                <input type="text" name="taxi_name" placeholder="Enter taxiname"><br><br>
+                <p style="font-family: sans-serif;color:white;">
+                  Taxi num
+                </p>
+                <input type="text" name="taxi_num" placeholder="Enter taxinum"><br><br>
+                <p style="font-family: sans-serif;color:white;">
+                  Price
+                </p>
+                <input type="number" name="price" placeholder="Enter price"><br><br>
+
+        <p style="font-family: sans-serif;color:white;">
+          Location
+        </p>
+        <input type="text" id="mapsearch" name="location" placeholder="Enter location"><br><br>
+        <input type="submit" name="save" value="Save">
+    </form>
+</div>
+
+
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyCe2otGPKiUf4Qq35MmOfDWHaQm-Cjtopw&libraries=places"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+    <script>
+
+
+
+    var searchBox = new google.maps.places.SearchBox(document.getElementById('mapsearch'));
+
+
+    </script>

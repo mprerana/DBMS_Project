@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+    <title>Login</title>
+
+    <style>
+        body{
+            background-image: url("https://images.pexels.com/photos/787472/pexels-photo-787472.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: sans-serif;
+        }
+        .loginbox p{
+            margin: 0;
+            padding: 0;
+            font-weight: bold;
+        }
+
+        .loginbox input{
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .loginbox input[type="text"], input[type="password"]{
+            border: none;
+            border-bottom: 1px solid #000000;
+            background: transparent;
+            outline: none;
+            height: 40px;
+            color:#ffffff;
+            font-size: 16px;
+
+        }
+
+        .loginbox input[type="submit"]{
+            border: none;
+            outline: none;
+            height: 40px;
+            background: rgba(54,193,226,0.85);
+            color: #fff;
+            font-size: 18px;
+            border-radius: 20px;
+
+        }
+
+        .loginbox input[type="submit"]:hover{
+            cursor: pointer;
+            background: #3f907a;
+            color: #000;
+        }
+
+
+/*
+        .signup{
+            align-items: center;
+            left:200px;
+            float: left;
+            border: #808080;
+            outline: none;
+            height: 40px;
+            background: rgba(54,193,226,0.85);
+            color: #fff;
+            font-size: 18px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            text-decoration: none;
+
+
+        } */
+
+        .loginbox a:hover{
+            color: #ffc107;
+        }
+        .loginbox{
+            background: #314240a3;
+        }
+        ::placeholder{
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+<div class="loginbox" style="width: 320px;height: 250px;top:50%;left: 20%; position: absolute;transform: translate(-50%,-50%);color: black;padding: 70px 30px;">
+    <img src="{% static "images/pro2.png" %}" class="avatar" style="width: 100px;height: 100px;border-radius: 50%;position: absolute;top: -50px;left: calc(50% - 50px);">
+    <h1 style="margin: 0px;padding: 0 0 30%;padding-top:25px;padding-bottom:20px;text-align: center;font-size: 22px;color: white;">Login Here</h1>
+    <form action="{% url 'accounts:user_login' %}" method="post">
+        {% csrf_token %}
+        <p style="margin: 0px;padding: 0px;font-weight: bold; color: white">Username</p>
+        <input type="text" name="username" placeholder="Enter Username">
+        <p style="color: white;">Password</p>
+        <input type="password" name="password" placeholder="Enter Password">
+        <input type="submit" name="login" value="Login">
+    </form>
+</div>
+
+</body>
+</html>

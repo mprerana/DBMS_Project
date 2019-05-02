@@ -1,0 +1,63 @@
+{% extends 'taxi_index.html' %}
+{% load static %}
+
+
+{% block slidecss %}
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+{% endblock slidecss %}
+
+{% block body_block %}
+<div class="container" style="padding-top:45px;padding-left:230px;">
+
+  <div style="display:inline-block;float:left;">
+
+      <div class="shadow" style="width:600px;display:inline-block;float:left;">
+    <div class="card flex-row flex-wrap" style="width:600px;">
+        <div class="card-header border-0">
+            <img src="{{ u.profile_pic.url}}" style="width:250px;height:300px;">
+        </div>
+        <div class="card-block px-2" style="padding:30px;">
+            <h2 class="card-title">{{user.username}}'s Profile</h2>
+            <p class="card-text" style="font-size:18px;">
+              Username:{{user.username}}<br>
+              Email:{{user.email}}<br>
+              Phone Number:  {{u.ph_no}}<br>
+              Rating:  {{u.rating}}<br>
+              taxi name: {{taxi.taxi_name}}<br>
+              taxi num: {{taxi.taxi_num}}<br>
+              {% if taxi.active == False %}
+                <th scope="row" style="font-weight: 600">
+                  Active:<i class="fa fa-circle" style="color: red"></i>&nbsp;{{ taxi.active }}</th>
+                  {% elif taxi.active %}
+                  <th scope="row" style="font-weight: 600">
+                    Active:<i class="fa fa-circle" style="color: green"></i>&nbsp;{{ taxi.active }}</th>
+              {% endif %}<br>
+              {% if taxi.is_booked == False %}
+                <th scope="row" style="font-weight: 600">
+                  Booked:<i class="fa fa-circle" style="color: red"></i>&nbsp;{{ taxi.is_booked }}</th>
+                  {% elif taxi.active %}
+                  <th scope="row" style="font-weight: 600">
+                    Booked:<i class="fa fa-circle" style="color: green"></i>&nbsp;{{ taxi.is_booked }}</th>
+              {% endif %}
+              </p>
+
+
+
+
+
+        </div>
+
+    </div>
+    </div>
+    </div>
+
+
+
+
+</div>
+{% endblock body_block %}
