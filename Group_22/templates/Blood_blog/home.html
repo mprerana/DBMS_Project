@@ -1,0 +1,5 @@
+{% extends "Blood_blog/base1.html" %}
+{% block content %}
+<a href="{% url 'Blood_blog:Blog' %}"><button type="button" name="button">Blog</button></a><br>
+<a href=" {% url 'Blood_blog:DonationFormView' %} "><button type="button" name="button">Form</button></a>
+{% endblock content %}

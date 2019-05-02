@@ -1,0 +1,29 @@
+{% extends 'Blood_blog/base1.html' %}
+{% block content%}
+  {% for blog in blogs %}
+    <div class="jumbotron" style = "padding-top:13px !important">
+      <div class="media-body">
+        <div class="article-metadata">
+
+          {{ blog.Patient_name }}
+          <small class="text-muted">{{ blog.blood }}</small>
+        </div>
+        <h2>{{ blog.phone_number }}</h2>
+        <p class="article-content">{{ blog.Amount_blood }} ltrs</p>
+      </div>
+    </div>
+  {% endfor %}
+    <form method='POST'>
+      {% csrf_token %}
+      <input type="text" name="comment" placeholder="comment here...">
+      <button>submit</button>
+    </form>
+    {% for cmnt in cmnts %}
+      <ul>
+        <li>
+          {{ cmnt.user_comment.username }}
+          {{ cmnt.comment }}
+        </li>
+      </ul>
+    {% endfor %}
+{% endblock %}

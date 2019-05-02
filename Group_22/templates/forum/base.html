@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <link rel="shortcut icon" type="image/x-icon" href="../../static/images/favicon.ico" />
+    <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
+    <link rel="stylesheet" href="../../static/css/home2.css">
+    <title>Fund Hub</title>
+  </head>
+  <body>
+    <img style="opacity:0.6;width:100%;position:fixed;height:700px;z-index:0;" src="https://cdn.pixabay.com/photo/2017/06/27/11/48/team-spirit-2447163_960_720.jpg" alt="ERROR!">
+    <div class="container-fluid">
+      <div class="row" style="padding-top:12px;">
+        <div class="col-4">
+          <h2 style="font-family:fantasy;color:#f3f3f3;">FUND HUB</h2>
+        </div>
+        <div style="text-align:right;" class="col-8">
+          <span><a href="{% url 'login:logout' %}"><button class="btn btn-light" type="button" name="button">Logout</button></a></span>
+        </div>
+      </div>
+      <br>
+      <div style="margin-top: 1%;border-radius: 1%;padding:30px;border:1px solid #333333;background: black;">
+        <div class="row">
+          <div class="col-3">
+            <h3 style="text-align:center;color:#70ffd1">Also Checkout!</h3>
+            <table class="table table-striped" style="margin-top:7%;">
+              <tbody style="overflow-y:scroll;height:130px;display:block;">
+                {% for a in reqs %}
+                  <tr>
+                    <td><a style="text-decoration:none;color:white;font-size:18px;" href="{% url 'forum:home_with_pk' pk=a.pk %}">{{ a.request_header }}</a></td>
+                    <td><a style="text-decoration:none;color:white;font-size:18px;" href="{% url 'forum:home_with_pk' pk=a.pk %}">{{ a.by_date }}</a></td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table><hr size="3px">
+            <img src="/media/{{ forum.pic }}" alt="ERROR!" style="width:80%;">
+          </div>
+          <div class="col-6">
+            <h3 style="font-family: sans-serif;text-align: center;width:100%;color:#f5f5f5;">{{ forum.request_header }}</h3>
+            <div id="scroll" style="border-radius: 1%;background-color:rgba(255,255,255,0.8);height:260px;overflow-y:scroll;overflow-x:hidden;">
+              <div class="row" style="padding:23px;">
+                <ul style="list-style-type:none;">
+                  {% for i in comments %}
+                  {% if i.by == forum.username and i.message|length > 1 %}
+                  <li><p style="border-radius: 3%;width:100%;margin-left: 300%;font-size: 16px;opacity: 1;background-color:rgba(10, 163,168,1);color:#f3f3f3;padding:8px;">{{ i.message }}</p></li>
+                  {% elif i.message|length > 1 %}
+                  <li><p style="border-radius: 3%;font-size: 16px;opacity: 1;background-color:rgba(45,73,255, 1);color:#f3f3f3;padding:8px;">{{ i.message }}
+                    <br>
+                    -{{ i.by }}
+                  </p></li>
+                  {% endif %}
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            <form method="POST">
+              {% csrf_token %}
+              <br>
+              <table style="width:100%;">
+                <tr>
+                  <td style="width:80%;">
+                    <div class="form-group">
+                      <label for="txt" style="font-size:17px;color:#222222;"> <b>Send Wishes</b></label>
+                      <textarea style="width:95%;" class="form-control" id="txt" rows="3" name="msg" placeholder="Message..."></textarea>
+                    </div>
+                  </td>
+                  <td style="width:15%">
+                    <a href="{% url 'paytm:payment' %}"><button onclick="" style="margin-bottom:10px;margin-top:17px;width:90%" class="btn btn-warning" type="button" name="button">Payment</button></a> 
+                    <input style="width:90%;" class="btn btn-primary" type="submit" name="submit" value="Submit">
+                  </td>
+                </tr>
+              </table>
+            </form>
+          </div>
+          <div class="col-3" style="color:#f9f9f9;">
+            <br><br>
+            <p style="font-size:18px;float:right;">{{ forum.username }}</p><br><br>
+            <p style="text-align:justify;">{{ forum.description }}</p>
+            <p style="font-size:30px;text-align:center;">{{ forum.amount }} &#8377;</p>
+            <p style="display:none" id="time">{{ forum.by_date }}</p>
+            <p id="show" style="text-align:center;font-size:25px;"></p><br><br><br>
+            <button style="float:right;" type="button" class="btn btn-link btn-lg"><a href="{% url 'customer:personal' %}">Go Back</a></button>
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+    <script>
+
+      var countDownDate = new Date(document.getElementById('time').innerHTML).getTime();
+      var x = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        document.getElementById("show").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("show").innerHTML = "EXPIRED";
+        }
+      }, 1000);
+
+      var objDiv = document.getElementById("scroll");
+      objDiv.scrollTop = objDiv.scrollHeight;
+
+    </script>
+  </body>
+</html>

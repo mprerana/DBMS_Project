@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+<html lang="en" dir="ltr">
+  <head>
+
+    <title></title>
+    <meta name="description" content="Responsive Nav Bar" />
+    <meta name="keywords" content="Fluid, Responsive, responsive, responsive web design, responsive design, layout, css, html, web development, web design"/>
+    <meta name ="Generator" content= "Atom ver1.0.11.0"/>
+    <meta name="author" content="Maria Cheline Magsano"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+      .list { float:right; }
+    </style>
+    {% block style %} {% endblock %}
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark " id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Donation Kart</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"><a href="{% url 'User:home' %}" class="nav-link">Home</a></li>
+
+            <li class="nav-item active" ><a href="{% url 'User:events' %}" class="nav-link">Events</a></li>
+            <li class="nav-item active"><a href="{% url 'User:cart' %}" class="nav-link">Cart</a></li>
+            <li class="nav-item active"><a href="{% url 'foodtruck:foodtruck.foodrequest' %}" class="nav-link">Foodtruck</a></li>
+            <li class="nav-item active"><a href="{% url 'userlogin:userlogin.edit_profile' %}" class="nav-link">Profile</a></li>
+            <li class="nav-item active"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+    {% block content %} {% endblock %}
+  </body>
+</html>

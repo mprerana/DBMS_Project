@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../static/css/home.css">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <link rel="shortcut icon" type="image/x-icon" href="../../static/images/favicon.ico" />
+    <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
+    <title>Fund Hub</title>
+  </head>
+  <body>
+    <div class="container-fluid" id="cont">
+      <div class="row" id="bar" style="position:fixed;z-index:2;">
+        <div class="col-5" style="padding-top: 5px;">
+          <h1 id="heading"> FUND HUB </h1>
+        </div>
+        <div class="col-5" style="padding-left:250px;padding-top:7px;">
+          <img src="../../static/images/admin2.png" id="logo" alt="ERROR!">
+        </div>
+        <div class="col-1" style="padding-top:10px;padding-left:60px;">
+          <center><img src="/media/{{c.0.picture}}" id="dp" alt="ERROR!"></center>
+        </div>
+        <div class="col-1" style="padding-top:15px;">
+          <center> <p style="font-size:18px;color:#333333;">{{ user.username }}</p> </center>
+        </div>
+      </div><br><br><br><br><br><br><br>
+      <div class="row">
+        <div class="col-3" style="text-align:left;">
+          <div id="mySidenav" class="sidenav">
+            <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br> -->
+            <br>
+            <a id="b1" href="#">New Requests</a>
+            <a id="b2" href="#">Pending Requests</a>
+            <a id="b4" href="#">Pending Events</a>
+            <a id="b3" href="#">Relif Funds</a>
+            <a href="{% url 'admin_login:profile' %}">Profile</a>
+            <a href="{% url 'login:logout' %}">Logout</a>
+          </div>
+        </div>
+        <div class="col-9">
+          <div class="scrolling-warpper" style="height:505px;">
+            {% if requests %}
+              {% for req in requests %}
+                <div class="divs nr">
+                  {% if messages %}
+                    <ul style="list-style-type:none;" class="messages">
+                        {% for message in messages %}
+                        <li class="{{ message.tags }}">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                  {% endif %}
+                  <div class="card" style="width: 20rem; height:480px;">
+                    <img src="/media/{{ req.pic }}" class="card-img-top" style="width:100%;height:250px;" alt="ERROR!">
+                    <div class="card-body">
+                      <h5 class="card-title" style="cursor:pointer;text-transform:uppercase;" onclick="display({{ forloop.counter }})">{{ req.request_header }}</h5>
+                      <p class="card-text" style="text-align:justify;">{{ req.description|truncatewords:7 }}</p>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                      <a href="{% url 'admin_login:req_appoint' pk=req.pk %}"><button style="width:40%;" class="btn btn-primary">Appoint</button></a>
+                      <a href="{% url 'admin_login:req_cancel' pk=req.pk %}"><button style="width:40%;float:right;" class="btn btn-danger">Cancel</button></a>
+                    </div>
+                  </div>
+                </div>
+                <div id="{{ forloop.counter }}" class="modal">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h2>Details</h2>
+                      <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                      <ul style="list-style-type:none">
+                        <li style="font-size:18px;color:#333333;">Request By : {{ req.username }}</li><br>
+                        <li style="text-align:center;text-transform:uppercase;color:#333333;"> <h4>{{ req.request_header }}</h4> </li>
+                        <li> <p style="font-family: sans-serif;font-size: 20px;text-align:justify;white-space:normal;color:#333333;"> {{ req.description }} </p> </li>
+                        <li> Requested <h3> {{ req.amount }} &#8377;</h3> </li><br>
+                        <li style="font-size:18px;color:#333333;"> Before {{ req.by_date }} </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            {% endif %}
+            {% if request2 %}
+              {% for req2 in request2 %}
+                <div class="divs pr" style="display:none;">
+                  <div class="card" style="width: 20rem; height:480px;">
+                    <img src="/media/{{ req2.pic }}" class="card-img-top" style="width:100%;height:250px;" alt="ERROR!">
+                    <div class="card-body">
+                      <h5 class="card-title" style="cursor:pointer;text-transform:uppercase;" onclick="display2({{ forloop.counter }})">{{ req2.request_header }}</h5>
+                      <p class="card-text" style="text-align:justify;">{{ req2.description|truncatewords:7 }}</p>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                      <a href="{% url 'admin_login:req2_verify' pk=req2.pk %}"><button style="width:40%;" class="btn btn-success">Verify</button></a>
+                      <a href="{% url 'admin_login:req2_cancel' pk=req2.pk %}"><button style="width:40%;float:right;" class="btn btn-danger">Cancel</button></a>
+                    </div>
+                  </div>
+                </div>
+                <div id="p{{ forloop.counter }}" class="modal">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h2>Details</h2>
+                      <span class="pclose">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                      <ul style="list-style-type:none">
+                        <li style="font-size:18px;color:#333333;">Request By : {{ req2.username }}</li><br>
+                        <li style="text-align:center;text-transform:uppercase;color:#333333;"> <h4>{{ req2.request_header }}</h4> </li>
+                        <li> <p style="font-family: sans-serif;font-size: 20px;text-align:justify;white-space:normal;color:#333333;"> {{ req2.description }} </p> </li>
+                        <li> Requested <h3> {{ req2.amount }} &#8377;</h3> </li><br>
+                        <li style="font-size:18px;color:#333333;"> Before {{ req2.by_date }} </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            {% endif %}
+            <div id="rf" style="display:none;overflow-x:hidden;overflow-y:hidden;">
+              <div class="row">
+                <div class="col-8">
+                <form style="padding:25px;border-radius:3%;background-color:rgba(0, 0, 0, 0.9);width:100%;" method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <h2 style="color:#dddddd;text-align:center;font-family: verdana;">RELIF FUND</h2><br>
+                  <div class="row">
+                    <div class="col-7">
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label style="color:#dddddd;" for="title">Title :</label>
+                            {{ form.title|as_crispy_field }}
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label style="color:#dddddd;" for="place">Place :</label>
+                            {{ form.place|as_crispy_field }}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label style="color:#dddddd;" for="state">State :</label>
+                            {{ form.state|as_crispy_field }}
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label style="color:#dddddd;" for="targetamt">Target Amount :</label>
+                            {{ form.target|as_crispy_field }}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="form-group">
+                            <label style="color:#dddddd;" for="report">Description :</label>
+                            {{ form.report|as_crispy_field }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-5">
+                      <div class="row">
+                        <div class="col-12" style="white-space:normal;">
+                          <i><small style="color:#aaaaaa">Limit file-name length to 100</small></i><br><br>
+                          <center>
+                            <div class="form-group">
+                              {{ formset.management_form }}
+                                {% for form in formset %}
+                                    <p style="padding-top:1px;">{{ form }}</p>
+                                {% endfor %}
+                            </div>
+                          </center>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                    <div class="row">
+                      <div class="col-12">
+                        <center><input type="submit" style="width:70%;" name="submit" class="btn btn-success" value="Submit"></center>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-4">
+                  <div class="card" style="width:100%;overflow-y:scroll;height:480px;">
+                    {% for fund in funds %}
+                      <div class="card-body">
+                        <a href="{% url 'funds:home_with_pk' pk=fund.pk %}"><h5 class="card-title">{{ fund.title }}</h5></a>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ fund.place }}, {{ fund.state }}</h6>
+                        <p class="card-text">Started on: {{ fund.started_on }}<br> <span class="card-subtitle mb-2 text-muted" style="float:right;">-{{ fund.by }}</span> </p>
+                      </div><hr>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% if events %}
+              {% for event in events %}
+                <form method="POST" action="{% url 'User:verifyevent' %}">
+                {% csrf_token %}
+                <div class="divs pre" style="display:none">
+                  <div class="card" style="width: 20rem; height:480px;">
+                    <img src="/media/{{ event.imZg }}" class="card-img-top" style="width:100%;height:250px;" alt="ERROR!">
+                    <div class="card-body"><h1>{{e.requestedorganization}}</h1>
+                    <h3>{{e.requesteddate}} :  {{e.description}}</h3>
+                    <h3>Requested Items  :  {{e.requesteditem}}</h3>
+                    <input type="number" name="eventid" value={{e.eventid}} style="display:none">
+                    <button type="submit" >Verify</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <br><br>
+    </div>
+    <script type="text/javascript">
+
+      function display(id){
+        console.log(id.toString())
+        var modal = document.getElementById(id.toString());
+        var span = document.getElementsByClassName("close")[0];
+        modal.style.display = "block";
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+      }
+
+      function display2(id){
+        console.log("p"+id.toString())
+        var modal = document.getElementById("p"+id.toString());
+        var span = document.getElementsByClassName("pclose")[0];
+        modal.style.display = "block";
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+      }
+
+      var b1=document.getElementById('b1');
+      var b2=document.getElementById('b2');
+      var b3=document.getElementById('b3');
+      var b4=document.getElementById('b4')
+      var nr=document.getElementsByClassName('nr');
+      var pr=document.getElementsByClassName('pr');
+      var rf=document.getElementById('rf')
+      var pre = document.getElementsByClassName('pre')
+
+      window.onload=function(){
+        b1.onclick=function(){
+          b1.disabled=true;
+          for(var i =0;i<nr.length;i++){
+            nr[i].style.display="inline-block";
+          }
+          b2.disabled=false;
+          for(var i =0;i<pr.length;i++){
+            pr[i].style.display="none";
+          }
+          b3.disabled=false;
+          rf.style.display="none";
+          for(var i=o;i<pre.length;i++){
+            pre.style.display="none";
+          }
+          b4.disabled=false;
+        }
+        b2.onclick=function(){
+          b2.disabled=true;
+          for(var i =0;i<pr.length;i++){
+            pr[i].style.display="inline-block";
+          }
+          b1.disabled=false;
+          for(var i =0;i<nr.length;i++){
+            nr[i].style.display="none";
+          }
+          b3.disabled=false;
+          rf.style.display="none";
+          b4.disabled=false;
+          for(var i=o;i<pre.length;i++){
+            pre.style.display="none";
+          }
+        }
+        b3.onclick=function(){
+          b2.disabled=false;
+          for(var i =0;i<pr.length;i++){
+            pr[i].style.display="none";
+          }
+          b1.disabled=false;
+          for(var i =0;i<nr.length;i++){
+            nr[i].style.display="none";
+          }
+          b3.disabled=true;
+          rf.style.display="block";
+          b4.disabled=false;
+          for(var i=o;i<pre.length;i++){
+            pre.style.display="none";
+          }
+        }
+        b4.onclick=function(){
+          b2.disabled=false;
+          for(var i =0;i<pr.length;i++){
+            pr[i].style.display="none";
+          }
+          b1.disabled=false;
+          for(var i =0;i<nr.length;i++){
+            nr[i].style.display="none";
+          }
+          b3.disabled=false;
+          rf.style.display="none";
+          b4.disabled=true;
+          for(var i=o;i<pre.length;i++){
+            pre.style.display="block";
+          }
+        }
+        b1.disabled=true;
+      }
+
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "300px";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
+    </script>
+  </body>
+</html>

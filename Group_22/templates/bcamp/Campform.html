@@ -1,0 +1,69 @@
+{% extends "userlogin/base.html" %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block extrahead %}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    .wholeform{
+      margin-left: 60px;
+      margin-top:4px;
+      width:40%;
+      border: solid #f7f7f9;
+    }
+
+
+  </style>
+{% endblock %}
+
+{% block body %}
+<div class="row" style="width:100%;">
+  <div class="col-6">
+    <h4 style="color:red;text-align:center;padding-top:3%;margin-left:15%;">Donor Registration form</h4>
+    <div class="wholeform" style="margin-top:4%;width:90%;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);">
+      <div style="padding:30px;">
+        <form method="POST" style="padding:10px;">
+          {% csrf_token %}
+          <div class="form-row">
+            <div class="form-group col-md-6 mb-0">
+              {{form.FirstName|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-6 mb-0">
+              {{ form.LastName|as_crispy_field }}
+            </div>
+          </div>
+          {{ form.DonorAge | as_crispy_field }}
+          <div class="form-row">
+            <div class="form-group col-md-6 mb-0">
+              {{form.DonorMobile|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-6 mb-0">
+              {{ form.DonorLocality|as_crispy_field }}
+            </div>
+          </div>
+          {{ form.Donoremail | as_crispy_field }}
+          <div class="form-row">
+            <div class="form-group col-md-6 mb-0">
+              {{form.DonorGender|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-6 mb-0">
+              {{ form.DonorBgrp|as_crispy_field }}
+            </div>
+          </div>
+
+          <center><input class="btn btn-success" style="width:50%;text-align:center;" type="submit" id="submit" name="" value="submit"></center>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <p style="padding-top:74px">The gift of blood is the gift of life. There is no substitute for human blood.
+Every two seconds someone needs blood.
+More than 38,000 blood donations are needed every day.
+Become a Donor and help people save their lives.
+
+</p>
+    <img src="https://cms.groupeditors.com/img/2c22916b-88ca-46f9-b310-91618886f17e.jpg" style="padding-top:4%;width:300px;height:560px;width:100%;">
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'userlogin/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<a>
+<h1>u r logged in</h1>
+{% block body %}
+<a href="http://127.0.0.1:8000/profile">viewprofile</a>
+<a href="{% url 'foodtruck.foodrequest' %}">foodtruck </a>
+{% endblock %}
+</body>
+</html>

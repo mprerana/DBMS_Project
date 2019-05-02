@@ -1,0 +1,40 @@
+@media (max-width: 768px) {
+    /* Reversing the behavior of the sidebar:
+       it'll be rotated vertically and off canvas by default,
+       collapsing in on toggle button click with removal of
+       the vertical rotation.   */
+    #sidebar {
+        margin-left: -250px;
+        transform: rotateY(100deg);
+    }
+    #sidebar.active {
+        margin-left: 0;
+        transform: none;
+    }
+
+    /* Reversing the behavior of the bars:
+       Removing the rotation from the first,
+       last bars and reappear the second bar on default state,
+       and giving them a vertical margin */
+    #sidebarCollapse span:first-of-type,
+    #sidebarCollapse span:nth-of-type(2),
+    #sidebarCollapse span:last-of-type {
+        transform: none;
+        opacity: 1;
+        margin: 5px auto;
+    }
+
+    /* Removing the vertical margin and make the first and last bars rotate again when the sidebar is open, hiding the second bar */
+    #sidebarCollapse.active span {
+        margin: 0 auto;
+    }
+    #sidebarCollapse.active span:first-of-type {
+        transform: rotate(45deg) translate(2px, 2px);
+    }
+    #sidebarCollapse.active span:nth-of-type(2) {
+        opacity: 0;
+    }
+    #sidebarCollapse.active span:last-of-type {
+        transform: rotate(-45deg) translate(1px, -1px);
+    }
+}

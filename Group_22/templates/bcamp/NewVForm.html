@@ -1,0 +1,73 @@
+{% extends "userlogin/base.html" %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block extrahead %}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    .form-row {
+      padding:10px
+    }
+
+    .wholeform{
+      margin-left: 60px;
+      margin-top:4px;
+      width:50%;
+      border: solid #f7f7f9;
+    }
+
+  </style>
+{% endblock %}
+
+{% block body %}
+<div class="row" style="width:100%;">
+  <div class="col-6">
+    <h4 style="text-align:center;padding-top:3%;margin-left:15%;color:red;">Volunteer Registration form</h4>
+    <div class="wholeform" style="margin-top:4%;width:95%;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);">
+      <div style="padding:30px;">
+        <form method="POST" style="padding:10px;">
+          {% csrf_token %}
+          {{ Vform.Vname | as_crispy_field }}
+          <div class="form-row">
+            <div class="form-group col-md-6 mb-0">
+              {{Vform.Vemail|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-6 mb-0">
+              {{ Vform.Vphone|as_crispy_field }}
+            </div>
+          </div>
+          {{ Vform.Vhouse | as_crispy_field }}
+          <div class="form-row">
+            <div class="form-group col-md-6 mb-0">
+              {{Vform.Vlandmark|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-6 mb-0">
+              {{ Vform.Vlocality|as_crispy_field }}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6 mb-0">
+              {{Vform.Vcity|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-6 mb-0">
+              {{ Vform.Vstate|as_crispy_field }}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6 mb-0">
+              {{Vform.Vgender|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-6 mb-0">
+              {{ Vform.Vblood|as_crispy_field }}
+            </div>
+          </div>
+          <center><input class="btn btn-success" style="width:50%;text-align:center;" type="submit" id="submit" name="" value="submit"></center>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <img src="https://i.imgur.com/wuTVYPY.jpg" style="padding-top:11%;height:960px;width:100%;">
+  </div>
+</div>
+{% endblock %}

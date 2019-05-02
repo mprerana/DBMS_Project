@@ -1,0 +1,275 @@
+{% extends 'userlogin/base.html' %}
+<!DOCTYPE HTML>
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+{% load static %}
+<html>
+  <head>
+  {% block extrahead %}
+  <link rel="icon" type="image/png" href={% static "User/images/icons/favicon.ico" %}/>
+
+	<link rel="stylesheet" type="text/css" href={% static "User/form/vendor/bootstrap/css/bootstrap.min.css" %}>
+
+	<link rel="stylesheet" type="text/css" href={% static  "User/form/fonts/font-awesome-4.7.0/css/font-awesome.min.css" %}>
+
+	<link rel="stylesheet" type="text/css" href={% static  "User/form/fonts/Linearicons-Free-v1.0.0/icon-font.min.css" %}>
+
+	<link rel="stylesheet" type="text/css" href={% static  "User/form/vendor/animate/animate.css" %}>
+
+	<link rel="stylesheet" type="text/css" href={% static  "User/form/vendor/css-hamburgers/hamburgers.min.css" %}>
+
+	<link rel="stylesheet" type="text/css" href={% static  "User/form/vendor/animsition/css/animsition.min.css" %}>
+
+	<link rel="stylesheet" type="text/css" href={% static  "User/form/vendor/select2/select2.min.css"%}>
+
+	<link rel="stylesheet" type="text/css" href={% static  "User/form/vendor/daterangepicker/daterangepicker.css" %}>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href={% static  "User/form/css/util.css"%}>
+	<link rel="stylesheet" type="text/css" href={% static  "User/form/css/main.css"%}>
+
+  {% endblock %}
+  </head>
+  <body>
+    {% block body %}
+
+
+
+	<div class="container-contact100" style="height:30%;width:100%;">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form">
+        {% csrf_token%}
+				<span class="contact100-form-title">
+					Rise Request
+				</span>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="uname"> Organisation : </label>
+              {{ eventform.requestedorganization|as_crispy_field }}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label for="uname"> Type : </label>
+                {{ eventform.type|as_crispy_field }}
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label for="uname"> Subtype : </label>
+              {{ eventform.subtype|as_crispy_field }}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="uname"> Description : </label>
+              {{ eventform.description|as_crispy_field }}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="uname"> Item : </label>
+              {{ eventform.requesteditem|as_crispy_field }}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="uname"> Quantity : </label>
+              {{ eventform.requestedquantity|as_crispy_field }}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="uname"> Cost per Item : </label>
+              {{ eventform.costperitem|as_crispy_field }}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="uname"> By Date : </label>
+              {{ eventform.enddate|as_crispy_field }}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="uname"> Image : </label>
+              {{ eventform.img|as_crispy_field }}
+            </div>
+          </div>
+        </div>
+<!--
+        <div class="form-row">
+          <label>Tell us your name</label><br><br>
+          <div class="col-12">
+        {{ eventform.requestedorganization|as_crispy_field }}
+      </div>
+      </div>
+        <div class="form-row">
+          <label>Type</label><br><br>
+          <div class="col-6">
+            {{ eventform.type|as_crispy_field }}
+          </div>
+          <label>subtype</label><br><br>
+          <div class="col-6">
+            {{ eventform.subtype|as_crispy_field }}
+          </div>
+        </div>
+
+        <div class="form-row">
+<label>Description</label><br><br><br>
+
+        <div class="col-12">
+        {{ eventform.description|as_crispy_field }}
+      </div>
+    </div>
+    <div class="form-row">
+
+    <label>Select Item</label><br><br><br>
+    <div class="col-12">
+        {{ eventform.requesteditem|as_crispy_field }}
+  </div>
+</div>
+<div class="form-row">
+
+<label>Quantity</label><br>
+<div class="col-12">
+    {{ eventform.requestedquantity|as_crispy_field }}
+</div>
+</div>
+<div class="form-row">
+
+<label>cost per item</label><br>
+<div class="col-12">
+    {{ eventform.costperitem|as_crispy_field }}
+</div>
+</div>
+<div class="form-row">
+
+<label>end date</label><br>
+<div class="col-12">
+    {{ eventform.enddate|as_crispy_field }}
+</div>
+</div>
+<div>
+
+<label>Image</label><br>
+<div class="col-12">
+    {{ eventform.img|as_crispy_field }}
+</div>
+</div> -->
+
+
+
+
+
+
+
+
+				<div class="container-contact100-form-btn">
+					<button class="btn btn-primary" style="width:160px;height:40px">
+						Send Request
+					</button>
+				</div>
+			</form>
+
+			<div class="contact100-more flex-col-c-m" style="background-image: url('images/bg-01.jpg');">
+				<div class="flex-w size1 p-b-47">
+					<div class="txt1 p-r-25">
+						<span class="lnr lnr-pointer-right"></span>
+					</div>
+
+					<div class="flex-col size2">
+						<span class="txt1 p-b-20">
+							Step 1
+						</span>
+
+						<span class="txt2">
+							User has to fill the form for donations
+						</span>
+					</div>
+				</div>
+
+				<div class="dis-flex size1 p-b-47">
+					<div class="txt1 p-r-25">
+						<span class="lnr lnr-pointer-right"></span>
+					</div>
+
+					<div class="flex-col size2">
+						<span class="txt1 p-b-20">
+							Step 2
+						</span>
+
+						<span class="txt2">
+							Request will be verified by us
+						</span>
+					</div>
+				</div>
+
+				<div class="dis-flex size1 p-b-47">
+					<div class="txt1 p-r-25">
+						<span class="lnr lnr-pointer-right"></span>
+					</div>
+
+					<div class="flex-col size2">
+						<span class="txt1 p-b-20">
+						        Step3:
+						</span>
+
+						<span class="txt3">
+							On verification your request will be open to the public
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div id="dropDownSelect1"></div>
+
+
+	<script src={% static "User/form/vendor/jquery/jquery-3.2.1.min.js" %}></script>
+	<script src={% static "User/form/vendor/animsition/js/animsition.min.js"%}></script>
+	<script src={% static "User/form/vendor/bootstrap/js/popper.js"%}></script>
+	<script src={% static "User/form/vendor/bootstrap/js/bootstrap.min.js"%}></script>
+	<script src={% static "User/form/vendor/select2/select2.min.js"%}></script>
+	<script>
+		$(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+	</script>
+	<script src={% static "User/form/vendor/daterangepicker/moment.min.js"%}></script>
+	<script src={% static "User/form/vendor/daterangepicker/daterangepicker.js"%}></script>
+	<script src={% static "User/form/vendor/countdowntime/countdowntime.js"%}></script>
+	<script src={% static "User/form/js/main.js"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-23581568-13');
+	</script>
+    {% endblock %}
+  </body>
+</html>

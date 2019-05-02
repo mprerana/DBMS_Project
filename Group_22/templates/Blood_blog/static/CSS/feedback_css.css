@@ -1,0 +1,39 @@
+{% load staticfiles %}
+
+.jumbotron{
+  height: 720px;
+  width:700px;
+  font-weight: bold;
+  font-size: 25px;
+  background-color: rgba( 28, 28, 28 ,0.8) !important
+}
+
+.temp{
+  font color: #fdfffd;
+  background-image:url('https://images8.alphacoders.com/689/689012.jpg');
+  background-color:  rgba(200, 214, 218,0.1) !important;
+  height:890px;
+  width:1290px;
+  background-repeat: no-repeat;
+  padding-top: 50px;
+}
+
+.btn {
+    background-color:  #fe5a02 ;
+    color: white;
+    padding: 12px 10px;
+    border: 1px solid black;
+    cursor: pointer;
+    width: 50%;
+    opacity: 0.9;
+}
+
+.btn:hover {
+    opacity: 1;
+    background-color:  #29d112
+}
+
+input[textarea]:focus {
+    background-color: #ddd;
+    outline: none;
+}
