@@ -1,0 +1,228 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/homePage.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style media="screen">
+
+    </style>
+  </head>
+  <body  style="background-image: url({% static 'wallpaper.jpg' %});background-repeat:no-repeat;background-size: 100%;background-attachment: fixed">
+  <nav class="navbar navbar-expand-lg navbar-light bg-black" style="padding:0px;background-color: black;position: relative;">
+  <a class="navbar-brand" href="{% url 'mainpage' %}" style="padding:0px;width:15%"><img src="{% static 'logo.png' %}"  alt="No logo" id="image"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"><b style="color:deepskyblue">Home</b> <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#"><b style="color:deepskyblue">About Us</b></a>
+      </li>
+      <li class="nav-item dropdown " >
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <b style="color:deepskyblue"><span class="glyphicon glyphicon-filter"></span>Filter</b>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" action='{% url 'search' %}' method="post">
+      {% csrf_token %}
+      {{ search_form }}
+      <script type="text/javascript">
+
+      $(function () {
+        $('#id_search_query').addClass('form-control mr-sm-2').attr("placeholder", "Search");
+        $('#id_search_ty').addClass('nav-link dropdown-toggle ').attr("data-toggle","dropdown").attr("aria-haspopup","true").attr("aria-expanded","false");
+      });
+      </script>
+      <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+      <button class="button" type="submit">Search</button>
+    </form>
+        {% if user.is_authenticated %}
+          <a class="button button_log"  href="{% url 'logout' %}">Logout</a>
+          {% else %}
+          <a class="button button_log" href="{% url 'login' %}">Login</a>
+        {% endif %}
+      </a>
+
+  </div>
+</nav>
+<br>
+{% block content %}
+
+<div id="demo" class="carousel slide" data-ride="carousel" >
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+
+    <li data-target="#demo" data-slide-to="1" class="active"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+    <li data-target="#demo" data-slide-to="3"></li>
+  </ul>
+
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'image1.jpg' %}" alt="Chicago" style="width:100%" height="300px">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'image2.jpg' %}" alt="New York" style="width:100%" height="300px">
+    </div>
+      <div class="carousel-item">
+      <img src="{% static 'image3.jpg' %}" alt="New York" style="width:100%" height="300px">
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div><br><br>
+
+<div class="container-fluid" ">
+
+<br><br>
+  {% for list_name,list in list_of_movies %}
+    <div class="row">
+        <div class="col-md-12 heading">
+          <h2 style="margin-left: 25px;">{{ list_name }}</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for movie in list %}
+        <div class="col-md-2" style="text-align: center;">
+          <a href="{% url 'show:movie' movie.id %}" class="link">
+              <img src="{% static 'Layer 1.png' %}" style="position: absolute">
+              <img src="/media/{{ movie.titlePoster1 }}" width="180px" height="250px" style="position: relative;top:53.5px;left:40px">
+          </a>
+{#         <a href="{% url 'show:movie' movie.id %}" class="link">{{movie.titleName}}</a><br>#}
+        </div>
+        {% endfor %}
+
+    </div><br><br><br><br><br>
+{% endfor %}
+{#    <div class="row">#}
+{#        <div class="col-md-12 heading">#}
+{#          <h2 style="margin-left: 25px;">Telugu Movies</h2>#}
+{#        </div>#}
+{#    </div>#}
+{#    <div class="row">#}
+{#        {% for movie in movies_telugu %}#}
+{#        <div class="col-md-2" style="text-align: center;">#}
+{#          <a href="{% url 'show:movie' movie.id %}" class="link">#}
+{#            <img src="/media/{{ movie.titlePoster1 }}" width="180px" height="250px">#}
+{#          </a><br>#}
+{#          <a href="{% url 'show:movie' movie.id %}" class="link">{{movie.titleName}}</a><br>#}
+{#        </div>#}
+{#        {% endfor %}#}
+{#    </div><br><br><br>#}
+{#    <div class="row">#}
+{#        <div class="col-md-12 heading">#}
+{#          <h2 style="margin-left: 25px;">English Movies</h2>#}
+{#        </div>#}
+{#    </div>#}
+{#    <div class="row">#}
+{#        {% for movie in movies_english %}#}
+{#        <div class="col-md-2" style="text-align: center;">#}
+{#          <a href="{% url 'show:movie' movie.id %}" class="link">#}
+{#            <img src="/media/{{ movie.titlePoster1 }}" width="180px" height="250px">#}
+{#          </a><br>#}
+{#          <a href="{% url 'show:movie' movie.id %}" class="link">{{movie.titleName}}</a><br>#}
+{#        </div>#}
+{#        {% endfor %}#}
+{#    </div><br><br><br>#}
+{#    <div class="row">#}
+{#        <div class="col-md-12 heading">#}
+{#          <h2 style="margin-left: 25px;">Tamil Movies</h2>#}
+{#        </div>#}
+{#    </div>#}
+{#    <div class="row">#}
+{#        {% for movie in movies_tamil %}#}
+{#        <div class="col-md-2" style="text-align: center;">#}
+{#          <a href="{% url 'show:movie' movie.id %}" class="link">#}
+{#            <img src="/media/{{ movie.titlePoster1 }}" width="180px" height="250px">#}
+{#          </a><br>#}
+{#          <a href="{% url 'show:movie' movie.id %}" class="link">{{movie.titleName}}</a><br>#}
+{#        </div>#}
+{#        {% endfor %}#}
+{#    </div><br><br><br>#}
+{#    <div class="row">#}
+{#        <div class="col-md-12 heading">#}
+{#          <h2 style="margin-left: 25px;">Malyalam Movies</h2>#}
+{#        </div>#}
+{#    </div>#}
+{#    <div class="row">#}
+{#        {% for movie in movies_malyalam %}#}
+{#        <div class="col-md-2" style="text-align: center;">#}
+{#          <a href="{% url 'show:movie' movie.id %}" class="link">#}
+{#            <img src="/media/{{ movie.titlePoster1 }}" width="180px" height="250px">#}
+{#          </a><br>#}
+{#          <a href="{% url 'show:movie' movie.id %}" class="link">{{movie.titleName}}</a><br>#}
+{#        </div>#}
+{#        {% endfor %}#}
+{#    </div><br><br><br>#}
+{#    <div class="row">#}
+{#        <div class="col-md-12 heading">#}
+{#          <h2 style="margin-left: 25px;">Hindi Movies</h2>#}
+{#        </div>#}
+{#    </div>#}
+{#    <div class="row">#}
+{#        {% for movie in movies_hindi %}#}
+{#        <div class="col-md-2" style="text-align: center;">#}
+{#          <a href="{% url 'show:movie' movie.id %}" class="link">#}
+{#            <img src="/media/{{ movie.titlePoster1 }}" width="180px" height="250px">#}
+{#          </a><br>#}
+{#          <a href="{% url 'show:movie' movie.id %}" class="link">{{movie.titleName}}</a><br>#}
+{#        </div>#}
+{#        {% endfor %}#}
+{#    </div><br><br><br>#}
+{#    <div class="row">#}
+{#        <div class="col-md-12 heading">#}
+{#          <h2 style="margin-left: 25px;">Horror Movies</h2>#}
+{#        </div>#}
+{#    </div>#}
+{#    <div class="row">#}
+{#        {% for movie in movies_horror %}#}
+{#        <div class="col-md-2" style="text-align: center;">#}
+{#          <a href="{% url 'show:movie' movie.id %}" class="link">#}
+{#            <img src="/media/{{ movie.titlePoster1 }}" width="180px" height="250px">#}
+{#          </a><br>#}
+{#          <a href="{% url 'show:movie' movie.id %}" class="link">{{movie.titleName}}</a><br>#}
+{#        </div>#}
+{#        {% endfor %}#}
+{#    </div>#}
+</div>
+{% endblock content %}
+
+
+
+
+
+  </body>
+</html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">

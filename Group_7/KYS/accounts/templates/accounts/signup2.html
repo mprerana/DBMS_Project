@@ -1,0 +1,21 @@
+{% extends 'registration/login.html' %}
+{% block content %}
+
+
+
+  <div class="second" style="position: absolute;
+  top: 60px;
+  left: 165px;background-color: #f7f7f7;padding-left:3%;padding-right:3%;padding-top:2%">
+  <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+    Age <br>
+    <input type="number" name="age"><br>
+    Phone Number <br>
+    <input type="text" name="phone">
+<br>
+    <button type="submit" style="width:100%">Sign up</button>
+  </form>
+  <br><br>
+  </div>
+{% endblock %}

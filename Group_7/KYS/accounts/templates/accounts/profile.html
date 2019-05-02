@@ -1,0 +1,83 @@
+{% extends 'KYS/homePage.html' %}
+{% block content %}
+<br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>Your Profile </h1>
+      </div>
+      <div class="col-md-6" style="text-align:left; width:50%;">
+        <button type="button" class="btn btn-primary btn1" name="button"  data-toggle="modal" data-target="#myModal">Edit Profile</button>
+      </div>
+    </div><br>
+    <div class="row heading" style="text-align:left">
+      <div class="col-md-12">
+        <table class="table table-striped">
+          <thead>
+            <th>Field</th><th>Details</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Username</td><td>{{profile.user.username}}</td>
+            </tr>
+            <tr>
+              <td>Name</td><td>{{profile.user.first_name}} {{profile.user.last_name}}</td>
+            </tr>
+            <tr>
+              <td>E - Mail</td><td>{{profile.user.email}}</td>
+            </tr>
+            <tr>
+              <td>Phone Number</td><td>{{profile.phone}}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Profile</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <form class="form-inline" action="{% url 'accounts:edit_profile' %}" method="POST">
+        {% csrf_token %}
+      <div class="modal-body">
+          <table class="table table-striped">
+            <thead>
+              <th>Field</th><th>Details</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>First Name</td><td><input type="text" name="fname" value="{{profile.user.first_name}}"></td>
+              </tr>
+              <tr>
+                <td>Last Name</td><td><input type="text" name="lname" value="{{profile.user.last_name}}"></td>
+              </tr>
+              <tr>
+                <td>E - Mail</td><td><input type="email" name="email" value="{{profile.user.email}}"></td>
+              </tr>
+              <tr>
+                <td>Phone Number</td><td><input type="text" name="phone" value="{{profile.phone}}"></td>
+              </tr>
+            </tbody>
+          </table>
+
+      </div>
+      <div class="modal-footer"  style="margin-left:300px;">
+        <input type="submit" class="btn btn-success" style="">
+      </form>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock content %}

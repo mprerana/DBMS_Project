@@ -1,0 +1,39 @@
+{% extends "tvshow/tvshow_base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+<br><br>
+<div class="container background-container">
+  <div class="row">
+    <div class="col-md-10 heading">
+      <h1> {{ tvshow.titleName }} <u>SO{{ season_id }}</u></h1>
+    </div>
+  </div><br>
+  <div class="row">
+    <!-- <div class="col-md-6"><img src="/media/{{tvshow.seriesPoster}}" width="500px" height="300px"></div> -->
+    <div class="col-md-4">
+           <b style="color:deepskyblue;">Episodes</b> :
+           <ul>
+             {%for episode in episodes%}
+             <li> <a href="{% url 'tvshow:episodepage' episode.series_id episode.season_id episode.episodeNum %}"> Episode {{ episode.episodeNum }} - {{ episode.episodeName }} </a> </li>
+             {% endfor %}
+           </ul>
+    </div>
+
+  </div><br>
+
+  <script>
+      function reveal() {
+          document.getElementById("b").style.overflow="visible";
+          document.getElementById("b").style.whiteSpace="normal";
+          document.getElementById("c").style.display="none";
+          document.getElementById("d").style.display="block";
+      }
+      function showless() {
+          document.getElementById("b").style.overflow="hidden";
+          document.getElementById("b").style.whiteSpace="nowrap";
+          document.getElementById("c").style.display="block";
+          document.getElementById("d").style.display="none";
+      }
+  </script>
+{% endblock content %}

@@ -1,0 +1,67 @@
+ {% extends "show/base_show.html" %}
+ {% load static %}
+ {% load widget_tweaks %}
+ {% block content %}
+ <br><br>
+ <div class="container background-container">
+   <div class="row">
+     <div class="col-md-10 heading">
+       <h1> SO{{ season.seasonNum }} EO{{ episode.episodeNum }}: <u>{{ episode.episodeName }}</u>
+</h1>
+     </div>
+
+   </div><br>
+   <div class="row">
+     <div class="col-md-6"><img src="{% static '58a6f8de2900002200f270be.jpeg' %}" width="500px" height="300px"></div>
+     <div class="col-md-4">
+       <b style="color:deepskyblue;">Release Date</b> :   {{episode.releaseDate}}<br>
+       <b style="color:deepskyblue;">Run Time</b> : {{episode.runTime}} Cr<br>
+       <ul>
+         {% for lang in Languages %}
+         <li>{{lang.languages}}</li>
+         {% endfor %}
+       </ul>
+
+       <ul>
+         {% for genre in Genres %}
+         <li>{{genre.genres}}</li>
+         {% endfor %}
+       </ul>
+         <br>
+     </div>
+   </div><br>
+   <div class="row">
+     <div class="col-md-9" id="b">
+         <b style="color:deepskyblue;">Episode Summary</b>: {{ episode.episodeSummary }}
+     </div><a href='javascript:;' id="c" onclick="reveal()">see more</a>
+   </div> <a href="javascript:;" id="d" onclick="showless()" style="display:none">See less</a><br><br><br>
+   <div class="row">
+     <div class="col-md-10 heading">
+       <h3>Cast & Crew</h3>
+     </div>
+   </div><br>
+   <div class="row">
+     {% for cast in cast %}
+     <div class="col-md-2 cast" style="text-align:center;">
+       <a href="{% url 'cast:CAST' cast.id %}" class="link"><img src="/media/{{ cast.photo }}" width="180px" height="250px"></a><br>
+       <a href="{% url 'cast:CAST' cast.id %}" class="link">{{cast.name}}</a>
+     </div>
+     {% endfor %}
+   </div><br><br>
+
+
+ <script>
+     function reveal() {
+         document.getElementById("b").style.overflow="visible";
+         document.getElementById("b").style.whiteSpace="normal";
+         document.getElementById("c").style.display="none";
+         document.getElementById("d").style.display="block";
+     }
+     function showless() {
+         document.getElementById("b").style.overflow="hidden";
+         document.getElementById("b").style.whiteSpace="nowrap";
+         document.getElementById("c").style.display="block";
+         document.getElementById("d").style.display="none";
+     }
+ </script>
+ {% endblock content %}

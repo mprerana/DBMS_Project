@@ -1,0 +1,216 @@
+
+
+{% extends "show/base_show.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+<br><br>
+<div class="container-fluid background-container" style="margin-left:50px;border">
+  <div class="row">
+    <div class="col-md-8">
+    <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10 heading">
+        <h1>{{show.titleName}}&nbsp({{show.year}})</h1>
+      </div>
+
+    </div><br>
+    <div class="row">
+      <div class="col-md-5"><img src="{{show.imageLink}}" width="200px" height="300px"></div>
+      <div class="col-md-5">
+        <b style="color:deepskyblue;">Directed By</b> :
+        {% for director in Directors %}
+          <a href="{% url 'cast:cast_details' director.id %}">{{director.name}}</a>&nbsp
+        {% endfor %}<br>
+        <b style="color:deepskyblue;">Release Date</b> :   {{show.releaseDate}}<br>
+        <b style="color:deepskyblue;">Budget</b> : Rs. {{show.budget}} Cr<br>
+        <b style="color:deepskyblue;">Collection</b> :Rs. {{show.BoxOfficeCollection}} Cr<br>
+        <b style="color:deepskyblue;">Languages</b> <br>
+        <ul>
+          {% for lang in Languages %}
+          <li>{{lang.languages}}</li>
+          {% endfor %}
+        </ul>
+
+        <b style="color:deepskyblue;">Genres</b> <br>
+        <ul>
+          {% for genre in Genres %}
+          <li>{{genre.genres}}</li>
+          {% endfor %}
+        </ul>
+          <br>
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="col-md-8" id="b">
+          <b style="color:deepskyblue;">Story Line  </b> : {{show.storyLine}}
+      </div><a href='javascript:;' id="c" onclick="reveal()">see more</a>
+    </div> <a href="javascript:;" id="d" onclick="showless()" style="display:none">See less</a><br><br><br>
+    <div class="row">
+      <div class="col-md-8 heading">
+        <h3>Cast & Crew</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Cast Acted</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for cast in cast %}
+          <tr>
+            <td><a href="{% url 'cast:CAST' cast.id %}" style="text-align:center;font-size:15px;">{{cast.name}}</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </div>
+
+    </div><br><br>
+    <div class="row">
+      <div class="col-md-4 heading">
+        <h3>Reviews & Ratings</h3>
+        </div>
+      <div class="col-md-4 heading rate_btn">
+          {% if user.is_authenticated %}
+                  {% if user_rated %}
+          <button class="button" data-toggle="modal" data-target="#myModal">Already Rated</button>
+        {% else %}
+          <button class="button" data-toggle="modal" data-target="#myModal">Rate</button>
+        {% endif %}
+            {% else %}
+            <a class="button button_log" href="{% url 'login' %}">Login to Rate</a>
+          {% endif %}
+
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="col-md-5">
+        <b  style="color:deepskyblue;">KYS Rating</b> : {% if RATING_INFO %}<b>{{KYSrating}}</b>/5({{total_reviews}}){% else %}<b>Not Rated Yet</b>  {% endif %}
+      </div>
+    </div><br>
+    {% if currentUser_review %}
+    <div class="row">
+      <div class="col-md-8">
+        <img src="{% static 'login-user-icon.png' %}" alt="no-image" width="50px" height="40px">
+        <b style="color:deepskyblue;font-size:20px;">{{currentUser_review.username}}</b>&nbsp &nbsp
+        <span style="font-size:15px"><i>{{currentUser_review.date_reviewed}}</i></span>&nbsp&nbsp
+        {% if currentUser_review.edited %}<span style="color:gray"><i>(edited)</i></span>{% endif %}<br>
+        <b style="color:deepskyblue;">Rating</b>&nbsp : {{currentUser_review.rating}}/5 <br>
+      </div>
+      <div class="col-md-8">
+        <b style="color:deepskyblue;">Review</b> : {{currentUser_review.Review}}<br><br><br><br>
+      </div>
+    </div>
+    {% endif %}
+    {% for review in reviews %}
+      {% if review.id is not currentUser_review.id %}
+      <div class="row">
+        <div class="col-md-8">
+          <img src="{% static 'login-user-icon.png' %}" alt="no-image" width="50px" height="40px">
+          <b style="color:deepskyblue;font-size:20px;">{{review.username}}</b>&nbsp &nbsp
+          <span style="font-size:15px"><i>{{review.date_reviewed}}</i></span>&nbsp&nbsp
+          {% if review.edited %}<span style="color:gray"><i>(edited)</i></span>{% endif %}<br>
+          <b style="color:deepskyblue;">Rating</b>&nbsp : {{review.rating}}/5 <br>
+        </div>
+        <div class="col-md-8">
+          <b style="color:deepskyblue;">Review</b> : {{review.Review}}<br><br><br><br>
+        </div>
+      </div>
+      {% endif %}
+    {% endfor %}
+    </div>
+    </div>
+    <div class="col-md-3">
+      <div class="row heading1">
+        <h4>Recommended Movies</h4>
+      </div>
+      {% for movie in suggested_movies %}
+      {% if show.id is not movie.id %}
+      <div class="row">
+        <div class="col-md-9">
+          <a href="{% url 'show:movie' movie.id %}"><span style="font-size:18px;">{{ movie.titleName }}({{ movie.year }})</span></a>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}<br><br><br>
+      <div class="row heading1">
+        <h4>Top KYS Rated Movies</h4>
+      </div>
+      {% for movie in KYS_suggested_movies %}
+      {% if show.id is not movie.id %}
+      <div class="row">
+        <div class="col-md-9">
+          <a href="{% url 'show:movie' movie.id %}"><span style="font-size:18px;">{{ movie.titleName }}({{ movie.year }})</span></a>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<br><br>
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Rate And Review</h4>
+          <button type="button" class="close" data-dismiss="modal" style="color:black">&times;</button>
+        </div>
+        <form  method="POST" action="{% url 'show:review_rate' show.id %}">
+          {% csrf_token %}
+                  <div class="modal-body">
+
+                      <label for="" class="modal-sub">Rate&nbsp &nbsp</label>
+                      <select name="rating">
+                        {% if currentUser_review %}
+                        <option value="{{currentUser_review.rating}}">{{currentUser_review.rating}}</option>
+                        <option value="{{currentUser_review.rating}}">----</option>
+                        {% endif %}
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select><br>
+                      <label for="" class="modal-sub">Review</label>
+                      <textarea id="Review" rows="5" cols="100" style="resize:none;overflow:auto;" name="Review">{{currentUser_review.Review}}</textarea>
+                  </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-success" style="margin-left: 500px;">
+          </form>
+          <button type="button" class="btn btn-danger modal_cancel_btn"  data-dismiss="modal" style="margin-right: 20px;">Cancel</button>
+        </div>
+      </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    function reveal() {
+        document.getElementById("b").style.overflow="visible";
+        document.getElementById("b").style.whiteSpace="normal";
+        document.getElementById("c").style.display="none";
+        document.getElementById("d").style.display="block";
+    }
+    function showless() {
+        document.getElementById("b").style.overflow="hidden";
+        document.getElementById("b").style.whiteSpace="nowrap";
+        document.getElementById("c").style.display="block";
+        document.getElementById("d").style.display="none";
+    }
+</script>
+{% endblock content %}

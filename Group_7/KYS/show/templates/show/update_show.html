@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>SHOW UPDATE</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ show_update_form }}
+      <button type="submit">submit</button>
+    </form>
+  </body>
+</html>

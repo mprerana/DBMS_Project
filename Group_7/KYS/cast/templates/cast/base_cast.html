@@ -1,0 +1,192 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+      <style>
+
+
+      .button {
+        border: 1px solid deepskyblue;
+        color: deepskyblue;
+        padding: 8.2px 20px;
+        background-color: black;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 3px 0.5px;
+        cursor: pointer;
+      }
+      .button:hover{
+        background-color: deepskyblue;
+        text-decoration: none;
+        color:black;
+      }
+
+
+
+      .button1 {
+        /* border: none; */
+        border: 1px solid deepskyblue;
+        color: deepskyblue;
+        padding: 8.2px 20px;
+        text-align: center;
+        text-decoration: none;
+        background-color: black;
+        display: inline-block;
+        font-size: 16px;
+        margin: 3px 0.5px;
+        cursor: pointer;
+      }
+
+      .button1:hover{
+        background-color: deepskyblue;
+        text-decoration: none;
+        color:black;
+      }
+      /* .button_log1{
+        margin-left:10px;
+      } */
+
+
+
+
+        #image{
+          width:90%;
+          height:120px;
+          margin-bottom:0px;
+        }
+        .navbar-nav > li{
+          padding-left:30px;
+          padding-right:30px;
+        }
+
+
+        #id_search_query{
+          padding: 8.72px 20px;
+          background-color: black;
+          color: deepskyblue;
+          border: none;
+          border-bottom: 1px solid deepskyblue;
+          border-radius: 0px;
+          width:150px;
+          -webkit-transition: width 0.5s; /* Safari */
+          transition: width 0.5s;
+        }
+        #id_search_query:focus{
+          box-shadow: 0px 0px 0px black;
+          width: 300px;
+        }
+
+
+
+
+
+        #id_search_ty{
+          padding: 9px 20px;
+        }
+        #id_search_ty{
+          background: deepskyblue;
+          border: none;
+        }
+        #id_search_ty > option{
+          background-color: white;
+          font-size: 20px;
+        }
+        #searchb2{
+          margin-left:100px;
+        }
+      </style>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{% static 'css/base_cast.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  </head>
+  <body style="background-image:url({% static 'wallpaper.jpg' %});background-attachment: fixed;">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-black" style="padding:0px;background-color: black;position: relative;">
+<a class="navbar-brand" href="{% url 'mainpage' %}" style="padding:0px;width:15%"><img src="{% static 'logo.png' %}"  alt="No logo" id="image"></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav ">
+    <li class="nav-item active">
+      <a class="nav-link" href="#"><b style="color:deepskyblue">Home</b> <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="#"><b style="color:deepskyblue">About Us</b></a>
+    </li>
+    <li class="nav-item dropdown " >
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <b style="color:deepskyblue"><span class="glyphicon glyphicon-filter"></span>Filter</b>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </li>
+
+  </ul>
+  <form class="form-inline" action='{% url 'search' %}' method="post">
+    {% csrf_token %}
+    {{ search_form.search_ty }} &nbsp&nbsp&nbsp&nbsp&nbsp
+    {{ search_form.search_query }}
+    <script type="text/javascript">
+
+    $(function () {
+      $('#id_search_query').addClass('form-control mr-sm-2').attr("placeholder", "Search");
+      $('#id_search_ty').addClass('nav-link dropdown-toggle ').attr("data-toggle","dropdown").attr("aria-haspopup","true").attr("aria-expanded","false");
+    });
+    </script>
+    <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+    <!-- <input type="submit" class="button1 button_log1"><i class="fa fa-search"></i></input> -->
+    <!-- <button type="submit" class="button1 button_log1"><i class="fa fa-search"></button> -->
+
+  </form>
+
+
+
+</div>
+{% if user.is_authenticated %}
+<div class="nav-item dropdown" style="margin-right:120px;">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <b style="color:deepskyblue"><span class="glyphicon glyphicon-filter"><i class="fa fa-user-circle-o" style="font-size:40px"></i></span></b>
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <a class="dropdown-item" href="#">Profile</a>
+    <a class="dropdown-item" href="#">Your Reviews</a>
+    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+  </div>
+</div>
+{% else %}
+<div class="nav-item" style="margin-right:10px;">
+  <a class="button button_log" href="{% url 'login' %}">Login</a>
+  <a class="button button_log" style="margin-right:100px;" href="{% url 'accounts:signup' %}">Sign Up</a>
+</div>
+
+{% endif %}
+
+</nav>
+<!-- <hr style="border: 2px solid #ffc119 ;"> -->
+{% block content%}
+{% endblock content%}
+  </body>
+</html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">

@@ -1,0 +1,26 @@
+{% extends 'KYS/homePage.html' %}
+{% block content %}
+<br><br>
+  <div class="container">
+    <div class="row heading" style="text-align:left">
+      <h1>Your Reviews</h1>
+      <table class="table table-striped">
+        <thead>
+          <th>Movie</th><th>Rating</th><th>Review</th><th>Date Reviewed</th><th>Edit</th>
+        </thead>
+        <tbody>
+          {% for rev in user_reviews %}
+          <tr>
+            <td><a href="{% url 'show:movie' rev.MovieID %}">{{rev.titleName}}</a></td>
+            <td>{{rev.rating}}</td>
+            <td>{{rev.Review}}</td>
+            <td>{{rev.date_reviewed}}</td>
+            <td><button type="button"  onclick="window.location.href = '{% url 'show:movie' rev.MovieID %}';"class="btn btn-primary" name="button">Edit</button></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+{% endblock content %}
