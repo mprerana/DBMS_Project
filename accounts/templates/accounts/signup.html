@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <img style="width:100%;position:fixed;z-index:-2;opacity:0.9;" src="https://images.pexels.com/photos/535986/pexels-photo-535986.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="ERROR!">
+      <br><br>
+    <div class="container-fluid" style="padding:45px;width:35%; background-color:rgba(0, 0, 0, 0.6);border-radius:2%;">
+      <form method="POST" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <h2 style="text-align:center;color:white;font-family:Verdana;">SIGN UP</h2><br>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label style="color:#eeeeee;" for="uname"> Username : </label>
+              {{ user_form.username|as_crispy_field }}
+
+            </div><br>
+            <div class="form-group">
+              <label style="color:#eeeeee;" for="uname"> Email : </label>
+              {{ user_form.email|as_crispy_field }}
+
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label style="color:#eeeeee;" for="uname"> Ph No : </label>
+              {{ profile_form.ph_no|as_crispy_field }}
+
+            </div><br>
+            <div class="form-group">
+              <label style="color:#eeeeee;" for="uname"> Password : </label>
+              {{ user_form.password|as_crispy_field }}
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <br>
+            <center>{{ profile_form.profile_pic|as_crispy_field }}</center>
+          </div>
+          <div class="col-6">
+            <br>
+            <center>{{ profile_form.user_type|as_crispy_field }}</center>
+          </div>
+        </div><br><br>
+        <div class="row">
+          <div class="col-12">
+            <center><input type="submit" style="width:70%;" class="btn btn-info" name="" value="Sign Up"></center>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
