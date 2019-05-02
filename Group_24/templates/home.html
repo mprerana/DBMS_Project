@@ -1,0 +1,445 @@
+{% extends 'index.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block slidecss %}
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> -->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<style>
+
+    .form_box{
+        width:900px;
+        height:250px;
+        background:#b5e1df70;
+        position:absolute;
+        top:600px;
+        left:350px;
+    }
+    .book_car{
+        width:350px;
+        height:150px;
+        background:white;
+        float:left;
+        position:absolute;
+        top:50px;
+        left:100px;
+        box-shadow:4px 4px;
+        border-radius:25px;
+    }
+    .book_taxi{
+        width:350px;
+        height:150px;
+        background:white;
+        float:right;
+        position:absolute;
+        right:85px;
+        top:50px;
+        box-shadow:4px 4px;
+        border-radius:25px;
+    }
+    .text{
+        width:200px;
+        heigth:100px;
+    }
+    .book_para{
+        align:center;
+        float:right;
+        position:absolute;
+        top:25px;
+        left:150px;
+        font-size:30px;
+    }
+    .book_i{
+        align:center;
+        float:right;
+        position:absolute;
+        top:60px;
+        left:130px;
+    }
+    .book_a{
+        float:right;
+        position:absolute;
+        left:130px;
+        top:110px;
+
+    }
+    .book_a1{
+        float:right;
+        position:absolute;
+        left:130px;
+        top:110px;
+
+    }
+
+    .title {
+        font-size: 20px;
+        text-align: center;
+    }
+    .column{
+        padding: 20px 120px;
+
+    }
+    .services {
+        padding: 50px 20px;
+        border: 2px solid black;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    .services .service-icon {
+        margin-bottom: 10px;
+        font-size: 50px;
+        color: #18a3bf;
+    }
+    .box{
+        width: 300px;
+        height: 550px;
+
+    }
+
+    .action1{
+        padding: 60px;
+        background-size:cover;
+        background-repeat:no-repeat;
+        height: 250px;
+        color: white;
+        background-image: url("{% static 'images/3.jpeg' %}");
+
+    }
+    .action{
+        padding: 60px;
+        width:100%;
+        position:absolute;
+        top:1800px;
+        background-size:cover;
+        background-repeat:no-repeat;
+        height: 250px;
+        color: white;
+        background-image: url("{% static 'images/3.jpeg' %}");
+
+    }
+    .btn-primary{
+      background-color:#18a3bf;
+    }
+    .box{
+      width:100%;
+      height:750px;
+    }
+    form{
+      padding:10px;
+      margin: 0.1rem;
+    }
+    form a{
+      font-family:sans serif;
+      color:#18a3bf;
+    }
+    .form{
+        background-color: #fefefe;
+        margin: 4% auto 15% auto;
+        border: 1px solid #888;
+        width: 500px;
+        padding-bottom: 30px;
+    }
+    .modal {
+        display:none;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+    .close {
+        position: absolute;
+        right: 25px;
+        top: 0;
+        color: #000;
+        font-size: 35px;
+        font-weight: bold;
+    }
+    .close:hover,.close:focus {
+        color: #57cbcc;
+        cursor: pointer;
+    }
+    input[type=text]{
+        position: center;
+        padding: 12px 20px;
+        margin: 8px 26px;
+        display: inline-block;
+        border-radius: 10%;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        font-size:16px;
+    }
+    input[type=number]{
+        position: center;
+        padding: 12px 20px;
+        margin: 8px 26px;
+        display: inline-block;
+        border-radius: 10%;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        font-size:16px;
+    }
+    .container{
+        width: 400px;
+    }
+    .card{
+      margin:5rem;
+    }
+    .btn1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      background-color:transparent;
+      color:white;
+      font-size: 16px;
+      padding: 12px 24px;
+      outline: white;
+      cursor: pointer;
+      border-radius: 5px;
+}
+  .btn1:hover{
+    color:black;
+    background-color:white;
+  }
+  .card-img-top{
+    height:250px;
+  }
+
+</style>
+{% endblock slidecss %}
+
+{% block body_block %}
+<div class="box">
+<div style="background-image: url('{% static 'images/2.jpeg' %}');background-size:cover;background-repeat:no-repeat;height: 580px;">
+</div>
+</div>
+<div class="form_box" style="">
+    <div class="book_car">
+        <div class="col-sm-6">
+            <img src="https://cdn3.iconfinder.com/data/icons/transport-icons-2/512/BT_c3side-512.png" style="width:100px;height:100px;align:right;">
+            <b><p class="book_para">BookCar</p></b><br><br>
+            <i class="book_i">Leave&nbsp;sooner,Drives&nbsp;lower,<br>Live&nbsp;longer.</i>
+            <button onclick="document.getElementById('modal-wrapper').style.display='block'" class="btn btn-primary book_a" style="background-color:#57cbcc">Book Car</button>
+            <div id="modal-wrapper" class="modal">
+                <form class="form" method="POST" >
+                    <div>
+                        <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
+                    </div>
+                    <div class="container">
+                      <h3 style="color:#18a3bf">Book a car</h3>
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                          <label for="uname"> From : </label>
+                          {{ form.from_date|as_crispy_field }}
+                        </div>
+                        <div class="form-group">
+                          <label for="uname"> To : </label>
+                          {{ form.to_date|as_crispy_field }}
+                        </div>
+
+
+                        <p style="font-family: sans-serif;" >from Location</p>
+                        <input type="text" id="mapsearch1" name="from_location" placeholder="From location"><br><br>
+
+                        <p style="font-family: sans-serif;" > to Location</p>
+                        <input type="text" id="mapsearch2" name="to_location" placeholder="To location"><br><br>
+
+                        <button style="background-color: #57cbcc;width:100px;height:30px;" type="submit" class="btn btn-success">Book Cab</button>
+                </form>
+            </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="book_taxi">
+        <div class="col-sm-6">
+            <img src="https://image.flaticon.com/icons/png/512/89/89131.png" style="width:100px;height:100px;align:right;">
+            <b><p class="book_para">BookTaxi</p></b><br><br>
+            <i class="book_i">Never&nbsp;be,&nbsp;Afraid&nbsp;To,<br>Slow&nbsp;Down.</i>
+            <button onclick="document.getElementById('modal-wrapper1').style.display='block'" class="btn btn-primary book_a" style="background-color:#57cbcc">Book Taxi</button>
+            <div id="modal-wrapper1" class="modal">
+                <form class="form" method="post" action="{% url 'taxis:booktaxi' %}">
+                    <div>
+                        <span onclick="document.getElementById('modal-wrapper1').style.display='none'" class="close" title="Close PopUp">&times;</span>
+                    </div>
+                    <div class="container">
+                      <h3 style="color:#18a3bf">Book a car</h3>
+                        {% csrf_token %}
+
+                        <p style="font-family: sans-serif;" >from Location</p>
+                        <input type="text" id="mapsearch3" name="from_location_taxi" placeholder="From location"><br><br>
+
+                        <p style="font-family: sans-serif;" > to Location</p>
+                        <input type="text" id="mapsearch4" name="to_location_taxi" placeholder="To location"><br><br>
+
+                        <button style="background-color: #57cbcc;width:100px;height:30px;" type="submit" class="btn btn-success">Book Taxi</button>
+
+                      </form>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="action1">
+        <div class="text-center">
+            <h2>Check Your current trip</h2>
+            <p>Here You are allowed to check the current trips of TAXI, CAR<br>Thank you!</p>
+            <a class="btn btn-primary" href="{% url 'taxis:your_trip' %}" role="button">Taxi Trips</a>
+            <a class="btn btn-primary" href="{% url 'rentedcars:cab_trip' %}" role="button">Cab Trips</a>
+            <a class="btn btn-primary" href="{% url 'rentedcars:rentalhistory' %}" role="button">Prev Trips</a>
+        </div>
+</div>
+
+<div style="display:inline-block;padding-left:120px;padding-top:80px;">
+    <div class="column">
+        <div class="col-md-4 box">
+            <div class="services text-center">
+                <div class="service-icon text-center">
+                    <i class="fa fa-taxi" aria-hidden="true"></i>
+                </div>
+                <h3>Rent your car</h3>
+                <p>The perfect way to get through your everyday travel needs. City taxis are available 24/7 and you can book and travel in an instant.<br> Enjoy the trip</p>
+                <a class="btn btn-primary" href="{% url 'rentedcars:rentcarform' %}" role="button">Rent Your Car</a>
+
+            </div>
+        </div>
+        <div class="col-md-4 box">
+            <div class="services text-center">
+                <div class="service-icon text-center">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </div>
+                <h3>Book a Driver</h3>
+                <p>Verified drivers, an emergency alert button, and live ride tracking are some of the features that we have in place to ensure you a safe travel experience.</p>
+                <button onclick="document.getElementById('modal-wrapper2').style.display='block'" class="btn btn-primary" style="background-color:#57cbcc">Book Driver</button>
+                <div id="modal-wrapper2" class="modal">
+                    <form class="form" method="post" action="{% url 'taxis:book_driver' %}">
+                      {% csrf_token %}
+                        <div>
+                            <span onclick="document.getElementById('modal-wrapper2').style.display='none'" class="close" title="Close PopUp">&times;</span>
+                        </div>
+
+                          <h3 style="color:#18a3bf">Book a Driver</h3>
+
+                            <p style="font-family: sans-serif;" >Location</p>
+                            <input type="text" id="mapsearch5" name="location_driver" placeholder="Enter location"><br><br>
+                            <button style="background-color: #18a3bf;width:100px;height:30px;" type="submit" class="btn btn-info">Book Driver</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 box">
+            <div class="services text-center">
+                <div class="service-icon text-center">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                </div>
+                <h3>Other Services</h3>
+                <p>We are having many more services other than these to make you comfortable and reliable.Such as Airport cabs,Wedding cabs,Tourist cabs etc..<br>Search..&</p>
+                <a class="btn btn-primary" href="#explore" role="button">Explore More</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="action">
+        <div class="text-center">
+            <h2>Check Your Request</h2>
+            <p>Here You are to check the request and accept the car to give to an user.Its on your convinience to accept/reject the request<br>Thank you!</p>
+            <a class="btn btn-primary" href="{% url 'rentedcars:display_req' %}" role="button">Check Requests</a>
+        </div>
+</div>
+<br>
+
+<div class="card-group" id="explore" style="padding:100px;margin:7rem;">
+  <div class="card">
+    <img class="card-img-top" src="https://images.pexels.com/photos/912050/pexels-photo-912050.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
+
+    <!-- <button class="btn1 btn-default" href="" style="position:absolute;left:25%;">From Airport</button>
+    <button class="btn1 btn-default" href="" style="position:absolute;left:75%;">To Airport</button> -->
+    <div class="card-body">
+      <form action="{% url 'airportcars:bookairportcar' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="from_airport" value="From Airport" class="btn btn-info">
+        <input type="submit" name="to_airport" value="To Airport" class="btn btn-info">
+      </form>
+      <h2 class="card-title">Airport Cabs</h2>
+      <p class="card-text">Booking your taxi saves time and helps you skips the queues…perfect for reaching your destination sooner.</p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="https://images.pexels.com/photos/1199605/pexels-photo-1199605.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
+    <a class="btn btn-info" href="{% url 'weddingcars:weddingcardisplay' %}" role="button" style="width:110px;position:absolute;left:30%;top:60%;">Wedding Cars</a>
+    <div class="card-body">
+      <br><br><br>
+      <h2 class="card-title">Wedding Cabs</h2>
+      <p class="card-text">A special car for your memorable moment in life.Makes your journey special</p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="https://t3.ftcdn.net/jpg/00/54/12/52/240_F_54125272_ljJBWukZnHvEc3y54hWbpnmj5AMzZJtB.jpg" alt="Card image cap">
+    <a class="btn btn-primary" href="{% url 'touristcars:booktour' %}" role="button" style="width:100px;position:absolute;left:30%;top:60%;">Tourist Cars</a>
+    <div class="card-body">
+      <br><br><br>
+      <h2 class="card-title">Tourist Cabs</h2>
+      <p class="card-text">Want to explore the city comfortably here are our cabs to make your tour stressless.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+    // If user clicks anywhere outside of the modal, Modal will close
+
+    var modal = document.getElementById('modal-wrapper');
+    var modal1 = document.getElementById('modal-wrapper1');
+    var modal2 = document.getElementById('modal-wrapper2');
+    window.onclick = function(event) {
+      if (event.target == modal2) {
+          modal.style.display = "none";
+      }
+      if (event.target == modal1) {
+        modal1.style.display = "none";
+      }
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+    }
+
+
+</script>
+  <!-- {% if message %}
+<script>
+
+  alert('{{message}}')
+</script>
+{% endif %} -->
+
+  <script src="http://maps.google.com/maps/api/js?key=AIzaSyCe2otGPKiUf4Qq35MmOfDWHaQm-Cjtopw&libraries=places"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+  <script>
+
+
+
+            var searchBox = new google.maps.places.SearchBox(document.getElementById('mapsearch1'));
+            var searchBox = new google.maps.places.SearchBox(document.getElementById('mapsearch2'));
+
+            var searchBox = new google.maps.places.SearchBox(document.getElementById('mapsearch3'));
+            var searchBox = new google.maps.places.SearchBox(document.getElementById('mapsearch4'));
+            var searchBox = new google.maps.places.SearchBox(document.getElementById('mapsearch5'));
+
+  </script>
+
+
+{% endblock body_block %}

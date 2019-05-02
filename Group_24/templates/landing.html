@@ -1,0 +1,389 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>GET Cab</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="Asap Cab Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script>
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+
+    </script>
+    <!-- //Meta tag Keywords -->
+    <!-- Custom-Files -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Bootstrap-Core-CSS -->
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}" type="text/css" media="all" />
+    <!-- Style-CSS -->
+    <!-- font-awesome-icons -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome-icons -->
+    <!-- /Fonts -->
+    <link href="https://fonts.googleapis.com/css" rel="stylesheet">
+    <!-- //Fonts -->
+</head>
+<style>
+    .img-fluid1{
+        background-image: url("{% static 'images/ab.png' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 600px;
+        height: 350px;
+        background-color: transparent;
+    }
+    .popup{
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+    }
+    .caption{
+        color: #ffffff;
+    }
+</style>
+
+<body>
+<!-- mian-content -->
+<div class="main-content" id="home">
+    <div class="layer">
+        <!-- header -->
+        <header>
+            <div class="container-fluid px-lg-5">
+                <!-- nav -->
+                <nav class="py-4 d-lg-flex">
+                    <div id="logo">
+                        <h1> <a href="index.html"><i class="fa fa-car"></i>GetCab</a></h1>
+                    </div>
+                    <ul class="menu mt-2 ml-auto">
+                        <li class="active"><a href="{% url 'accounts:user_login' %}">Login</a></li>
+                        <li><a href="{% url 'accounts:user_signup' %}" class="scroll">SignUp</a></li>
+                    </ul>
+                </nav>
+                <!-- //nav -->
+            </div>
+        </header>
+        <!-- //header -->
+        <div class="container">
+            <!-- /banner -->
+            <div class="banner-info-w3ls text-left">
+                <h3>Enjoy The Comfortable Ride</h3>
+                <div class="read-more">
+                    <a href="#about" class="read-more scroll btn">Read More </a> </div>
+            </div>
+
+        </div>
+        <!-- //banner -->
+    </div>
+</div>
+<!--// main-content -->
+<section class="banner-bottom-w3layouts py-5" id="about">
+    <div class="container py-md-3">
+        <div class="row banner-grids">
+            <div class="col-md-6 content-left-bottom text-left pr-lg-5">
+                <h4>SHORTLY ABOUT US Our Mission Statement</h4>
+                <p class="mt-2 text-left">We are always here at your service.<strong class="text-capitalize"> Our website opened the floodgates of much-dead taxi industry with a taxi booking website.</strong>With drastic shift in consumer need that values convenience, taxi  development is the perfect solution to avail smartphone users with a comprehensive cab booking website. It almost feels as if users have access to taxis within the realms of their fingertips.</p>
+
+
+            </div>
+            <div class="col-md-5 content-right-bottom text-left">
+                <img class="img-fluid1">
+            </div>
+        </div>
+    </div>
+
+    <!--/ about -->
+    <section class="services py-5" id="services">
+        <div class="container py-md-5">
+            <div class="header pb-lg-3 pb-3 text-center">
+                <h3 class="tittle mb-lg-3 mb-3">What We Offer</h3>
+            </div>
+            <div class="row ab-info mt-lg-4">
+                <div class="col-lg-4 ab-content">
+                    <div class="ab-content-inner">
+                        <div class="ab-info-con">
+                            <div class="ab-icon mx-auto"><span class="fa fa-search" aria-hidden="true"></span></div>
+                            <h4>Easy Searching</h4>
+                            <p>Just 3 simple steps to search and compare prices from 10’s of operators and make online booking.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 ab-content">
+                    <div class="ab-content-inner">
+                        <div class="ab-info-con">
+                            <div class="ab-icon mx-auto"><span class="fa fa-car" aria-hidden="true"></span></div>
+                            <h4>Quick Pickups</h4>
+                            <p>Using our taxi website you can get a ride in fewer minutes.From booking to drop to the destination,you’ll feel like all happened in seconds and hassle-free.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 ab-content">
+                    <div class="ab-content-inner">
+                        <div class="ab-info-con">
+                            <div class="ab-icon mx-auto"><span class="fa fa-star-o" aria-hidden="true"></span></div>
+                            <h4>Inclusive Rates</h4>
+                            <p>From Sedans and SUVs to Luxury cars for special occasions, we have cabs to suit every pocket</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!--// about -->
+    <!--/mid-sec-->
+    <section class="mid-sec py-5" id="menu">
+        <div class="container py-lg-5">
+            <div class="header pb-lg-3 pb-3 text-center">
+                <h3 class="tittle mb-lg-3 mb-3">Our Benefits</h3>
+            </div>
+            <div class="row middile-inner-con mt-md-3">
+                <div class="col-lg-4 benifit-content">
+                    <div class="row">
+                        <div class="col-md-8 benifit-left-info text-right">
+                            <h4 class="mb-3">Fixed Price</h4>
+                            <p>With ExactoMeter, you have option to pay only fixed fares.</p>
+                        </div>
+                        <div class="col-md-4 benifit-icon-content">
+                            <div class="benifit-icon">
+                                <span class="fa fa-tags" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row my-4">
+                        <div class="col-md-8 benifit-left-info text-right">
+                            <h4 class="mb-3">No Fee</h4>
+                            <p>Your payment, your choice!  Now pay your fare in 3 different ways.you enjoy flat fixed fares on your Share rides without peak pricing irrespective of time and day.</p>
+                        </div>
+                        <div class="col-md-4 benifit-icon-content">
+                            <div class="benifit-icon">
+                                <span class="fa fa-money" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 benifit-left-info text-right">
+                            <h4 class="mb-3">100% Pleasure</h4>
+                            <p>Our ride-hailing website is very easy and simple to use.Professional drivers at your service</p>
+                        </div>
+                        <div class="col-md-4 benifit-icon-content">
+                            <div class="benifit-icon">
+                                <span class="fa fa-unlock-alt" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 benifit-content" style="background-image: url('{% static 'images/benifits.jpg' %}');width: 10px;height: 550px">
+                    <img class="img-fluid">
+                </div>
+                <div class="col-lg-4 benifit-content">
+                    <div class="row">
+                        <div class="col-md-4 benifit-icon-content">
+                            <div class="benifit-icon text-md-center mx-auto">
+                                <span class="fa fa-globe" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-8 benifit-left-info text-left">
+                            <h4 class="mb-3">Nationwide</h4>
+                            <p>Keep your loved ones informed about your travel routes or call emergency services when in need</p>
+                        </div>
+                    </div>
+
+                    <div class="row  my-4">
+                        <div class="col-md-4 benifit-icon-content">
+                            <div class="benifit-icon text-md-center mx-auto">
+                                <span class="fa fa-refresh" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-8 benifit-left-info text-left">
+                            <h4 class="mb-3">Quick Ride</h4>
+                            <p>From booking to drop to the destination, you’ll feel like all happened in seconds and hassle-free.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 benifit-icon-content">
+                            <div class="benifit-icon text-md-center mx-auto">
+                                <span class="fa fa-shield" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-8 benifit-left-info text-left">
+                            <h4 class="mb-3">Staff Garanty</h4>
+                            <p>We provide the highest security and intelligence with our Infinite Taxi management software.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+    <!--//mid-sec-->
+
+    <!--/ banner-bottom-w3layouts-->
+    <section class="app-serve pt-5">
+        <div class="container-fluid pt-lg-5">
+            <div class="ab-grids row text-left">
+                <div class="col-lg-6 pl-0 pr-lg-5 mt-lg-5 app-mob" style="background-image: url('{% static 'images/app1.png' %}');background-size:cover;background-repeat:no-repeat;width: 50px;height:1250px;">
+                    <img class="img-fluid">
+                </div>
+                <div class="col-lg-6 mb-lg-5">
+                    <h3 class="tittle mb-lg-5 mb-3">Get an Exclusive Website</h3>
+                    <h3 class="tittle mb-lg-5 mb-3">Move the way you want</h3>
+
+                    <div class="feature-grids text-left mt-5 p-lg-5">
+
+                        <div class="bottom-gd my-lg-5">
+                            <span class="fa fa-database" aria-hidden="true"></span>
+                            <h3 class="my-4">Rent a Car</h3>
+                            <p>With GetCab Rentals you get a cab at your disposal. So be it a  day long business meeting, a shopping trip with your friends or just a day out in a new city, we have you covered. Packages start at 1 hour and can be extended upto 12 hours!</p>
+                        </div>
+                        <div class="bottom-gd my-lg-5">
+                            <span class="fa fa-database" aria-hidden="true"></span>
+                            <h3 class="my-4">Book a Cab</h3>
+                            <p>Ride out of town at affordable one way and round trip fares with our intercity travel service</p>
+                        </div>
+                        <div class="bottom-gd my-lg-5">
+                            <span class="fa fa-database" aria-hidden="true"></span>
+                            <h3 class="my-4">Easily manage your works</h3>
+                            <p>The perfect way to get through your everyday travel needs. City taxis are available 24/7 and you can book and travel in an instant. With rides starting from as low, you can choose from a wide range of options!</p>
+                        </div>
+                        <div class="bottom-gd my-lg-5">
+                            <span class="fa fa-money" aria-hidden="true"></span>
+                            <h3 class="my-4">Get payments smoothly.</h3>
+                            <p>Safe payment after ride hand-to-hand </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--// banner-bottom-w3layouts-->
+    <!--/order-now-->
+
+    <!--//order-now-->
+    <!-- portfolio -->
+
+    <!--//portfolio-->
+
+    <!--/testimonials-->
+    <section class="testimonials" id="testimonials">
+        <div class="layer test">
+            <div class="container">
+                <div class="test-info text-center">
+                    <h3 class="my-md-2 my-3">Jenifer Burns</h3>
+
+                    <ul class="list-unstyled w3pvt-icons clients mb-md-4">
+                        <li>
+                            <a href="#">
+                                <span class="fa fa-star"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa fa-star"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa fa-star"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa fa-star-half-o"></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p><span class="fa fa-quote-left"></span> Excellent in all areas. Had a great experience when compared to all other services I had during my 3 week stay in India. Once again very very very good service right from the time of booking till my arrival @ the destination.<span class="fa fa-quote-right"></span></p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--//testimonials-->
+
+    <!-- contact -->
+    <section class="contact py-5" id="contact">
+        <div class="container pb-md-5">
+
+            <ul class="list-unstyled row text-left mb-lg-5 mb-3">
+                <li class="col-lg-4 adress-info">
+                    <div class="row">
+                        <div class="col-md-3 text-lg-center adress-icon">
+                            <span class="fa fa-map-marker"></span>
+                        </div>
+                        <div class="col-md-9 text-left">
+                            <h6>Location</h6>
+                            <p>Get Cab
+                                <br>Chennai. </p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="col-lg-4 adress-info">
+                    <div class="row">
+                        <div class="col-md-3 text-lg-center adress-icon">
+                            <span class="fa fa-envelope-open-o"></span>
+                        </div>
+                        <div class="col-md-9 text-left">
+                            <h6>Email</h6>
+                            <a href="mailto:info@example.com">getcab2019@gmail.com</a>
+                            <br>
+                            <a href="mailto:info@example.com">getcabcare@gmail.com</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-lg-4 adress-info">
+                    <div class="row">
+                        <div class="col-md-3 text-lg-center adress-icon">
+                            <span class="fa fa-mobile"></span>
+                        </div>
+                        <div class="col-md-9 text-left">
+                            <h6>Phone Number</h6>
+                            <p>+91 8309130705</p>
+                            <p>+91 8106787437</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </section>
+    <!-- //contact -->
+    <!-- footer -->
+    <footer>
+        <div class="asap-lavi-footer-sec py-5">
+            <div class="container py-lg-3">
+                <div class="row">
+                    <div class="col-lg-5 asap-w3pvt-footer-logo">
+                        <!-- footer logo -->
+                        <a class="navbar-brand" href="index.html">GET CAB
+                        </a>
+                        <!-- //footer logo -->
+                    </div>
+
+
+                </div>
+                <div class="row copy-right-sec mt-4 pt-lg-4 pt-3 text-lg-left text-center">
+                    <!-- copyright -->
+                    <p class="col-lg-8 copy-right-grids mt-lg-1">© 2019 GET CAB. All Rights Reserved.
+                        <!-- //copyright -->
+
+                </div>
+                <div class="move-top text-right"><a href="#home" class="move-top"> <span class="fa fa-angle-up  mb-3" aria-hidden="true"></span></a></div>
+            </div>
+        </div>
+    </footer>
+    <!-- //footer -->
+
+</body>
+
+</html>

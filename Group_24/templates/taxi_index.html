@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>GetCab</title>
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <!-- Our Custom CSS -->
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+  <!-- Font Awesome JS -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+    </head>
+
+
+    <body>
+
+            <div id="content" >
+
+                <nav class="navbar navbar-expand-lg navbar-light bg-dark" >
+                    <div class="container-fluid">
+                      <a class="navbar-brand" style="color:#f7f6ed" href="{% url 'accounts:taxi_home' %}"><i style="color:#f7f6ed" class="fa fa-car" style="color:white;" aria-hidden="true"></i>
+                  Getcab</a>
+
+                  <form method="POST" action="{% url 'accounts:taxi_home' %}" style="position: absolute;right:100px">
+                    {%csrf_token%}
+                    {% if t.active == True %}
+                      <input type="submit" value="Active" name="active" class="btn btn-info" style="background-color: green">
+                      {% else %}
+                      <input type="submit" value="Inactive" name="inactive" class="btn btn-info" style="background-color: orangered">
+                      {%endif%}
+                    </form>
+<!--
+                    <a class="btn btn-primary" href="{% url 'accounts:view_profile' %}" role="button" style="background-color:#d9d9d9;position: absolute;right:190px"><i class="fa fa-bell" style="color:#18a3bf;"></i></a> -->
+                    <a class="btn btn-primary" href="{% url 'accounts:view_profile' %}" role="button" style="background-color:#d9d9d9;color:#18a3bf;position: absolute;right:200px"><i class="fa fa-user" style="color:#18a3bf"></i>{{ request.user }}</a>
+
+                            {% if user.is_authenticated %}
+                            <a class="nav-item nav-link" style="color:#f7f6ed" href="{% url 'accounts:user_logout' %}">Logout</a>
+                            {% else %}
+                            <a class="nav-item nav-link" style="color:#f7f6ed" href="{% url 'accounts:user_login' %}">Login</a>
+                            {% endif %}
+
+
+                    </div>
+                </nav>
+
+
+
+          </div>
+
+          {% block body_block %}
+
+
+
+
+          {% endblock body_block %}
+
+
+
+    </body>
+
+    </html>
