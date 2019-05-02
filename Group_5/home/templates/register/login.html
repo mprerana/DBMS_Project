@@ -1,0 +1,63 @@
+{% extends 'home/base.html' %}
+{% load static from staticfiles %}
+
+{% block extrahead %}
+
+  <link href="{% static 'register/login.css' %}" rel="stylesheet">
+<!--	 JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+  <script type="text/javascript" src="{% static 'register/login.js' %}"></script>
+
+{% endblock %}
+
+
+{% block body %}
+<div class="container log">
+	<form class="signUp s-form" method="POST" action="registered" >
+    {% csrf_token %}
+
+		<h3>Create Your Account</h3>
+		<p>Join the most exciting group of FOODE.
+		</p>
+		<input type="text" placeholder="First Name" name="First" required autocomplete='off' >
+		<input type="text" placeholder="Last Name" name="Last" required autocomplete='off' >
+		<input class="w100" type="email" placeholder="Enter E-Mail" name="email" required autocomplete='off' />
+		<input type="password" placeholder="Enter Username" name="uesrname" required />
+		<input type="password" placeholder="Confirm Password" name="password" required />
+		<button class="form-btn sx log-in" type="button">Log In</button>
+		<button class="form-btn dx" type="submit">Sign Up</button>
+	</form>
+	<form class="signIn s-form" method="POST" action="login">
+    {% csrf_token %}
+
+		<h3>Login</h3>
+		<img src="{% static 'register/man.png' %}" class="login-img">
+		<input type="email" placeholder="Enter E-Mail" autocomplete='off' name="email" required />
+		<input type="password" placeholder="Enter Password" name="password" required />
+		<!-- <div class="g-recaptcha" data-sitekey="key" style="margin-left:2px"></div> -->
+		<button class="form-btn sx back" type="button">Back</button>
+		<button class="form-btn dx" type="submit">Log In</button>
+    <small style = "color: #cc0033;"> *{{ res }} </small>
+	</form>
+</div>
+<div style="width:100%;height:1000px;"></div>
+<script>
+var flag = {{flag}};
+$(document).ready(function(){
+  if(flag == 1){
+  	$(".signIn").addClass("active-dx");
+  	$(".signUp").addClass("inactive-sx");
+  	$(".signUp").removeClass("active-sx");
+  	$(".signIn").removeClass("inactive-dx");
+  	flag =0;
+  }
+});
+</script>
+
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock %}

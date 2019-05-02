@@ -1,0 +1,90 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Login Form</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.4/css/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'home/explore.css' %}"/>
+
+
+  <link href="{% static 'register/login.css' %}" rel="stylesheet">
+
+	<!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+  <script type="text/javascript" src="{% static 'register/login.js' %}"></script>
+
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/metropolis" type="text/css"/>
+
+</head>
+
+<body>
+<div class="container">
+	<form class="signUp" method="POST" action="registered" >
+    {% csrf_token %}
+
+		<h3>Create Your Account</h3>
+		<p>Just enter your email address</br>
+and your password for join.
+		</p>
+		<input type="text" placeholder="First Name" name="First" required autocomplete='off' >
+		<input type="text" placeholder="Last Name" name="Last" required autocomplete='off' >
+		<input class="w100" type="email" placeholder="Enter E-Mail" name="email" required autocomplete='off' />
+		<input type="password" placeholder="Enter Password" name="password" required />
+		<input type="password" placeholder="Confirm Password" required />
+		<button class="form-btn sx log-in" type="button">Log In</button>
+		<button class="form-btn dx" type="submit">Sign Up</button>
+	</form>
+	<form class="signIn" method="POST" action="login">
+    {% csrf_token %}
+
+		<h3>Login</h3>
+		<img src="{% static 'register/man.png' %}" class="login-img">
+		<input type="email" placeholder="Enter E-Mail" autocomplete='off' name="email" required />
+		<input type="password" placeholder="Enter Password" name="password" required />
+		<!-- <div class="g-recaptcha" data-sitekey="key" style="margin-left:2px"></div> -->
+		<button class="form-btn sx back" type="button">Back</button>
+		<button class="form-btn dx" type="submit">Log In</button>
+    <small style = "color: #cc0033;"> *{{ res }} </small>
+	</form>
+</div>
+
+<script>
+var flag = {{flag}};
+$(document).ready(function(){
+  if(flag == 1){
+  	$(".signIn").addClass("active-dx");
+  	$(".signUp").addClass("inactive-sx");
+  	$(".signUp").removeClass("active-sx");
+  	$(".signIn").removeClass("inactive-dx");
+  	flag =0;
+  }
+});
+</script>
+
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.4/js/mdb.min.js"></script>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    <h3> Upload Recipe </h3>
+    <form method="post" enctype="multipart/form-data" action="/forum/insert/">
+        {% csrf_token %}
+        <div> Recipe Name </div>
+        <input type="name" name="Rname" required>
+        <br><br>
+        <div> Upload Image </div>
+        <input type="file" name="sentFile" required>
+        <br><br>
+        <div> Ingredients </div>
+        <input type="text" name="Ingredients" required>
+        <br><br>
+        <div> Number of Servings </div>
+        <input type="number" name="Servings" min = 1 required>
+        <br><br>
+        <div> Steps </div>
+        <input type="text" name="Steps" required>
+        <br><br>
+        <div> Description </div>
+        <input type="text" name="Description" required>
+        <br><br>
+        <div> Maketime (in Minutes) </div>
+        <input type="number" name="Maketime" min = 1 required>
+        <br><br>
+        <input type="submit" name="submit" value="Upload" />
+    </form>
+</body>
+</html>

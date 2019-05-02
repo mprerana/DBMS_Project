@@ -1,0 +1,10 @@
+.my_btn{
+    border: 1px solid #35703D;
+    border-radius:50%;
+    color:#35703D;
+    background-color:none;
+}
+
+body{
+    background-color:white;
+}

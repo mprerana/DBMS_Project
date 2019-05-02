@@ -1,0 +1,388 @@
+{% extends 'home/base1.html' %}
+{% load static from staticfiles %}
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'home/diet.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'home/explore.css' %}">
+{% endblock %}
+{% block body %}
+    <br><br>
+    {% if d_id == '1' %}
+        <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <a href="{% url 'home:select' '4' %}"><button type="button" class="btn btn-succes my_btn" value="diet_1">Unsubscribe Keto</button></a><br><br>
+            </div>
+            <div class="col-4">
+                <a href="{% url 'home:select' '2' %}"><button type="button" class="btn btn-succes my_btn" value="diet_2" disabled>Subscribe Weight Loss</button></a><br><br>
+            </div>
+            <div class="col-4">
+                <a href="{% url 'home:select' '3' %}"><button type="button" class="btn btn-succes my_btn" value="diet_3" disabled>Subscribe Muscle gain</button></a><br><br>
+            </div>
+        </div>
+            <br>
+
+        <h2 style="text-align:center;color:#35703D">You have subscribed for Keto diet</h2>
+        </div>
+    {% elif d_id == '2' %}
+        <a href="{% url 'home:select' '1' %}"><button type="button" value="diet_1" disabled>Subscribe Keto</button></a><br><br>
+        <a href="{% url 'home:select' '5' %}"><button type="button" value="diet_2">Unsubscribe Weight Loss</button></a><br><br>
+        <a href="{% url 'home:select' '3' %}"><button type="button" value="diet_3" disabled>Subscribe Muscle gain</button></a><br><br><br>
+         <h3 style="text-align:center;color:#35703D">You have subscribed for Weight Loss diet</h3>
+    {% elif d_id == '3' %}
+        <a href="{% url 'home:select' '1' %}"><button type="button" value="diet_1" disabled>Subscribe Keto</button></a><br><br>
+        <a href="{% url 'home:select' '6' %}"><button type="button" value="diet_2" disabled>Subscribe Weight Loss</button></a><br><br>
+        <a href="{% url 'home:select' '3' %}"><button type="button" value="diet_3">Subscribe Muscle gain</button></a><br><br><br>
+
+         <h3 style="text-align:center;color:#35703D">You have subscribed for Muscle gain diet</h3>
+    {% else %}
+        <div class="container">
+       <div class="row">
+        <div class="col-4">
+            <a href="{% url 'home:select' '1' %}"><button type="button" class="btn btn-succes my_btn" value="diet_1">Subscribe Keto</button></a><br><br>
+        </div>
+           <div class="col-4">
+               <a href="{% url 'home:select' '2' %}"><button type="button" class="btn btn-succes my_btn" value="diet_2">Subscribe Weight Loss</button></a><br><br>
+           </div>
+           <div class="col-4">
+               <a href="{% url 'home:select' '3' %}"><button type="button" class="btn btn-succes my_btn" value="diet_3">Subscribe Muscle gain</button></a><br><br>
+           </div>
+       </div>
+        </div>
+    {% endif %}
+
+
+<div class="container sec-card">
+
+  <h2 class="text-center text-heading">QUICK MEALS FOR KIDS</h2>
+
+
+    <div class="row">
+    <div class="card-deck">
+      <!-- first Card -->
+      <div class="card">
+
+        <!-- Card image -->
+        <div class="view overlay">
+          <img class="card-img-top" src="img/food.jpg" alt="Card image cap">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+        <!-- Button -->
+        <!-- <div class="card-img-overlay"> -->
+
+          <a class="btn btn-danger btn-circle btn-floating ml-auto mr-4 lighten-3"  >
+            <i class="fa fa-heart"></i>
+          </a>
+
+        <!-- </div> -->
+        <!-- Card content -->
+        <div class="card-body  mx-auto p-0">
+          <!-- Title -->
+          <h4 class="card-title mx-auto p-0 txt">Card title</h4>
+        </div>
+      </div>
+      <!-- / first Card -->
+
+      <!-- second Card -->
+      <div class="card">
+
+        <!-- Card image -->
+        <div class="view overlay">
+          <img class="card-img-top" src="img/food.jpg" alt="Card image cap">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+        <!-- Button -->
+        <button type="button" class="btn btn-danger btn-circle btn-floating ml-auto mr-4 lighten-3">
+          <i class="fa fa-heart"></i>
+        </button>
+
+        <!-- Card content -->
+        <div class="card-body  mx-auto p-0">
+
+          <!-- Title -->
+          <h4 class="card-title txt">Card title</h4>
+
+        </div>
+
+
+      </div>
+      <!-- / second Card -->
+
+      <!-- thrid Card -->
+      <div class="card">
+
+        <!-- Card image -->
+        <div class="view overlay">
+          <img class="card-img-top" src="img/food.jpg" alt="Card image cap">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+        <!-- Button -->
+
+        <button type="button" class="btn btn-danger btn-circle btn-floating ml-auto mr-4 lighten-3">
+          <i class="fa fa-heart"></i>
+        </button>
+
+        <div class="card-body mx-auto p-0">
+          <h4 class="card-title txt">Card title</h4>
+        </div>
+      </div>
+      <!-- / thrid Card -->
+      <div class="card">
+
+        <!-- Card image -->
+        <div class="view overlay">
+          <img class="card-img-top" src="img/food.jpg" alt="Card image cap">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+        <!-- Button -->
+
+        <button type="button" class="btn btn-danger btn-circle btn-floating ml-auto mr-4 lighten-3">
+          <i class="fa fa-heart"></i>
+        </button>
+
+        <div class="card-body  mx-auto p-0">
+          <h4 class="card-title txt">Card title</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+<div class="container sec-card">
+
+  <h2 class="text-center text-heading">TRENDING RECIPES</h2>
+
+  <div class="row">
+    <div class="card-deck">
+      <!-- first Card -->
+      <div class="card">
+
+        <!-- Card image -->
+        <div class="view overlay">
+          <img class="card-img-top" src="img/food.jpg" alt="Card image cap">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+        <!-- Button -->
+        <!-- <div class="card-img-overlay"> -->
+
+          <a class="btn btn-danger btn-circle btn-floating ml-auto mr-4 lighten-3"  >
+            <i class="fa fa-heart"></i>
+          </a>
+
+        <!-- </div> -->
+        <!-- Card content -->
+        <div class="card-body  mx-auto p-0">
+          <!-- Title -->
+          <h4 class="card-title mx-auto p-0 txt">Card title</h4>
+        </div>
+      </div>
+      <!-- / first Card -->
+
+      <!-- second Card -->
+      <div class="card">
+
+        <!-- Card image -->
+        <div class="view overlay">
+          <img class="card-img-top" src="img/food.jpg" alt="Card image cap">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+        <!-- Button -->
+        <button type="button" class="btn btn-danger btn-circle btn-floating ml-auto mr-4 lighten-3">
+          <i class="fa fa-heart"></i>
+        </button>
+
+        <!-- Card content -->
+        <div class="card-body  mx-auto p-0">
+
+          <!-- Title -->
+          <h4 class="card-title txt">Card title</h4>
+
+        </div>
+
+
+      </div>
+      <!-- / second Card -->
+
+      <!-- thrid Card -->
+      <div class="card">
+
+        <!-- Card image -->
+        <div class="view overlay">
+          <img class="card-img-top" src="img/food.jpg" alt="Card image cap">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+        <!-- Button -->
+
+        <button type="button" class="btn btn-danger btn-circle btn-floating ml-auto mr-4 lighten-3">
+          <i class="fa fa-heart"></i>
+        </button>
+
+        <div class="card-body mx-auto p-0">
+          <h4 class="card-title txt">Card title</h4>
+        </div>
+      </div>
+      <!-- / thrid Card -->
+      <div class="card">
+
+        <!-- Card image -->
+        <div class="view overlay">
+          <img class="card-img-top" src="img/food.jpg" alt="Card image cap">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+        <!-- Button -->
+
+        <button type="button" class="btn btn-danger btn-circle btn-floating ml-auto mr-4 lighten-3">
+          <i class="fa fa-heart"></i>
+        </button>
+
+        <div class="card-body  mx-auto p-0">
+          <h4 class="card-title txt">Card title</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="container sec-card">
+
+  <h2 class="text-center text-heading">LIKED RECIPES</h2>
+
+  <div class="row">
+    <div class="card-deck">
+      <!-- first Card -->
+      <div class="card">
+
+        <!-- Card image -->
+        <div class="view overlay">
+          <img class="card-img-top" src="img/food.jpg" alt="Card image cap">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+        <!-- Button -->
+        <!-- <div class="card-img-overlay"> -->
+
+          <a class="btn btn-danger btn-circle btn-floating ml-auto mr-4 lighten-3"  >
+            <i class="fa fa-heart"></i>
+          </a>
+
+        <!-- </div> -->
+        <!-- Card content -->
+        <div class="card-body  mx-auto p-0">
+          <!-- Title -->
+          <h4 class="card-title mx-auto p-0 txt">Card title</h4>
+        </div>
+      </div>
+      <!-- / first Card -->
+
+      <!-- second Card -->
+      <div class="card">
+
+        <!-- Card image -->
+        <div class="view overlay">
+          <img class="card-img-top" src="img/food.jpg" alt="Card image cap">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+        <!-- Button -->
+        <button type="button" class="btn btn-danger btn-circle btn-floating ml-auto mr-4 lighten-3">
+          <i class="fa fa-heart"></i>
+        </button>
+
+        <!-- Card content -->
+        <div class="card-body  mx-auto p-0">
+
+          <!-- Title -->
+          <h4 class="card-title txt">Card title</h4>
+
+        </div>
+
+
+      </div>
+      <!-- / second Card -->
+
+      <!-- thrid Card -->
+      <div class="card">
+
+        <!-- Card image -->
+        <div class="view overlay">
+          <img class="card-img-top" src="img/food.jpg" alt="Card image cap">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+        <!-- Button -->
+
+        <button type="button" class="btn btn-danger btn-circle btn-floating ml-auto mr-4 lighten-3">
+          <i class="fa fa-heart"></i>
+        </button>
+
+        <div class="card-body mx-auto p-0">
+          <h4 class="card-title txt">Card title</h4>
+        </div>
+      </div>
+      <!-- / thrid Card -->
+      <div class="card">
+
+        <!-- Card image -->
+        <div class="view overlay">
+          <img class="card-img-top" src="img/food.jpg" alt="Card image cap">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+        <!-- Button -->
+
+        <button type="button" class="btn btn-danger btn-circle btn-floating ml-auto mr-4 lighten-3">
+          <i class="fa fa-heart"></i>
+        </button>
+        <!--
+        <a id="heart" title="Like me!" class="ml-auto mr-4 "></a>
+        -->
+
+
+        <div class="card-body  mx-auto p-0">
+          <h4 class="card-title txt">Card title</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

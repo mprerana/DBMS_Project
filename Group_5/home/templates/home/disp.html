@@ -1,0 +1,52 @@
+{% extends 'home/base2.html' %}
+{% load static from staticfiles %}
+
+{% block body %}
+
+<div style="width:100%;height:50px">
+
+</div>
+
+<div class="container sec-card">
+
+  <h2 class="text-center text-heading">RECIPE</h2>
+
+
+    <div class="row" style="">
+      <div class="clearfix" >
+
+          {% for name,link,id in data %}
+          <div class="card m-2 post">
+
+          <!-- Card image -->
+          <div class="view overlay">
+            <img class="card-img-top" src={{ link }} alt="Card image cap">
+            <a>
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+
+          <!-- Button -->
+
+          <button type="button" class="btn btn-danger btn-circle btn-floating ml-auto mr-4 lighten-3">
+            <i class="fa fa-heart"></i>
+          </button>
+
+          <div class="card-body  mx-auto p-0">
+            <h4 class="card-title txt"><a href='{% url 'home:recipe' id %}' class="green-text">{{name}}</h4>
+          </div>
+        </div>
+        {% endfor %}
+
+
+
+        </div>
+      </div>
+    </div>
+
+
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'home/base1.html' %}
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Forum</title>
+  {% load static from staticfiles %}
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.4/css/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'home/explore.css' %}"/>
+
+
+
+
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/metropolis" type="text/css"/>
+
+</head>
+
+
+{% block body %}
+<div class="container">
+    <!-- Section: Blog v.1 -->
+<section class="my-5">
+
+    <!-- Section heading -->
+    <h2 class="h1-responsive font-weight-bold text-center my-5">Recent posts</h2>
+    <!-- Section description -->
+    <p class="text-center w-responsive mx-auto mb-5">Find the latest posts by chefs across the forums</p>
+
+
+
+
+    {% for i in data %}
+
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-lg-5">
+
+        <!-- Featured image -->
+        <div class="view overlay rounded z-depth-2 mb-lg-0 mb-4">
+          <img class="img-fluid" style="width:100% height:100%" src="{{i.imglink}}" alt="Sample image">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-lg-7">
+
+        <!-- Category -->
+        <a href="#!" class="green-text">
+          <h6 class="font-weight-bold mb-3"><i class="fas fa-utensils pr-2"></i>Food</h6>
+        </a>
+        <!-- Post title -->
+        <h3 class="font-weight-bold mb-3"><strong>{{i.name}}</strong></h3>
+        <!-- Excerpt -->
+        <p>{{i.desc}}</p>
+        <!-- Post data -->
+        <p>by <a><strong>{{i.chefname}}</strong></a>, {{i.date}}</p>
+        <!-- Read more button -->
+        <a class="btn btn-success btn-md" href='{% url 'home:recipe' i.rid %}'>Read more</a>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+    <hr class="my-5">
+
+
+
+    {% endfor %}
+
+
+      <hr class="my-5">
+
+
+
+
+
+
+</div>
+<!--
+<div class="container">
+    <div class="row">
+        <ul class="list-unstyled">
+            <li class="media">
+              <img class="d-flex mr-3" src="avatar-min1.jpg" alt="Generic placeholder image">
+              <div class="media-body">
+                <h5 class="mt-0 mb-2 font-weight-bold">Anna Smith</h5>
+                <i class="fas fa-star green-text"> </i>
+                <i class="fas fa-star green-text"> </i>
+                <i class="fas fa-star green-text"> </i>
+                <i class="fas fa-star green-text"> </i>
+                <i class="fas fa-star green-text"> </i>
+                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
+                  odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
+                  Donec lacinia congue felis in faucibus.</p>
+              </div>
+            </li>
+            <li class="media my-4">
+              <img class="d-flex mr-3" src="avatar-min2.jpg" alt="Generic placeholder image">
+              <div class="media-body">
+                <h5 class="mt-0 mb-2 font-weight-bold">Tom Brown</h5>
+                <i class="fas fa-star green-text"> </i>
+                <i class="fas fa-star green-text"> </i>
+                <i class="fas fa-star green-text"> </i>
+                <i class="fas fa-star grey-text"> </i>
+                <i class="fas fa-star grey-text"> </i>
+                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
+                  odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
+                  Donec lacinia congue felis in faucibus.</p>
+              </div>
+            </li>
+            <li class="media">
+              <img class="d-flex mr-3" src="avatar-min3.jpg" alt="Generic placeholder image">
+              <div class="media-body">
+                <h5 class="mt-0 mb-2 font-weight-bold">Natalie Doe</h5>
+                <i class="fas fa-star green-text"> </i>
+                <i class="fas fa-star green-text"> </i>
+                <i class="fas fa-star green-text"> </i>
+                <i class="fas fa-star green-text"> </i>
+                <i class="fas fa-star grey-text"> </i>
+                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
+                  odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
+                  Donec lacinia congue felis in faucibus.</p>
+              </div>
+            </li>
+          </ul>
+    </div>
+</div>
+-->
+
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.4/js/mdb.min.js"></script>
+
+{% endblock %}
+
+
+</html>
