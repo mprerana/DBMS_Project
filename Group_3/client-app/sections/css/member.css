@@ -1,0 +1,118 @@
+// fonts
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+.login__section {
+
+    background-image: linear-gradient(-90deg, #845EC2, #2C73D2, #008E9B);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login_span{
+  display: inline-block;
+  padding: 10px 0;
+  font-size: 25px;
+}
+.login__card {
+
+  background: #ffffff33;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 400px;
+  padding: 40px;
+
+    position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 480px; width: 350px;
+  background: #FFF;
+  border-radius: 10px;
+  box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
+              0 5px 15px 0 rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.login__label {
+
+  color: #fff;
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-family: "Lato";
+  font-weight: 600;
+  /*margin: 8px 0;*/
+}
+
+.login__input {
+
+  border-radius: 3px;
+  border: none;
+  padding: 0 10px;
+  letter-spacing: 1px;
+  font-family: "Lato";
+  height: 30px;
+
+
+  &:focus {
+
+    outline: 0;
+  }
+}
+
+.login__button {
+
+  border: none;
+  border-radius: 3px;
+  color: #ffffff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 12px;
+  background-image: linear-gradient(-90deg, #845EC2, #2C73D2, #008E9B);
+  height: 48px;
+  font-family: "Lato";
+  font-weight: 600;
+  font-size: 14px;
+
+  &.active {
+
+    font-size: 0;
+    height: 38px;
+    width: 38px;
+    margin: 12px auto 0 auto;
+    animation: animate-circle 1.5s;
+    animation-fill-mode: both;
+
+    &::after {
+      content: url(https://upload.wikimedia.org/wikipedia/commons/archive/1/13/20180609142006%21OOjs_UI_icon_check-invert.svg);
+      color: white;
+      display: flex;
+      justify-content: center;
+      aligin-items: center;
+    }
+  }
+
+}
+
+// Animations
+@keyframes animate-circle {
+
+  0% {
+
+    width: 100%;
+    border-radius: 3px;
+
+  }
+  45% {
+
+    width: 38px;
+  }
+
+  100% {
+    border-radius: 50%;
+  }
+}

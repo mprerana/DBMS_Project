@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>login page </title>
+	<link rel = "stylesheet" type="text/css" href="./assets/css/login.css">
+</head>
+<body>
+	<form name="registration">
+		<section class="login__section">
+	  <div class="login__card">
+	  	<span class="login_span" >Login Form</span>
+	    <label class="login__label" for="uid">UID:</label>
+	    <input class="login__input" name="uid" id="uid" type="text" placeholder="Your UID">
+	    <label class="login__label" for="password">Password:</label>
+	    <input class="login__input" name="password" id="password" type="password" placeholder="password">
+	    <button type="button" class="login__button " onclick="toindex()">Login</button>
+			<p id="error" style="display:none;color:red">login error occured</p>
+	  </div>
+	</section>
+	</form>
+	<a id="to-index" href="./index.html"></a>
+	<script>
+			function toindex(){
+				const axios = require('axios');
+				const Qs = require('qs');
+				const querystring = require('querystring');
+
+				console.log({uid: document.getElementById('uid').value,pass: document.getElementById('password').value});
+				axios.post("http://10.0.32.9:3000/users/login",null,
+				{
+					params:{
+						uid: document.getElementById('uid').value,
+						pass: document.getElementById('password').value
+
+					}
+				})
+				// axios({
+        // 	method:'post',
+        // 	url:"http://10.0.32.9:3000/users/login",
+				// 	query: {
+				// 		+-
+				// 	},
+        // 	data:{
+        //   	  //'query': 'MATCH (n)-[r]-(m) where n.nme=$term RETURN n,r,m',
+        //     	'query': {
+        //         'uid': document.getElementById('uid').value,
+				// 				 'pass': document.getElementById('password').value
+        //     	}
+        // 		}
+    		// 	})
+				.then(res=>{
+				document.getElementById('to-index').click();
+				console.log(res.status)
+				})
+				.catch(err=>{
+					console.error(err);
+					document.getElementById('error').style.display='inline';
+				});
+
+			}
+	</script>
+</body>
+</html>
