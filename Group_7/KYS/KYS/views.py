@@ -362,7 +362,7 @@ def insert_data():
 
 
 def mainpage(request):
-    # insert_data_tvshow()
+    # insert_data()
     list_of_movies=[]
     movies = Show.objects.raw('''
         SELECT * FROM show_show;
