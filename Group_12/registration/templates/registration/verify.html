@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lan="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+ <form action="{% url 'registration:new_user_reg' %}" method="post">
+ 	{% csrf_token %}
+	username:<br>
+ 	<input type="hidden" name="username" id="username" value="{{ username }}"><br>
+ 	email:<br>
+ 	<input type="hidden" name="email" id="email" value="{{ email }}"><br>
+ 	password:<br>
+ 	<input type="hidden" name="password" id="password" value="{{ password }}"><br>
+    otp:
+    <input type="text"  name="token" value=""><br>
+ 
+ <input type="submit" >
+ 
+ 
+ </form>
+</body>
+</html>
