@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+{% load static %}
+
+
+{% block body_block %}
+
+<style>
+    .card{
+        margin: 1rem;
+        padding: 10px;
+        width: 200px;
+        display: inline-block;
+    }
+    .image{
+        background-image: url("{% static 'images/banner2.jpg' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    a{
+        font-family: poppins;
+        font-size: 18px;
+    }
+</style>
+<div class="image" style="width:1530px;height:300px;"><div style="color: white;font-size: 50px;font-family: poppins;position: absolute;left:40%;top:30%">Wedding Car History</div></div>
+
+{% for item in all_trips %}
+
+    <div class="card" style="width: 22rem;">
+        <div class="card-body">
+            <a>Booked By:</a>{{item.user_booked.user}}<br>
+            <a>From Location:</a>{{ item.from_location }}<br>
+            <a>To Location:</a>{{ item.to_location }}<br>
+            <br>
+
+            <a class="btn btn-primary" href="{% url 'weddingcars:display_map' item.auto_increment_id %}" role="button">History</a>
+        </div>
+    </div>
+
+
+    {% endfor %}
+
+
+{% endblock body_block %}

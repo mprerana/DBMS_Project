@@ -1,0 +1,69 @@
+{% extends 'index.html' %}
+
+{%load static%}
+ {% block slidecss %}
+ <style>
+    .carnum{
+      font-size:15px;
+      opacity:0.8;
+    }
+    .heading{
+      font-size:20px;
+    }
+    </style>
+{% endblock slidecss %}
+
+
+
+{% block body_block %}
+
+<div style="position:relative;text-align:center;color:black;">
+  <img src="{% static 'images/i1.jpg' %}" style="opacity:0.8;height:400px;width:100%;">
+  <div style="position: absolute;bottom: 0;background: transparent;color: white;width: 100%;padding: 20px;">
+  <h1 style="color:#155f99">Rented Cars</h1>
+  </div>
+</div>
+<div style="padding:80px;padding-left:170px;" >
+
+
+
+
+  {% for item in rented_cars %}
+
+                      <div style="display:inline-block">
+
+                      <div class="shadow p-3 mb-5 bg-white rounded">
+
+                      <div class=" col-ld-6">
+                        <div class="thumbnail">
+                          <img style="width:270px;height:150px;"src="{{ item.car_details.car_pic.url }}" >
+                          <div class="caption">
+                            <h5 class="card-title">
+                              {{ item.car_details.car_name }}
+                              <span class="carnum">
+                                ({{item.car_details.car_num}})
+                              </span>
+                            </h5>
+
+                            <p class="card-text"><span class="heading">Mileage:</span>{{item.car_details.mileage}}&nbsp;&nbsp;&nbsp;<span class="heading">Reg.no:</span>{{item.car_details.regno_expdt}}<br><span class="heading">Location:</span>&nbsp;{{ item.car_location }}<br><span class="heading">Dates:</span>&nbsp;{{ item.from_date }}-{{ item.to_date }}<br><span class="heading">Price:</span>&nbsp;{{ item.price }}
+                              {% if item.is_booked == False %}
+                              <th scope="row" style="font-weight: 600">
+                                <i class="fa fa-circle" style="color: red"></i>&nbsp; {{ item.is_booked }}</th>
+                                {% elif item.is_booked %}
+                                <th scope="row" style="font-weight: 600">
+                                  <i class="fa fa-circle" style="color: green"></i>&nbsp;{{ item.is_booked }}</th>
+                                  {% endif %}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+</div>
+
+
+
+
+{% endfor %}
+</div>
+
+{% endblock body_block %}

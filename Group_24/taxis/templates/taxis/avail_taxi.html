@@ -1,0 +1,68 @@
+	{% extends 'index.html' %}
+	{% load static %}
+
+
+	{% block slidecss %}
+	<style>
+	.bg
+	{
+		background: url("/static/images/t1.jpeg") 100% 0 no-repeat fixed;
+	     color: white;
+	     height: 650px;
+	     padding: 100px 0 0 0;
+
+	}
+	.card {
+	  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	  transition: 0.3s;
+	  width: 60%;
+	  height: 300px;
+	  border-radius: 5px;
+	}
+
+	.card:hover {
+	  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+	}
+
+
+
+	.container {
+	  padding: 3px 10px;
+	}
+
+	</style>
+	{% endblock slidecss %}
+
+
+	{% block body_block %}
+
+
+	<center>
+	<br>
+	{% for item in taxi %}
+
+	<div >
+	<div class="card" style="text-align: center;" >
+
+	  <div class="container">
+	    <div style ="text-align: center;padding:35px;">
+
+
+
+	  	<img src="{{item.user.profile_pic.url}}" style="float:left;padding:20px;height:200px;width:35%">
+	    <b>Taxi Name:</b> {{ item.taxi_name }}<br>
+	   	<b>Taxi Num:</b> {{ item.taxi_num }}<br>
+	    <b>User:</b> {{ item.user.user }}<br>
+	    <b>Location:</b> {{ item.location }}<br>
+	    <b>Rating:</b> {{ item.user.rating }}<br>
+	    <b>Price:</b> Rs.{{ item.price }}<br>
+	    <a href="{% url 'taxis:accept_taxi' item.auto_increment_id %}" class="btn btn-info" role="button">BookNow</a>
+
+
+
+	</div>
+	  </div>
+	</div><br></div>
+	{% endfor %}</center>
+
+	{% endblock body_block %}

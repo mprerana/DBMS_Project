@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+{% load static %}
+
+
+{% block body_block %}
+<style>
+    .card{
+        margin: 1rem;
+        padding: 10px;
+        width: 200px;
+        display: inline-block;
+    }
+    .image{
+        background-image: url("{% static 'images/banner2.jpg' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    a{
+        font-family: poppins;
+        font-size: 18px;
+    }
+</style>
+
+
+<div class="image" style="width:1530px;height:300px;"><div style="color: white;font-size: 50px;font-family: poppins;position: absolute;left:40%;top:30%">Booked Cars History</div></div>
+{% for item in all_trips %}
+
+    <div class="card" style="width: 22rem;">
+        <div class="card-body">
+            <a>Active status:</a>{{ item.active }}<br>
+            <a>rented by:</a>{{ item.car_rented.user_rented.user }}<br>
+            <a>Booked By:</a>{{item.booking_Details.user_booked.user}}<br>
+            <a>From Location:</a>{{ item.booking_Details.car_location }}<br>
+            <a>To Location:</a>{{ item.booking_Details.to_location }}<br>
+            <a class="btn btn-primary" href="{% url 'rentedcars:display_map' item.auto_increment_id %}" role="button">History</a>
+        </div>
+    </div>
+
+    <!-- <form id="calculate-route" name="calculate-route" action="{% url 'taxis:display_map' item.auto_increment_id %}" method="POST">
+{%csrf_token%}
+<input type="hidden" id="from" name="from"  value="{{ item.booking_Details.car_location }}" placeholder="Type an address"   />
+<br>
+
+<input type="hidden" id="to" name="to" required="required" placeholder="Type an addresss" value="{{ item.booking_Details.to_location }}"  />
+<input type="submit" /> -->
+{% endfor %}
+
+
+
+
+{% endblock body_block %}

@@ -1,0 +1,178 @@
+mysql> use dbmsproject;
+Database changed
+mysql> DELIMITER ;;
+mysql> CREATE TRIGGER add_rent_notify
+    -> AFTER INSERT ON rentedcars_rentedcar
+    -> FOR EACH ROW
+    -> BEGIN
+    -> INSERT INTO notifications_notificationlist
+    -> VALUES('your car is successfully added for rental service','0',NEW.user_rented_id);
+    -> END ;;
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> CREATE TRIGGER add_rent_notify
+    -> AFTER INSERT ON rentedcars_rentedcar
+    -> FOR EACH ROW
+    -> BEGIN
+    -> INSERT INTO notifications_notificationlist
+    -> VALUES('car added for rental service','0',NEW.user_rented_id);
+    -> END ;;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> DELIMITER ;
+
+
+mysql> DELIMITER ;;
+mysql> CREATE TRIGGER send_req_notify
+    -> AFTER INSERT ON rentedcars_bookedcar
+    -> FOR EACH ROW
+    -> BEGIN
+    -> INSERT INTO notifications_notificationslist
+    -> VALUES('car req sent','0',NEW.booking_Details_id);
+    -> INSERT INTO notifications_notificationslist
+    -> VALUES('received req','0',NEW.car_rented_id);
+    -> END ;;
+Query OK, 0 rows affected (0.05 sec)
+
+
+
+
+mysql> DELIMITER ;
+
+
+
+mysql> DELIMITER ;
+mysql> DELIMITER ;;
+mysql> CREATE TRIGGER accept_notify
+    -> AFTER UPDATE ON rentedcars_bookedcar
+    -> FOR EACH ROW
+    -> BEGIN
+    -> INSERT INTO notifications_notificationslist
+    -> VALUES('you have accepted the request','0',NEW.car_rented_id);
+    -> INSERT INTO notifications_notificationslist
+    -> VALUES('your request is accepted','0',NEW.booking_Details_id);
+    -> END ;;
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> DELIMITER ;
+
+
+mysql>CREATE TRIGGER add_rent_notify
+	->AFTER INSERT ON taxis_bookedtaxi
+	->FOR EACH ROW
+	->BEGIN
+	->INSERT INTO notifications_notificationlist
+	->VALUES('taxi booked by user','0',NEW.user_bookedtaxi_id);
+	->END;;
+
+mysql>CREATE TRIGGER add_rent_notify
+	->AFTER INSERT ON taxis_bookeddriver
+	->FOR EACH ROW
+	->BEGIN
+	->INSERT INTO notifications_notificationlist
+	->VALUES('driver booked by a user','0',NEW.bookeddriver_id);
+	->END;;
+
+mysql>CREATE TRIGGER add_rent_notify
+	->AFTER INSERT ON airportcars_bookedairportcar
+	->FOR EACH ROW
+	->BEGIN
+	->INSERT INTO notifications_notificationlist
+	->VALUES('user booked a car from airport','0',NEW.user_bookedairportcar_id);
+	->END;;
+
+mysql>CREATE TRIGGER add_rent_notify
+	->AFTER INSERT ON touristcars_bookedtourcars
+	->FOR EACH ROW
+	->BEGIN
+	->INSERT INTO notifications_notificationlist
+	->VALUES('user booked a car for a trip','0',NEW.user_bookedtourcars_id);
+	->END;;
+
+mysql>CREATE TRIGGER add_rent_notify
+	->AFTER INSERT ON weddingcars_bookedweddingcars
+	->FOR EACH ROW
+	->BEGIN
+	->INSERT INTO notifications_notificationlist
+	->VALUES('user booked a car for their wedding cermony','0',NEW.user_bookedweddingcars_id);
+	->END;;
+
+
+
+mysql> DELIMITER ;
+mysql>
+
+
+mysql> DELIMITER //
+mysql> CREATE PROCEDURE Getallcars()
+    -> BEGIN
+    -> SELECT * FROM rentedcars_rentedcar;
+    -> END //
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> DELIMITER ;
+
+
+mysql> DELIMITER //
+mysql> CREATE PROCEDURE Getallrequests()
+    -> BEGIN
+    -> SELECT * FROM rentedcars_bookedcar WHERE accept='0' AND active='0';
+    -> END //
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> DELIMITER ;
+mysql> CALL Getallrequests();
+
+
+
+
+
+mysql> DELIMITER //
+mysql> CREATE PROCEDURE Getfromairport()
+    -> BEGIN
+    -> SELECT * FROM airportcars_airportcar WHERE from_airport='1' AND is_booked='0';
+    -> END //
+Query OK, 0 rows affected (0.47 sec)
+
+mysql> DELIMITER ;
+
+
+
+mysql> DELIMITER //
+mysql> CREATE PROCEDURE Gettoairport()
+    -> BEGIN
+    -> SELECT * FROM airportcars_airportcar WHERE from_airport='0' AND is_booked='0';
+    -> END //
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> DELIMITER ;
+
+
+mysql> DELIMITER ;
+mysql> DELIMITER //
+mysql> CREATE PROCEDURE Getbookedcar()
+    -> BEGIN
+    -> SELECT * FROM rentedcars_bookedcar WHERE accept='1';
+    -> END //
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> DELIMITER ;
+
+
+mysql> DELIMITER //
+mysql> CREATE PROCEDURE Getbookedtaxitrips()
+    -> BEGIN
+    -> SELECT * FROM taxis_bookedtaxi WHERE accept='1';
+    -> END //
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> DELIMITER ;
+
+mysql> DELIMITER //
+mysql> CREATE PROCEDURE Getweddingcars()
+    -> BEGIN
+    -> SELECT * FROM weddingcars_weddingcar WHERE is_booked='0';
+    -> END //
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> DELIMITER ;

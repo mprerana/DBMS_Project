@@ -1,0 +1,152 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+
+{% block slidecss %}
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+
+<style>
+
+    .rentbody,.rentform {
+        margin:-0.1rem;
+        height: 100%;
+    }
+
+    .rentform {
+        color: #fff;
+        font-family: sans-serif;
+        font-size: 1.25rem;
+        line-height: 100%;
+        width: 1200px;
+    }
+
+    .article {
+        position: relative;
+        left: 250px;
+        display: inline-block;
+        vertical-align: top;
+        width: 50%;
+        padding: 1rem;
+
+    }
+
+
+
+
+    .left-half {
+        background-image: url("{% static 'images/background.jpg' %}");
+        background-size: cover;
+        width: 35%;
+        height:620px;
+        background-repeat: no-repeat;
+    }
+
+    .right-half {
+      margin:0.5rem;
+        background: white;
+        border: 1px solid #dddddd;
+        height:100%;
+    }
+    form{
+        color: #2c9091;
+    }
+
+
+    .asteriskField {
+      display: none;
+    }
+</style>
+{% endblock slidecss %}
+
+{% block body_block %}
+<div class="rentbody">
+<div class="rentform">
+<div class="left-half article"></div>
+<div class="right-half article">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label  for="uname"> Car Name: </label>
+              {{ detailsform.car_name|as_crispy_field }}
+            </div><br>
+            <div class="form-group">
+              <label for="uname"> Car Number : </label>
+              {{ detailsform.car_num|as_crispy_field }}
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label  for="uname"> Regno_expt: </label>
+              {{ detailsform.regno_expdt|as_crispy_field }}
+            </div><br>
+            <div class="form-group">
+              <label  for="uname"> Mileage : </label>
+              {{ detailsform.mileage|as_crispy_field }}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label  for="uname"> Car Type: </label>
+              {{ detailsform.car_type|as_crispy_field }}
+            </div>
+            <div class="form-group">
+              <label  for="uname"> From Date: </label>
+              {{ form.from_date|as_crispy_field }}
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label  for="uname"> Car picture: </label>
+              {{ detailsform.car_pic|as_crispy_field }}
+            </div><br>
+            <div class="form-group">
+              <label  for="uname"> To Date: </label>
+              {{ form.to_date|as_crispy_field }}
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="row-5">
+            <div class="form-group">
+              <label  for="uname"> Enter location : </label><br>
+              <input type="text" id="mapsearch" name="car_location" placeholder="Enter location" class="form-control"><br>
+            </div>
+
+          </div>
+
+        </div>
+        <div class=row">
+          <div class="col-6">
+            <div class="form-group">
+              <label  for="uname"> Price: </label>
+              {{ form.price|as_crispy_field }}
+            </div>
+
+          </div>
+
+        </div>
+        <button type="submit" class="btn btn-info">Rent Your Car</button>
+    </form>
+</div>
+</div>
+</div>
+
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyCe2otGPKiUf4Qq35MmOfDWHaQm-Cjtopw&libraries=places"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<script>
+
+
+
+    var searchBox = new google.maps.places.SearchBox(document.getElementById('mapsearch'));
+
+
+</script>
+
+
+{% endblock body_block %}

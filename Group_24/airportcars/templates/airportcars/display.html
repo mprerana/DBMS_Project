@@ -1,0 +1,213 @@
+
+{% extends 'index.html' %}
+{% load static %}
+{% block slidecss %}
+<style>
+
+
+      <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+      .car{
+            font-family: "Times New Roman", Times, serif;
+            font-size: 20px;
+      }
+  header {
+    position: relative;
+    text-align: center;
+    height: 30vh;
+    background: linear-gradient(to right, #69bcf4, #30cc8b);
+    color: #fff;
+  }
+  header h1 {
+    padding-top: 20px;
+    font-size: 3em;
+    font-family: "Times New Roman", Times, serif;
+
+  }
+   header span.animated {
+    position: absolute;
+    margin: auto;
+    right: 0;
+    left: 0;
+    bottom: 20px;
+    height: 4px;
+    width: 4px;
+    border-radius: 2px;
+    background: #fff;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+  }
+
+  header span::before,
+  header span::after {
+    position: absolute;
+    top: -23px;
+    content: "";
+    height: 30px;
+    width: 4px;
+    border-radius: 2px;
+    background: #fff;
+  }
+
+  header span::before {
+    left: -10px;
+    transform:         rotate(-45deg);
+  }
+
+  header span::after {
+    right: -10px;
+    transform:         rotate(45deg);
+  }
+
+  .form{
+      background-color: #fefefe;
+      margin: 4% auto 15% auto;
+      border: 1px solid #888;
+      width: 500px;
+      padding-bottom: 30px;
+  }
+  .modal {
+      display:none;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+  }
+  .close {
+      position: absolute;
+      right: 25px;
+      top: 0;
+      color: #000;
+      font-size: 35px;
+      font-weight: bold;
+  }
+  .close:hover,.close:focus {
+      color: #57cbcc;
+      cursor: pointer;
+  }
+  input[type=text]{
+      position: center;
+      padding: 12px 20px;
+      margin: 8px 26px;
+      display: inline-block;
+      border-radius: 10%;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      font-size:16px;
+  }
+  input[type=number]{
+      position: center;
+      padding: 12px 20px;
+      margin: 8px 26px;
+      display: inline-block;
+      border-radius: 10%;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      font-size:16px;
+  }
+
+</style>
+{% endblock slidecss %}
+
+{% block body_block %}
+
+<header style="width:100%">
+    <h1 class="animated bounceInDown">Get Airport Cab</h1>
+    <i class=" medium material-icons">airport_services</i>
+  <span class="animated bounce"></span>
+</header>
+
+<div class="row" style="padding-top: 30px;padding-left:180px;">
+{% for item in cars %}
+<div style="display:inline-block;">
+<div style="display:inline-block;">
+  <div style="padding-left:30px;padding-top:30px;width:350px;height:500px">
+    <div class="shadow" style="600px;height:480px;">
+      <div class="card-image">
+        <img class="responsive-img" src="{{item.car_photo.url}}" style="height:300px;width:100%;">
+      </div>
+      <div class="card-action" style="padding-left:70px;">
+          <p class="car"><b>Car Name:</b>&nbsp;&nbsp;{{item.car_name}}</p>
+          <p class="car"><b>Price:</b>&nbsp;&nbsp;Rs.{{item.price}}</p>
+          <!-- {% if item.is_booked == False %}
+            <th scope="row" style="font-weight: 600">
+              Booked:&nbsp;&nbsp;<i class="fa fa-circle" style="color: red"></i>&nbsp;{{ item.is_booked }}</th>
+              {% elif item.is_booked %}
+              <th scope="row" style="font-weight: 600">
+                Booked:<i class="fa fa-circle" style="color: green"></i>&nbsp;{{ item.is_booked }}</th>
+          {% endif %}<br> -->
+
+          <button onclick="document.getElementById('modal-wrapper').style.display='block'" class="btn btn-primary book_a" style="background-color:#57cbcc">Book a cab</button>
+          <div id="modal-wrapper" class="modal">
+              <form class="form" method="POST" action="{% url 'airportcars:book_a_car' item.auto_increment_id %}">
+                  <div>
+                      <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
+                  </div>
+                  <div class="container">
+                    <h3 style="color:#18a3bf;text-align:center;">Book A Cab</h3>
+                      {% csrf_token %}
+
+                        <p style="font-family: sans-serif;font-size:20px;" >Enter Location:</p>
+                        <input type="text" id="mapsearch1" name="location" placeholder="Enter location"><br><br>
+                        <input type="submit" name="submit" value="Book Now" class="btn btn-info">
+                  </div>
+                </form>
+          </div>
+
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- <a class="btn btn-success" style="background-color: #57cbcc;width:100px;height:30px;" href="{% url 'touristcars:booktourcar' item.auto_increment_id %}" role="button">Link</a> -->
+
+
+{% endfor %}
+</div>
+
+<script>
+    // If user clicks anywhere outside of the modal, Modal will close
+
+    var modal = document.getElementById('modal-wrapper');
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+    }
+
+
+</script>
+
+
+  <script src="http://maps.google.com/maps/api/js?key=AIzaSyCe2otGPKiUf4Qq35MmOfDWHaQm-Cjtopw&libraries=places"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+  <script>
+
+
+
+            var searchBox = new google.maps.places.SearchBox(document.getElementById('mapsearch1'));
+
+
+  </script>
+
+
+
+
+{% endblock body_block %}

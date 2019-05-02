@@ -1,0 +1,1496 @@
+
+html,
+body {
+    margin: 0;
+    font-size: 100%;
+    background: #fff;
+    font-family: 'Open Sans', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body a {
+    text-decoration: none;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+
+a:hover {
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="text"],
+input[type="email"],
+input[type="search"] {
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    font-family: 'Khula', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    letter-spacing: 1px;
+    font-weight: 800;
+    font-family: 'Khula', sans-serif;
+}
+
+p {
+    font-size: 0.85em;
+    color: #777;
+    line-height: 1.9em;
+    letter-spacing: 1px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.btn {
+    border-radius: 0px;
+}
+
+/*-- header --*/
+
+/* header */
+
+/* CSS Document */
+
+header {
+    position: absolute;
+    z-index: 9;
+    width: 100%;
+}
+
+.toggle,
+[id^=drop] {
+    display: none;
+}
+
+/* Giving a background-color to the nav container. */
+
+nav {
+    margin: 0;
+    padding: 0;
+}
+
+
+#logo a {
+    float: left;
+    display: initial;
+    margin: 0;
+    letter-spacing: 1px;
+    color: rgba(54,193,226,0.85);
+    padding: 0;
+    font-size: 0.8em;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+
+}
+
+#logo a span {
+    color: rgba(54,193,226,0.85);
+}
+
+
+/* Since we'll have the "ul li" "float:left"
+ * we need to add a clear after the container. */
+
+nav:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Removing padding, margin and "list-style" from the "ul",
+ * and adding "position:reltive" */
+
+nav ul {
+    float: right;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+}
+
+/* Positioning the navigation items inline */
+
+nav ul li {
+    margin: 0px 0.3em;
+    display: inline-block;
+    float: left;
+}
+
+/* Styling the links */
+
+nav ul.menu li a {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    padding-left: 0;
+    padding-right: 0;
+    padding: 0.5em 1em;
+    letter-spacing: 1px;
+    background: transparent;
+    font-weight: 600;
+    font-family: 'Khula', sans-serif;
+}
+
+
+nav ul li ul li:hover {
+    background: #333;
+}
+
+
+/* Background color change on Hover */
+
+.menu li.active a {
+    color: rgba(54,193,226,0.85);
+}
+
+/* Hide Dropdowns by Default
+ * and giving it a position of absolute */
+
+nav ul ul {
+    display: none;
+    position: absolute;
+    /* has to be the same number as the "line-height" of "nav a" */
+    top: 30px;
+    background: #fff;
+    padding: 10px;
+}
+
+/* Display Dropdowns on Hover */
+
+nav ul li:hover > ul {
+    display: inherit;
+}
+
+/* Fisrt Tier Dropdown */
+
+nav ul ul li {
+    width: 170px;
+    float: none;
+    display: list-item;
+    position: relative;
+    margin: 0;
+}
+
+nav ul.menu li ul li a {
+    color: #333;
+    padding: 5px 10px;
+    display: block;
+}
+
+nav ul.menu li ul li a:hover {
+    color: rgba(54,193,226,0.85);
+}
+
+/* Second, Third and more Tiers	
+ * We move the 2nd and 3rd etc tier dropdowns to the left
+ * by the amount of the width of the first tier.
+*/
+
+nav ul ul ul li {
+    position: relative;
+    top: -60px;
+    /* has to be the same number as the "width" of "nav ul ul li" */
+    left: 170px;
+}
+
+
+/* Change ' +' in order to change the Dropdown symbol */
+
+li > a:only-child:after {
+    content: '';
+}
+
+
+/* Media Queries
+--------------------------------------------- */
+
+@media all and (max-width:991px) {
+
+    #logo {
+        display: block;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+        float: none;
+    }
+
+    nav {
+        margin: 0;
+    }
+
+    nav a {
+        color: #333;
+    }
+
+    /* Hide the navigation menu by default */
+    /* Also hide the  */
+    .toggle + a,
+    .menu {
+        display: none;
+    }
+
+    /* Stylinf the toggle lable */
+    .toggle {
+        display: block;
+        padding: 6px 15px;
+        font-size: 16px;
+        text-decoration: none;
+        border: none;
+        float: right;
+        margin-right: 0em;
+        background-color: #fff;
+        color: #1b1d1d;
+        text-transform: uppercase;
+        font-weight: 600;
+        cursor: pointer !important;
+    }
+
+    .menu .toggle {
+        float: none;
+        text-align: center;
+        margin: auto;
+        width: 30%;
+        padding: 5px;
+        font-weight: normal;
+        font-size: 15px;
+        letter-spacing: 1px;
+    }
+
+    .toggle:hover {
+        color: #333;
+        background-color: #fff;
+    }
+
+    /* Display Dropdown when clicked on Parent Lable */
+    [id^=drop]:checked + ul {
+        display: block;
+        background: #fff;
+        padding: 15px 0;
+        text-align: center;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    /* Change menu item's width to 100% */
+    nav ul li {
+        display: block;
+        width: 100%;
+        padding: 5px 0;
+    }
+
+    nav ul ul .toggle,
+    nav ul ul a {
+        padding: 0 40px;
+    }
+
+    nav ul.menu li a {
+        color: #312f2f;
+    }
+
+    nav a:hover,
+    nav ul ul ul a {
+        background-color: transparent;
+    }
+
+    nav ul li ul li .toggle,
+    nav ul ul a,
+    nav ul ul ul a {
+        padding: 14px 20px;
+        color: #312f2f;
+        font-size: 15px;
+    }
+
+
+    nav ul li ul li .toggle,
+    nav ul ul a {
+        background-color: #fff;
+    }
+
+    nav ul ul li a {
+        font-size: 15px;
+    }
+
+    /* Hide Dropdowns by Default */
+    nav ul ul {
+        float: none;
+        position: static;
+        color: #ffffff;
+        /* has to be the same number as the "line-height" of "nav a" */
+    }
+
+    /* Hide menus on hover */
+    nav ul ul li:hover > ul,
+    nav ul li:hover > ul {
+        display: none;
+    }
+
+    /* Fisrt Tier Dropdown */
+    nav ul ul li {
+        display: block;
+        width: 100%;
+        padding: 0;
+    }
+
+    nav ul li {
+        margin: 0;
+    }
+
+    nav ul ul ul li {
+        position: static;
+        /* has to be the same number as the "width" of "nav ul ul li" */
+    }
+
+    .login-icon {
+        text-align: right;
+    }
+
+    .login-icon span {
+        margin-right: 1em;
+    }
+}
+
+@media all and (max-width:568px) {
+    [id^=drop]:checked + ul {
+        display: block;
+        background: #fff;
+        padding: 15px 0;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .menu .toggle {
+        float: none;
+        text-align: center;
+        margin: auto;
+        width: 70%;
+    }
+
+}
+
+.login-icon p {
+    color: #fff;
+}
+
+.login-icon span {
+
+    color: rgba(54,193,226,0.85);
+}
+
+/*-- //header --*/
+
+/*-- //header --*/
+
+.main-content {
+    background: url(../images/banner1.jpg) center no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    background-size: cover;
+    position: relative;
+    min-height: 50em;
+}
+
+.layer {
+    min-height: 50em;
+    background: rgba(0, 0, 0, 0.57);
+}
+
+.banner-info-w3ls {
+    padding-top: 20em;
+    text-align: center;
+}
+
+.banner-info-w3ls h3 {
+    font-size: 4em;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+    text-transform: uppercase;
+    width: 70%;
+}
+
+.banner-info-w3ls h6 {
+    font-size: 2em;
+    font-weight: 400;
+    letter-spacing: 1px;
+    display: block;
+    color: rgba(54,193,226,0.85);
+}
+
+.read-more {
+    margin-top: 1.2em;
+}
+
+a.read-more {
+    background: #fff;
+    color: #222;
+    padding: 1em 2em;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.15);
+    font-size: 0.9em;
+    display: inline-block;
+    border: none;
+    transition: all 500ms ease;
+    text-align: justify;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1.5em;
+}
+
+.order-info {
+    margin-top: 10em;
+}
+
+.middle ul.social li {
+    margin: 0 0.8em;
+    display: inline-block;
+}
+
+.middle ul.social li a {
+    font-size: 1em;
+    color: #fff;
+    display: block;
+    text-align: center;
+}
+
+.middle-right h6 {
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/*-- //banner --*/
+
+/*-- //heading --*/
+
+#about {
+    background: #fff;
+}
+
+.content-left-bottom h4 {
+    font-size: 1.7em;
+    letter-spacing: 1px;
+    line-height: 1.5em;
+    margin: 1em 0;
+    color: #272525;
+    font-weight: 800;
+}
+
+/*--*/
+
+.ab-info {
+    text-align: center;
+}
+
+.ab-info h4 {
+    font-size: 1em;
+    color: #212529;
+    margin: 2em 0 1em 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.list-group-image {
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -o-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    transition: 0.5s all;
+    background: rgb(236, 237, 239);
+    padding: 8px;
+}
+
+.ab-content img {
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.15);
+    transition: all 500ms ease;
+    width: 68%;
+}
+
+.ab-content-inner {
+    padding: 2em 1em;
+}
+
+.ab-icon {
+    background: #212529;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+
+.ab-icon span {
+    font-size: 1.5em;
+    line-height: 3em;
+    color: rgba(54,193,226,0.85);
+}
+
+.ab-info h5 {
+    font-size: 1.1em;
+    letter-spacing: 0px;
+    font-weight: 700;
+    color: #555;
+    line-height: 1.7em;
+}
+
+/*--*/
+
+/*-- popup --*/
+
+.pop-overlay {
+    position: absolute;
+    top: 0px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 0ms;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 999;
+}
+
+.pop-overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    margin: 8em auto;
+    padding: 3em 1em;
+}
+
+.popup p {
+    font-size: 15px;
+    color: #666;
+    letter-spacing: .5px;
+    line-height: 30px;
+}
+
+.popup h2 {
+    margin-top: 0;
+    color: #fff;
+
+}
+
+.popup .close {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+}
+
+.popup .close:hover {
+    color: #30c39e;
+}
+
+
+/*-- //popup --*/
+
+/*-- //banner --*/
+
+.services {
+    background: #f8f8f8;
+}
+
+h3.tittle,
+h3.tittle.two {
+    font-size: 2.3em;
+    font-weight: 800;
+    color: #33353a;
+    text-shadow: 0 0 0.5px rgba(58, 57, 57, 0.25);
+    text-transform: uppercase;
+}
+
+h3.tittle.two {
+    color: #fff;
+}
+
+.sub-tittle {
+    font-size: 0.35em;
+    color: rgba(54,193,226,0.85);
+    letter-spacing: 1px;
+    display: block;
+    text-transform: uppercase;
+
+}
+
+.content-left span {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #03A9F4;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+span.title {
+    color: rgba(54,193,226,0.85);
+    text-shadow: 0 0 0.5px rgba(58, 57, 57, 0.25);
+    font-size: 1.4em;
+    letter-spacing: 2px;
+    display: block;
+}
+
+.content-right-bottom p {
+    line-height: 2em;
+}
+
+/*-- //about -*/
+
+/*-- /benifts--*/
+
+.benifit-left-info h4 {
+    font-size: 1em;
+    color: #4b4c4c;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.benifit-icon {
+    background: #212529;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+
+.benifit-icon span {
+    font-size: 1.5em;
+    line-height: 3em;
+    color: rgba(54,193,226,0.85);
+}
+
+.benifit-icon-content {
+    text-align: center;
+}
+
+/*-- //benifts--*/
+
+/*-- /order-sec --*/
+
+.order-sec {
+    background: rgba(54,193,226,0.85);
+}
+
+h3.tittle span,
+h3.tittle.two span {
+    color: #26262b;
+    display: block;
+    font-size: 0.6em;
+    letter-spacing: 2px;
+    font-weight: 800;
+}
+
+h3.tittle.order {
+    font-size: 1.6em;
+    color: #c20d00;
+    font-weight: 600;
+}
+
+.order-left-content h4 {
+    font-size: 4em;
+    font-weight: 600;
+}
+
+h4.tittle {
+    font-size: 4em;
+    color: #1a1e21;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    margin: 0;
+}
+
+/*-- //order-sec --*/
+
+/*-- /testimonials --*/
+
+#testimonials {
+    background: url(../images/banner2.jpg) center no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    background-size: cover;
+    min-height: 22em;
+}
+
+.layer.test {
+    min-height: 22em;
+    background: rgba(0, 0, 0, 0.89);
+}
+
+.test-info {
+    padding: 5em 2em 0 2em;
+    margin: 0 auto;
+    width: 70%;
+}
+
+.test-info h3 {
+    font-size: 1em;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.test-img img {
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -moz-border-radius: 50%;
+    padding: 4px;
+    background: hsla(21, 60%, 94%, 0.33);
+    width: 15%;
+}
+
+.w3pvt-footer.test-soc ul li {
+    display: inline-block;
+    margin: 0 0.3em;
+}
+
+.w3pvt-footer.test-soc ul li a span {
+    color: #fff;
+    margin: 0 0.5em;
+}
+
+.test-info p {
+    color: #fff;
+}
+
+.test-info p span {
+    font-size: 1.8em;
+    color: #ffffff;
+}
+
+ul.list-unstyled.w3pvt-icons.clients li {
+    margin: 0 0.2em;
+    text-align: center;
+}
+
+ul.list-unstyled.w3pvt-icons.clients li span {
+    color: rgba(54,193,226,0.85);
+    font-size: 0.8em;
+}
+
+ul.list-unstyled.w3pvt-icons.clients li span:hover {
+    opacity: 0.8;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+
+}
+
+/*-- //testimonials --*/
+
+.mid-sec img {
+    background: #fff;
+    padding: 5px;
+}
+
+.mid-right-info h5 {
+    color: #2e2f2f;
+    font-weight: 400;
+    font-size: 1.05em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/*--/app--*/
+
+.bottom-gd h3 {
+    font-size: 1em;
+    color: #4b4c4c;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.bottom-gd span {
+    font-size: 2em;
+    color: #616569;
+}
+
+ul.list-unstyled.apps-lists {
+    display: flex;
+    list-style: none;
+}
+
+ul.apps-lists li a {
+    background: rgba(54,193,226,0.85);
+    color: #1b1e21;
+    padding: 1em 2em;
+    border-radius: 0px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.15);
+    font-size: 0.9em;
+    display: inline-block;
+    border: none;
+    transition: all 500ms ease;
+    text-align: justify;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+ul.apps-lists li a:hover {
+    opacity: 0.8;
+}
+
+section.app-serve {
+    background: #f7f7f7;
+}
+
+/*--//app--*/
+/* contact form */
+
+.contact-info p {
+    margin: 0 auto;
+    width: 84%;
+}
+
+.contact-form-inner {
+    margin: 0 auto;
+    width: 70%;
+}
+
+.contact-form .form-control {
+    padding: 0.75em 1em;
+    color: #495057;
+    border: 2px solid #d2d6da;
+    border-radius: 0px;
+    font-size: 1em;
+    letter-spacing: 1px;
+}
+
+.contact-form label {
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #1c2833;
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+
+.contact-form button.btn {
+    background: rgba(54,193,226,0.85);
+    padding: 15px 25px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #fff;
+    border-radius: 0px;
+    display: block;
+    text-transform: uppercase;
+    font-weight: 800;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    border: transparent;
+    width: 100%;
+}
+
+.contact-form button.btn:hover {
+    opacity: 0.8;
+}
+
+/* //contact form */
+
+/* contact address */
+
+.contact_grid_left ul li span {
+    float: left;
+    font-size: 16px;
+    color: #fff;
+}
+
+.contact_grid_left li span {
+    background: #7ac143;
+    text-align: center;
+    line-height: 56px;
+    border-radius: 0px;
+}
+
+.contact_grid_left ul li p,
+.contact_grid_left ul li a {
+    color: #5a646b;
+    letter-spacing: 1px;
+}
+
+
+.contact_grid_left h6 {
+    font-size: 1em;
+    color: #fff;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.contact_grid_right {
+    background: #f7f7f7;
+    padding: 5em;
+}
+
+.contact_grid_left {
+    border-bottom: 1px solid #313c44;
+    margin: 0 0 3em 0;
+    padding-bottom: 3em;
+}
+
+.adress-info h6 {
+    font-size: 1em;
+    color: #17202A;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.adress-info span {
+    color: #46484c;
+    font-size: 2em;
+    vertical-align: middle;
+}
+
+.adress-info a,
+.adress-info p {
+    color: #5a646b;
+    letter-spacing: 1px;
+    line-height: 1.9em;
+    margin: 0;
+}
+
+.adress-info a {
+    font-size: 0.85em;
+}
+
+form#contactform1 {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 5em;
+    padding: 0 0 5em 0;
+}
+
+/* //contact address */
+
+/* footer */
+
+footer {
+    background: #1b1e21;
+}
+
+.copy-right-sec. {
+    border-top: 1px solid #353638;
+}
+
+ul.list-info-lavi {
+    list-style: none;
+}
+
+.w3pvt-icons li {
+    display: inline-block;
+    margin: 0 1em;
+}
+
+.w3pvt-icons li a span {
+    color: #fff;
+}
+
+.w3pvt-icons li a span:hover {
+    color: rgba(54,193,226,0.85);
+}
+
+/* footer */
+
+.asap-w3pvt-footer-logo a {
+    color: rgba(54,193,226,0.85);
+    font-size: 1.6em;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+}
+
+/* footer nav */
+
+ul.footer-nav-lavi li {
+    display: inline-block;
+    margin: 0 0.5em;
+}
+
+ul.footer-nav-lavi li a {
+
+    color: #ffffff;
+    letter-spacing: 1px;
+    font-size: 0.95em;
+    text-transform: uppercase;
+}
+
+a.btn.thar-four {
+    background: #fff;
+    color: #222;
+    padding: 1em 2em;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.15);
+    font-size: 0.9em;
+    display: inline-block;
+    border: none;
+    transition: all 500ms ease;
+    text-align: justify;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1.5em;
+}
+
+a.btn.thar-four:hover {
+    opacity: 0.8;
+}
+
+/* //footer nav */
+
+/* copyright */
+
+p.copy-right-grids {
+    letter-spacing: 2px;
+}
+
+p.copy-right-grids a {
+    color: #ff3f4d;
+}
+
+/* //footer */
+
+/* copyright */
+
+p.copy-right-grids {
+    letter-spacing: 2px;
+    color: #fff;
+}
+
+p.copy-right-grids a {
+    color: #fff;
+}
+
+/* //copyright */
+
+a.move-top {
+    text-align: center;
+}
+
+a.move-top span {
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    border: transparent;
+    line-height: 2em;
+    background: #626c733b;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+}
+
+/*-- //footer --*/
+
+.caption h4 {
+    font-size: 1.1em;
+    text-transform: uppercase;
+    color: #333;
+    margin: 1em 0px;
+    font-weight: 600;
+}
+
+.caption .w3pvt-icons li a span {
+    color: #8d9194;
+}
+
+.team-grid img {
+    border-radius: 4px;
+    background: #e9ebec;
+    padding: 6px;
+}
+
+/*-- Responsive design --*/
+
+@media screen and (max-width: 1366px) {
+
+    .main-content,
+    .layer {
+        min-height: 40em;
+    }
+
+    .order-info {
+        margin-top: 6em;
+    }
+
+    ul.footer-nav-lavi li a {
+        font-size: 0.8em;
+    }
+
+    .banner-info-w3ls h3 {
+        font-size: 3.5em;
+        width: 62%;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .banner-info-w3ls h3 {
+        font-size: 3.5em;
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    .order-info {
+        margin-top: 5em;
+    }
+
+    .banner-info-w3ls {
+        padding-top: 15em;
+    }
+}
+
+@media screen and (max-width:1024px) {
+    .banner-info-w3ls h3 {
+        font-size: 3.5em;
+        width: 70%;
+    }
+
+    a.btn.thar-four {
+        padding: 1em 1em;
+    }
+
+    a.read-more {
+        padding: 0.8em 1.5em;
+    }
+
+    h3.tittle.order {
+        font-size: 1.1em;
+    }
+
+    .banner-info-w3ls h3 {
+        font-size: 3em;
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 991px) {
+
+    .popup {
+        width: 50%;
+    }
+
+    .benifit-content img {
+        width: 50%;
+        margin: 2em 0;
+    }
+
+
+    .ab-content {
+        width: 50%;
+        float: left;
+    }
+
+    .adress-info:nth-child(2) {
+        margin: 1.5em 0;
+    }
+
+    h3.tittle,
+    h3.tittle.two {
+        font-size: 2em;
+    }
+
+    .asap-w3pvt-footer-logo {
+        text-align: center;
+    }
+
+    .test-info {
+        padding: 5em 0em 0 0em;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .app-mob {
+        margin-bottom: 2em;
+    }
+}
+
+
+@media screen and (max-width:768px) {
+    .banner-info-w3ls h3 {
+        font-size: 3em;
+        width: 100%;
+    }
+
+    .middle-right h6 {
+        font-size: 1em;
+    }
+
+    .banner-info-w3ls {
+        padding-top: 13em;
+    }
+
+    .main-content,
+    .layer {
+        min-height: 35em;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .main-content,
+    .layer {
+        min-height: 35em;
+    }
+
+    .benifit-left-info,
+    .benifit-left-info,
+    .benifit-content {
+        text-align: center !important;
+        margin-top: 2em;
+    }
+
+    .adress-info span {
+        font-size: 2em;
+        margin-bottom: 1em;
+    }
+
+    .test-info {
+        padding: 2em 0em 0 0em;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    #testimonials,
+    .layer.test {
+        min-height: 18em;
+    }
+
+    .benifit-icon {
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    h5.gal-info {
+        margin: 1em 0 1.5em 0;
+        font-size: 1.1em;
+    }
+}
+
+@media screen and (max-width: 736px) {
+    .middle ul.social li {
+        margin: 0 0.5em;
+    }
+
+
+}
+
+@media screen and (max-width: 667px) {
+
+    h3.tittle,
+    h3.tittle.two {
+        font-size: 1.8em;
+    }
+}
+
+@media screen and (max-width: 640px) {}
+
+
+@media screen and (max-width:568px) {
+    .ab-content {
+        width: 100%;
+        float: left;
+    }
+
+    .popup {
+        width: 80%;
+    }
+
+    .content-left-bottom h4 {
+        font-size: 1.5em;
+    }
+
+    .banner-info-w3ls h3 {
+        font-size: 2.2em;
+        width: 100%;
+    }
+
+    h4.tittle {
+        font-size: 2em;
+        letter-spacing: 4px;
+        margin: 0;
+    }
+
+    .order-info {
+        margin-top: 2em;
+    }
+
+    .banner-info-w3ls {
+        padding-top: 9em;
+    }
+
+    h3.tittle,
+    h3.tittle.two {
+        font-size: 1.5em;
+    }
+
+    .main-content,
+    .layer {
+        min-height: 28em;
+    }
+
+    form#contactform1 {
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 2em;
+        padding: 0 0 2em 0;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    .banner-info-w3ls h3 {
+        font-size: 2.2em;
+        width: 100%;
+    }
+
+    h4.tittle {
+        font-size: 2em;
+        letter-spacing: 4px;
+        margin: 0;
+    }
+
+    .order-info {
+        margin-top: 2em;
+    }
+
+    .banner-info-w3ls {
+        padding-top: 9em;
+    }
+
+    h3.tittle,
+    h3.tittle.two {
+        font-size: 1.5em;
+    }
+
+    .main-content,
+    .layer {
+        min-height: 28em;
+    }
+
+    .read-more {
+        margin-top: 0.5em;
+    }
+
+    .bottom-gd h3 {
+        font-size: 0.9em;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .content-left-bottom h4 {
+        font-size: 1.3em;
+    }
+
+    .banner-info-w3ls h3 {
+        font-size: 2.2em;
+        width: 100%;
+    }
+
+    h3.tittle,
+    h3.tittle.two {
+        font-size: 1.4em;
+    }
+
+    .contact-form label {
+        font-size: 0.8em;
+    }
+
+    a.read-more {
+        padding: 0.6em 1.5em;
+    }
+}
+
+@media screen and (max-width: 384px) {
+    .content-left-bottom h4 {
+        font-size: 1.2em;
+    }
+
+    .test-info {
+        padding: 1em 0em 0 0em;
+        width: 100%;
+    }
+
+    .banner-info-w3ls h3 {
+        font-size: 2em;
+        width: 100%;
+    }
+
+    ul.footer-nav-lavi li {
+        margin: 0 0.3em;
+    }
+
+}
+
+@media screen and (max-width:375px) {
+
+    .main-content,
+    .layer {
+        min-height: 26em;
+    }
+
+    .benifit-content img {
+        width: 70%;
+        margin: 1em 0;
+    }
+}
+
+@media screen and (max-width:320px) {}
+
+/*-- //Responsive design --*/

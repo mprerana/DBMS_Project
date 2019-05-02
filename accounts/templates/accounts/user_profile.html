@@ -1,0 +1,142 @@
+{% extends 'index.html' %}
+
+{%load static%}
+{% load crispy_forms_field %}
+{% load crispy_forms_tags %}
+<!--
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+
+
+
+{% block slidecss %}
+
+<style>
+    form{
+      padding:10px;
+      margin: 0.1rem;
+    }
+    form a{
+      font-family:sans serif;
+      color:#18a3bf;
+    }
+    .form{
+        background-color: #fefefe;
+        margin: 4% auto 15% auto;
+        border: 1px solid #888;
+        width: 500px;
+        padding-bottom: 30px;
+    }
+    .modal {
+        display:none;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+    .close {
+        position: absolute;
+        right: 25px;
+        top: 0;
+        color: #000;
+        font-size: 35px;
+        font-weight: bold;
+    }
+    .close:hover,.close:focus {
+        color: #57cbcc;
+        cursor: pointer;
+    }
+    input[type=text]{
+        position: center;
+        padding: 12px 20px;
+        margin: 8px 26px;
+        display: inline-block;
+        border-radius: 10%;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        font-size:16px;
+    }
+</style>
+{% endblock slidecss %}
+
+
+
+{% block body_block %}
+
+
+
+<div class="container" style="padding-top:45px;padding-left:230px;">
+
+  <div style="display:inline-block;float:left;">
+
+      <div class="shadow" style="width:600px;display:inline-block;float:left;">
+    <div class="card flex-row flex-wrap" style="width:600px;">
+        <div class="card-header border-0">
+            <img src="{{ u.profile_pic.url}}" style="width:250px;">
+        </div>
+        <div class="card-block px-2" style="padding:30px;">
+            <h2 class="card-title">{{user.username}}'s Profile</h2>
+            <p class="card-text">
+              Username:{{user.username}}<br>
+              Email:{{user.email}}<br>
+              Phone Number:  {{u.ph_no}}<br>
+            </p>
+            <a onclick="document.getElementById('modal-wrapper').style.display='block'" class="btn btn-primary" style="background-color:#57cbcc">Add Emergencycontacts</a>
+            <div id="modal-wrapper" class="modal">
+                <form class="form" method="post" action="{% url 'emergencycontacts:emergencycontacts' %}">
+                    <div>
+                        <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
+                    </div>
+                    <div class="container">
+                      <h3 style="color:#18a3bf">Add Your Emergency Contact</h3>
+                        {% csrf_token %}
+                        <div   class="form-group">
+                          <label for="uname"> Contact Name : </label>
+                          <input type="text" name="name" placeholder="Contact Name" >{{ emergency.name|crispy }}
+                        </div>
+                        <div class="form-group">
+                          <label for="uname"> Contact no : </label>
+                          <input type="text" name="contact_no" placeholder="Contact no:" >{{ emergency.contact_no|crispy }}
+                        </div>
+                        <div class="form-group">
+                          <label for="uname"> Email : </label>
+                          <input type="text" name="email" placeholder="Email" >{{ emergency.email|crispy }}
+                        </div>
+
+                        <button style="background-color: #57cbcc;width:100px;height:30px;" type="submit" class="btn btn-success">Add contact</button>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+
+    </div>
+    </div>
+    </div>
+
+
+
+
+</div>
+
+<script>
+
+
+    var modal = document.getElementById('modal-wrapper');
+    window.onclick = function(event) {
+      if (event.target == modal2) {
+          modal.style.display = "none";
+      }
+    }
+
+
+</script>
+
+
+{% endblock body_block %}
