@@ -6,6 +6,13 @@ import 'package:songs_app/models/genre.dart';
 import 'package:songs_app/utils/database_files/tables.dart';
 
 class GenreFirestoreCRUD {
+
+  static GenreFirestoreCRUD _genreFirestoreCRUD = GenreFirestoreCRUD._createInstance();
+
+  GenreFirestoreCRUD._createInstance();
+
+  factory GenreFirestoreCRUD() => _genreFirestoreCRUD;
+
   /// inserts genre map to the firestore collection
   // function to insert into genre table
   Future<DocumentReference> insertGenre(Genre genre) async {

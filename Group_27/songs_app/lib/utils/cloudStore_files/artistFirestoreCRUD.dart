@@ -6,6 +6,15 @@ import 'package:songs_app/models/artists.dart';
 import 'package:songs_app/utils/database_files/tables.dart';
 
 class ArtistFirestoreCRUD {
+
+  static ArtistFirestoreCRUD _artistFirestoreCRUD = ArtistFirestoreCRUD._createInstance();
+
+  ArtistFirestoreCRUD._createInstance();
+
+  factory ArtistFirestoreCRUD() {
+    return _artistFirestoreCRUD;
+  }
+
   /// inserts artist to artist collection database
   Future<DocumentReference> insertArtist(Artist artist) async {
     DocumentReference artistDoc = await Firestore.instance

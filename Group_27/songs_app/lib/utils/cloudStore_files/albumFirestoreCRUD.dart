@@ -6,6 +6,15 @@ import 'package:songs_app/models/albums.dart';
 import 'package:songs_app/utils/database_files/tables.dart';
 
 class AlbumFirestoreCRUD {
+
+  static AlbumFirestoreCRUD _albumFirestoreCRUD = AlbumFirestoreCRUD._createInstance();
+
+  AlbumFirestoreCRUD._createInstance();
+
+  factory AlbumFirestoreCRUD() {
+    return _albumFirestoreCRUD;
+  }
+
   /// inserts the album map into album collection of firestore database
   Future<DocumentReference> insertAlbum(Album album) async {
     DocumentReference albumDoc = await Firestore.instance

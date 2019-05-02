@@ -6,6 +6,13 @@ import 'package:songs_app/models/songs.dart';
 import 'package:songs_app/utils/database_files/tables.dart';
 
 class SongFirestoreCRUD {
+
+  static SongFirestoreCRUD _songFirestoreCRUD = SongFirestoreCRUD._createInstance();
+
+  SongFirestoreCRUD._createInstance();
+
+  factory SongFirestoreCRUD() => _songFirestoreCRUD;
+
   /// inserts song map to firestore collection songs
   Future<DocumentReference> insertSong(Song song) async {
     DocumentReference songDoc = await Firestore.instance

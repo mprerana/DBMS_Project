@@ -7,6 +7,13 @@ import 'package:songs_app/utils/database_files/tables.dart';
 import 'package:songs_app/utils/database_helper.dart';
 
 class SongByCRUD {
+
+  static SongByCRUD _songByCRUD = SongByCRUD._createInstance();
+
+  SongByCRUD._createInstance();
+
+  factory SongByCRUD() => _songByCRUD;
+
   DatabaseHelper databaseHelper = DatabaseHelper();
 
   // fetch all playlist

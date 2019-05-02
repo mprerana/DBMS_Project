@@ -6,6 +6,13 @@ import 'package:songs_app/models/image.dart';
 import 'package:songs_app/utils/database_files/tables.dart';
 
 class ImagesFirestoreCRUD {
+
+  static ImagesFirestoreCRUD _imagesFirestoreCRUD = ImagesFirestoreCRUD._createInstance();
+
+  ImagesFirestoreCRUD._createInstance();
+
+  factory ImagesFirestoreCRUD() => _imagesFirestoreCRUD;
+
   /// inserts images map to the firestore collection
   Future<DocumentReference> insertImages(Images image) async {
     DocumentReference genreDoc = await Firestore.instance

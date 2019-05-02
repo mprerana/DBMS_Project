@@ -7,6 +7,13 @@ import 'package:songs_app/utils/database_files/tables.dart';
 import 'package:songs_app/utils/database_helper.dart';
 
 class GenreCRUD {
+
+  static GenreCRUD _genreCRUD = GenreCRUD._createInstance();
+
+  GenreCRUD._createInstance();
+
+  factory GenreCRUD() => _genreCRUD;
+
   DatabaseHelper databaseHelper = DatabaseHelper();
 
   // fetch all genres

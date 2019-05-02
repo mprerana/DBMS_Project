@@ -89,7 +89,7 @@ class Song {
   Song.fromMaptoSong(Map<String, dynamic> map) {
     this._songId = map["songId"];
     this._title = map["title"];
-    this._length = map["length"];
+    this._length = map["length"].toDouble();
     this._location = map["location"];
     this._albumId = map["albumId"];
     this._genreId = map["genreId"];
@@ -109,6 +109,6 @@ class Song {
 
   // Function to convert a song object to list
   List fromSongtoList(){
-    return [this._title, this._length,this._location, this._albumId, this._genreId, this._imageId];
+    return [this._songId, this._title, this._length,this._location, this._albumId, this._genreId, this._imageId];
   }
 }

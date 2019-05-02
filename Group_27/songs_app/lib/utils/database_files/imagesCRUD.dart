@@ -7,6 +7,13 @@ import 'package:songs_app/utils/database_files/tables.dart';
 import 'package:songs_app/utils/database_helper.dart';
 
 class ImagesCRUD {
+
+  static ImagesCRUD _imagesCRUD = ImagesCRUD._createInstance();
+
+  ImagesCRUD._createInstance();
+
+  factory ImagesCRUD() => _imagesCRUD;
+
   DatabaseHelper databaseHelper = DatabaseHelper();
 
   // fetch all users

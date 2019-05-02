@@ -6,6 +6,13 @@ import 'package:songs_app/models/includes.dart';
 import 'package:songs_app/utils/database_files/tables.dart';
 
 class IncludesFirestoreCRUD {
+
+  static IncludesFirestoreCRUD _includesFirestoreCRUD = IncludesFirestoreCRUD._createInstance();
+
+  IncludesFirestoreCRUD._createInstance();
+
+  factory IncludesFirestoreCRUD() => _includesFirestoreCRUD;
+
   /// inserts include map to firestore collection include
   Future<DocumentReference> insertInclude(Includes include) async {
     DocumentReference docRef = await Firestore.instance

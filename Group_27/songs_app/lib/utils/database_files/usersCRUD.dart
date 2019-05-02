@@ -7,6 +7,12 @@ import 'package:songs_app/utils/database_files/tables.dart';
 import 'package:songs_app/utils/database_helper.dart';
 
 class UsersCRUD {
+  static UsersCRUD _usersCRUD = UsersCRUD._createInstance();
+
+  UsersCRUD._createInstance();
+
+  factory UsersCRUD() => _usersCRUD;
+
   DatabaseHelper databaseHelper = DatabaseHelper();
 
   /// fetch all users
@@ -17,7 +23,7 @@ class UsersCRUD {
         await db.rawQuery('SELECT * FROM ${UsersTable.tableName}');
     return result;
   }
- 
+
   /// inserts the user to table
   Future<int> insertUser(User user) async {
     Database db = await databaseHelper.database;
@@ -75,12 +81,22 @@ class UsersCRUD {
     return result;
   }
 
+  Future<Map<String, dynamic>> getUserMapByEmail(String emailid) async {
+    Database db = await databaseHelper.database;
+
+    List<Map<String, dynamic>> result = await db.rawQuery(
+        'SELECT * FROM ${UsersTable.tableName} WHERE ${UsersTable.colEmail} = \'$emailid\' ');
+    return result[0];
+  }
+
   Future<User> getUserByID(String emailId) async {
     List<Map<String, dynamic>> userDetails = await getUserMapById(emailId);
-    if(userDetails == null || userDetails.isEmpty) {
+    if (userDetails == null || userDetails.isEmpty) {
       print('User with emailId: $emailId does not exist');
       return null;
     }
     return User.fromMaptoUser(userDetails.first);
   }
+
+ 
 }

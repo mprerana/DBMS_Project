@@ -7,6 +7,13 @@ import 'package:songs_app/utils/database_files/tables.dart';
 import 'package:songs_app/utils/database_helper.dart';
 
 class FrequentlyHeardCRUD {
+
+  static FrequentlyHeardCRUD _frequentlyHeardCRUD = FrequentlyHeardCRUD._createInstance();
+
+  FrequentlyHeardCRUD._createInstance();
+
+  factory FrequentlyHeardCRUD() => _frequentlyHeardCRUD;
+
   DatabaseHelper databaseHelper = DatabaseHelper();
 
   // fetch all playlist

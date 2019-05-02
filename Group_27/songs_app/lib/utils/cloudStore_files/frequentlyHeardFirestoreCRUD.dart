@@ -6,6 +6,15 @@ import 'package:songs_app/models/frequentlyHeard.dart';
 import 'package:songs_app/utils/database_files/tables.dart';
 
 class FrequentlyHeardFirestoreCRUD {
+
+  static FrequentlyHeardFirestoreCRUD _frequentlyHeardFirestoreCRUD = FrequentlyHeardFirestoreCRUD._createInstance();
+
+  FrequentlyHeardFirestoreCRUD._createInstance();
+
+  factory FrequentlyHeardFirestoreCRUD() {
+    return _frequentlyHeardFirestoreCRUD;
+  }
+
   /// inserts frequentlyHeard to firstore database collection FrequentlyHeard
   Future<DocumentReference> insertFrequentlyHeard(FrequentlyHeard frequenltyHeard) async {
     DocumentReference docRef = await Firestore.instance

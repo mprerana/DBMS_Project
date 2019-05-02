@@ -7,6 +7,13 @@ import 'package:songs_app/utils/database_files/tables.dart';
 import 'package:songs_app/utils/database_helper.dart';
 
 class AlbumCRUD {
+
+  static AlbumCRUD _albumCRUD = AlbumCRUD._createInstance();
+
+  AlbumCRUD._createInstance();
+
+  factory AlbumCRUD() => _albumCRUD;
+
   DatabaseHelper databaseHelper = DatabaseHelper();
 
   // fetch all playlist
@@ -55,6 +62,7 @@ class AlbumCRUD {
     return result;
   }
 
+  /// returns list of all albums
   Future<List<Album>> getAlbumList() async {
     List<Map<String, dynamic>> mapList = await getAlbumMapList();
     int count = mapList.length;
@@ -67,11 +75,29 @@ class AlbumCRUD {
   }
 
   // fetch playlist by id
-  Future<List<Map<String, dynamic>>> getAlbumMapById(String name) async {
+  Future<List<Map<String, dynamic>>> getAlbumMapByName(String name) async {
     Database db = await databaseHelper.database;
 
     List<Map<String, dynamic>> result = await db.rawQuery(
         'SELECT * FROM ${AlbumsTable.tableName} WHERE ${AlbumsTable.colAlbumName} = $name');
     return result;
+  }
+
+  Future<Album> getAlbumByName(String name) async {
+    Map<String,dynamic> map = (await getAlbumMapByName(name)).first;
+    return Album.fromMaptoAlbum(map);
+  }
+
+  Future<List<Map<String, dynamic>>> getAlbumMapById(String albumId) async {
+    Database db = await databaseHelper.database;
+
+    List<Map<String, dynamic>> result = await db.rawQuery(
+        'SELECT * FROM ${AlbumsTable.tableName} WHERE ${AlbumsTable.colAlbumId} = \'$albumId\'');
+    return result;
+  }
+
+  Future<Album> getAlbumById(String albumId) async {
+    Map<String,dynamic> map = (await getAlbumMapById(albumId)).first;
+    return Album.fromMaptoAlbum(map);
   }
 }

@@ -73,7 +73,7 @@ class Album {
     this._albumId = fid;
     this._albumName = map['albumName'];
     this._releaseDate = DateTime.parse( map['releaseDate']);
-    this._albumLength = map['albumLength'];
+    this._albumLength = map['albumLength'].toDouble();
     this._totalTracks = map['totalTracks'];
     this._genreId = map['genreId'];
     this._imageId = map['imageId'];

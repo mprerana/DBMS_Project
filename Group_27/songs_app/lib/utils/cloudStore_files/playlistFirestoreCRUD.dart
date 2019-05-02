@@ -6,6 +6,13 @@ import 'package:songs_app/models/playlist.dart';
 import 'package:songs_app/utils/database_files/tables.dart';
 
 class PlaylistFirestoreCRUD {
+
+  static PlaylistFirestoreCRUD _playlistFirestoreCRUD = PlaylistFirestoreCRUD._createInstance();
+
+  PlaylistFirestoreCRUD._createInstance();
+
+  factory PlaylistFirestoreCRUD() => _playlistFirestoreCRUD;
+
   /// inserts playlist map to the firestore collection
   // function to insert into playlist collection
   Future<DocumentReference> insertPlaylist(Playlist playList) async {

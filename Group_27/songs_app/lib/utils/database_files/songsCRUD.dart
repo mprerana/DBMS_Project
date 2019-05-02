@@ -7,6 +7,13 @@ import 'package:songs_app/utils/database_files/tables.dart';
 import 'package:songs_app/utils/database_helper.dart';
 
 class SongsCRUD {
+
+  static SongsCRUD _songsCRUD = SongsCRUD._createInstance();
+
+  SongsCRUD._createInstance();
+
+  factory SongsCRUD() => _songsCRUD;
+
   DatabaseHelper databaseHelper = DatabaseHelper();
 
   // fetch all songs
@@ -55,6 +62,7 @@ class SongsCRUD {
     return result;
   }
 
+  /// returns list of all songs
   Future<List<Song>> getSongList() async {
     List<Map<String, dynamic>> mapList = await getSongMapList();
     int count = mapList.length;

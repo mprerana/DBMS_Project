@@ -27,8 +27,7 @@ dependencies:
   firebase_storage: ^2.1.0+1
 
   rxdart: ^0.21.0
-
-  audioplayers: ^0.10.1
+  audioplayers: ^0.11.0
   
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons. 
@@ -62,7 +61,6 @@ flutter:
     - assets/dog1.jpg
     - assets/dog2.jpg
     - assets/dog4.jpg
-
     - assets/gradient.jpeg
     - assets/gradient.png
     - assets/background.jpg
@@ -76,6 +74,7 @@ flutter:
     - assets/songs/song-bg-1.jpg
     - assets/songs/song-bg-2.jpg
     - assets/songs/song-bg-3.jpg
+
   fonts:
     - family: NotoSans
       fonts:
@@ -101,7 +100,7 @@ flutter:
       fonts:
       - asset: fonts/Velhos Tempos.ttf
         weight: 700
-    - family: Halfomania-Regular
+    - family: Halfomania
       fonts:
       - asset: fonts/Halfomania-Regular.ttf
         weight: 700
