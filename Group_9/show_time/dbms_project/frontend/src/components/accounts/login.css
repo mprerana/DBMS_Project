@@ -1,0 +1,80 @@
+.background1{
+    background: url(http://127.0.0.1:8000/media/profile_image/iPad-Pro-11-advertising-wallpaper-1-blue.jpg) no-repeat center ;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position-y: inherit;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+    margin-left: 15px;
+    
+  }
+  
+  
+  .profile-main{
+      width: 38%;
+      height: 500px;
+      font-weight: bolder;
+      color: white;
+      border-radius: 10px;
+      margin : 0 auto;
+      border: 1.4px solid #caa060;
+      padding-bottom: 10px;
+       box-shadow: 10px 10px 5px rgba(0,0,0,0.4);
+       -webkit-transition : border 1s;
+      transition: border 0.3s;
+      font-family: Open Sans;
+      padding-left: 3%;
+      padding-top:2%; 
+      background-color: rgba(0,0,0, 0.6);
+      position: relative;
+      top:20px;
+     }
+    
+    .profile-main:hover{
+      border: 1.9px solid #e19536;
+      background-color: rgba(0,0,0, 0.7);
+    }
+    /*.profile-main:active{
+      border: 2px solid #f4c613;
+      background-color: rgba(0,0,0, 0.4);
+    
+    }*/
+    
+    .form-control {
+        display: block;
+        width: 80%;
+        height: calc(2.25rem + 2px);
+        padding: .375rem .75rem;
+        font-size: 1rem;
+      }
+    .form-group {
+    margin-bottom: 1rem;
+    margin-left: 15px;
+    
+}
+    
+    .button {
+    border-radius: 28px;
+    border :1px solid rgba(255,255,255,0.9);
+    font-size: 13px;
+    text-transform: uppercase;
+    margin:0 3px;
+    padding: 8px 46px 8px 46px;
+    -webkit-trasition: all .5s;
+    transition: all .5s;
+    }
+    
+    .button-q {
+    background-color: rgba(0,0,0,0.2);
+      color: #e19536;
+      
+    }
+    
+    .button:hover,
+    .button:focus {
+    background-color:rgba(0,0,0,0.1) ;
+    color: #ffffff;
+    border :1px solid #e19536;
+    }
