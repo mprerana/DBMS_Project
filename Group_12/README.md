@@ -45,5 +45,4 @@ inserted.
 The Reader can read articles of his interest. He
 can view bookmarked articles in his profile. 
 
-![alt text](https://github.com/Vineet-Sharma29/)
 
