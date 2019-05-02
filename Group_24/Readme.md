@@ -36,5 +36,8 @@ pip install geopy
 
 
 python manage.py makemigrations
+
 python manage.py migrate
+
+Run code command:
 python manage.py runserver
