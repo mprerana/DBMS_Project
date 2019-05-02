@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="Download"
+        android:id="@+id/downloadMenuItem"
+        android:icon="@drawable/ic_file_download_white_24dp"
+        app:showAsAction="always"/>
+    <item
+        android:title="Settings"
+        android:id="@+id/SettingsMenuItem"
+        android:icon="@drawable/ic_settings_white_24dp"
+        app:showAsAction="always">
+    </item>
+    <item
+        android:title="Search"
+        android:id="@+id/SearchMenuItem"
+        android:icon="@drawable/ic_search_white_24dp"
+        app:showAsAction="collapseActionView|always"
+        app:actionViewClass="android.widget.SearchView"/>
+
+
+</menu>
