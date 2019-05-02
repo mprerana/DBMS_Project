@@ -1,0 +1,21 @@
+{% extends 'admin_app/admin.html' %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags  %}
+{% load staticfiles %}
+{% block Home %}
+{% endblock %}
+
+
+{% block  content%}
+{% if item_added %}
+    <h1>{{ item_added }}</h1>
+{% endif %}
+    <div style="margin-left: 320px;margin-top: 80px;margin-bottom: 80px;width: 50%;background-color: lightsalmon;padding: 50px;font-size: 18px;border-radius: 10px" class="register-but">
+    <form method="post" enctype="multipart/form-data" action="{% url 'product:add_product' %}" >
+    {% csrf_token %}
+        {{ product_form|crispy }}
+        <center>
+            <input type="submit" value="Add Product" style="font-size: 1.2em;margin-top: 30px"></center>
+    </form>
+    </div>
+{% endblock %}

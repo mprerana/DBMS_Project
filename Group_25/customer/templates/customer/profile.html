@@ -1,0 +1,61 @@
+{% extends 'customer/base.html' %}
+
+{% block Home %}
+
+{% endblock %}
+{% block content %}
+    <center>
+        {% if message %}
+        <div style="margin: 40px"><h1>{{ message }}</h1></div></center>
+        {% else %}
+        <div style="margin: 40px"><h1>Profile Page</h1></div>
+        {% endif %}
+    </center>
+
+    <div style="width: 50% ;margin-left: 350px;margin-bottom: 100px;padding: 50px;background-color: skyblue;font-size: large;border-radius: 15px" >
+    <form method="post" action="{% url 'customer:profile' %}">
+        {% csrf_token %}
+        <h4><b>NAME</b></h4><hr>
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">First Name</label>
+            <input type="text" name="fname" class="form-control" id="inputEmail4" value="{{ customer.user.first_name }}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputPassword4">Last Name</label>
+            <input type="text" name="lname" class="form-control" id="inputPassword4" value="{{ customer.user.last_name }}" required><hr>
+        </div>
+        <h4><b>CONTACT</b></h4><hr>
+        <div class="form-group col-md-6">
+            <label for="inputAddress">Email</label>
+            <input type="email" name="email" class="form-control" id="inputAddress" value="{{ customer.user.email }}" ><hr>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputAddress">Phone Number</label>
+            <input type="text" name="phone" class="form-control" id="inputAddress" value="{{ customer.cust_phone }}"><hr>
+        </div>
+        <h4><b>ADDRESS</b></h4><hr>
+        <div class="form-group col-md-12">
+            <label for="inputZip">Street</label>
+            <input type="text" name="street" class="form-control" id="inputZip" value="{{ customer.cust_street }}"><hr>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputCity">House Number</label>
+            <input type="number" name="house" class="form-control" id="inputCity" value="{{ customer.cust_house_no }}">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputCity">City</label>
+            <input type="text" name="city" class="form-control" id="inputCity" value="{{ customer.cust_city }}">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputZip">Zip Code</label>
+            <input type="number" name="zip" class="form-control" id="inputZip" value="{{ customer.cust_zipcode }}">
+        </div>
+        <center>
+            <button type="submit" class="btn btn-primary" style="margin: 20px;font-size: large; width: 30%">Update Profile</button>
+        </center>
+    </form>
+    </div>
+
+{% endblock %}
+
+

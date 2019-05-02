@@ -1,0 +1,38 @@
+{% extends 'customer/base.html' %}
+
+{% block cart %}
+{% endblock %}
+{% block offers %}
+{% endblock %}
+{% block navbar %}
+    <div class="menu-bar" id="navbar">
+        <div class="container">
+            <div class="top-menu">
+                <ul>
+                    <li class="active"><a href="{% url 'admin_app:home' %}" >Home</a></li>|
+                    <li><a href="{% url 'admin_app:product_report' %}">Manage Product</a></li>|
+                    <li><a href="{% url 'product:add_product' %}">Add Product</a></li>|
+                    <li><a href="{% url 'admin_app:order_report' %}">Manage Orders</a></li>|
+                    <div class="clearfix"></div>
+                </ul>
+            </div>
+            <div class="login-section">
+                <ul>
+                    {% if user.is_authenticated %}
+                        <li style="color: black"><b>Welcome {{ user.first_name }} {{ user.last_name }}</b> </li> |
+                        <li><a href="{% url 'customer:user_logout' %}">Logout</a>  </li> |
+                    {% else %}
+                        <li><a href="{% url 'customer:user_login' %}">Login</a>  </li> |
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'customer:profile' %}">Profile</a></li>
+                    {% endif %}
+                    <div class="clearfix"></div>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+{% endblock %}
+

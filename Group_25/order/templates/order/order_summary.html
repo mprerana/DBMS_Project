@@ -1,0 +1,41 @@
+{% extends 'customer/base.html' %}
+
+{% block Home %}
+{% endblock %}
+{% block content %}
+
+    {% if item_list %}
+   <div style="width: 70%; margin: 70px 0px 70px 15% ;padding:40px; background-color: lightgray; box-shadow: 5px 5px 5px grey;border-radius: 10px;" >
+        <h3 style="text-align: center;"> Your Cart Items</h3><hr><br>
+        <table class="table table-bordered"style="font-size: medium; background-color: white;">
+            <thead class="thead header">
+                <td><b>Sr. No.</b></td>
+                <td><b>Item name</b></td>
+                <td><b>Price per quantity</b></td>
+                <td><b>Item Quantity</b></td>
+                <td><b>Total Price</b></td>
+            </thead>
+            {% for item in item_list %}
+            <tr class="">
+                <td>{{ forloop.counter }}</td>
+                <td>{{ item.cart_item.item_name }}</td>
+                <td>{{ item.cart_item.item_price }}</td>
+                <td>{{ item.item_quantity }}</td>
+                <td>{{ item.item_price }}</td>
+            </tr>
+            {% endfor %}
+        </table><br><br>
+        <div style="margin-left: 50px">
+           <div class="col-md-5" style="font-size: medium">
+               <a class="morebtn hvr-rectangle-in" href="{% url 'order:order_items' %}">Confirm Your Order</a>
+           </div>
+           <div class="col-md-2"><h3><b></b></h3></div>
+           <div class="col-md-5" style="font-size: medium">
+               <a class="morebtn hvr-rectangle-in" href="{% url 'product:menu' %}">Add More Items</a>
+           </div><br><hr>
+       </div>
+   </div>
+
+    {% endif %}
+
+{% endblock %}

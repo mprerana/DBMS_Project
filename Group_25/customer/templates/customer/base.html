@@ -1,0 +1,479 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+<title>Lazeez Canteen</title>
+<link href="{% static 'customer/css/bootstrap.css' %}" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{% static 'customer/js/jquery.min.js' %}"></script>
+<!-- Custom Theme files -->
+<link href="{% static 'product/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--webfont-->
+<link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Lobster+Two:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+<!--Animation-->
+<script src="{% static 'product/js/wow.min.js' %}"></script>
+<link href="{% static 'product/css/animate.css' %}" rel='stylesheet' type='text/css' />
+<script>
+	new WOW().init();
+</script>
+    <script src="{% static 'product/js/simpleCart.min.js'%}"> </script>
+<script type="text/javascript" src="{% static 'product/js/move-top.js' %}"></script>
+<script type="text/javascript" src="{% static 'product/js/easing.js' %}"></script>
+<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+				});
+			});
+		</script>
+<style>
+    .poster {
+ position: absolute;
+	top: 70%;
+	left: 50%;
+	font-family: 'Lobster Two', cursive;
+	font-size: 50px;
+	color: yellow;
+	font-weight: bold;
+	transform: translate(-50%, -50%);
+}
+</style>
+
+</head>
+<body>
+
+    <!-- header-section-starts -->
+	<div class="header">
+		<div class="container">
+
+			<div class="top-header" >
+
+				<div class="logo">
+					<a href="{% url 'customer:home' %}"><img src="{% static 'customer/images/lazeez.jpg' %}" class="img-responsive" alt="" /></a>
+				</div>
+				<div class="queries">
+					<p>Questions? Call us Toll-free!<span>1800-0000-7777 </span><label>(11AM to 11PM)</label></p>
+				</div>
+                {% if user.is_authenticated %}
+                    {% block cart %}
+                        <a href="{% url 'order:cart' %}">
+                            <div class="header-right" id="cart">
+                            <div class="cart box_1">
+                                <h2> <img src="/media/images/bag.png" alt=""><span style="color: white;"> View Cart</span></h2>
+                                <div class="clearfix"> </div>
+                            </div>
+                            </div>
+                        </a>
+
+                    {% endblock %}
+                {% endif %}
+				<div class="clearfix"></div>
+			</div>
+		</div>
+        {% block navbar %}
+        <div class="menu-bar" id="navbar">
+			<div class="container">
+				<div class="top-menu">
+					<ul>
+						<li class="active"><a href="{% url 'customer:home' %}" >Home</a></li>|
+						<li><a href="{% url 'product:menu' %}">Menu</a></li>|
+                        {% if user.is_authenticated %}
+						<li><a href="{% url 'order:order' %}">Order</a></li>|
+                        {% else %}
+                            <li><a href="{% url 'customer:user_login' %}">Order</a></li>|
+                        {% endif %}
+						{% if user.is_authenticated %}
+                        <li><a href="{% url 'order:history' %}">Order History</a></li>
+                        {% endif %}
+						<div class="clearfix"></div>
+					</ul>
+				</div>
+				<div class="login-section">
+					<ul>
+                        {% if user.is_authenticated %}
+                            <li style="color: black;"><b>Welcome {{ user.first_name }} {{ user.last_name }}</b></li>
+                            <li><a href="{% url 'customer:user_logout' %}">Logout</a>  </li> |
+						    <li><a href="{% url 'customer:profile' %}">Profile</a></li>
+                        {% else %}
+                            <li><a href="{% url 'customer:user_login' %}">Login</a>  </li> |
+                            <li><a href="{% url 'customer:register' %}">Sign Up</a> </li> |
+                        {% endif %}
+						<div class="clearfix"></div>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+        {% endblock %}
+
+        {% block  Home %}
+            <div  id="Home" >
+                <img src="{% static 'customer/images/pizza.jpg' %}" width="100%" height="600px; ">
+                <div class="poster" data-ease="easeOutQuint" data-offset-x="0" data-offset-y="-38" data-origin="mc" data-position="normal"  >Best food comes with</div>
+                <div class="poster" style="top: 80%;font-size: 90px;font-weight: bolder; color: white;" data-ease="easeOutQuint" data-offset-x="127" data-offset-y="255" data-origin="tl" data-position="normal"  >Best Technique</div>
+            </div>
+
+        {% endblock %}
+	<!-- header-section-ends -->
+	<!-- content-section-starts -->
+
+	<div class="content" id="content">
+    {% block content %}
+		<div class="ordering-section" id="Order">
+			<div class="container">
+				<div class="ordering-section-head text-center wow bounceInRight" data-wow-delay="0.4s">
+					<h3>Ordering food was never so easy</h3>
+					<div class="dotted-line">
+						<h4>Just 4 steps to follow </h4>
+					</div>
+				</div>
+				<div class="ordering-section-grids">
+					<div class="col-md-3 ordering-section-grid">
+						<div class="ordering-section-grid-process wow fadeInRight" data-wow-delay="0.4s"">
+							<i class="one"></i><br>
+							<i class="one-icon"></i>
+							<p>Choose <span>Your Food Item</span></p>
+							<label></label>
+						</div>
+					</div>
+					<div class="col-md-3 ordering-section-grid">
+						<div class="ordering-section-grid-process wow fadeInRight" data-wow-delay="0.4s"">
+							<i class="two"></i><br>
+							<i class="two-icon"></i>
+							<p>Order  <span>Your Cuisine</span></p>
+							<label></label>
+						</div>
+					</div>
+					<div class="col-md-3 ordering-section-grid">
+						<div class="ordering-section-grid-process wow fadeInRight" data-wow-delay="0.4s"">
+							<i class="three"></i><br>
+							<i class="three-icon"></i>
+							<p>Pay   <span> online / on delivery</span></p>
+							<label></label>
+						</div>
+					</div>
+					<div class="col-md-3 ordering-section-grid">
+						<div class="ordering-section-grid-process wow fadeInRight" data-wow-delay="0.4s"">
+							<i class="four"></i><br>
+							<i class="four-icon"></i>
+							<p>Enjoy <span>your food </span></p>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+        {% block offers %}
+		<div class="special-offers-section" id="offers">
+			<div class="container">
+				<div class="special-offers-section-head text-center dotted-line">
+					<h4>Special Offers</h4>
+				</div>
+				<div class="special-offers-section-grids">
+				 <div class="m_3"><span class="middle-dotted-line"> </span> </div>
+				   <div class="container">
+					  <ul id="flexiselDemo3">
+						<li>
+							<div class="offer">
+								<div class="offer-image">	
+									<img src="{% static 'product/images/p1.jpg' %}" class="img-responsive" alt=""/>
+								</div>
+								<div class="offer-text">
+									<h4>Olister Combo pack lorem</h4>
+									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
+									<input type="button" value="Grab It">
+									<span></span>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</li>
+						<li>
+							<div class="offer">
+								<div class="offer-image">	
+									<img src="{% static 'product/images/p2.jpg' %}" class="img-responsive" alt=""/>
+								</div>
+								<div class="offer-text">
+									<h4>Chicken Jumbo pack lorem</h4>
+									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
+									<input type="button" value="Grab It">
+									<span></span>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</li>
+						<li>
+							<div class="offer">
+								<div class="offer-image">	
+									<img src="{% static 'product/images/p1.jpg' %}" class="img-responsive" alt=""/>
+								</div>
+								<div class="offer-text">
+									<h4>Crab Combo pack lorem</h4>
+									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
+									<input type="button" value="Grab It">
+									<span></span>
+								</div>
+								
+								<div class="clearfix"></div>
+								</div>
+						</li>
+						<li>
+							<div class="offer">
+								<div class="offer-image">	
+									<img src="{% static 'product/images/p2.jpg' %}" class="img-responsive" alt=""/>
+								</div>
+								<div class="offer-text">
+									<h4>Chicken Jumbo pack lorem</h4>
+									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
+									<input type="button" value="Grab It">
+									<span></span>
+								</div>
+								
+								<div class="clearfix"></div>
+								</div>
+					    </li>
+					 </ul>
+				 <script type="text/javascript">
+					$(window).load(function() {
+						
+						$("#flexiselDemo3").flexisel({
+							visibleItems: 3,
+							animationSpeed: 1000,
+							autoPlay: false,
+							autoPlaySpeed: 3000,    		
+							pauseOnHover: true,
+							enableResponsiveBreakpoints: true,
+							responsiveBreakpoints: { 
+								portrait: { 
+									changePoint:480,
+									visibleItems: 1
+								}, 
+								landscape: { 
+									changePoint:640,
+									visibleItems: 2
+								},
+								tablet: { 
+									changePoint:768,
+									visibleItems: 3
+								}
+							}
+						});
+						
+					});
+				    </script>
+				    <script type="text/javascript" src="{% static 'product/js/jquery.flexisel.js' %}"></script>
+				</div>
+			</div>
+		</div>
+		</div>
+            {% endblock %}
+		<div class="popular-restaurents" id="Popular-Restaurants">
+			<div class="container">
+				<div class="col-md-4 top-restaurents">
+					<div class="top-restaurent-head">
+						<h3>Top Restaurants</h3>
+					</div>
+					<div class="top-restaurent-grids">
+						<div class="top-restaurent-logos">
+							<div class="res-img-1 wow bounceIn" data-wow-delay="0.4s">
+								<img src="{% static 'product/images/restaurent-1.jpg' %}" class="img-responsive" alt="" />
+							</div>
+							<div class="res-img-2 wow bounceIn" data-wow-delay="0.4s">
+							    <img src="{% static 'product/images/restaurent-2.jpg' %}" class="img-responsive" alt="" />
+							</div>
+							<div class="res-img-1 wow bounceIn" data-wow-delay="0.4s">
+							    <img src="{% static 'product/images/restaurent-3.jpg' %}" class="img-responsive" alt="" />
+							</div>
+							<div class="res-img-2 wow bounceIn" data-wow-delay="0.4s">
+							    <img src="{% static 'product/images/restaurent-4.jpg' %}" class="img-responsive" alt="" />
+							</div>
+							<div class="res-img-1 nth-grid1 wow bounceIn" data-wow-delay="0.4s">
+							    <img src="{% static 'product/images/restaurent-5.jpg' %}" class="img-responsive" alt="" />
+							</div>
+							<div class="res-img-2 nth-grid1 wow bounceIn" data-wow-delay="0.4s">
+							    <img src="{% static 'product/images/restaurent-6.jpg' %}" class="img-responsive" alt="" />
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8 top-cuisines">
+					<div class="top-cuisine-head">
+						<h3>Top Cuisines</h3>
+					</div>
+					<div class="top-cuisine-grids">
+						<div class="top-cuisine-grid wow bounceIn" data-wow-delay="0.4s">
+						    <a href=""><img src="{% static 'product/images/cuisine1.jpg' %}" class="img-responsive" alt="" /> </a>
+							<label>Cuisine Name</label>
+					    </div>
+						<div class="top-cuisine-grid wow bounceIn" data-wow-delay="0.4s">
+						    <a href=""><img src="{% static 'product/images/cuisine2.jpg' %}" class="img-responsive" alt="" /> </a>
+							<label>Cuisine Name</label>
+					    </div>
+						<div class="top-cuisine-grid wow bounceIn" data-wow-delay="0.4s">
+						    <a href=""><img src="{% static 'product/images/cuisine3.jpg' %}" class="img-responsive" alt="" /> </a>
+							<label>Cuisine Name</label>
+					    </div>
+						<div class="top-cuisine-grid nth-grid wow bounceIn" data-wow-delay="0.4s">
+						    <a href=""><img src="{% static 'product/images/cuisine4.jpg' %}" class="img-responsive" alt="" /> </a>
+							<label>Cuisine Name</label>
+					    </div>
+						<div class="top-cuisine-grid nth-grid1 wow bounceIn" data-wow-delay="0.4s">
+						    <a href=""><img src="{% static 'product/images/cuisine5.jpg' %}" class="img-responsive" alt="" /> </a>
+							<label>Cuisine Name</label>
+					    </div>
+						<div class="top-cuisine-grid nth-grid1 wow bounceIn" data-wow-delay="0.4s">
+						    <a href=""><img src="{% static 'product/images/cuisine6.jpg' %}" class="img-responsive" alt="" /> </a>
+							<label>Cuisine Name</label>
+					    </div>
+						<div class="top-cuisine-grid nth-grid1 wow bounceIn" data-wow-delay="0.4s">
+						    <a href=""><img src="{% static 'product/images/cuisine7.jpg' %}" class="img-responsive" alt="" /> </a>
+							<label>Cuisine Name</label>
+					    </div>
+						<div class="top-cuisine-grid nth-grid nth-grid1 wow bounceIn" data-wow-delay="0.4s">
+						    <a href=""><img src="{% static 'product/images/cuisine8.jpg' %}" class="img-responsive" alt="" /> </a>
+							<label>Cuisine Name</label>
+					    </div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="service-section">
+			<div class="service-section-top-row">
+				<div class="container">
+					<div class="service-section-top-row-grids wow bounceInLeft" data-wow-delay="0.4s">
+					<div class="col-md-3 service-section-top-row-grid1">
+						<h3>Enjoy Exclusive Food Order any of these</h3>
+					</div>
+					<div class="col-md-2 service-section-top-row-grid2">
+						<ul>
+							<li><i class="arrow"></i></li>
+							<li class="lists">Party Orders</li>
+						</ul>
+						<ul>
+							<li><i class="arrow"></i></li>
+							<li class="lists">Home Made Food</li>
+						</ul>
+						<ul>
+							<li><i class="arrow"></i></li>
+							<li class="lists"> Diet Food </li>
+						</ul>
+					</div>
+					<div class="col-md-5 service-section-top-row-grid3">
+						<img src="{% static 'product/images/lunch.png' %}" class="img-responsive" alt="" />
+					</div>
+					<div class="col-md-2 service-section-top-row-grid4 wow swing animated" data-wow-delay= "0.4s">
+						<a href="order.html"><input type="submit" value="Order Now"></a>
+					</div>
+					<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+			<div class="service-section-bottom-row">
+				<div class="container">
+					<div class="col-md-4 service-section-bottom-grid wow bounceIn "data-wow-delay="0.2s">
+						<div class="icon">
+							<img src="{% static 'product/images/icon1.jpg' %}" class="img-responsive" alt="" />
+						</div>
+						<div class="icon-data">
+							<h4>100% Service Guarantee</h4>
+							<p>Lorem ipsum dolor sit amet, consect-etuer adipiscing elit. </p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="col-md-4 service-section-bottom-grid wow bounceIn "data-wow-delay="0.2s">
+						<div class="icon">
+							<img src="{% static 'product/images/icon2.jpg' %}" class="img-responsive" alt="" />
+						</div>
+						<div class="icon-data">
+							<h4>Fully Secure Payment</h4>
+							<p>Lorem ipsum dolor sit amet, consect-etuer adipiscing elit. </p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="col-md-4 service-section-bottom-grid wow bounceIn "data-wow-delay="0.2s">
+						<div class="icon">
+							<img src="{% static 'product/images/icon3.jpg' %}" class="img-responsive" alt="" />
+						</div>
+						<div class="icon-data">
+							<h4>Track Your Order</h4>
+							<p>Lorem ipsum dolor sit amet, consect-etuer adipiscing elit. </p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+        {% endblock %}
+						<!--footer-->
+					<div class="footer-section">
+						<div class="container">
+							<div class="footer-grids">
+								<div class="col-md-3 footer-grid">
+									<h4>product</h4>
+									<ul>
+										<li>Fresh fruits </li>
+										<li>Dried fruits</li>
+										<li>Herbs & spices</li>
+										<li>Fresh vegetables</li>
+										<li>Seafood</li>
+									</ul>
+								</div>
+								<div class="col-md-3 footer-grid">
+									<h4>Open Hours</h4>
+									<ul>
+										<li>Mondays: Closed</li>
+										<li>Tue-Fri : 10am - 11pm</li>
+										<li>Sat-Sun : 9am - 11pm</li>
+										<li>Public Holidays : 10am - 8pm</li>
+									</ul>
+								</div>
+								<div class="col-md-3 footer-grid">
+									<h4>Social</h4>
+									<ul>
+										<li><a href="#">facebook</a></li>
+										<li><a href="#">twitter</a></li>
+										<li><a href="#">google +</a></li>
+										<li><a href="#">Pinterest</a></li>
+										<li><a href="#">vimeo</a></li>
+									</ul>
+								</div>
+								<div class="col-md-3 footer-grid">
+									<h4>Get In Touch</h4>
+									<p>8901 Marmora Road</p>
+									<p>Glasgow, DO4 89GR.</p>
+									<p>Telephone : +1 234 567 890</p>
+									<p>FAX : + 1 234 567 890</p>
+									<p>E-mail : <a href="mailto:example@mail.com"> example@mail.com</a></p>
+
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+			<!--footer-->
+
+				</div>
+				<!--copy-->
+					<div class="copy-section">
+						<div class="container">
+							<p>&copy; 2016 Good Food. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+						</div>
+					</div>
+				<!--copy-->
+
+</body>
+</html>

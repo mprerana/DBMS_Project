@@ -1,0 +1,11 @@
+{% extends 'customer/base.html' %}
+
+{% block Home %}
+{% endblock %}
+{% block content %}
+<div class="jumbotron" style="width: 50%; margin-left: 350px;margin-top: 50px; padding: 100px;background-color: lightgray;border-radius: 10px">
+    <h1>Pay using PayPal</h1>
+
+    <div style="margin-left: 150px; padding-top: 50px;">{{ form.render }}</div>
+</div>
+{% endblock %}

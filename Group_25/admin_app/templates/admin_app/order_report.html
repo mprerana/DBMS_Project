@@ -1,0 +1,101 @@
+{% extends 'admin_app/admin.html' %}
+
+{% block Home %}
+{% endblock %}
+
+{% block  content%}
+
+    {% if zipped_data %}
+    <div class="jumbotron" style="border-radius: 10px;width: 80%; margin: 50px 0px 100px 10%;padding:20px; background-color: lightgray; box-shadow: 5px 5px 5px grey;">
+        <h3 style="text-align: center"> Order Report </h3><hr>
+        <table class="table table-bordered" style="font-size: medium;background-color: white">
+            <thead class="thead header">
+                <td><b>Order ID</b></td>
+                <td><b>Customer ID</b></td>
+                <td><b>Total Price</b></td>
+                <td><b>Date</b></td>
+                <td><b>Status</b></td>
+                <td colspan="3"><b>Actions</b></td>
+            </thead>
+            {% for order, status in zipped_data %}
+            <tr class="">
+                <td>{{ order.id }}</td>
+                <td>{{ order.cust_id.user.username }}</td>
+                <td>{{ order.order_total_price }}</td>
+                <td>{{ order.order_date }}</td>
+                <td>{{ status }}</td>
+                <td>
+                    <div style="font-size: x-small">
+                        <a class="morebtn hvr-rectangle-in" href="{% url 'admin_app:update_order' order.id %}">Edit</a>
+                    </div>
+                </td>
+                <td>
+                    <div style="font-size: x-small">
+                        <a class="morebtn hvr-rectangle-in" href="{% url 'admin_app:check_order_items' order.id %}" >Check Items</a>
+                    </div>
+                </td>
+                <td>
+                    <div style="font-size: x-small">
+                        <a class="morebtn hvr-rectangle-in" href="{% url 'admin_app:check_order_payment' order.id %}" >Payment Details</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+    {% if zipped_data2 %}
+    <div class="jumbotron" style="border-radius: 10px;width: 70%; margin: 50px 0px 100px 15%; padding:20px; background-color: lightgray; box-shadow: 5px 5px 5px grey;" >
+        <h3 style="text-align: center; display: inline-block"> Order Items</h3>
+        <h4 style="display: inline-block;float: right;"><a style="color: green;font-weight: bold" href="{% url 'admin_app:order_report' %}">Back to Previous Page</a></h4>
+        <hr>
+        <table class="table table-bordered" style="font-size: medium ;background-color: white">
+            <thead class="thead header">
+                <td><b>Order ID</b></td>
+                <td><b>Item name</b></td>
+                <td><b>Item Price</b></td>
+                <td><b>Item Quantity</b></td>
+                <td><b>Total Price</b></td>
+                <td><b>Status</b></td>
+
+            </thead>
+            {% for item, status in zipped_data2 %}
+            <tr class="">
+                <td>{{ item.order_id }}</td>
+                <td>{{ item.item_id.item_name }}</td>
+                <td>{{ item.item_id.item_price }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ status }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+
+    {% if payment and status %}
+    <div style="border-radius: 10px;width: 70%; margin: 100px 0px 150px 15% ; padding:20px; background-color: lightgray; box-shadow: 5px 5px 5px grey;">
+        <h3 style="text-align: center;display: inline-block">Payment Details</h3>
+        <h4 style="display: inline-block;float: right;"><a style="color: green;font-weight: bold" href="{% url 'admin_app:order_report' %}">Back to Previous Page</a></h4>
+        <hr>
+        <table class="table table-bordered" style="font-size: medium; background-color: white">
+            <thead class="thead header">
+                <td><b>Payment ID</b></td>
+                <td><b>Customer ID</b></td>
+                <td><b>Order ID</b></td>
+                <td>Date</td>
+                <td><b>Status</b></td>
+            </thead>
+            <tr class="">
+                <td>{{ payment.payment_id }}</td>
+                <td>{{ payment.customer_id }}</td>
+                <td>{{ payment.order_id.id }}</td>
+                <td>{{ payment.payment_date }}</td>
+                <td>{{ status }}</td>
+            </tr>
+        </table>
+    </div>
+        <div class="clearfix"></div>
+    {% endif %}
+
+{% endblock %}

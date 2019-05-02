@@ -1,0 +1,29 @@
+{% extends 'customer/base.html' %}
+
+{% block Home %}
+{% endblock %}
+{% block content %}
+
+    <h1>Your payment has not been processed.</h1>
+    <p>There was a problem processing your payment.</p>
+
+    {% if payment and status %}
+    <div class="jumbotron" style="width: 70%; margin-left: 200px">
+        <h3 style="text-align: center">Your Payment Details</h3><hr>
+        <table class="table table-bordered" style="font-size: medium">
+            <thead class="thead header">
+                <td><b>Payment ID</b></td>
+                <td><b>Customer ID</b></td>
+                <td><b>Order ID</b></td>
+                <td><b>Status</b></td>
+            </thead>
+            <tr class="">
+                <td>{{ payment.payment_id }}</td>
+                <td>{{ payment.customer_id }}</td>
+                <td>{{ payment.order_id.id }}</td>
+                <td>{{ status }}</td>
+            </tr>
+        </table>
+    </div>
+    {% endif %}
+{% endblock %}

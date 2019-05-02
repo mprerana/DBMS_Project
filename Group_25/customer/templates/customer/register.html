@@ -1,0 +1,140 @@
+{% extends 'customer/base.html' %}
+
+{% block Home %}
+
+{% endblock %}
+{% block content %}
+
+{#    <div  style="width: 46% ;margin: 30px 0px 100px 27%;padding: 30px;background-color: lightgray;color:black;font-size: large;border-radius: 15px;" >#}
+{#        <div style="margin: 0px 0px 10px 35%"><h1>Sign Up</h1></div>#}
+{#        <form method="post" action="{% url 'customer:register' %}" >#}
+{#            {% csrf_token %}#}
+{#            <div class="form-row">#}
+{#                <div class="form-group col-md-6">#}
+{#                    <label for="inputEmail4">First Name</label>#}
+{#                    {{ form.first_name }}#}
+{#                </div>#}
+{#                <div class="form-group col-md-6">#}
+{#                    <label for="inputPassword4">Last Name</label>#}
+{#                    {{ form.last_name }}#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="form-row">#}
+{#                <div class="form-group col-md-6">#}
+{#                    <label for="inputAddress">Email</label><br>#}
+{#                    {{ form.email }}#}
+{#                </div>#}
+{#                 <div class="form-group col-md-6">#}
+{#                    <label for="inputEmail4">Username</label>#}
+{#                    {{ form.username }}#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="form-row">#}
+{#                <div class="form-group col-md-6">#}
+{#                    <label for="inputPassword4">Password</label>#}
+{#                    {{ form.password1 }}#}
+{#                </div>#}
+{#                <div class="form-group col-md-6">#}
+{#                    <label for="inputAddress">Password Confirmation</label><br>#}
+{#                    {{ form.password2 }}#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="form-row">#}
+{#                <div class="form-group col-md-12">#}
+{#                    {{ form.error_messages }}#}
+{#                </div>#}
+{#            </div>#}
+{#            <center>#}
+{#                <button type="submit" class="btn btn-primary" style="margin: 30px;font-size: large; width: 25%">Sign Up</button><br>#}
+{#                <a class="forgot" href="{% url 'customer:user_login' %}">Already have an account? Log In...</a>#}
+{#            </center>#}
+{#        </form>#}
+{#    </div>#}
+{##}
+
+
+{#<div class="main">#}
+{#	   <div class="container">#}
+{#		  <div class="register">#}
+{#		  	  <form method="post">#}
+{#				 <div class="register-top-grid">#}
+{#					<h3>PERSONAL INFORMATION</h3>#}
+{#					 <div class="wow fadeInLeft" data-wow-delay="0.4s">#}
+{#						<span>First Name<label>*</label></span>#}
+{#						{{ form.first_name }}#}
+{#					 </div>#}
+{#					 <div class="wow fadeInRight" data-wow-delay="0.4s">#}
+{#						<span>Last Name<label>*</label></span>#}
+{#						{{ form.last_name }}#}
+{#					 </div>#}
+{#					 <div class="wow fadeInRight" data-wow-delay="0.4s">#}
+{#						 <span>Email Address<label>*</label></span>#}
+{#						 {{ form.email }}#}
+{#					 </div>#}
+{#					 <div class="clearfix"> </div>#}
+{#					   <a class="news-letter" href="#">#}
+{#						 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Sign Up for Newsletter</label>#}
+{#					   </a>#}
+{#					 </div>#}
+{#				     <div class="register-bottom-grid">#}
+{#						    <h3>LOGIN INFORMATION</h3>#}
+{#                         <div class="wow fadeInLeft" data-wow-delay="0.4s">#}
+{#								<span>Username<label>*</label></span>#}
+{#								{{ form.username }}#}
+{#							 </div>#}
+{#							 <div class="wow fadeInLeft" data-wow-delay="0.4s">#}
+{#								<span>Password<label>*</label></span>#}
+{#								{{ form.password1 }}#}
+{#							 </div>#}
+{#							 <div class="wow fadeInRight" data-wow-delay="0.4s">#}
+{#								<span>Confirm Password<label>*</label></span>#}
+{#        						{{ form.password2 }}#}
+{##}
+{#							 </div>#}
+{#					 </div>#}
+{#                  <input type="submit" value="submit">#}
+{#					   <div class="clearfix"> </div>#}
+{#              </form>#}
+{##}
+{#	     </div>#}
+{#	    </div>#}
+
+
+    <div style="width: 50% ;margin: 50px 50px 50px 25%;padding: 10px;background-color: lightgray;color:black;font-size: large;border-radius: 15px;" >
+    <center>
+        <div style="margin:30px 0px 40px 0px; "><h1>Sign Up</h1></div>
+    </center>
+    <div style="margin-left: 25px">
+        <form method="post" >
+            {% csrf_token %}
+            <div class="form-group col-md-12">
+            {% for field in form %}
+                <div class="form-group col-md-6" style="height: 95px">
+                    <p>
+                        {{ field.label_tag }}<br>
+                        {{ field }}
+                        {% for error in field.errors %}
+                            <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                    </p>
+                </div>
+            {% endfor %}
+            </div>
+            <center>
+                <div style="margin-bottom: 30px">
+                <button type="submit" class="btn-primary" style="font-size: 1.5em;margin: 0px 0px 0px 0%">Sign up</button><br><hr>
+                <a class="forgot" href="{% url 'customer:user_login' %}">Already have an account? Log In...</a>
+                </div>
+            </center>
+        </form>
+    </div>
+    </div>
+    </div>
+
+
+
+
+
+{% endblock %}
+
+
