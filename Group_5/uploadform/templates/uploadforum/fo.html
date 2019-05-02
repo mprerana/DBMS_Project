@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design Bootstrap</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.4/css/mdb.min.css" rel="stylesheet">
+  <style>
+	.txt{
+	color:#37703D;
+	}
+	.text-heading{
+		margin-top:50px;
+		margin-bottom:30px;
+		color:#37703D;
+		font-family: 'MetropolisMedium';
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	.text-heading:after{
+		content:"";
+		display:block;
+		width:200px;
+		height:5px;
+		background-color:#FED650;
+		margin: 5px auto;
+		border-radius:5px;
+	}
+
+
+	.desc-recipe{
+		width:90%;
+		height:200px;
+		background-color: white; /* Green */
+		border: 2px solid #37703D;
+		color:#37703D;
+		padding: 10px 35px;
+		font-size: 17px;
+		margin: 4px 2px;
+		border-radius: 30px;
+
+		overflow: hidden;
+		resize: none;
+	}
+	.desc-recipe::placeholder{
+		opacity:0.7;
+	}
+
+	.input-title{
+		width:90%;
+		background-color: white; /* Green */
+		border: 2px solid #37703D;
+		color:#37703D;
+		padding: 10px 35px;
+		font-size: 17px;
+		margin: 4px 2px;
+		border-radius: 30px;
+	}
+
+	.input-title::placeholder{
+		opacity:0.7;
+	}
+
+
+	.inputfile{
+		//display:none;
+	}
+	.filelabel{
+		border: dashed 2px black;
+		width:100%;
+		height:450px;
+		padding-top:200px;
+		text-align:center;
+	}
+
+	.txt-title{
+		margin-top:50px;
+		margin-bottom:30px;
+		color:#37703D;
+		font-family: 'MetropolisMedium';
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	.txt-block{
+		background-color: white; /* Green */
+		border: 2px solid #37703D;
+		color:#37703D;
+		padding: 10px 35px;
+		font-size: 17px;
+		margin: 4px 2px;
+		border-radius: 30px;
+	}
+
+	.ing{
+		width:100%
+	}
+
+
+
+	.number-input input[type="number"] {
+	-webkit-appearance: textfield;
+	-moz-appearance: textfield;
+	appearance: textfield;
+	}
+	.number-input input[type=number]::-webkit-inner-spin-button,
+	.number-input input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	}
+	.number-input {
+	margin-bottom: 3rem;
+	}
+	.number-input button {
+	-webkit-appearance: none;
+	background-color: transparent;
+	border: none;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	margin: 0;
+	position: relative;
+	}
+	.number-input button:before,
+	.number-input button:after {
+	display: inline-block;
+	position: absolute;
+	content: '';
+	height: 2px;
+	transform: translate(-50%, -50%);
+	}
+	.number-input button.plus:after {
+	transform: translate(-50%, -50%) rotate(90deg);
+	}
+	.number-input input[type=number] {
+	text-align: center;
+	}
+	.number-input.number-input {
+	border: 1px solid #ced4da;
+	width: 10rem;
+	border-radius: .25rem;
+	}
+	.number-input.number-input button {
+	width: 2.6rem;
+	height: .7rem;
+	}
+	.number-input.number-input button.minus {
+	padding-left: 10px;
+	}
+	.number-input.number-input button:before,
+	.number-input.number-input button:after {
+	width: .7rem;
+	background-color: #495057;
+	}
+	.number-input.number-input input[type=number] {
+	max-width: 4rem;
+	padding: .5rem;
+	border: 1px solid #ced4da;
+	border-width: 0 1px;
+	font-size: 1rem;
+	height: 2rem;
+	color: #495057;
+	}
+
+
+
+
+
+	/* nav starts her */
+
+	.con .ul-nav{
+		margin-top: 20px;
+	}
+
+	.con .a-nav{
+		padding: 8px 80px;
+		color: rgba(22, 20, 20, 0.664);
+	}
+
+	.con .ul-nav{
+		position: relative;
+	}
+
+	.con .a-link-nav{
+		position: relative;
+		z-index: 99999;
+	}
+	.panel{
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		border-radius: 3px;
+		cursor: pointer;
+		z-index: 0;
+			}
+
+	.active{
+		color:red !important;
+	}
+
+	#search-ing {
+				background-image: url('/css/searchicon.png');
+				background-position: 10px 12px;
+				background-repeat: no-repeat;
+				width: 100%;
+				font-size: 16px;
+				padding: 12px 20px 12px 40px;
+				border: 1px solid #ddd;
+				margin-bottom: 12px;
+
+			}
+
+			#myUL {
+				list-style-type: none;
+				padding: 0;
+				margin: 0;
+				position: absolute;
+				background-color: white;
+				z-index: 2;
+				width: 80%;
+			}
+
+			#myUL li a {
+				border: 1px solid white;
+				margin-top: -1px;
+				background-color: #f6f6f6;
+				padding: 5px;
+				text-decoration: none;
+				font-size: 18px;
+				color: black;
+				display: block;
+			}
+
+			#myUL li a:hover:not(.header) {
+				background-color: #eee;
+			}
+  </style>
+</head>
+{% extends 'home/base1.html' %}
+{% block body %}
+<!-- add recipe -->
+<section >
+
+
+
+    <div class="container border text-center mt-4">
+        <h3 class="m-4 text-green">Add Your Recipe</h3>
+
+        <div class="d-flex justify-content-center con">
+
+            <ul class="nav bg-light ul-nav" role="tablist">
+                <li class="nav-item">
+                    <a href="#step-1" id="step1-tab" class="nav-link a-nav a-link-nav active " aria-selected="true" data-toggle="tab" role="tab">Recipe Details</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#step-2" id="step2-tab" class="nav-link a-nav a-link-nav" aria-selected="false" data-toggle="tab" role="tab">Ingredients</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#step-3" id="step3-tab" class="nav-link a-nav a-link-nav" aria-selected="false" data-toggle="tab" role="tab">Preparation</a>
+                </li>
+                <div class="panel rounded"></div>
+            </ul>
+
+        </div>
+		<form method="post" enctype="multipart/form-data" action="/uploadform/insert/">
+		{% csrf_token %}
+        <div class="tab-content container">
+            <div class="tab-pane fade show active" id="step-1" aria-labelledby="step1-tab" role="tabpanel">
+                <div class="container">
+					<h2 class="text-center text-heading">Add recipe</h2>
+					<div class="row" height="500px;">
+						<div class="col-lg-7">
+							<div class="row my-4">
+								<input type="text" placeholder="Your awesome recipe is called?" name="Rname" class="input-title"  required>
+							</div>
+							<div class="row my-4">
+								<!-- input type="text" placeholder="Describe your recipe" class="desc-recipe" rows="10" cols="30"-->
+								<textarea placeholder="Describe your recipe" class="desc-recipe" cols="30" rows="5" name="Description"  required></textarea>
+								<div class="row">
+									<div class="col mx-4">
+										<h4 class="txt-title">Preparation time</h4>
+										<input type="number" class="txt-block" name="Maketime" placeholder="enter in minutes" min="1"  required>
+									</div>
+									<div class="col ">
+										<h4 class="txt-title">Servings</h4>
+											<input class="quantity txt-block " min="1" placeholder="No of servings" type="number" name="Servings">
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="col-lg-5" style="color:black">
+							<input type="file" id="file" class="inputfile" name="sentFile" required/>
+							<label for="file"class="filelabel">Choose a Image</label>
+						</div>
+					</div>
+				</div>
+            </div>
+            <div class="tab-pane fade" id="step-2" aria-labelledby="step2-tab" role="tabpanel">
+                <div class="container">
+					<div class="row">
+						<div class="col-lg-7">
+							<div class="row">
+								<div class="col-lg-10">
+									<input type="text" class="input-title mt-5 mb-0" placeholder="Search for Ingredients" id="search-ing" onkeyup="myFunction()">
+									<ul id="myUL">
+										{%for item in names%}
+										<li style='display: none'  ><a href="#" id="{{item.id}}" onclick="update({{item.id}})">{{item.value}}</a></li>
+										{%endfor%}
+									</ul>
+								</div>
+								<div class="col my-5 mx-0">
+									<input type="button" id="add" class="add-item" value="Add" />
+								</div>
+
+
+							</div>
+							<h4 class="txt-title"style="margin-top:0px">Ingredients List</h4>
+							<div class="item" id="items">
+								<div class="row">
+									<div class="col-lg-4">
+									</div>
+
+									<div class="col-lg-4">
+									</div>
+									<div class="col">
+									</div>
+									<div class="col">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<h3 class="text-center text-heading"> Suggested Ingredients</h3>
+							<div id="all-ing">
+								<button class="txt-block sugg-ing">Water</button>
+								<button class="txt-block sugg-ing">Oil</button>
+								<button class="txt-block sugg-ing">Salt</button>
+								<button class="txt-block sugg-ing">Milk</button>
+								<button class="txt-block sugg-ing">Butter</button>
+								<button class="txt-block sugg-ing">Caremel</button>
+								<button class="txt-block sugg-ing">Sugar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+            <div class="tab-pane fade" id="step-3" aria-labelledby="step3-tab" role="tabpanel">
+                <div class="container">
+					<h2 class="text-center text-heading"> Steps Involved</h2>
+					<div class="row">
+						<div class="col-lg-10">
+							<input type="text" class="input-title " placeholder="Add step" id="step-desc">
+						</div>
+						<div class="col">
+							<input type="button" id="add-s" class="btn btn-primary small add-step" value="Add" />
+						</div>
+					</div>
+
+					<ol class="step-list" style="color:black"></ol>
+				</div>
+				<br><br>
+				<input type="submit" class="btn btn-outline-primary small" name="submit" value="Upload" />
+            </div>
+        </div>
+	</form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+</section>
+<!-- add recipe ends here -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.4/js/mdb.min.js"></script>
+<script>
+function addItem() {
+  var itemval = $("#search-ing").val();
+  var input = '';
+  if(itemval != ''){
+  	addblock(itemval);
+  }
+ $("#search-ing").val('');
+}
+function addblock(itemval){
+	var block ="<div class='row'>"+
+				"<div class='col-lg-4'>"+
+					"<input type='text' name='ingredient' value='"+itemval+"' class='txt-block ing'/>"+
+				"</div>"+
+				"<div class='col-lg-4'>"+
+						"<input class='quantity txt-block ing' min='1' name='quantity' placeholder='Quantity' type='number'>"+
+				"</div>"+
+
+				"<div class='col my-3'>"+
+					"<select class='browser-default custom-select item-select' name='option'>"+
+						"<option value='Item' selected>Item</option>"+
+						"<option value='litre'>litre</option>"+
+						"<option value='gram'>gram</option>"+
+						"<option value='cup'>cup</option>"+
+						"<option value='tablespoon'>tablespoon</option>"+
+						"<option value='teaspoon'>teaspoon</option>"+
+					"</select>"+
+				"</div>"+
+				"<div class='col my-3'>"+
+					"<button class='"+"delete"+"'>delete</button>"+
+				"</div>"+
+			"</div>";
+  $("#items").append(block);
+  var input, filter, ul, li, a, i, txtValue;
+
+	ul = document.getElementById("myUL");
+	li = ul.getElementsByTagName('li');
+
+	for (i = 0; i < li.length; i++) {
+		li[i].style.display = "none";
+	}
+
+}
+
+function deleteItem(e, item) {
+  e.preventDefault();
+  $(item).parent().parent().fadeOut('slow', function() {
+    $(item).parent().parent().remove();
+  });
+}
+
+$(function() {
+
+   $("#add").on('click', function(e){
+     e.preventDefault();
+     addItem();
+	});
+
+	$("#items").on('click', '.delete', function(e){
+		var item = this;
+		deleteItem(e, item)
+	});
+
+	$("#all-ing").on('click', '.sugg-ing', function(e){
+		var item = this;
+		var itemval = $(this).text();
+		console.log(itemval);
+		e.preventDefault();
+		$(item).fadeOut('slow', function() {
+			$(item).remove();
+		});
+		if(itemval != ''){
+			addblock(itemval);
+		}
+	});
+	$("#add-s").on('click',function(){
+		var val =$("#step-desc").val();
+		if(val != ''){
+			$(".step-list").append("<li><input type='text' name='Steps' value = '"+val+"'><button id='del-step' onclick='$(this).parent().remove();'>Delete</button></li>")
+		}
+		$("#step-desc").val("");
+	});
+	$("#del-step").on('click',function(){
+		var item = this;
+		$(item).remove();
+		console.log("delete");
+	});
+
+
+
+
+
+
+
+
+
+
+
+	var panel = $('.panel').css('width');
+
+    var width = panel.replace('px','');
+    var i = 3;
+	/*
+    $('ul li').each(function(){
+        i++;
+    });
+	*/
+    var val1 = width/i;
+
+    $('.panel').css('width',val1 + 'px');
+
+    $('ul li:nth-child(1)').on('click', function(){
+
+            $('.panel').animate({
+                left : '0px'
+            })
+    });
+
+    $('ul li:nth-child(2)').on('click', function(){
+
+        $('.panel').animate({
+            left : val1 - 10 + 'px'
+        })
+    });
+
+    $('ul li:nth-child(3)').on('click', function(){
+
+        $('.panel').animate({
+            left : val1 + val1 + 'px'
+        })
+    });
+
+
+
+
+
+});
+
+
+</script>
+	<script>
+		function myFunction() {
+			var input, filter, ul, li, a, i, txtValue;
+			input = document.getElementById('search-ing');
+
+			filter = input.value.toUpperCase();
+			ul = document.getElementById("myUL");
+			li = ul.getElementsByTagName('li');
+			for (i = 0; i < li.length; i++) {
+				a = li[i].getElementsByTagName("a")[0];
+				txtValue = a.textContent || a.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					li[i].style.display = "";
+				} else {
+					li[i].style.display = "none";
+				}
+			}
+		if(input.value == ""){
+			for (i = 0; i < li.length; i++) {
+				li[i].style.display = "none";
+			}
+		}
+		}
+		function update(i){
+				var block = document.getElementById(i);
+				var inputVal=document.getElementById("search-ing");
+				var val = block.innerHTML;
+				inputVal.value = val;
+				myFunction();
+		}
+		</script>
+
+{% endblock %}
+
+</html>

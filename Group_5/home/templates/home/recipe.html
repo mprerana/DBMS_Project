@@ -1,0 +1,206 @@
+{% extends 'home/base1.html' %}
+{% load static from staticfiles %}
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'home/recipe.css' %}"/>
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container w-8">
+
+</div>
+
+<div class="container">
+    <!-- Section: Blog v.1 -->
+<section class="my-5">
+
+
+        <!-- Grid row -->
+        <div class="row">
+
+          <!-- Grid column -->
+          <div class="col-lg-6">
+
+            <!-- Featured image -->
+            <div class="view overlay mb-lg-0 mb-4 " style="width:500px;height:450px">
+              <img class="img-fluid rounded z-depth-2 " src={{img}} alt="Sample image">
+              <a>
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+
+          </div>
+          <div class="col-lg-6">
+            <h3 class="font-weight-bold mb-3 recipe-title"><strong>{{name}}</strong></h3>
+            <p class="recipe-desc my-4">{{description}}</p>
+            <div class="row">
+              <a href="#abc"><button class="button button1 mx-4">Preparation</button></a>
+            </div>
+          </div>
+          <!-- Grid column -->
+
+        </div>
+
+
+
+
+      </section>
+      <!-- Section: Blog v.1 -->
+</div>
+
+<div class="container" style="width:900px">
+
+
+  <h3 class="text-center text-heading">INGREDIENTS</h3>
+
+  {% for i,j in ingredients %}
+
+	<div class="row my-4">
+	<div class="col">
+    {{ j }}
+		</div>
+	</div>
+  {% endfor %}
+
+	<div class="row" style="margin-top:100px">
+		<div class="col text-center">
+			<button class="button button1">{{servings}} Servings</button>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container my-4 ">
+  <div class="row mb-4">
+    <div class="col">
+      <h3 id="abc" class="font-weight-bold recipe-title"><strong>Steps involved</strong></h3>
+    </div>
+  </div>
+</div>
+
+<div class="timeline">
+  <div class="container">
+
+    {% for i,j in steps %}
+
+    <div class="row " >
+      <div class="col col-6 mr-auto dot steps {{i}}">
+        <h2>Step {{ i }}</h2>
+        <p>{{ j }}</p>
+      </div>
+    </div>
+
+    {% endfor %}
+
+<!--
+    <div class="row">
+      <div class="col col-6 mr-auto dot">
+        <h2>Step -1</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi voluptates sapiente animi? Possimus, commodi. Sunt consequuntur debitis beatae! Eius vel mollitia nostrum ad quam eos totam facilis est eaque illo!</p>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col col-6 ml-auto">
+          <h2>Step -2</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi voluptates sapiente animi? Possimus, commodi. Sunt consequuntur debitis beatae! Eius vel mollitia nostrum ad quam eos totam facilis est eaque illo!</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-6 mr-auto dot">
+          <h2>Step -3</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi voluptates sapiente animi? Possimus, commodi. Sunt consequuntur debitis beatae! Eius vel mollitia nostrum ad quam eos totam facilis est eaque illo!</p>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col col-6 ml-auto">
+            <h2>Step -4</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi voluptates sapiente animi? Possimus, commodi. Sunt consequuntur debitis beatae! Eius vel mollitia nostrum ad quam eos totam facilis est eaque illo!</p>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col col-6 mr-auto dot">
+            <h2>Step -5</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi voluptates sapiente animi? Possimus, commodi. Sunt consequuntur debitis beatae! Eius vel mollitia nostrum ad quam eos totam facilis est eaque illo!</p>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col col-6 ml-auto">
+              <h2>Step -6</h2>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi voluptates sapiente animi? Possimus, commodi. Sunt consequuntur debitis beatae! Eius vel mollitia nostrum ad quam eos totam facilis est eaque illo!</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-6 mr-auto dot">
+              <h2>Step -7</h2>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi voluptates sapiente animi? Possimus, commodi. Sunt consequuntur debitis beatae! Eius vel mollitia nostrum ad quam eos totam facilis est eaque illo!</p>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col col-6 ml-auto">
+                <h2>Step -8</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi voluptates sapiente animi? Possimus, commodi. Sunt consequuntur debitis beatae! Eius vel mollitia nostrum ad quam eos totam facilis est eaque illo!</p>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col col-6 mr-auto dot">
+                <h2>Step -9</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi voluptates sapiente animi? Possimus, commodi. Sunt consequuntur debitis beatae! Eius vel mollitia nostrum ad quam eos totam facilis est eaque illo!</p>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col col-6 ml-auto">
+                  <h2>Step -10</h2>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi voluptates sapiente animi? Possimus, commodi. Sunt consequuntur debitis beatae! Eius vel mollitia nostrum ad quam eos totam facilis est eaque illo!</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-6 mr-auto dot">
+                  <h2>Step -11</h2>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi voluptates sapiente animi? Possimus, commodi. Sunt consequuntur debitis beatae! Eius vel mollitia nostrum ad quam eos totam facilis est eaque illo!</p>
+                </div>
+              </div>
+              <div class="row">
+                  <div class="col col-6 ml-auto">
+                    <h2>Step -12</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi voluptates sapiente animi? Possimus, commodi. Sunt consequuntur debitis beatae! Eius vel mollitia nostrum ad quam eos totam facilis est eaque illo!</p>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col col-6 mr-auto dot">
+                    <h2>Step -13</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi voluptates sapiente animi? Possimus, commodi. Sunt consequuntur debitis beatae! Eius vel mollitia nostrum ad quam eos totam facilis est eaque illo!</p>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col col-6 ml-auto">
+                      <h2>Step -14</h2>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi voluptates sapiente animi? Possimus, commodi. Sunt consequuntur debitis beatae! Eius vel mollitia nostrum ad quam eos totam facilis est eaque illo!</p>
+                    </div>
+                </div>-->
+  </div>
+</div>
+
+<br><br><br><br><br><br><br>
+
+{% endblock %}
+
+{% block script %}
+<script >
+$(document).ready(function(){
+  var i = $(".steps").length;
+
+  for(var j=0;j<i;j=j+2){
+    var x = "."+j
+    $(x).removeClass("mr-auto");
+    $(x).removeClass("dot");
+    $(x).addClass("ml-auto");
+    console.log(j)
+  }
+});
+</script>
+{% endblock %}

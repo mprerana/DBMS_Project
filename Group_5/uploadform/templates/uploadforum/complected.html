@@ -1,0 +1,111 @@
+{% extends 'home/base1.html' %}
+{% load static from staticfiles %}
+{% block extrahead %}
+<style>
+	  .section-padding {
+    padding: 130px 0;
+ }
+
+ .reservation-area {
+    background-image: url(./images/reservation-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+ }
+ .img-heading-text {
+    color: #fff;
+    font-family: "Playfair Display",serif;
+    font-size: 42px !important;
+    font-weight: 700;
+}
+.img-text {
+    color: #fff;
+    font-family: "Roboto",sans-serif;
+    font-size: 24px !important;
+    font-weight: 400;
+    font-style: italic;
+    text-transform: capitalize;
+}
+.template-btn {
+    color: #131230;
+    background: #ffb606;
+    font-family: "Roboto",sans-serif;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    display: inline-block;
+    padding: 12px 30px !important;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all 0.5s;
+}
+
+.food-area {
+    background-image: url(./images/food-bg.png);
+    background-repeat: no-repeat;
+    background-position: top right;
+    position: relative;
+}
+
+.banner-area2:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(1,7,16,0.7);
+    z-index: -1;
+}
+</style>
+{% endblock %}
+{% block body %}
+
+<div style="width:100%;height:50px">
+
+</div>
+
+<div class="container sec-card">
+
+  <h2 class="text-center text-heading">RECIPE</h2>
+
+
+    <div class="row" style="">
+      <div class="clearfix" >
+
+          {% for name,link,id in data %}
+          <div class="card m-2 post">
+
+          <!-- Card image -->
+          <div class="view overlay">
+            <img class="card-img-top" src={{ link }} alt="Card image cap">
+            <a>
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+
+          <!-- Button -->
+
+          <button type="button" class="btn btn-yellow btn-circle btn-floating ml-auto mr-4 lighten-3">
+            <i class="fa fa-heart"></i>
+          </button>
+
+          <div class="card-body  mx-auto p-0 overflow-hidden post-txt">
+            <h4 class="card-title text-center"><a href='{% url 'home:recipe' id %}' class="green-text">{{name}}</h4>
+          </div>
+        </div>
+        {% endfor %}
+
+
+
+        </div>
+      </div>
+    </div>
+
+
+</div>
+
+
+{% endblock %}

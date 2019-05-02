@@ -1,0 +1,298 @@
+{% extends 'home/base2.html' %}
+{% load static from staticfiles %}
+{% block title%}explore{% endblock %}
+{% block extrahead %}
+<style>
+	  .section-padding {
+    padding: 130px 0;
+ }
+
+ .reservation-area {
+    background-image: url({% static 'home/reservation-bg.jpg' %});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+ }
+ .img-heading-text {
+    color: #fff;
+    font-family: "Playfair Display",serif;
+    font-size: 42px !important;
+    font-weight: 700;
+}
+.img-text {
+    color: #fff;
+    font-family: "Roboto",sans-serif;
+    font-size: 24px !important;
+    font-weight: 400;
+    font-style: italic;
+    text-transform: capitalize;
+}
+.template-btn {
+    color: #131230;
+    background: #ffb606;
+    font-family: "Roboto",sans-serif;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    display: inline-block;
+    padding: 12px 30px !important;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all 0.5s;
+}
+
+.food-area {
+    background-image: url({% static 'home/food-bg.png' %});
+    background-repeat: no-repeat;
+    background-position: top right;
+    position: relative;
+}
+
+.banner-area2:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(1,7,16,0.7);
+    z-index: -1;
+}
+
+.post{
+width:262.52px;
+height:300px;
+float:left;
+}
+
+.img-post{
+	width: 262.52px;
+	height: 210px;
+	object-fit: cover;
+}
+
+.post-txt{
+	height: 59px;
+}
+</style>
+{% endblock %}
+{% block body %}
+
+<div class="reservation-area section-padding text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="img-heading-text">Search Recipes By Ingredients</h2>
+                <h4 class="mt-4 img-text">some trendy and popular recipes</h4>
+                <a href="{% url 'uploadform:search' %}" class="template-btn mt-4">search</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="width:100%;height:50px">
+
+</div>
+
+
+<div class="container sec-card">
+	<form method="post" enctype="multipart/form-data" action="insert">
+    {% csrf_token %}
+    <input type="text" id="myInput" name="recipe" onkeyup="myFunction()" placeholder="Search recipe">
+    <input type="submit" id="Serc" value="Search" >
+    <ul id="myUL">
+      {%for item in names%}
+      <li style='display: none'  ><a href="#" id="{{item.id}}" onclick="update({{item.id}})">{{item.value}}</a></li>
+      {%endfor%}
+  </ul>
+</form>
+  <h2 class="text-center text-heading">TRENDING RECIPES</h2>
+
+  <div class="row">
+    <div class="clearfix">
+      <!-- first Card -->
+      {%for link,name,rid in trending %}
+      <div class="card mx-2 my-3  post">
+
+
+      <div class="view overlay">
+        <img class="card-img-top img-post" src="{{ link }}" alt="Card image cap">
+        <a>
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+
+
+
+      <button type="button" class="btn btn-outline-yellow btn-circle btn-floating ml-auto mr-4 " style="background:white!important">
+        <i class="fa fa-heart"></i>
+      </button>
+
+      <div class="card-body  mx-auto p-0 overflow-hidden post-txt">
+        <h4 class="card-title text-center "><a href='{% url 'home:recipe' rid %}' class="green-text ">{{name}}</h4>
+      </div>
+    </div>
+        {% endfor %}
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="container sec-card">
+
+  <h2 class="text-center text-heading">RECOMMENDED RECIPES</h2>
+
+  <div class="row">
+    <div class="clearfix">
+      <!-- first Card -->
+      {%for link,name,rid in recommended_recipes %}
+      <div class="card m-2 post">
+
+
+      <div class="view overlay">
+        <img class="card-img-top img-post" src="{{ link }}" alt="Card image cap">
+        <a>
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+
+
+
+      <button type="button" class="btn btn-outline-yellow btn-circle btn-floating ml-auto mr-4 " style="background:white!important">
+        <i class="fa fa-heart"></i>
+      </button>
+
+      <div class="card-body  mx-auto p-0 overflow-hidden post-txt">
+        <h4 class="card-title text-center "><a href='{% url 'home:recipe' rid %}' class="green-text ">{{name}}</h4>
+      </div>
+    </div>
+      <!-- / first Card -->
+        {% endfor %}
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="container sec-card">
+
+  <h2 class="text-center text-heading">FESTIVE SPECIALS</h2>
+
+  <div class="row">
+    <div class="clearfix">
+
+      <!-- first Card -->
+      {%for link,name,rid in festival_special %}
+
+
+
+      <div class="card m-2 post">
+
+
+      <div class="view overlay">
+        <img class="card-img-top img-post" src="{{ link }}" alt="Card image cap">
+        <a>
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+
+
+
+      <button type="button" class="btn btn-outline-yellow btn-circle btn-floating ml-auto mr-4 " style="background:white!important">
+        <i class="fa fa-heart"></i>
+      </button>
+
+      <div class="card-body  mx-auto p-0 overflow-hidden post-txt">
+        <h4 class="card-title text-center "><a href='{% url 'home:recipe' rid %}' class="green-text ">{{name}}</h4>
+      </div>
+    </div>
+
+
+      {% endfor %}
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="container sec-card">
+
+  <h2 class="text-center text-heading">Most Famous</h2>
+
+  <div class="row">
+    <div class="clearfix">
+
+      <!-- first Card -->
+      {%for link,name,rid in most_famous %}
+      <div class="card m-2 post">
+
+
+      <div class="view overlay">
+        <img class="card-img-top img-post" src="{{ link }}" alt="Card image cap">
+        <a>
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+
+
+
+      <button type="button" class="btn btn-outline-yellow btn-circle btn-floating ml-auto mr-4 " style="background:white!important">
+        <i class="fa fa-heart"></i>
+      </button>
+
+      <div class="card-body  mx-auto p-0 overflow-hidden post-txt">
+        <h4 class="card-title text-center "><a href='{% url 'home:recipe' rid %}' class="green-text ">{{name}}</h4>
+      </div>
+    </div>
+        {% endfor %}
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<script>
+  function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById('myInput');
+
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName('li');
+    for (i = 0; i < li.length; i++) {
+      a = li[i].getElementsByTagName("a")[0];
+      txtValue = a.textContent || a.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+    }
+  if(input.value == ""){
+    for (i = 0; i < li.length; i++) {
+      li[i].style.display = "none";
+    }
+  }
+  }
+  function update(i){
+      var block = document.getElementById(i);
+      var inputVal=document.getElementById("myInput");
+      var val = block.innerHTML;
+      inputVal.value = val;
+  }
+  </script>
+
+{% endblock %}
