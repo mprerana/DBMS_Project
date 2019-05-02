@@ -1,0 +1,437 @@
+{% load staticfiles %}
+<html lang="en"><head>
+
+
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+
+      <style>
+      body {
+  margin: 50px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.control-label {
+  display: block;
+}
+
+.autocomplete-wrapper {
+  position: relative;
+}
+.autocomplete-wrapper input {
+  width: 50%;
+}
+
+.autocomplete-results {
+  position: absolute;
+  background: white;
+  z-index: 1;
+  top: 100%;
+  left: 0;
+  font-size: 13px;
+  border: solid 1px #ddd;
+  border-top-width: 0;
+  border-bottom-color: #ccc;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.autocomplete-results2 {
+  position: absolute;
+  background: white;
+  z-index: 1;
+  top: 100%;
+  left: 0;
+  font-size: 13px;
+  border: solid 1px #ddd;
+  border-top-width: 0;
+  border-bottom-color: #ccc;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.autocomplete-result {
+  padding: 12px 15px;
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
+}
+
+.autocomplete-result:last-child {
+  border-bottom-width: 0;
+}
+
+.autocomplete-location {
+  opacity: .8;
+  font-size: smaller;
+}
+
+.autocomplete-results[data-highlight='0'] > :nth-child(1) {
+  color: white;
+  background: #26C9FF;
+  border-bottom-color: #26C9FF;
+  outline: solid 1px #00b6f2;
+}
+
+.autocomplete-results2[data-highlight='0'] > :nth-child(1) {
+  color: white;
+  background: #26C9FF;
+  border-bottom-color: #26C9FF;
+  outline: solid 1px #00b6f2;
+}
+
+.autocomplete-results[data-highlight='1'] > :nth-child(2) {
+  color: white;
+  background: #26C9FF;
+  border-bottom-color: #26C9FF;
+  outline: solid 1px #00b6f2;
+}
+
+.autocomplete-results2[data-highlight='1'] > :nth-child(2) {
+  color: white;
+  background: #26C9FF;
+  border-bottom-color: #26C9FF;
+  outline: solid 1px #00b6f2;
+}
+
+.autocomplete-results[data-highlight='2'] > :nth-child(3) {
+  color: white;
+  background: #26C9FF;
+  border-bottom-color: #26C9FF;
+  outline: solid 1px #00b6f2;
+}
+
+.autocomplete-results2[data-highlight='2'] > :nth-child(3) {
+  color: white;
+  background: #26C9FF;
+  border-bottom-color: #26C9FF;
+  outline: solid 1px #00b6f2;
+}
+
+
+.autocomplete-results[data-highlight='3'] > :nth-child(4) {
+  color: white;
+  background: #26C9FF;
+  border-bottom-color: #26C9FF;
+  outline: solid 1px #00b6f2;
+}
+
+.autocomplete-results2[data-highlight='3'] > :nth-child(4) {
+  color: white;
+  background: #26C9FF;
+  border-bottom-color: #26C9FF;
+  outline: solid 1px #00b6f2;
+}
+
+.autocomplete-results[data-highlight='4'] > :nth-child(5) {
+  color: white;
+  background: #26C9FF;
+  border-bottom-color: #26C9FF;
+  outline: solid 1px #00b6f2;
+}
+
+.autocomplete-results2[data-highlight='4'] > :nth-child(5) {
+  color: white;
+  background: #26C9FF;
+  border-bottom-color: #26C9FF;
+  outline: solid 1px #00b6f2;
+}
+
+
+.autocomplete-results[data-highlight='5'] > :nth-child(6) {
+  color: white;
+  background: #26C9FF;
+  border-bottom-color: #26C9FF;
+  outline: solid 1px #00b6f2;
+}
+
+.autocomplete-results2[data-highlight='5'] > :nth-child(6) {
+  color: white;
+  background: #26C9FF;
+  border-bottom-color: #26C9FF;
+  outline: solid 1px #00b6f2;
+}
+
+.autocomplete-results[data-highlight='6'] > :nth-child(7) {
+  color: white;
+  background: #26C9FF;
+  border-bottom-color: #26C9FF;
+  outline: solid 1px #00b6f2;
+}
+
+.autocomplete-results2[data-highlight='6'] > :nth-child(7) {
+  color: white;
+  background: #26C9FF;
+  border-bottom-color: #26C9FF;
+  outline: solid 1px #00b6f2;
+}
+
+
+.autocomplete-results[data-highlight='7'] > :nth-child(8) {
+  color: white;
+  background: #26C9FF;
+  border-bottom-color: #26C9FF;
+  outline: solid 1px #00b6f2;
+}
+.autocomplete-results2[data-highlight='7'] > :nth-child(8) {
+  color: white;
+  background: #26C9FF;
+  border-bottom-color: #26C9FF;
+  outline: solid 1px #00b6f2;
+}
+
+    </style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+
+
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="{% static "flight_search/css/bootstrap.min.css" %}" />
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="{% static "flight_search/css/style.css" %}" />
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+</head>
+
+<body translate="no">
+
+<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-7 col-md-push-5">
+						<div class="booking-cta">
+							<h1>Make your reservation</h1>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi facere, soluta magnam consectetur molestias itaque
+								ad sint fugit architecto incidunt iste culpa perspiciatis possimus voluptates aliquid consequuntur cumque quasi.
+								Perspiciatis.
+							</p>
+						</div>
+					</div>
+					<div class="col-md-4 col-md-pull-7">
+						<div class="booking-form">
+
+     <form method="post" action="{% url 'flight_search' %}">
+         {% csrf_token %}
+         <div class="form-group">
+									<span class="form-label">Starting Place</span>
+									<input class="form-control" type="text" name="from" id="autocomplete" placeholder="Enter a destination or hotel name">
+             <span class="form-label">Your Destination</span>
+									<input class="form-control" type="text" name="to" id="autocomplete2" placeholder="Enter a destination or hotel name">
+								</div>
+								<div class="row">
+									<div class="col-sm-10">
+										<div class="form-group">
+											<span class="form-label">Start Time</span>
+											<input class="form-control" type="date" name="date" required>
+										</div>
+									</div>
+
+								</div>
+								<div class="row">
+									<div class="col-sm-10">
+										<div class="form-group">
+											<span class="form-label">Adults</span>
+											<select class="form-control" name="adults">
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+											</select>
+											<span class="select-arrow"></span>
+										</div>
+									</div>
+
+								</div>
+								<div class="form-btn">
+									<button class="submit-btn" name="search">Check availability</button>
+								</div>
+							</form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+     </form>
+
+    <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.1/lodash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://unpkg.com/fuse.js@2.5.0/src/fuse.min.js"></script>
+<script src="https://screenfeedcontent.blob.core.windows.net/html/airports.js"></script>
+
+
+
+    <script id="rendered-js">
+      var options = {
+  shouldSort: true,
+  threshold: 0.4,
+  maxPatternLength: 32,
+  keys: [{
+    name: 'iata',
+    weight: 0.5 },
+  {
+    name: 'name',
+    weight: 0.3 },
+  {
+    name: 'city',
+    weight: 0.2 }] };
+
+
+
+var fuse = new Fuse(airports, options);
+
+
+var ac = $('#autocomplete').
+on('click', function (e) {
+  e.stopPropagation();
+}).
+on('focus keyup', search).
+on('keydown', onKeyDown);
+
+var ac2 = $('#autocomplete2').
+on('click', function (e) {
+  e.stopPropagation();
+}).
+on('focus keyup', search).
+on('keydown', onKeyDown);
+
+var wrap = $('<div>').
+addClass('autocomplete-wrapper').
+insertBefore(ac).
+append(ac);
+
+var wrap2 = $('<div>').
+addClass('autocomplete-wrapper').
+insertBefore(ac2).
+append(ac2);
+
+var list = $('<div>').
+addClass('autocomplete-results').
+on('click', '.autocomplete-result', function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+  selectIndex($(this).data('index'));
+}).
+appendTo(wrap);
+
+var list2 = $('<div>').
+addClass('autocomplete-results').
+on('click', '.autocomplete-result', function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+  selectIndex($(this).data('index'));
+}).
+appendTo(wrap2);
+
+$(document).
+on('mouseover', '.autocomplete-result', function (e) {
+  var index = parseInt($(this).data('index'), 10);
+  if (!isNaN(index)) {
+    list.attr('data-highlight', index);
+  }
+}).
+on('click', clearResults);
+
+function clearResults() {
+  results = [];
+  numResults = 0;
+  list.empty();
+}
+
+function selectIndex(index) {
+  if (results.length >= index + 1) {
+    ac.val(results[index].iata);
+    clearResults();
+  }
+}
+
+var results = [];
+var numResults = 0;
+var selectedIndex = -1;
+
+function search(e) {
+  if (e.which === 38 || e.which === 13 || e.which === 40) {
+    return;
+  }
+
+  if (ac.val().length > 0) {
+    results = _.take(fuse.search(ac.val()), 7);
+    numResults = results.length;
+
+    var divs = results.map(function (r, i) {
+      return '<div class="autocomplete-result" data-index="' + i + '">' +
+      '<div><b>' + r.iata + '</b> - ' + r.name + '</div>' +
+      '<div class="autocomplete-location">' + r.city + ', ' + r.country + '</div>' +
+      '</div>';
+    });
+
+    selectedIndex = -1;
+    list.html(divs.join('')).
+    attr('data-highlight', selectedIndex);
+
+  } else {
+    numResults = 0;
+    list.empty();
+  }
+}
+
+function onKeyDown(e) {
+  switch (e.which) {
+    case 38: // up
+      selectedIndex--;
+      if (selectedIndex <= -1) {
+        selectedIndex = -1;
+      }
+      list.attr('data-highlight', selectedIndex);
+      break;
+    case 13: // enter
+      selectIndex(selectedIndex);
+      break;
+    case 9: // enter
+      selectIndex(selectedIndex);
+      e.stopPropagation();
+      return;
+    case 40: // down
+      selectedIndex++;
+      if (selectedIndex >= numResults) {
+        selectedIndex = numResults - 1;
+      }
+      list.attr('data-highlight', selectedIndex);
+      break;
+
+    default:return; // exit this handler for other keys
+  }
+  e.stopPropagation();
+  e.preventDefault(); // prevent the default action (scroll / move caret)
+}
+
+    </script>
+
+</body></html>
+
+
+

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background-image: url("1.jpg");
+            background-color:#c0c0c0;
+        }
+        table{
+            border: 0px solid #CCC;
+            border-radius: 5%;
+            border-collapse: collapse;
+            border-style: hidden;
+
+        }
+        td {
+
+            border-radius: 5%;
+        }
+
+        tr{
+            border: 10px solid #c0c0c0;
+            background-color: white;
+            border-radius: 50%;
+            {#border-style: hidden;#}
+            box-shadow: 2px 2px 2px 1px slategrey;
+
+        }
+       .button {
+            background: linear-gradient(92deg ,  #f0772c,#f95776);
+           {#background: linear-gradient(45deg ,  #ace143,#219393);#}
+           {#background: linear-gradient(45deg ,  #ff684a,#219393)#}
+           {#background: linear-gradient(45deg ,  #53b2fe,#d65af3)#}
+
+
+            border: none;
+            border-style: hidden;
+            box-shadow: 4px 3px 3px  dimgrey;
+            border-radius: 50px;
+            {#background-color: #4CAF50; /* Green */#}
+
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+    </style>
+
+    <script>
+        function addRow() {
+    var referenceNodes = document.getElementById("flightsTable").getElementsByTagName("tr");
+    //-2 because last row is button row
+    var referenceNode = referenceNodes[referenceNodes.length - 1];
+    var newNode = referenceNode.cloneNode(true);
+
+    // get the next count for the new row.
+    var dataCount = referenceNodes.length + 1;
+
+    // loop the cells.
+    var cells = newNode.getElementsByTagName("td");
+    for (var i = 0; i < cells.length; i++) {
+        var cell = cells[i];
+
+        // get the input (assuming only one).
+        var input = cell.getElementsByTagName("input")[0];
+
+        // set the name property.
+        input.name = "data['" + dataCount + "'][element" + (i + 1) + "]";
+    }
+
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+    </script>
+
+</head>
+<body>
+<form method="POST" action="{%  url 'booked' %}" >
+        {% csrf_token %}
+<table id="flightsTable">
+{#    <tr>#}
+{#        <td style="padding-right: 100px">flight_name</td>#}
+{#        <td style="padding-right: 100px">flight_code</td>#}
+{#        <td style="padding-right: 100px">dept_city</td>#}
+{#        <td style="padding-right: 100px">dept_time</td>#}
+{#        <td style="padding-right: 100px">no_of_stops</td>#}
+{#        <td style="padding-right: 100px">reach_time</td>#}
+{#        <td style="padding-right: 100px">duration</td>#}
+{#        <td style="padding-right: 100px">arrival_city</td>#}
+{#        <td style="padding-right: 100px">price</td>#}
+{#        <td style="padding-right: 100px">Book now</td>#}
+{#    </tr>#}
+<div style="background: #002e5c;padding-left: 10px;padding-top:6px;color:white;height:50px">FLIGHT DETAILS:</div>
+
+{% for i in names2 %}
+{#    {% s='input'+str(i) %}#}
+    <div style="box-shadow: 2px 2px 2px slategrey">
+
+<center>
+
+    <tr>
+
+
+        <td style=""><center><h2>{{ i.0.0 }}</h2></center><br><center><h4>{{ i.0.1 }}</h4></center></td>
+        <td style=""><center><h2>{{ i.0.2 }}</h2></center><br><center><h4>{{ i.0.3 }}</h4></center></td>
+        <td style=""><center><h2>{{ i.0.6 }}</h2></center><br><center><h4>{{ i.0.4 }}</h4></center></td>
+        <td style=""><center><h2>{{ i.0.7 }}</h2></center><br><center><h4>{{ i.0.5 }}</h4></center></td>
+        <td style=""><center><h2>{{ i.0.8 }}</h2></center></td>
+        <input type="hidden" name="{{ i.1.0 }}" value="{{ i.0.0 }}">
+        <input type="hidden" name="{{ i.1.1 }}" value="{{ i.0.1 }}">
+        <input type="hidden" name="{{ i.1.2 }}" value="{{ i.0.2 }}">
+        <input type="hidden" name="{{ i.1.3 }}" value="{{ i.0.3 }}">
+        <input type="hidden" name="{{ i.1.4 }}" value="{{ i.0.4 }}">
+        <input type="hidden" name="{{ i.1.5 }}" value="{{ i.0.5 }}">
+        <input type="hidden" name="{{ i.1.6 }}" value="{{ i.0.6 }}">
+        <input type="hidden" name="{{ i.1.7 }}" value="{{ i.0.7 }}">
+        <input type="hidden" name="{{ i.1.8 }}" value="{{ i.0.8 }}">
+        <input type="hidden" name="adults" value={{ adults }}>
+         <input type="hidden" name="date" value={{ date }}>
+        <h2><td style="padding-right: 30px;"><button class="button"  name="button" value="{{ i.1.9 }}">BOOK NOW</button></td></h2>
+    </tr>
+</center>
+    </div>
+{% endfor %}
+
+
+</table>
+
+</form>
+
+</body>
+</html>

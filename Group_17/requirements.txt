@@ -1,0 +1,7 @@
+Required following modules/packages:
+selenium
+beautifulsoup4
+chromedriver, and add its path in flights.py ,hotel.py,hotel_details.py in Book folder 
+twilio
+social-django
+django-rest-framework

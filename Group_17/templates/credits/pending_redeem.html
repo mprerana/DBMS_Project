@@ -1,0 +1,71 @@
+{% extends 'authentication/layout.html' %}
+{% load static from staticfiles %}
+{% block headblock %}
+    <script>
+         history.pushState(null, null, location.href);
+         window.onpopstate = function () {
+            history.go(1);
+         };
+    </script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+        <link rel="stylesheet" href="/static/index.css" >
+    <style>
+
+    body{
+        background-image: url("{% static 'payment.jpeg' %}");
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    .button3{
+            background-color: #17d5c7;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: 0.5s;
+        }
+        .button3:hover{
+            background-color: #063e68;
+
+        }
+    .div1{
+        background-color: white;
+        width:40%;
+        height:400px;
+        opacity: 0.9;
+        margin-top: 10px;
+        border-radius: 30px;
+        overflow: auto;
+    }
+    table,td,tr,th{
+       font-size: 20px;
+        border: 0px solid gray;
+        border-collapse: collapse;
+        padding:10px;
+    }
+    .a{
+        text-decoration: none;
+        color: white;
+    }
+    </style>
+
+{% endblock %}
+{% block content %}
+    Please Enter the verification code below.
+    <form action="{% url 'credits.verify_sms' %}" method="post">
+        {% csrf_token %}
+        Enter the code<br>
+        <input name="code" id="code" type="text">
+        <input type="submit" value="Submit">
+        <a href="/credits/redeem_cancel" class="a">
+        <input type="button" class="button3" value="Cancel">
+        </a>
+    </form>
+{% endblock %}

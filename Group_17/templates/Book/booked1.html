@@ -1,0 +1,155 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .button {
+            background: linear-gradient(92deg ,  #f0772c,#f95776);
+           {#background: linear-gradient(45deg ,  #ace143,#219393);#}
+           {#background: linear-gradient(45deg ,  #ff684a,#219393)#}
+           {#background: linear-gradient(45deg ,  #53b2fe,#d65af3)#}
+
+
+            border: none;
+            border-style: hidden;
+            box-shadow: 4px 3px 3px  dimgrey;
+            border-radius: 50px;
+            {#background-color: #4CAF50; /* Green */#}
+
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        body{
+            background-image: url("https://images.wallpaperscraft.com/image/aircraft_graphics_drawing_57286_1920x1080.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100%;
+
+        }
+
+        table{
+            border: 0px solid #CCC;
+            border-radius: 15px;
+            background-color: white;
+            border-collapse: collapse;
+            border-style: hidden;
+            box-shadow: 2px 2px 2px 1px slategrey;
+
+        }
+
+
+        {#tr{#}
+        {#    background-color: blue;#}
+        {#    border-radius: 5%;#}
+        {##}
+        {##}
+        {##}
+        {#}#}
+
+    </style>
+    <link type="text/css" rel="stylesheet" href="{% static "flight_search/css/bootstrap.min.css" %}" />
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="{% static "flight_search/css/style.css" %}" />
+</head>
+<body style="background-color: #c0c0c0">
+<center>
+<table style="background-color: whitesmoke">
+
+    <tr><br><br>
+
+       <td style="padding-right: 50px;padding-left: 20px;"><h2>{{ a.0 }}</h2><br><h4>{{ a.1 }}</h4></td>
+        <td style="padding-right: 50px"><h2>{{ a.2 }}</h2><br><h4>{{ a.3 }}</h4></td>
+        <td style="padding-right: 50px"><h2>{{ a.6 }}</h2><br><h4>{{ a.4 }}</h4></td>
+        <td style="padding-right: 50px"><h2>{{ a.7 }}</h2><br><h4>{{ a.5 }}</h4></td>
+        <td style="padding-right: 50px"><h2>{{ a.8 }}</h2></td>
+
+
+    </tr>
+
+</table>
+
+    <form method="get" action="{% url 'review_list' %}">
+        <input type="hidden" name="hotel" value="{{ a.0 }}">
+        <input type="submit" value="show_reviews">
+    </form>
+
+</center>
+
+
+
+    <div class="container">
+  <form method="POST" class="form-horizontal" action="{%  url 'ticket_book' %}">
+      {% csrf_token %}
+
+
+        <input type="hidden" name="fli_name" value="{{ a.0 }}">
+        <input type="hidden" name="fli_code" value="{{ a.1 }}">
+        <input type="hidden" name="dept_city" value="{{ a.2 }}">
+        <input type="hidden" name="dept_time" value="{{ a.3 }}">
+        <input type="hidden" name="no_stops" value="{{ a.4 }}">
+        <input type="hidden" name="reach_time" value="{{ a.5 }}">
+        <input type="hidden" name="duration" value="{{ a.6 }}">
+        <input type="hidden" name="arr_city" value="{{ a.7 }}">
+        <input type="hidden" name="price" value="{{ a.8 }}">
+        <input type="hidden" name="adults" value={{ adults }}>
+        <input type="hidden" name="date" value={{ date }}>
+      {% for i in b %}
+          <br><br>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">First Name:</label>
+      <div class="col-sm-7">
+        <input style="" type="text" class="form-control" id="fname" placeholder="Enter First Name" name="fname{{ i }}" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Last Name:</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" id="lname" placeholder="Enter Last Name" name="lname{{ i }}" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Age:</label>
+      <div class="col-sm-7">
+        <input type="Number" class="form-control" id="Age" placeholder="Enter Age" name="Age{{ i }}" min="10" required>
+      </div>
+    </div>
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="pwd">Gender:</label>
+
+      <div class="col-sm-offset-2 col-sm-10">
+
+        <div class="checkbox">
+          <label><input type="radio" value="male" name="Gender{{ i }}" required> Male </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label><input type="radio" value="male" name="Gender{{ i }}" required> Female </label>
+        </div>
+      </div>
+
+        {% endfor %}<center>
+    <button class="button" name="button">BOOK NOW</button>
+</center>  </div>
+  </form>
+
+    </div>
+
+
+
+</body>
+</html>

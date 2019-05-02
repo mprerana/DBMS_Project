@@ -1,0 +1,99 @@
+{% extends 'travelers/layout.html' %}
+{% load static from staticfiles %}
+{% load static %}
+{%  block headblock %}
+{% endblock headblock %}
+{% block content %}
+
+
+    <div style="height:1080px;color: #bde1ff ;background-image: url( '{% static 'images/loginpic.jpg' %}');background-repeat: no-repeat;background-size: 100%;background-attachment:fixed;">
+        <!--
+          <div class="clearfix booking-form neon-lit-background">
+            <div class="booking-form__heading no-print">
+                 <div>
+                    <div class="neon-border neon-border--flush neon-border--blue neon-border--topgap-xxs neon-border--bottomgap-xxs">
+                        <h1 class="h1 type-decorative text-glow pink">USER PROFILE</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->
+        <h1 class="text- text-center" style="font-size: 45px;color: black">USER PROFILE</h1>
+        <br>
+        <div >
+            <div style="margin-top: 100px;margin-left:80px ">
+                <img style="border-radius: 50%;height:300px;width: 300px" src="{{ user.profile.pro_pic.url }}">
+            </div>
+        </div>
+        <div style="margin-top: -300px;margin-left:600px">
+            <div class="col-sm-6 " style="">
+                <h3 style="font-size: 35px">Username: </h3>
+            </div>
+            <div class="col-sm-6 ">
+                <h3 style="font-size: 35px">{{ user }}</h3>
+            </div>
+        </div>
+        <div style="margin-top: 50px;margin-left:600px">
+            <div class="col-sm-6 ">
+                <h3 style="font-size: 35px">Email: </h3>
+            </div>
+            <div class="col-sm-6 ">
+                <h3 style="font-size: 35px">{{ user.email }}</h3>
+            </div>
+        </div>
+        <div style="margin-top: 50px;margin-left:600px">
+            <div class="col-sm-6 ">
+                <h3 style="font-size: 35px">Mobile: </h3>
+            </div>
+            <div class="col-sm-6 ">
+                <h3 style="font-size: 35px">{{ user.profile.mobile }}</h3>
+            </div>
+        </div>
+        <div style="margin-top: 50px;margin-left:600px">
+            <div class="col-sm-6 ">
+                <h3 style="font-size: 35px">FirstName: </h3>
+            </div>
+            <div class="col-sm-6 ">
+                <h3 style="font-size: 35px">{{ user.first_name }}</h3>
+            </div>
+        </div>
+        <div style="margin-top: 50px;margin-left:600px">
+            <div class="col-sm-6 ">
+                <h3 style="font-size: 35px;width: 400px">Last Name: </h3>
+            </div>
+            <div class="col-sm-6 ">
+                <h3 style="font-size: 35px">{{ user.last_name }}</h3>
+            </div>
+        </div>
+
+
+    </div>
+    <br>
+    <br>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-group-lg" style="border-radius: 25px;width: 200px;margin-top: -520px">    <p class="middle"><a href="{% url 'editprofile' %}">Edit Profile</a></p></button>
+        </div>
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-group-xs" style="border-radius: 25px;width: 200px;margin-top: -520px;margin-left: -320px">   <p class="middle"><a href="{% url 'change_password' %}">Change Password</a></p></button>
+        </div>
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-group-xs" style="border-radius: 25px;width: 200px;margin-top: -570px;margin-left: 900px">   <p class="middle"><a href="{% url 'hotels_booked' %}">MY Hotel Bookings</a></p></button>
+        </div>
+
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-group-xs" style="border-radius: 25px;width: 250px;margin-top: -570px;margin-left: -50px">   <p class="middle"><a href="{% url 'flights_booked' %}">My FLight Bookings</a></p></button>
+        </div>
+
+        <!--         <p class="middle"><a href="{% url 'change_password' %}">Change your password here !</a></p>
+        <p class="middle"><a href="{% url 'editprofile' %}">Edit !</a></p>
+-->
+    </div>
+    <script>
+        $(document).ready(function() {
+            $("#SideNavBar").empty()
+        });
+
+    </script>
+{% endblock %}

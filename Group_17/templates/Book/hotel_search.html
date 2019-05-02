@@ -1,0 +1,103 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel_search</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="{% static "flight_search/css/bootstrap.min.css" %}" />
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="{% static "flight_search/css/style.css" %}" />
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+</head>
+<body>
+<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-7 col-md-push-5">
+						<div class="booking-cta">
+							<h1>Make your reservation</h1>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi facere, soluta magnam consectetur molestias itaque
+								ad sint fugit architecto incidunt iste culpa perspiciatis possimus voluptates aliquid consequuntur cumque quasi.
+								Perspiciatis.
+							</p>
+						</div>
+					</div>
+					<div class="col-md-4 col-md-pull-7">
+						<div class="booking-form">
+
+    <form action="{% url 'hotel_search' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+									<span class="form-label">City</span>
+									<input class="form-control" type="text" name="city" id="autocomplete" placeholder="Enter a destination or hotel name">
+             <span class="form-label">State</span>
+									<input class="form-control" type="text" name="state.
+" id="autocomplete2" placeholder="Enter a destination or hotel name">
+								</div>
+								<div class="row">
+									<div class="col-sm-10">
+										<div class="form-group">
+											<span class="form-label">Check_in_date</span>
+											<input class="form-control" type="date" name="check_in_date" required>
+										</div>
+									</div>
+
+								</div>
+                                <div class="row">
+									<div class="col-sm-10">
+										<div class="form-group">
+											<span class="form-label">Check_out_date</span>
+											<input class="form-control" type="date" name="check_out_date" required>
+										</div>
+									</div>
+
+								</div>
+								<div class="row">
+									<div class="col-sm-10">
+										<div class="form-group">
+											<span class="form-label">Adults</span>
+											<select class="form-control" name="adults">
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+											</select>
+											<span class="select-arrow"></span>
+										</div>
+									</div>
+
+								</div>
+								<div class="form-btn">
+									<button class="submit-btn" name="search">Check availability</button>
+								</div>
+							</form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+
+
+        city:<input type="text" name="city">
+        state:<input type="text" name="state">
+        no on adults:<input type="number" name="adults">
+        check_in_date:<input type="date" name="check_in_date">
+        check_out_date:<input type="date" name="check_out_date">
+        <input type="submit">
+    </form>
+</body>
+</html>

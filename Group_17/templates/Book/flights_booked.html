@@ -1,0 +1,51 @@
+{% extends 'travelers/layout.html' %}
+{% load static from staticfiles %}
+<html lang="en">
+{% block headblock %}
+<meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    body{
+background-image: url("{% static 'Travel.jpg' %}");
+        background-color:#B6AEAE;
+        background-size: 100%;
+        background-attachment: fixed;
+    }
+    </style>
+{% endblock %}
+{% block content %}
+    <center>
+
+    {% for i in flights %}
+                <div style="background-color:white;padding-top:10px;margin-top:50px;width:70%;box-shadow: 3px 3px 3px grey;">
+        <div style="float: left;padding-left: 10px"><img src="{% static 'flight-icon.jpg' %}" style="height: 100px;width: 100px"></div>
+        <div style="float: right;padding-right: 570px"><h4>{{ i.1 }}</h4></div><br>
+        <div style="float: right;padding-right: 600px">{{ i.2 }}</div><br>
+         <div style="float: right;padding-right: 600px">{{ i.13 }}</div><br>
+        <div style="float: right;padding-right: 565px">{{ i.3 }}&nbsp;-&nbsp;{{ i.8 }}</div><br>
+        <div style="float: right;padding-right: 518px">{{ i.4 }}&nbsp;-&nbsp;{{ i.6 }}</div><br>
+        <div style="float: left;padding-left: 250px">{{ i.7 }}</div><br>
+
+        <div style="float: right;padding-right: 30px"><h4>₹{{ i.9 }}</h4></div><br><br>
+        <div style="color: whitesmoke;background-color: #0c5460 ;padding-bottom: 1px;padding-top: 1px;"><h4 style="margin-right: 600px">Passengers:</h4></div><br>
+         <table style=" width:80%">
+        <center>
+            <tr>
+                <td style="border-bottom: 1px solid #00b6f2">Name</td>
+                <td style="border-bottom: 1px solid #00b6f2">Age</td>
+                <td style="border-bottom: 1px solid #00b6f2">Gender</td>
+            </tr>
+            <tr style="height: 10px"></tr>
+            {% for j in  i.11  %}
+                <tr>
+                <td>{{ j.0 }}&nbsp;       {{ j.1 }}&nbsp;</td>
+                <td>{{ j.2 }}&nbsp;</td>
+                <td> {{ j.3 }}</td>
+                </tr>
+            {% endfor %}
+        </center>
+        </table>
+                </div>
+    {% endfor %}
+    </center>
+{% endblock %}
