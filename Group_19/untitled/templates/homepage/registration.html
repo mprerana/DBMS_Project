@@ -1,0 +1,91 @@
+{% extends "homepage/base.html" %}
+{% load staticfiles %}
+{% block content %}
+{% if user_form.errors %}
+    {% for field in user_form %}
+        {% for error in field.errors %}
+              <div class="container center-align">
+                <h5>{{error|escape}}<h5>
+              </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in user_form.non_field_errors %}
+    <div class="container center-align">
+      <h5>{{error|escape}}<h5>
+    </div>
+    {% endfor %}
+{% endif %}
+   {% if registered %}
+      <div class="container center-align">
+        <h2>Thank You For Being A Collaborator</h3>
+        <h3>Your account has been activated</h3>
+        <p>
+          <span>  <a class="btn"href="{% url 'homepage:user_login'%}">Click Here</a>
+          </span>to Login
+
+        </p>
+
+      </div>
+   {% else %}
+
+  <div class="row">
+  <form class="col s12" method="POST" name="user_form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+      <div class="input-field col s4 offset-s2">
+        <input  id="first_name" type="text" class="validate" name="first_name" required>
+        <label for="first_name">First Name</label>
+      </div>
+      <div class="input-field col s4">
+        <input id="last_name" type="text" class="validate" name="last_name">
+        <label for="last_name">Last Name</label>
+      </div>
+    </div>
+    <div class="row">
+    <div class="input-field col s4 offset-s2">
+      <input id="username" type="text" class="validate" name="username" required>
+      <label for="username">User Name</label>
+    </div>
+
+
+      <div class="input-field col s4">
+        <input id="password" type="password" class="validate" name="password" min="6" required>
+        <label for="password">Password</label>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="input-field col s4 offset-s2">
+        <input id="email" type="email" class="validate" name="email" required>
+        <label for="email">Email</label>
+      </div>
+      <div class="input-field col s4">
+          <input id="re_password" type="password" class="validate" name="re_password" min="6" required>
+          <label for="re_password">Retype Password</label>
+      </div>
+{#   <div class="row">#}
+{#      <div class="input-field col s4 offset-s2">#}
+{#        <input id="city" type="text" class="validate" name="city" required>#}
+{#        <label for="city">City</label>#}
+{#      </div>#}
+{#      <div class="input-field col s4">#}
+{#          <input id="phone" type="text" class="validate" name="phone"  required>#}
+{#          <label for="phone">Phone</label>#}
+{#      </div>#}
+{#    </div>#}
+    <div class="row">
+      <div class="input-field col s4 offset-s5">
+        <button class="  btn waves-effect waves-light" type="submit" name="submit">Submit
+       </button>
+      </div>
+
+    </div>
+
+  </form>
+</div>
+
+
+   {% endif %}
+
+{% endblock %}

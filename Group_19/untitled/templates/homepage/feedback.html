@@ -1,0 +1,37 @@
+{% extends "homepage/base.html" %}
+{% block content %}
+{% load staticfiles %}
+<div class="row">
+<form class="col s12" method="POST" action="{% url 'homepage:user_feedback' %}" name="user_feedback" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="row">
+    <div class="input-field col s4 offset-s4">
+      <input id="name" type="text" class="validate" name="name" required>
+      <label for="name">Name</label>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="input-field col s4 offset-s4">
+      <input id="rating" type="number" class="validate" name="rating" min="1" max="10" required>
+      <label for="rating">Rating out of 10</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class=" col s5 offset-s4">
+    <textarea name="text" rows="8" cols="80"></textarea>
+      <label for="text">Your Review</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s4 offset-s5">
+      <button class="  btn waves-effect waves-light" type="submit" name="submit">Submit
+     </button>
+    </div>
+  </div>
+
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,107 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .img123{
+            float: right;
+            height: 40px;
+            width: 40px;
+            margin-top: 5px;
+        }
+        .topnav {
+            overflow: hidden;
+            width: 100%;
+            top:10px;
+            color: white;
+            background-color: black;
+
+        }
+
+        .button2 {
+
+            float: right;
+            background: none;
+            border: none;
+            color: white;
+            margin-right: 0px;
+            padding: 8px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 3px 2px;
+            cursor: pointer;
+            border-radius:4px;
+            transition: 0.5s;
+        }
+        .button1 {
+            background: none;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: 0.5s;
+        }
+        .button1:hover {
+            background-color: #5B7BD5;
+        }
+        .button2:hover{
+            background-color: #5B7BD5;
+        }
+
+
+        {% block style %}
+        {% endblock style %}
+    </style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+ <link rel="stylesheet" href="{% static 'plot/css/basic.css' %}">
+{#    <nav class="navbar navbar-expand-sm navbar-dark bg-dark" >#}
+
+            <div class="topnav">
+
+                <select class="button1" onchange="location = this.value">
+                    <option selected disabled hidden class="button1">Credits</option>
+                     <option class="button1" value="{% url 'credits.index' %}" >Add/Redeem   </option>
+                    <option class="button1" value="{% url 'credits.statement' %}">Transactions</option></a>
+                </select>
+
+
+                {% if not request.user.username %}
+s
+                <a href="{% url 'homepage:register' %}"><button class="button2">SignUp</button></a>
+                <a href="{% url 'homepage:user_login' %}"><button class="button2" name="Login" value="Login"> Login</button></a>
+
+            </div>
+                {% else %}
+
+            <form class="button2" action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="logout-button-nav" style="background-color: transparent;color: #FFFFFF; border: none;">Logout </button>
+            </form>
+              <a href="{% url 'plot:see' %}"><button class="button2"> {{request.user.username}}</button></a>
+
+                 {% endif %}
+        </div>
+
+    </nav>
+
+    {% block headblock %}
+    {% endblock headblock %}
+</head>
+<body>
+
+{#<div class="container">#}
+    {% block content %}
+    {% endblock content %}
+{#</div>#}
+</body>
+</html>

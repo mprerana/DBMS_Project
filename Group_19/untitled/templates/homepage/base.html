@@ -1,0 +1,334 @@
+{#{% load staticfiles %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en" dir="ltr">#}
+{#  <head>#}
+{##}
+{#    <!--Links for materialize css-->#}
+{#    <!-- Compiled and minified CSS -->#}
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">#}
+{##}
+{#      <!-- font awesome -->#}
+{#      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">#}
+{##}
+{#    <!--Import Google Icon Font-->#}
+{#    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">#}
+{#    <!--Let browser know website is optimized for mobile-->#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>#}
+{#    <title></title>#}
+{#  <!--links for fonts-->#}
+{#  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">#}
+{#  <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">#}
+{#   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">#}
+{##}
+{#  </head>#}
+{#  <body style="font-family: 'Poppins', sans-serif;">#}
+{##}
+{#      <div class="navbar-fixed">#}
+{#        <nav class="nav-wrapper transparent blue-grey darken-3">#}
+{#          <div class="container">#}
+{#            <a href="{%url 'index' %}" class="brand-logo" style="font-family: 'Montserrat', sans-serif;">Free Stock</a>#}
+{#            <a href="#" class="sidenav-trigger" data-target="mobile-links">#}
+{#              <i class="material-icons">menu</i>#}
+{#            </a>#}
+{##}
+{#            <ul class="right hide-on-med-and-down valign-wrapper">#}
+{##}
+{##}
+{##}
+{#              {% if request.user.is_authenticated %}#}
+{##}
+{##}
+{#              <li>#}
+{#                <a href="{% url 'homepage:video_chat' %}" target="_blank">video chat</a>#}
+{#              </li>#}
+{#                  <li>#}
+{#                <a href="{% url 'homepage:profile_view' %}" >Profile</a>#}
+{#              </li>#}
+{#              <li>#}
+{#                <a href="{% url 'logout' %}" >Logout</a>#}
+{#              </li>#}
+{#              {% else %}#}
+{#              <li>#}
+{#                <a href="{% url 'homepage:user_login' %}">Login</a>#}
+{#              </li>#}
+{##}
+{#              <li>#}
+{#                  <a href="{% url 'homepage:register' %}">Signup</a>#}
+{#              </li>#}
+{##}
+{#              {% endif %}#}
+{##}
+{##}
+{##}
+{#              <li>#}
+{#                <a href="#about">About</a>#}
+{#              </li>#}
+{#            </ul>#}
+{#          </div>#}
+{#        </nav>#}
+{#      </div>#}
+{##}
+{#      <ul class="sidenav" id="mobile-links">#}
+{##}
+{##}
+{##}
+{#        {% if request.user.is_authenticated %}#}
+{#        <li>#}
+{#          <a href="{ % url 'homepage:profile_view' % }" >Profile</a>#}
+{##}
+{#        </li>#}
+{#        <li>#}
+{#          <a href="{% url 'logout' %}" >Logout</a>#}
+{#        </li>#}
+{#        {% else %}#}
+{#        <li>#}
+{#          <a href="{% url 'homepage:user_login' %}">Login</a>#}
+{#        </li>#}
+{#        <li>#}
+{#          <a href="{% url 'homepage:register' %}">Signup</a>#}
+{#        </li>#}
+{#        {% endif %}#}
+{##}
+{#        <li>#}
+{#          <a href="#about" >About</a>#}
+{#        </li>#}
+{##}
+{#      </ul>#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#      <!-- Compiled and minified JavaScript -->#}
+{#      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>#}
+{#      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>#}
+{#      <script>#}
+{#        $(document).ready(function(){#}
+{#          $('.sidenav').sidenav();#}
+{#          $('.scrollspy').scrollSpy();#}
+{#        });#}
+{#      </script>#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#      <div >#}
+{#        {% block content %}#}
+{#        {% endblock %}#}
+{#      </div>#}
+{##}
+{#              <footer class="page-footer scrollspy blue-grey darken-4" id="about">#}
+{#                <div class="container ">#}
+{#                  <div class="row">#}
+{#                    <div class="col l6 s12">#}
+{#                      <h5 class="white-text">About</h5>#}
+{##}
+{#                      <p class="grey-text text-lighten-4">FreeStock.com is a website where a user can download free stock photos. <br><br>#}
+{##}
+{#                      <p class="grey-text text-lighten-4">FreeStock.com is a website where a user can download free stock photos <br>#}
+{##}
+{#                        A user can also join our community by signing up and posting their photographs.This is how our site works.#}
+{#                      </p>#}
+{#                    </div>#}
+{#                    <div class="col l4 offset-l2 s12">#}
+{#                      <h5 class="white-text">Contact</h5>#}
+{#                      <ul>#}
+{##}
+{#                        <li><a class="white-text text-ighten-3" href="#!">Gmail</a></li>#}
+{#                        <li><a class="white-text text-lighten-3" href="#!">Facebook</a></li>#}
+{#                        <li><a class="white-text text-lighten-3" href="#!">Instagram</a></li>#}
+{#                        <li><a class="white-text text-lighten-3" href="{% url 'homepage:user_feedback' %}">Feedback</a></li>#}
+{#                      </ul>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                  <div class="footer-copyright">#}
+{#                    <div class="container">#}
+{#                    © 2018 FreeStock.Com#}
+{#                    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                </div>#}
+{#              </footer>#}
+{##}
+{#  </body>#}
+{#</html>#}
+
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+
+    <!--Links for materialize css-->
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+      <!-- font awesome -->
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>GVK Mall</title>
+  <!--links for fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+
+  </head>
+  <body style="font-family: 'Poppins', sans-serif;">
+
+      <div class="navbar-fixed">
+        <nav class="nav-wrapper transparent blue-grey darken-3">
+          <div class="container">
+            <a href="{%url 'index' %}" class="brand-logo" style="font-family: 'Montserrat', sans-serif;">GVK Mall</a>
+            <a href="#" class="sidenav-trigger" data-target="mobile-links">
+              <i class="material-icons">menu</i>
+            </a>
+
+            <ul class="right hide-on-med-and-down valign-wrapper">
+
+
+
+
+              {% if request.user.is_authenticated %}
+
+                  <li>
+                <a href="{% url 'homepage:profile_view' %}" >Profile</a>
+              </li>
+              <li>
+                <a href="{% url 'plot:see' %}" target="_blank">Buy/Rent</a>
+              </li>
+                   <li>
+                <a href="{% url 'shop:category' %}" target="_blank">Our partners</a>
+              </li>
+                  <li>
+                <a href="{% url 'advertisements:listadv' %}" target="_blank">Offers</a>
+              </li>
+              <li>
+                <a href="{% url 'homepage:video_chat' %}" target="_blank">video chat</a>
+
+              <li>
+                <a href="{% url 'logout' %}" >Logout</a>
+              </li>
+              {% else %}
+              <li>
+                <a href="{% url 'homepage:user_login' %}">Login</a>
+              </li>
+
+              <li>
+                  <a href="{% url 'homepage:register' %}">Signup</a>
+              </li>
+
+              {% endif %}
+
+                <li>
+                <a href="{% url 'shop:category' %}" target="_blank">Our partners</a>
+              </li>
+
+              <li>
+                <a href="#about">About</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <ul class="sidenav" id="mobile-links">
+
+
+
+        {% if request.user.is_authenticated %}
+        <li>
+          <a href="{ % url 'homepage:profile_view' % }" >Profile</a>
+
+        </li>
+                       <li>
+                <a href="{% url 'plot:see' %}" target="_blank">Buy/Rent</a>
+              </li>
+
+                  <li>
+                <a href="{% url 'advertisements:listadv' %}" target="_blank">Offers</a>
+              </li>
+              <li>
+                <a href="{% url 'homepage:video_chat' %}" target="_blank">video chat</a>
+
+              <li>
+        <li>
+          <a href="{% url 'logout' %}" >Logout</a>
+        </li>
+        {% else %}
+        <li>
+          <a href="{% url 'homepage:user_login' %}">Login</a>
+        </li>
+        <li>
+          <a href="{% url 'homepage:register' %}">Signup</a>
+        </li>
+        {% endif %}
+
+
+              <li>
+                <a href="#about">About</a>
+              </li>
+
+
+      </ul>
+
+
+
+
+
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+      <script>
+        $(document).ready(function(){
+          $('.sidenav').sidenav();
+          $('.scrollspy').scrollSpy();
+        });
+      </script>
+
+
+
+
+
+      <div >
+        {% block content %}
+        {% endblock %}
+      </div>
+
+              <footer class="page-footer scrollspy blue-grey darken-4" id="about">
+                <div class="container ">
+                  <div class="row">
+                    <div class="col l6 s12">
+                      <h5 class="white-text">About</h5>
+
+                      <p class="grey-text text-lighten-4">GVK Mall is four floors of exterme fun and enjoyment for all ages <br><br>
+
+                      <p class="grey-text text-lighten-4">Rated as the best mall in South India by Forbes <br>
+                        Explore our mall. Anyone can sign up. Login to buy, sell, rent plots. With thousands of daily visitors you can advertise with us for exposure.
+                      </p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                      <h5 class="white-text">Contact</h5>
+                      <ul>
+
+                        <li><a class="white-text text-ighten-3" href="#!">Gmail</a></li>
+                        <li><a class="white-text text-lighten-3" href="#!">Facebook</a></li>
+                        <li><a class="white-text text-lighten-3" href="#!">Instagram</a></li>
+                        <li><a class="white-text text-lighten-3" href="{% url 'homepage:user_feedback' %}">Feedback</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="footer-copyright">
+                    <div class="container">
+                    ©ApolloMall SriCity
+                    </div>
+                  </div>
+                </div>
+              </footer>
+
+  </body>
+</html>

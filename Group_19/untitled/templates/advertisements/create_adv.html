@@ -1,0 +1,63 @@
+
+{% extends "homepage/base.html" %}
+{% block content %}
+{% load staticfiles %}
+    <div class="row">
+<form  enctype="multipart/form-data" method="post" >
+        {% csrf_token %}
+    <center> <h2>Create a add</h2></center>
+
+    <br><br>
+    <div class="row">
+      <div class="input-field col s4 offset-s2">
+        <input type="text" name="adv_id" class="validate">
+        <label for="adv_id">adv_id </label>
+      </div>
+      <div class="input-field col s4">
+        <input id="expiry" type="text" class="validate" name="expiry">
+        <label for="expiry">expiry </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s4 offset-s2">
+        <input id="tenant_id" type="text" class="validate" name="tenant_id">
+        <label for="tenant_id">tenant_id </label>
+      </div>
+      <div class="input-field col s4">
+        <input id="tenant_name" type="text" class="validate" name="tenant_name">
+        <label for="tenant_name">tenant_name </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s4 offset-s2">
+        <input  id="ad_desc" type="text" class="validate" name="ad_desc" required>
+        <label for="ad_desc">ad_desc</label>
+      </div>
+      <div class="input-field col s4">
+        <input id="deal" type="text" class="validate" name="deal">
+        <label for="deal">deal </label>
+      </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s4 offset-s2">
+        <input  id="floor" type="text" class="validate" name="floor" required>
+        <label for="floor">floor</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s2 offset-s2">
+          <label for="image"><b>Upload image</b></label>
+      </div>
+      <div class="col s1">
+        <span class="btn btn-primary btn-file offset-s1" >
+     <input type="file" id="image" name="image" >
+</span>
+      </div>
+    </div>
+
+    <br>
+
+    <center><button  class="btn btn-success">submit</button></center>
+</form>
+    </div>
+   {% endblock %}

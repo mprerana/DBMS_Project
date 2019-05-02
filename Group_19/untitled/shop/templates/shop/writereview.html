@@ -1,0 +1,13 @@
+{% extends "homepage/base.html" %}
+{% block content %}
+{% load staticfiles %}
+<div class = "container" >
+    <h1>Review:</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Add</button>
+
+        </form>
+
+</div>
+{% endblock %}
