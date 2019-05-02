@@ -1531,7 +1531,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                                             <a href="{% url 'movies_and_cinemas:movie-name' city=city movie_name=i.movie_name  %}"
                                                                                style="background-color:#D4AF37 "
                                                                                onmousedown="this.style.color='white'"
-                                                                               onmouseover="this.style.color='black'">Book
+                                                                               onmouseover="this.style.color='black'"
+                                                                               onmouseleave="this.style.color='white'">Book
                                                                                 Now</a>
 
                                                                             <h5>{{ i.movie_name }}</h5>
@@ -1623,7 +1624,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 <div class="f-buy-tickets">
                                                     <a href="{% url 'movies_and_cinemas:movie-name' city=city movie_name=i.movie_name  %}" style="background-color:#D4AF37 "
                                                                                onmousedown="this.style.color='white'"
-                                                                               onmouseover="this.style.color='black'">BUY TICKETS</a>
+                                                                               onmouseover="this.style.color='black'"
+                                                                               onmouseleave="this.style.color='white'">BUY TICKETS</a>
                                                 </div>
                                             </div>
                                         </li>

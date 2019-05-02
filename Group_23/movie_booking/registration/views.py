@@ -229,9 +229,14 @@ def search(request,city):
     city=city
     if query:
         sort_movie = movie.objects.filter(Q(movie_name__icontains=query) | Q(movie_language__icontains=query))
+        print(sort_movie)
+        movie_name=sort_movie[0].movie_name
+        print(movie_name)
 
-    args = {'sort_movie': sort_movie}
-    return render(request, 'search.html', args)
+    return movie_page(request,city,movie_name)
+    args = {'movie_name': sort_movie,'city':city}
+
+    #return render(request, 'movie-select-show.html', args)
 
 
 #------------------------------------------------------------------------------------------------------------------------

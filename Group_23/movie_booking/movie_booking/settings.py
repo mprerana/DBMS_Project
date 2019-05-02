@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'movies_and_cinemas.apps.MoviesAndCinemasConfig',
     'registration',
     'rest_framework',
@@ -97,6 +98,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'movie_booking.wsgi.application'
 
+GRAPH_MODELS = {
+    'all_applications' : True,
+    'group_models' : True,
+}
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
