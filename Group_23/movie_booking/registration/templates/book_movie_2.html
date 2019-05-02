@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% for class,seat in seats.items  %}
+    {% for each_row,seat_list in seat.items  %}
+        {% for i in seat_list %}
+            <button name="unselected" onclick="if(this.name!='selected'){this.name='selected';}else {this.name='unselected';}if(this.name=='selected'){this.style.background='green';}else {this.style.background='none ';}change_price_details();" style="float:left" class="seat" value="{{ class }}_{{ each_row }}_{{ i }}">{{ class }}{{ each_row }}{{ i }}</button>
+        {% endfor %}
+        <br><br>
+    {% endfor %}
+    <br><br>
+{% endfor %}
+
+<div>
+
+    {% for i in class_and_price %}
+        class : <span class="seat_class">{{ i.class }}</span> price : <span class="seat_price">{{ i.price }}</span><br>
+    {% endfor %}<br>
+    seats selected:<output id="out_seats_selected"></output><br>
+    total price:<output id="out_price"></output><br><br>
+
+</div>
+
+
+<form onsubmit="result_val=selected_seats();this.seats_selected.value=result_val[0];this.total_price.value=result_val[1]" method="post" action="#">
+
+    {% csrf_token %}
+
+    <input type="hidden" name="ticket_id" value={{ ticket_id }}>
+    <input type="hidden" name="seats_selected" value="">
+    <input type="hidden" name="total_price" value="">
+    <input type="submit">
+</form>
+
+{% for class,seat in seats_booked.items  %}
+    {% for each_row,seat_list in seat.items  %}
+        {% for i in seat_list %}
+            <input type="hidden" class="bookedseat" value="{{ class }}_{{ each_row }}_{{ i }}">
+        {% endfor %}
+    {% endfor %}
+{% endfor %}
+
+
+</body>
+<script>
+       function booked(){
+            seats=document.getElementsByClassName("seat");
+            bookedseat=document.getElementsByClassName("bookedseat");
+            for(i=0;i<seats.length;i++){
+                for(j=0;j<bookedseat.length;j++){
+                    if (seats[i].value == bookedseat[j].value){
+                        seats[i].disabled=true;
+                    }
+                }
+            }
+       }
+
+        function selected_seats(){
+
+           seats=document.getElementsByClassName("seat");
+           seats_selected=""
+           for(i=0;i<seats.length;i++){
+               if(seats[i].name=='selected'){
+                   seats_selected=seats_selected+seats[i].value+'-';
+               }
+           }
+
+           total_price=document.getElementById("out_price").value
+           return [seats_selected,total_price];
+
+
+        }
+
+        function change_price_details(){
+
+           seats=document.getElementsByClassName("seat");
+           seats_selected=" "
+           for(i=0;i<seats.length;i++){
+               if(seats[i].name=='selected'){
+                   seats_selected=seats_selected+seats[i].value+'  ';
+               }
+           }
+           document.getElementById("out_seats_selected").value=seats_selected
+           seats_selected=seats_selected.split(' ').filter(Boolean)
+
+           seat_classes=document.getElementsByClassName('seat_class')
+           seat_prices=document.getElementsByClassName('seat_price')
+
+           total_price=0
+
+           for(i=0;i<seat_classes.length;i++){
+            for(j=0;j<seats_selected.length;j++){
+               if(seats_selected[j][0]==seat_classes[i].innerHTML){
+                   total_price=total_price+parseInt(seat_prices[i].innerHTML);
+               }
+           }
+           }
+
+           document.getElementById("out_price").value=total_price
+
+        }
+
+        booked();
+</script>
+</html>

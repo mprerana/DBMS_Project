@@ -1,0 +1,31 @@
+Metadata-Version: 2.0
+Name: django-cryptography
+Version: 0.3
+Summary: Easily encrypt data in Django
+Home-page: https://github.com/georgemarshall/django-cryptography
+Author: George Marshall
+Author-email: george@georgemarshall.name
+License: BSD
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Security :: Cryptography
+Requires-Dist: django-appconf
+Requires-Dist: cryptography
+
+UNKNOWN
+
+

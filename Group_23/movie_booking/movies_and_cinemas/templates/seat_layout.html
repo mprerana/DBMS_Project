@@ -1,0 +1,185 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<div style="background-color: black">
+<head>
+    <title>Movie Seat Selection</title>
+    <link rel="stylesheet" href="{%  static 'css/style.css' %}" type="text/css" >
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+
+    <style>
+        .dot {
+  height: 15px;
+  width: 15px;
+  background-color: #bbb;
+  border-radius: 10%;
+  display: inline-block;
+}
+        .newbutton {
+  background-color: #D4AF37; /* Green */
+  border: none;
+  color: black;
+            font-weight: bold;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+    </style>
+
+
+    <!-- //fonts -->
+</head>
+
+<body onload=" " style="background-color: black;">
+
+    <h1 style="color: #D4AF37;">Movie Seat Selection</h1>
+    <div class="w3-content" style="max-width:2000px;margin-top:90px">
+    <div class="container">
+
+        <div class="sel-reg" style="width: 75%;background-color: white;border-color: #D4AF37;border-width: 5px; ">
+            <!-- input fields -->
+
+      <div style="position: absolute; ">      <!-- //input fields -->
+            <!-- seat availabilty list -->
+            <ul class="seat_sel">
+                <li style="float: left"><span class="dot" style="background-color: red;"></span>&nbsp&nbspNot Available Seat&nbsp&nbsp&nbsp&nbsp<span class="dot" style="background-color: green;"></span>&nbsp&nbspSelected Seat&nbsp&nbsp&nbsp&nbsp
+
+                <span class="dot" style="background-color: #D4AF37"></span>&nbsp&nbspEmpty Seat</li>
+            </ul>
+
+        </div>            <!-- seat availabilty list -->
+            <!-- seat layout -->
+            <div class="seatStructure txt-center" style="overflow-x:auto;margin-top: 100px;margin-left: 120px">
+                <table id="seatsBlock">
+                    <p id="notification"></p>
+
+            {% for class,seat in seats.items  %}
+                {% for each_row,seat_list in seat.items  %}
+                    {% for i in seat_list %}
+                        <button name="unselected" style="background-color: #D4AF37;border-color: black" class='seats'onclick="if(this.name!='selected'){this.name='selected';}else {this.name='unselected';}if(this.name=='selected'){this.style.background='green';}else {this.style.background='#D4AF37 ';}change_price_details();" style="float:left;" class="seat" value="{{ class }}_{{ each_row }}_{{ i }}" ></button>
+                    {% endfor %}
+                    <br><br>
+                {% endfor %}
+                <br><br>
+            {% endfor %}
+                </table>
+
+                <div class="screen">
+                    <h2 class="mss" style="padding: 0.5px;background-color: #D4AF37">Screen this way</h2>
+                </div>
+
+            </div>
+            <!-- //seat layout -->
+            <!-- details after booking displayed here -->
+            <div class="displayerBoxes txt-center" style="overflow-x:auto;">
+                                                             <div>
+
+    {% for i in class_and_price %}
+        Class : <span class="seat_class">{{ i.class }}</span>  ---- Price : <span class="seat_price">{{ i.price }}</span><br>
+    {% endfor %}<br>
+    Seats Selected:<output id="out_seats_selected"></output><br>
+    Net Payable:<output id="out_price"></output><br><br>
+
+</div>
+
+
+<form onsubmit="result_val=selected_seats();this.seats_selected.value=result_val[0];this.total_price.value=result_val[1]" method="post" action="{% url 'movies_and_cinemas:payment' city %}">
+
+    {% csrf_token %}
+
+    <input type="hidden" name="ticket_id" value={{ ticket_id }}>
+    <input type="hidden" name="seats_selected" value="">
+    <input type="hidden" name="total_price" value="">
+    <input type="submit" class="newbutton">
+</form>
+
+{% for class,seat in seats_booked.items  %}
+    {% for each_row,seat_list in seat.items  %}
+        {% for i in seat_list %}
+            <input type="hidden" class="bookedseat" value="{{ class }}_{{ each_row }}_{{ i }}">
+        {% endfor %}
+    {% endfor %}
+{% endfor %}
+
+
+
+            </div>
+            <!-- //details after booking displayed here -->
+        </div>
+    </div></div>
+    <div style="color: black;height: 120px">
+
+    </div>
+    <!-- js -->
+    <!-- script for seat selection -->
+    <script>
+       function booked(){
+            seats=document.getElementsByClassName("seats");
+           bookedseat=document.getElementsByClassName("bookedseat");
+           console.log(seats)
+            for(i=0;i<seats.length;i++){
+                for(j=0;j<bookedseat.length;j++){
+                    if (seats[i].value == bookedseat[j].value){
+                        seats[i].disabled=true;
+                        seats[i].style.background='red';
+                    }
+                }
+            }
+       }
+
+        function selected_seats(){
+
+           seats=document.getElementsByClassName("seats");
+           seats_selected=""
+           for(i=0;i<seats.length;i++){
+               if(seats[i].name=='selected'){
+                   seats_selected=seats_selected+seats[i].value+'-';
+               }
+           }
+
+           total_price=document.getElementById("out_price").value
+           return [seats_selected,total_price];
+
+
+        }
+
+        function change_price_details(){
+
+           seats=document.getElementsByClassName("seats");
+           seats_selected=" "
+           for(i=0;i<seats.length;i++){
+               if(seats[i].name=='selected'){
+                   seats_selected=seats_selected+seats[i].value+'  ';
+               }
+           }
+           document.getElementById("out_seats_selected").value=seats_selected
+           seats_selected=seats_selected.split(' ').filter(Boolean)
+
+           seat_classes=document.getElementsByClassName('seat_class')
+           seat_prices=document.getElementsByClassName('seat_price')
+
+           total_price=0
+
+           for(i=0;i<seat_classes.length;i++){
+            for(j=0;j<seats_selected.length;j++){
+               if(seats_selected[j][0]==seat_classes[i].innerHTML){
+                   total_price=total_price+parseInt(seat_prices[i].innerHTML);
+               }
+           }
+           }
+
+           document.getElementById("out_price").value=total_price
+
+        }
+
+        booked();
+</script>
+</body>
+
+</div>
+
+</html>
