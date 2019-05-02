@@ -1,0 +1,24 @@
+.booktitle {
+  font-size: 35px;
+}
+
+.bauthor {
+  font-family: "Kalam", cursive;
+}
+
+.bgenre {
+  font-family: "Quicksand", sans-serif;
+}
+
+.bbio {
+  font-family: "Quicksand", sans-serif;
+}
+
+.buploader {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.btime {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 300;
+}

@@ -1,0 +1,18 @@
+.lp {
+  background: url("https://i.ibb.co/wWc51NM/login-bg.png") no-repeat center
+    center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: "Righteous", cursive;
+  overflow-x: hidden;
+}
+
+.log_form {
+  padding: 3%;
+}
+
+.signin {
+  font-size: 35px;
+}

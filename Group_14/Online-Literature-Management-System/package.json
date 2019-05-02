@@ -1,0 +1,55 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development --watch ./dbms_project/frontend/src/index.js --output ./dbms_project/frontend/static/frontend/main.js",
+    "build": "webpack --mode production ./dbms_project/frontend/src/index.js --output ./dbms_project/frontend/static/frontend/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psvnbhavanishankar/Online-Literature-Management-System.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/psvnbhavanishankar/Online-Literature-Management-System/issues"
+  },
+  "homepage": "https://github.com/psvnbhavanishankar/Online-Literature-Management-System#readme",
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  },
+  "dependencies": {
+    "animate.css": "^3.7.0",
+    "axios": "^0.18.0",
+    "css-loader": "^2.1.1",
+    "file-loader": "^3.0.1",
+    "jquery": "^3.4.0",
+    "params": "^0.1.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.4",
+    "react-alert": "^5.4.0",
+    "react-alert-template-basic": "^1.0.0",
+    "react-alert-template-oldschool-dark": "^1.0.1",
+    "react-dom": "^16.8.4",
+    "react-dropzone": "^10.0.6",
+    "react-redux": "^6.0.1",
+    "react-router-dom": "^4.4.0",
+    "react-star-rating-lite": "0.0.11",
+    "react-star-ratings": "^2.3.0",
+    "react-transition-group": "^2.6.1",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2"
+  },
+  "description": ""
+}

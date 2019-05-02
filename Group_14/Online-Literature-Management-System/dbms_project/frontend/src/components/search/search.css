@@ -1,0 +1,8 @@
+.scrollable-menu {
+  height: auto;
+  max-height: 250px;
+  overflow-x: hidden;
+  width: 30%;
+  text-align: center;
+  font-family: "Quicksand";
+}
