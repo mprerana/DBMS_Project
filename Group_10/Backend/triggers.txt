@@ -1,0 +1,54 @@
+CREATE FUNCTION public."Populate_User"()
+    RETURNS trigger
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE NOT LEAKPROOF
+AS $BODY$BEGIN
+	IF new."isTeacher" = true THEN
+	INSERT INTO "Teachers"(tid,"createdAt","updatedAt") values(new.userid,new."createdAt",new."updatedAt");
+	ELSE
+	INSERT INTO "Students"(sid,"createdAt","updatedAt") values(new.userid,new."createdAt",new."updatedAt");
+	END IF;
+	RETURN new;
+END;
+$BODY$;
+
+ALTER FUNCTION public."Populate_User"()
+    OWNER TO testuser;
+
+
+CREATE TRIGGER pop_user
+    AFTER INSERT
+    ON public."Users"
+    FOR EACH ROW
+    EXECUTE PROCEDURE public."Populate_User"();
+
+
+----------------------------------------------------------------------------------------
+CREATE FUNCTION public.response_time_validate()
+    RETURNS trigger
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE NOT LEAKPROOF
+AS $BODY$DECLARE
+_starttime timestamp;
+_endtime timestamp;
+BEGIN
+SELECT "starttime" INTO _starttime FROM "quizzes" WHERE "quizzes"."quizid"=new."quizQuizid";
+SELECT "endtime" INTO _endtime FROM "quizzes" WHERE "quizzes"."quizid"=new."quizQuizid";
+
+IF _starttime > current_timestamp OR current_timestamp > _endtime THEN
+RAISE EXCEPTION 'invalid time of submission';
+END IF;
+RETURN NEW;
+END;$BODY$;
+
+ALTER FUNCTION public.response_time_validate()
+    OWNER TO postgres;
+
+
+CREATE TRIGGER response_time_vaidation
+    BEFORE INSERT OR UPDATE
+    OF response ON public."Responses"
+    FOR EACH ROW
+    EXECUTE PROCEDURE public.response_time_validate();
