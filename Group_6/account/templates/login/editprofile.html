@@ -1,0 +1,35 @@
+{% extends 'nav.html' %}
+{% block content %}
+    {% load widget_tweaks %}
+<form action="" method="POST">
+    {%  csrf_token %}
+
+
+<div class="container">
+<center>
+<div style="width: 40% ">
+<form class="text-center border border-light p-5" method="post">
+{% csrf_token %}
+    <h1 class="h4 mb-4">Edit Profile</h1>
+
+    {% for field in form %}
+            {{ field.label_tag }}<br>
+        {{ field|add_class:"form-control mb-4" }}
+     <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+         {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+    </small>
+    {% endfor %}
+    <br>
+    <!-- Sign in button -->
+    <button class="btn btn-info btn-block my-4" type="submit">Change</button>
+
+</form>
+</div>
+</center>
+</div>
+
+
+</form>
+{% endblock %}

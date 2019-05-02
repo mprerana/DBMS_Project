@@ -1,0 +1,47 @@
+{% extends 'nav.html' %}
+{% block content %}
+{% load staticfiles %}
+
+						<!-- start banner Area -->
+			<section class="banner-area relative">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row fullscreen align-items-center justify-content-between">
+                        <div style="width:100%">
+                        {% for booking in book %}
+						<div class="col-lg-8 offset-2 col-md-6 banner-right" style="margin-top: 5px">
+							<div class="tab-content" id="myTabContent">
+							  <div class="tab-pane fade show active" id="flight" role="tabpanel" aria-labelledby="flight-tab">
+                                  <table style="width:100%">
+                                      <tr>
+                                        <th>Adult</th>
+                                        <th>Child</th>
+                                        <th>Infant</th>
+                                          <th>Fare</th>
+                                          <th>Date</th>
+                                      </tr>
+                                      <tr>
+                                        <th>{{ booking.Adults }}</th>
+                                        <th>{{ booking.Child }}</th>
+                                        <th>{{ booking.Infant }}</th>
+                                          <th>{{ booking.Fare }}</th>
+                                          <th>{{ booking.Date }}</th>
+                                      </tr>
+
+                                    </table>
+							</div>
+							</div>
+
+                    </div>
+{% endfor %}
+                        </div>
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->
+
+
+
+    {% endblock %}
+		</body>
+	</html>

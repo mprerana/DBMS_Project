@@ -1,0 +1,125 @@
+{% load staticfiles %}
+	<!DOCTYPE html>
+	<html lang="eng" class="no-js">
+	<head>
+		<!-- Site Title -->
+		<title>Travelista</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+		<style>
+            .newbox{
+                  background: #25383C;
+  line-height: 42px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border: none;
+  color: #fff3cd;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  position: relative;
+
+            }
+        </style>
+		<link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/fontawesome1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+		<link rel="shortcut icon" href="{% static 'img/logo1.png' %}" />
+
+		</head>
+		<body>
+			<header id="header">
+				<div class="container main-menu">
+					<div class="row align-items-center justify-content-between d-flex">
+							<div id="logo">
+								<a href="{% url 'package:index' %}"><img src="{% static 'img/logo.png' %}" alt="" title="" /></a>
+							</div>
+							<nav id="nav-menu-container">
+								<ul class="nav-menu">
+									{% if user.is_authenticated %}
+									<li><a href="{% url 'account:logout' %}">Logout</a></li>
+                                    <li><a href="{% url 'package:bookings' %}">My Bookings</a> </li>
+
+									{% else %}
+									<li><a href="{% url 'login' %}">Login</a></li>
+									{% endif %}
+									<li><a href="{% url 'package:index' %}">Home</a></li>
+									<li><a href="{% url 'package:about' %}">About</a></li>
+									<li><a href="{% url 'package:packages' %}">Packages</a></li>
+
+									<!--<li><a href="{% url 'package:about' %}">Places</a></li>
+									<li><a href="insurance.html">Insurence</a></li>-->
+
+									<li><a href="{% url 'account:contact' %}">Contact</a></li>
+								</ul>
+							</nav><!-- #nav-menu-container -->
+					</div>
+				</div>
+			</header><!-- #header -->
+
+			{% block content %}
+        {% endblock %}
+        <!-- start footer Area -->
+        <footer class="footer-area">
+          <div class="container">
+
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                  <h6>About Agency</h6>
+                  <p>
+                    The world has become so fast paced that people don’t want to stand by reading a page of information, they would much rather look at a presentation and understand the message.In case you have any queries, our 24/7 customer support is always there to assist you.
+                  </p>
+                </div>
+              </div>
+              <div class="col-lg-4 offset-lg-4 col-md-6 col-sm-6">
+                <div class="single-footer-widget mail-chimp">
+                  <h6 class="mb-20">Why book with Travelinsta?</h6>
+                  <p>We keep you updated on exclusive discounts, flash deals and loyalty programs that help you get the best value for money on your flight bookings.With over 1 million happy customers, Travelinsta is committed to making travel easier and more enjoyable for you.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row footer-bottom d-flex justify-content-between align-items-center">
+              <p class="col-lg-8 col-sm-12 footer-text m-0">
+              Copyright &copy;<script>document.write(new Date().getFullYear());
+              </script>
+              All rights reserved |<a> Travelinsta </a>
+              </p>
+              <div class="col-lg-4 col-sm-12 footer-social">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+								<a href="#"><i class="fa fa-youtube-play"></i></a>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!-- End footer Area -->
+
+        <script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+        <script src="{% static 'js/jquery-ui.js' %}"></script>
+          <script src="{% static 'js/easing.min.js' %}"></script>
+        <script src="{% static 'js/hoverIntent.js' %}"></script>
+        <script src="{% static 'js/superfish.min.js' %}"></script>
+        <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+        </body>
+        </html>

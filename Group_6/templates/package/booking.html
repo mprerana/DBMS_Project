@@ -1,0 +1,48 @@
+{% extends 'nav.html' %}
+{% block content %}
+{% load staticfiles %}
+
+						<!-- start banner Area -->
+			<section class="banner-area relative">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row fullscreen align-items-center justify-content-between">
+
+						<div class="col-lg-4 offset-lg-4 col-md-6 banner-right">
+							<div class="tab-content" id="myTabContent">
+							  <div class="tab-pane fade show active" id="flight" role="tabpanel" aria-labelledby="flight-tab">
+								 <div class="newbox" style="margin-left:125px;margin-top:25px;text-align:center;">Booking </div>
+								<form class="form-wrap" method="POST">
+									{{forms.as_p}}
+                                     {% csrf_token %}
+                                    <input class="primary-btn" type="submit" value="submit">
+								</form>
+							</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->
+
+
+
+    {% endblock %}
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>custom</title>
+    <form method="POST">
+        {{forms.as_p}}
+        {% csrf_token %}
+        <input type="submit" value="submit">
+    </form>
+
+</head>
+<body>
+<P></P>
+</body>
+</html>
+-->

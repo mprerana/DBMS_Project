@@ -1,0 +1,13 @@
+{% extends 'nav.html' %}
+{% block content %}
+    {% load widget_tweaks %}
+
+<h2>hotel details upload</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ upload.as_p }}
+    {{ address.as_p }}
+      {{ price.as_p }}
+  <button type="submit">Login</button>
+ </form>
+{% endblock %}

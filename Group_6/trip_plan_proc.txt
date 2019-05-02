@@ -1,0 +1,47 @@
+DELIMITER //
+CREATE PROCEDURE view_a_table(IN table_name VARCHAR(255))
+ BEGIN
+ SET @t1 =CONCAT('SELECT * FROM ',table_name );
+ PREPARE stmt3 FROM @t1;
+ EXECUTE stmt3;
+ DEALLOCATE PREPARE stmt3;
+ END //
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE booking_history(IN user_id INT)
+ BEGIN
+ SELECT auth_user.id,auth_user.first_name,auth_user.last_name,package_trip_package.Title,Adults,Child,Infant,Fare
+ FROM auth_user inner join (package_booking inner join package_trip_package on package_booking.Package_Id_id = package_trip_package.id) on auth_user.id = package_booking.User_Id_id
+ WHERE auth_user.id = user_id ;
+ END //
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE feature_pack(IN key_feature VARCHAR(20))
+ BEGIN
+ SELECT Title
+ FROM package_key_features inner join (package_trip_package_keys inner join package_trip_package on package_trip_package.id=package_trip_package_keys.trip_package_id)
+ on package_key_features.id=package_trip_package_keys.key_features_id
+ WHERE package_key_features.key = key_feature ;
+ END //
+DELIMITER ;
+
+
+
+
+
+create table daily_sales(
+    id INT UNSIGNED NOT NULL Primary Key AUTO_INCREMENT,
+    date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    sales int
+);
+
+
+CREATE EVENT daily_sales
+ON SCHEDULE EVERY 24 Hour STARTS CURRENT_TIMESTAMP
+DO
+   INSERT INTO daily_sales(date,sales)
+   VALUES(NOW(),SELECT sum(Fare) from package_booking);

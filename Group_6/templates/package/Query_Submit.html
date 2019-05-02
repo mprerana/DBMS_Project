@@ -1,0 +1,19 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<h2>Available Packages</h2>
+
+
+    {% for package in packages %}
+    <div class="announcement_form" style="box-sizing: border-box; border: 1px solid white; margin-top: 2%;">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p> {{ package.Title }}</p>
+            <p>{{ package.Description}}</p>
+            <p>{{ package.Day}} Days</p>
+            <p>{{ package.Night}} Nights</p>
+            <p>Rs {{ package.Cost}}</p>
+            <!--<p>{{ann.Date}}<p>-->
+        </form>
+    </div>
+    {% endfor %}
+
+

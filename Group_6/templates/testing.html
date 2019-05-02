@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% for package in packages %}
+    {% for details in package_detail %}
+
+    <p>{{ details.Package_Id }}
+        {{ details.Title }}</p>
+    {% endfor %}
+
+{% endfor %}
+
+</body>
+</html>

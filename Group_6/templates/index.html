@@ -1,0 +1,252 @@
+{% extends 'nav.html' %}
+{% block content %}
+{% load staticfiles %}
+
+						<!-- start banner Area -->
+			<section class="banner-area relative">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row fullscreen align-items-center justify-content-between">
+						<div class="col-lg-6 col-md-6 banner-left">
+							<h6 class="text-white">Away from monotonous life</h6>
+							<h1 class="text-white">Magical Travel</h1>
+							<p class="text-white">
+								“Go, fly, roam, travel, voyage, explore, journey, discover, adventure.”
+							</p>
+							<a href="#" class="primary-btn text-uppercase">Get Started</a>
+						</div>
+						<div class="col-lg-4 col-md-6 banner-right">
+							<div class="tab-content" id="myTabContent">
+							  <div class="tab-pane fade show active" id="flight" role="tabpanel" aria-labelledby="flight-tab">
+								<form class="form-wrap" method="POST">
+									{% csrf_token %}
+									{{ forms.as_p }}
+								<button type="submit" class="primary-btn text-uppercase">Search Holidays</button>
+								</form>
+							</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->
+
+
+						<!-- Start hot-deal Area -->
+						<section class="hot-deal-area section-gap">
+							<div class="container">
+					            <div class="row d-flex justify-content-center">
+					                <div class="menu-content pb-70 col-lg-8">
+					                    <div class="title text-center">
+					                        <h1 class="mb-10">Today’s Hot Deals</h1>
+					                        <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast, day to.</p>
+					                    </div>
+					                </div>
+					            </div>
+								<div class="row justify-content-center">
+									<div class="col-lg-10 active-hot-deal-carusel">
+										<div class="single-carusel">
+											<div class="thumb relative">
+												<div class="overlay overlay-bg"></div>
+												<img class="img-fluid" src="{% static 'img/packages/photo1.jpg' %}" alt="">
+											</div>
+											<div class="price-detials">
+												<a href="#" class="price-btn">Starting From <span>Rs 12999</span></a>
+											</div>
+											<div class="details">
+												<h4 class="text-white">Ancient Architecture</h4>
+												<p class="text-white">
+													Delhi
+												</p>
+											</div>
+										</div>
+										<div class="single-carusel">
+											<div class="thumb relative">
+												<div class="overlay overlay-bg"></div>
+												<img class="img-fluid" src="{% static 'img/packages/photo4.jpg' %}">
+											</div>
+											<div class="price-detials">
+												<a href="#" class="price-btn">Starting From <span>Rs 12599</span></a>
+											</div>
+											<div class="details">
+												<h4 class="text-white">Ancient Architecture</h4>
+												<p class="text-white">
+													Khajuraho
+												</p>
+											</div>
+										</div>
+										<div class="single-carusel">
+											<div class="thumb relative">
+												<div class="overlay overlay-bg"></div>
+												<img class="img-fluid" src="{% static 'img/packages/photo3.jpg' %}" alt="">
+											</div>
+											<div class="price-detials">
+												<a href="#" class="price-btn">Starting From <span>Rs 12999</span></a>
+											</div>
+											<div class="details">
+												<h4 class="text-white">Ancient Architecture</h4>
+												<p class="text-white">
+													Delhi
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- End hot-deal Area -->
+
+			<!-- Start popular-destination Area -->
+
+<div class="container text-center my-3">
+	<h1 class="mb-10">Popular Destinations</h1>
+	<p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast, day.</p>
+
+    <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
+        <div class="carousel-inner w-100 ">
+            <div class="carousel-item row no-gutters active">
+                <div class="col-md-4 float-left single-destination"><img class="img-fluid image1" style="width:360%;" src="{% static 'img/packages/photo6.jpg' %}">
+									<div class="desc">
+										<a href="http://127.0.0.1:8000/package/details/3/" class="price-btn">Mysore</a>
+									</div>
+								 </div>
+								 <div class="col-md-4 float-left single-destination"><img class="img-fluid image1" style="width:360%;" src="{% static 'img/packages/photo8.jpg' %}">
+ 									<div class="desc">
+ 										<a href="http://127.0.0.1:8000/package/details/3/" class="price-btn">Madurai</a>
+ 									</div>
+ 								 </div>
+								 <div class="col-md-4 float-left single-destination"><img class="img-fluid image1" style="width:360%;" src="{% static 'img/packages/photo10.jpg' %}">
+ 									<div class="desc">
+ 										<a href="http://127.0.0.1:8000/package/details/9/" class="price-btn">Sikkim</a>
+ 									</div>
+ 								 </div>
+
+            </div>
+
+						<div class="carousel-item row no-gutters">
+							<div class="col-lg-4 float-left single-destination"><img class="img-fluid" style="width:360%;" src="{% static 'img/packages/photo1.jpg' %}">
+								<div class="desc">
+									<a href="http://127.0.0.1:8000/package/details/9/" class="price-btn">Delhi</a>
+								</div>
+							</div>
+							<div class="col-md-4 float-left single-destination"><img class="img-fluid image1" style="width:360%;" src="{% static 'img/packages/photo3.jpg' %}">
+								<div class="desc">
+									<a href="http://127.0.0.1:8000/package/details/7/" class="price-btn">Jodhpur</a>
+								</div>
+							 </div>
+							 <div class="col-md-4 float-left single-destination"><img class="img-fluid image1" style="width:360%;" src="{% static 'img/packages/photo4.jpg' %}">
+ 								<div class="desc">
+ 									<a href="http://127.0.0.1:8000/package/details/4/" class="price-btn">Jaipur</a>
+ 								</div>
+ 							 </div>
+
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#recipeCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#recipeCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+			<!-- End popular-destination Area -->
+
+
+			<!-- Start other-issue Area -->
+			<section class="other-issue-area section-gap">
+				<div class="container">
+		            <div class="row d-flex justify-content-center">
+		                <div class="menu-content pb-70 col-lg-9">
+		                    <div class="title text-center">
+		                        <h1 class="mb-10">Other issues we can help you with</h1>
+		                        <p>We all live in an age that belongs to the young at heart. Life that is.</p>
+		                    </div>
+		                </div>
+		            </div>
+					<div class="row">
+						<div class="col-lg-3 col-md-6">
+							<div class="single-other-issue">
+								<div class="thumb">
+									<img class="img-fluid" src="{% static 'img/o1.jpg' %}" alt="">
+								</div>
+								<a href="#">
+									<h4>Rent a Car</h4>
+								</a>
+								<p>
+									The preservation of human life is the ultimate value, a pillar of ethics and the foundation.
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<div class="single-other-issue">
+								<div class="thumb">
+									<img class="img-fluid" src="{% static 'img/o2.jpg' %}" alt="">
+								</div>
+								<a href="#">
+									<h4>Cruise Booking</h4>
+								</a>
+								<p>
+									I was always somebody who felt quite sorry for myself, what I had not got compared.
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<div class="single-other-issue">
+								<div class="thumb">
+									<img class="img-fluid" src="{% static 'img/o3.jpg' %}" alt="">
+								</div>
+								<a href="#">
+									<h4>To Do List</h4>
+								</a>
+								<p>
+									The following article covers a topic that has recently moved to center stage–at least it seems.
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<div class="single-other-issue">
+								<div class="thumb">
+									<img class="img-fluid" src="{% static 'img/o4.jpg' %}" alt="">
+								</div>
+								<a href="#">
+									<h4>Food Features</h4>
+								</a>
+								<p>
+									There are many kinds of narratives and organizing principles. Science is driven by evidence.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End other-issue Area -->
+
+			<!-- Start home-about Area -->
+			<section class="home-about-area">
+				<div class="container-fluid">
+					<div class="row align-items-center justify-content-end">
+						<div class="col-lg-6 col-md-12 home-about-left">
+							<h1>
+								Did not find your Package? <br>
+								Feel free to ask us. <br>
+								We‘ll make it for you
+							</h1>
+							<p>
+								inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach. inappropriate behavior is often laughed.
+							</p>
+							<a href="{% url 'package:custom' %}" class="primary-btn text-uppercase">request custom price</a>
+						</div>
+						<div class="col-lg-6 col-md-12 home-about-right no-padding">
+							<img class="img-fluid" src="{% static 'img/packages/photo2.jpg' %}" alt="">
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End home-about Area -->
+
+    {% endblock %}
+		</body>
+	</html>

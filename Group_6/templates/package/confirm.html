@@ -1,0 +1,42 @@
+{% extends 'nav.html' %}
+{% block content %}
+{% load staticfiles %}
+
+						<!-- start banner Area -->
+			<section class="banner-area relative">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row fullscreen align-items-center justify-content-between">
+
+						<div class="col-lg-12 col-md-6 banner-right">
+							<div class="tab-content" id="myTabContent">
+							  <div class="tab-pane fade show active text-xs-center" id="flight" role="tabpanel" aria-labelledby="flight-tab">
+
+                                    <div class="jumbotron text-xs-center">
+                                      <h1 class="display-3 text-xs-center" style="text-align: center">Thank You!</h1>
+                                      <p class="lead" style="text-align: center"><strong>Please check your email</strong> for further instructions on how to complete your account setup.</p>
+                                      <hr>
+                                      <p style="text-align: center">
+                                        Having trouble? <a href="">Contact us</a>
+                                      </p>
+                                      <p class="lead" style="text-align: center">
+                                        <a class="btn btn-primary btn-sm" href="{% url 'package:index' %}" role="button">Continue to homepage</a>
+                                      </p>
+                                    </div>
+
+							</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->
+
+
+
+    {% endblock %}
+
+
+
+
+

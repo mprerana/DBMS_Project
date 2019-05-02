@@ -1,0 +1,70 @@
+CREATE TABLE favoured_city (
+    city_name VARCHAR(128)  NOT NULL PRIMARY KEY,
+    no_of_users INT default 0
+);
+
+
+
+INSERT INTO favoured_city 
+SELECT package_city.Name , COUNT(package_booking.id) as count_booking 
+FROM package_booking right JOIN 
+(package_trip_package_cities inner JOIN package_city ON package_city.id = package_trip_package_cities.city_id) 
+ON package_booking.Package_Id_id = package_trip_package_cities.trip_package_id GROUP BY package_city.Name ORDER BY count_booking DESC;
+
+
+DELIMITER $$
+
+CREATE TRIGGER favoured_dest
+AFTER INSERT ON package_booking
+FOR EACH ROW
+BEGIN
+  
+  UPDATE favoured_city 
+  SET no_of_users = no_of_users + 1
+  WHERE city_name IN (select package_city.Name FROM package_booking inner JOIN 
+		(package_trip_package_cities inner JOIN package_city ON package_city.id = package_trip_package_cities.city_id) 
+		ON package_booking.Package_Id_id = package_trip_package_cities.trip_package_id where package_booking.id=NEW.id);
+
+END;
+$$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+CREATE TRIGGER favoured_dest1
+BEFORE DELETE ON package_booking
+FOR EACH ROW
+BEGIN
+  
+  UPDATE favoured_city 
+  SET no_of_users = no_of_users - 1
+  WHERE city_name IN (select package_city.Name FROM package_booking inner JOIN 
+		(package_trip_package_cities inner JOIN package_city ON package_city.id = package_trip_package_cities.city_id) 
+		ON package_booking.Package_Id_id = package_trip_package_cities.trip_package_id where package_booking.id=OLD.id);
+
+END;
+$$
+
+DELIMITER ;
+
+
+
+CREATE TABLE pack (
+    pack_name VARCHAR(128)  NOT NULL PRIMARY KEY,
+    no_of_bookings int default 0,
+    days int not null,
+    nights int not null
+);
+
+
+INSERT INTO pack 
+SELECT Title,count(package_booking.id),Day,Night
+FROM package_booking right JOIN package_trip_package 
+ON package_booking.Package_Id_id = package_trip_package.id GROUP BY package_trip_package.Title;
+
+
+
+
+
