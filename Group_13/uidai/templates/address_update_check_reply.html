@@ -1,0 +1,43 @@
+{% extends 'basic_layout1.html' %}
+
+{% block content %}
+  <div class="container">
+    <h5>Address update proof check</h5>
+    <div class="col s12 m7">
+      <div class="card horizontal">
+        <div class="card-image">
+          <iframe  src="{{ details.0.13}}" width="400" height="600"></iframe>
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <form class="" action="{% url 'address_update_check_reply' id %}" method="post">
+              {% csrf_token %}
+              Aadhar Number: {{ id }}<br/>
+              C/O:<input type="text" name="C/O" id="C/O" value="{{ details.0.1}}" disabled><br/>
+              House:<input type="text" name="House" id="House" value="{{ details.0.2}}" disabled><br/>
+              Street:<input type="text" name="Street" id="Street" value="{{ details.0.3}}" disabled><br/>
+              Landmark:<input type="text" name="Landmark" id="Landmark" value="{{ details.0.4}}" disabled><br/>
+              Area:<input type="text" name="Area" id="Area" value="{{ details.0.5}}" disabled><br/>
+              PinCode:<input type="number" name="PinCode" id="PinCode" value="{{ details.0.6}}" disabled><br/>
+              Town:<input type="text" name="Town" id="Town" value="{{ details.0.7}}" disabled><br/>
+              Postoffice:<input type="text" name="Postoffice" id="Postoffice" value="{{ details.0.8}}" disabled><br/>
+              District:<input type="text" name="District" id="District" value="{{ details.0.9}}" disabled><br/>
+              State:<input type="text" name="State" id="State" value="{{ details.0.10}}" disabled><br/>
+              proof Type:<input type="text" name="proof_Type" id="proof_Type" value="{{ details.0.11}}" disabled><br/>
+
+          <div class="card-action">
+            <div class="card-content grey lighten-4">
+              <button type="submit" name="Accept" id="Accept" class="waves-effect waves-light btn Center">Accept</button>
+              <button type="submit" name="Reject" id="Reject" class="waves-effect waves-light btn Center">Reject</button>
+            </div>
+
+            <!--<button type="submit" name="Accept" id="Accept" value="1">Accept</button>
+            <button type="submit" name="Reject" id="Reject" value="1">Reject</button>-->
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

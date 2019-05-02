@@ -1,0 +1,20 @@
+{% extends 'test.html' %}
+
+{% block content %}
+  <div class="container">
+    <h5>Bank Linking Status:</h5>
+    <div class="card hoverable">
+      <div class="card-content">
+        {% for i in details %}
+          <div class="card-content grey lighten-4">
+            Aadhar Number: {{i.1}} <br>
+            Bank Name: {{i.2}} <br>
+            Bank Account No: {{i.0}} <br>
+
+          </div> <br>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

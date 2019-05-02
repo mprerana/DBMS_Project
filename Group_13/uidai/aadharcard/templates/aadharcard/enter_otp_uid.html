@@ -1,0 +1,19 @@
+{% extends 'test.html' %}
+{% block content %}
+  <div class="container">
+    <div class="card hoverable">
+      <div class="card-content">
+
+        <form class="" action="{% url 'aadharcard:otp_verify' %}" method="post">
+          {% csrf_token %}
+          <b>Enter received otp:</b>
+          <input type="hidden" name="phone_num" value="{{ phone_num }}">
+          <input type="number" name="otp" value="">
+          <div class="card-content grey lighten-4">
+            <button type="submit" name="button" class="waves-effect waves-light btn Center">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

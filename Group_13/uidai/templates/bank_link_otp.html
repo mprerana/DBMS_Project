@@ -1,0 +1,20 @@
+{% extends 'test.html' %}
+
+{% block content %}
+  <div class="container">
+    <h5>Bank Linking Status:</h5>
+    <div class="card hoverable">
+      <div class="card-content">
+        <form class="" action='{% url "service:bank_linking_otp" %}' method="post">
+          {% csrf_token %}
+          <input type="hidden" name="aadhar_num" value="{{aadhar_num}}" id="Aadhar_num" maxlength="16" required="True">
+          Enter otp: <input type="number" name="otp" id="otp">
+          <div class="card-content grey lighten-4">
+            <button type="submit" name="button" class="waves-effect waves-light btn Center">Verify</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

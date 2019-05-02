@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+{% extends 'test.html' %}
+{% block content %}
+
+<html lang="en" dir="ltr">
+
+<head>
+  <head>
+    <title>home</title>
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"></head>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" rel="stylesheet" />
+</head>
+ <body>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('.slider').slider();
+  });
+  </script>
+	<div class="slider">
+	   <ul class="slides">
+	     <li>
+	       <img src="https://uidai.gov.in/images/banner/Welcome-My-Aadhaar_Web.png">
+	     </li>
+	     <li>
+	       <img src="https://uidai.gov.in/images/banner/666.png" height="30%">
+	     </li>
+	     <li>
+	       <img src="https://uidai.gov.in/images/banner/111.png" height="30%">
+	     </li>
+	     <li>
+	       <img src="https://uidai.gov.in/images/banner/222.png" height="30%">
+	     </li>
+	     <li>
+	       <img src="https://uidai.gov.in/images/banner/333.png" height="30%">
+	     </li>
+	     <li>
+	       <img src="https://uidai.gov.in/images/banner/555.png" height="30%">
+	     </li>
+	   </ul>
+	 </div>
+   <style>
+     .card{
+       width:100%;
+       background-color: #404040;
+     }
+   </style>
+         <div class="row">
+           <div class="col s12 m6">
+           	<br>
+             <div class="card" style="left:50px;">
+               <div class="card-content white-text">
+                 <span class="card-title"><b>Get Aadhar</b></span>
+                 <p><span style="color:green  ;">Aadhaar is for every Resident of India.</span>
+                   From a new born to a senior citizen, everyone can enrol for Aadhaar.</p>
+                    From a new born to a senior citizen, everyone can enrol for Aadhaar.                   From a new born to a senior citizen, everyone can enrol for Aadhaar.              </div>
+               <div class="card-action">
+                 <a href="{% url 'aadharcard:download' %}">Download Aadhar</a>
+                 <a href="{% url 'nearest_centre' %}">Locate an Enrolment Center</a>
+               </div>
+             </div>
+           </div>
+           <div class="col s12 m6">
+           	<div class="co" align="right" height="20px">
+          	 	<div class="co" align="right" height="20px">
+				<blockquote class="twitter-tweet" data-cards="hidden" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/hashtag/AadhaarEssentials?src=hash&amp;ref_src=twsrc%5Etfw">#AadhaarEssentials</a>  Use &#39;Aadhaar Update History&#39; service - <a href="https://t.co/gxWvi44i1s">https://t.co/gxWvi44i1s</a> to get a chronological view of updates done in your Aadhaar details. Watch tutorial on the service here: <a href="https://t.co/iYC7dN8PGx">https://t.co/iYC7dN8PGx</a> <a href="https://t.co/VEFetso2aa">pic.twitter.com/VEFetso2aa</a></p>&mdash; Aadhaar (@UIDAI) <a href="https://twitter.com/UIDAI/status/1123473219099549696?ref_src=twsrc%5Etfw">May 1, 2019</a></blockquote>
+				<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+			</div>
+			</div>
+           </div>
+         </div>
+
+         <div class="row">
+           <div class="col s12 m6">
+
+             <div class="card" style="left:50px;">
+               <div class="card-content white-text">
+                 <span class="card-title"><b>Update Aadhar</b></span>
+                 <p><span style="color:green;">Aadhaar is for every Resident of India.</span>
+                   From a new born to a senior citizen, everyone can enrol for Aadhaar.
+                   From a new born to a senior citizen, everyone can enrol for Aadhaar.                   From a new born to a senior citizen, everyone can enrol for Aadhaar.                   From a new born to a senior citizen, everyone can enrol for Aadhaar.               </p>
+                    From a new born to a senior citizen, everyone can enrol for Aadhaar.                   From a new born to a senior citizen, everyone can enrol for Aadhaar.                   From a new born senior citizen, everyone can enrol for Aadhaar.              </div>
+               <div class="card-action">
+                 <a href="#">Download Aadhar</a>
+                 <a href="#">Check Aadhar status</a>
+               </div>
+             </div>
+           </div>
+           <div class="col s12 m6">
+           	<div class="co" align="right" height="20px">
+				<blockquote class="twitter-tweet" data-cards="hidden" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/hashtag/AadhaarEssentials?src=hash&amp;ref_src=twsrc%5Etfw">#AadhaarEssentials</a> The slip received after completion of Aadhaar enrolment/ update process is very imp. Note down your EID (Enrolment ID) or URN (Update Request Number) along with Date &amp; Time Stamp mentioned on the slip. This number can be used to track your Aadhaar status later. <a href="https://t.co/cmJIT4kEXP">pic.twitter.com/cmJIT4kEXP</a></p>&mdash; Aadhaar (@UIDAI) <a href="https://twitter.com/UIDAI/status/1122728863857909760?ref_src=twsrc%5Etfw">April 29, 2019</a></blockquote>
+				<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+			</div>
+			</div>
+           </div>
+         </div>
+
+
+         <div class="row">
+           <div class="col s12 m6">
+
+             <div class="card" style="left:50px;">
+               <div class="card-content white-text">
+                 <span class="card-title"><b>Aadhar Services</b></span>
+                 <p><span style="color:green;">Aadhaar is for every Resident of India.</span>
+                   From a new born to a senior citizen, everyone can enrol for Aadhaar.</p>
+                   From a new born to a senior citizen, everyone can enrol for Aadhaar.                   From a new born to a senior citizen, everyone can enrol for Aadhaar.                   From a new born to a senior citizen, everyone can enrol for Aadhaar.                   From a new born to a senior citizen, everyone can enrol for Aadhaar.               </div>
+               <div class="card-action">
+                 <a href="#">Download Aadhar</a>
+                 <a href="#">Check Aadhar status</a>
+               </div>
+           <div class="col s12 m6">
+           	<div class="co" align="center" width="100px">
+           		<br><br>
+				<blockquote class="twitter-tweet" data-cards="hidden" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/hashtag/AadhaarEssentials?src=hash&amp;ref_src=twsrc%5Etfw">#AadhaarEssentials</a> The slip received after completion of Aadhaar enrolment/ update process is very imp. Note down your EID (Enrolment ID) or URN (Update Request Number) along with Date &amp; Time Stamp mentioned on the slip. This number can be used to track your Aadhaar status later. <a href="https://t.co/cmJIT4kEXP">pic.twitter.com/cmJIT4kEXP</a></p>&mdash; Aadhaar (@UIDAI) <a href="https://twitter.com/UIDAI/status/1122728863857909760?ref_src=twsrc%5Etfw">April 29, 2019</a></blockquote>
+				<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+			</div>
+			</div>
+             </div>
+           </div>
+           <div class="col s12 m6">
+           	<div class="co" align="right" height="20px">
+          	 	<div class="co" align="right" height="20px">
+				<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FAadhaarOfficial%2Fposts%2F2398835927066967&width=500" width="500" height="709" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+			</div>
+			</div>
+           </div>
+         </div>
+
+  </body>
+</html>
+{% endblock %}

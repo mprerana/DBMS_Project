@@ -1,0 +1,18 @@
+{% extends 'test.html' %}
+
+{% block content %}
+  <div class="container">
+    <h5>Check Complaint Status:</h5>
+    <div class="card hoverable">
+      <div class="card-content">
+        <form class="" action='{% url "service:complaint_status" %}' method="post">
+          {% csrf_token %}
+          Complaint ID: <input type="number" name="enrolled_ID" id="enrolled_ID" maxlength="16" required="True">
+          Security Code: {{ form }}
+          <button type="submit" name="button">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

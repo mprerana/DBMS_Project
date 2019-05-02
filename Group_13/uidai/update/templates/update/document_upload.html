@@ -1,0 +1,37 @@
+{% extends 'test.html' %}
+{% block content %}
+  <div class="container">
+    <center><h5>Update Address Online</h5></center>
+    <div class="card hoverable">
+      <div class="card-content">
+
+        <form class="" action="{% url 'update:submit_document' %}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <b>Proof of address:</b>
+          <input type="hidden" name="aadhar_num" value="{{ aadhar_num }}">
+          <div class="input-field col s12">
+          <div class="">
+            <select class="browser-default" name="type">
+              <option value="passport">Passport</option>
+              <option value="voterid">Voter_id</option>
+              <option value="rationcard">Ration card</option>
+              <option value="license">Driving License</option>
+          </select>
+          </div>
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              var elems = document.querySelectorAll('select');
+              var instances = M.FormSelect.init(elems, options);
+            });
+          </script>
+          </div>
+          <b>Select file and upload:</b>
+          <input type="file" name="proof" accept="image/*">
+          <div class="card-content grey lighten-4">
+            <button type="submit" name="button" class="waves-effect waves-light btn Center">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

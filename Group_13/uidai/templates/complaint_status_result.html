@@ -1,0 +1,29 @@
+{% extends 'test.html' %}
+{% load static %}
+{% block content %}
+  <div class="container">
+    <h5>Complaint Status:</h5>
+    <div class="col s12 m7">
+      <div class="card horizontal">
+        <div class="card-image">
+          {% if status %}
+            <img src="{% static 'images/success.png' %}" style="height: 150px; width:150px">
+          {% else %}
+            <img src="{% static 'images/reject.svg' %}" style="height: 150px; width:150px">
+          {% endif %}
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            Complaint ID: {{Complaint_id}} <br/>
+            Reply on Complaint: {{Complaint_reply }} <br/>
+            Complaint Status: {{ Complaint_status }}
+          </div>
+          <div class="card-action">
+          <center>  <a href="#">Register Complaint</a> </center>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

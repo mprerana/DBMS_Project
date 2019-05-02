@@ -1,0 +1,127 @@
+{% load static from staticfiles %}
+{% load widget_tweaks %}
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> Home </title>
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+  </head>
+
+  <script>
+  $(document).ready(function(){
+    $('.dropdown-trigger').dropdown();
+  });
+  </script>
+
+  <style>
+    .nav-content {
+      background: linear-gradient(to right, #1a237e , #29b6f6);
+    }
+    #pic1{
+      margin-left: 50px;
+    }
+    #pic2{
+      margin-left: 850px;
+    }
+  </style>
+
+
+  <body>
+    <header>
+
+      <nav class="nav-extended">
+        <div class="nav-wrapper white">
+            <img id="pic1" src="{% static 'images/pic1.jpg' %}">
+            <img id="pic2" src="{% static 'images/pic2.jpg' %}">
+        </div>
+
+        <div class="nav-content" id="dropdown">
+          <ul class="tabs tabs-transparent">
+            <li ><a class = "dropdown-trigger" data-target='dropdown1' href="#test1">My Aadhaar</a></li>
+            <li ><a href="#test2">About UIDAI</a></li>
+            <li ><a href="#test2">Ecosystem</a></li>
+            <li ><a href="#test4">Media&Resourses</a></li>
+            <li ><a href="#test2">Contact&Support</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="card hoverable">
+        <div class="card-content">
+
+          <form class="" action="" method="post">
+            {% csrf_token %}
+            <div class="row">
+              <form class="col s12">
+
+                <div class="row">
+                  <div class="input-field col s4">
+                    <input placeholder="Placeholder" id="Enrolment_ID" type="text" class="validate">
+                    <label for="Enrolment ID">Enrolment ID</label>
+                  </div>
+
+                  <div class="input-field col s4">
+                    <input placeholder="Placeholder" id="Enrolment_Time" type="text" class="validate">
+                    <label for="Time">Time</label>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="input-field col s4">
+                    <input placeholder="Placeholder" id="Enter Security Code" type="text" class="validate">
+                    <label for="Enter Security Code">Enter Security Code</label>
+                  </div>
+                  <div class="input-field col s4">
+
+                  <!--  <div class="g-recaptcha" data-sitekey="6LffNpcUAAAAAMe4flz5CIVIRkFMiPqROLM49AiD"></div>-->
+                  </div>
+                </div>
+              </form>
+            </div>
+          </form>
+        </div>
+
+        <div class="card-content grey lighten-4">
+          <button type="submit" class="waves-effect waves-light btn">Check Status</button>
+        </div>
+      </div>
+    </div>
+
+    {% block content %}
+
+    {% endblock %}
+
+    <footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Footer Content</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2014 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+        </footer>
+  </body>
+</html>

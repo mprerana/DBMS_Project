@@ -1,0 +1,61 @@
+{% extends 'test.html' %}
+
+{% block content %}
+  <div class="container">
+    <h5>Aadhar Update History:</h5>
+    <div class="card hoverable">
+      <div class="card-content">
+  <table id="history">
+    <tr>
+
+        <th>Enroll_Id:&nbsp</th>
+        <th>Name:&nbsp&nbsp&nbsp</th>
+        <th>Mobile_number:&nbsp</th>
+        <th>Mail_Id:&nbsp</th>
+      <th>D.O.B:&nbsp&nbsp&nbsp</th>
+        <th>Gender:&nbsp</th>
+
+        <th>Area:&nbsp</th>
+       <th> Pincode:&nbsp</th>
+      <th>Date of Update:&nbsp&nbsp&nbsp</th>
+    </tr>
+      {% for row in details %}
+
+          <tr>
+
+             <td>
+                 {{ row.1 }}
+             </td>
+              <td>
+                 {{ row.2 }}
+             </td>
+           <td>
+                 {{ row.3 }}
+             </td>
+           <td>
+                 {{ row.4 }}
+             </td>
+           <td>
+                 {{ row.5 }}
+             </td>
+           <td>
+                 {{ row.6 }}
+             </td>
+
+           <td>
+                 {{ row.8 }}
+             </td>
+           <td>
+                 {{ row.9 }}
+             </td>
+           <td>
+                 {{ row.7 }}
+             </td>
+          </tr>
+      {% endfor %}
+  </table><br>
+</div>
+</div>
+</div>
+
+{% endblock %}

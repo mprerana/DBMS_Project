@@ -1,0 +1,12 @@
+<htlm>
+	<body>
+		hello
+		/{{ file }}.xml
+		<a href="/{{ file }}.xml" id = "auto_download" download hidden ></a>
+		<a href="http://127.0.0.1:8000/test/" id = "to_home" target="_blank"></a>
+	</body>
+	<script>
+			document.getElementById('auto_download').click();
+    	document.getElementById('to_home').click();
+	</script>
+</html>

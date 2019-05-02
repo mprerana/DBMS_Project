@@ -1,0 +1,120 @@
+<html>
+<head>
+{% load staticfiles %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+function check_enroll_id(element) {
+	$("#enroll_ok").hide();
+	$("#enroll_not").hide();
+	enroll_ID= $(element).val();
+	if (enroll_ID == "") {
+		return;
+	}
+	$.ajax({
+		url : $(element).attr("data-url"),
+		data : {
+			"csrfmiddlewaretoken" : $(element).siblings("input[name='csrfmiddlewaretoken']" ).val(),
+			"enroll_ID":enroll_ID
+		},
+		method: "POST",
+		dataType : "json",
+		success : function (data) {
+			//console.log(data);
+			if (data.is_success) {
+				$("#enroll_ok").show();
+			} else {
+				$("#enroll_not").show();
+			}
+		}
+	});
+}
+
+
+</script>
+
+<script>
+function autofill1_check(element) {
+	pin_Code= $(element).val();
+	if (pin_Code == "") {
+		return;
+	}
+	$.ajax({
+		url : $(element).attr("data-url"),
+		data : {
+			"csrfmiddlewaretoken" : $(element).siblings("input[name='csrfmiddlewaretoken']" ).val(),
+		},
+		"pin_Code":pin_Code
+		method: "POST",
+		dataType : "json",
+		success : function (data) {
+			//console.log(data);
+			if (data.is_sucess) {
+				$("#city").val(data.Region);
+			}
+		}
+	});
+}
+</script>
+
+
+</head>
+<body>
+
+
+
+
+<form class="" action='{% url "service:autofill1" %}' method="post">
+
+	<div class="col-md-4">
+      {% csrf_token %}
+			enrollment ID:<input type="number" class="form-control input-sm" name="enroll_ID" id="enroll_ID" placeholder="Login or Username" required="True" maxlength="40" onkeyup="check_enroll_id(this);return false;" data-url="{% url "service:check_enroll_id" %}"/>
+			enrollment Time:
+			Name:<input type="text" name="Name" id="Name" placeholder="Name" required="True">
+			Email:<input type="email" name="Email" id="Email" placeholder="Email" required="True">
+			Phone No:<input type="number" name="Phone_No" id="Phone_No" placeholder="Phone No" maxlength="10" required="True">
+			pincode:<input type="number" class="form-control input-sm" name="pin_Code" id="pin_Code" placeholder="pincode" required="True" maxlength="6" onkeyup="autofill1_check(this);return false;" data-url="{% url "service:autofill1_check" %}"/>
+      city:<input type="text" name="city" id="city" placeholder="city"/>
+			<div class="col-xs-6">
+      <!--
+      <select class="form-control" name="select1" id="select1">
+        <option value="1">test</option>
+        <option value="2">Operator/Enrollment Agency</option>
+      </select> -->
+    </div>
+    <div class="col-xs-6">
+      Complaint Type:
+      <select class="form-control" name="select2" id="select2">
+        <option value="1">select</option>
+        <option value="2">Rude Operator</option>
+        <option value="3">Operator denying enrollment</option>
+        <option value="4">Ackwnoledgement receipt not provided</option>
+        <option value="5">Form not available</option>
+        <option value="6">Operator staff not available</option>
+        <option value="7">Inadequate facilities in premises</option>
+        <option value="8">Operator entering incorrect data despite being alerted</option>
+        <option value="9">Agency not available despite mentioning in UIDAI website</option>
+        <option value="10">Corruption</option>
+				<option value="11">Delivery issues</option>
+      </select>
+    </div>
+				<!--	<input type="text" name="Complaint_Type" id="Complaint_Type" placeholder="Complaint Type" required="True">-->
+			<!--<input type="text" name="Category" id="Category" placeholder="Categorey" required="True">-->
+			Remarks:<input type="text" name="Remarks" id="Remarks" placeholder="Remarks" required="True">
+      {{ form }}
+
+	</div>
+	<div class="" style="color:green;display:none;margin-top: 4px;"  id="enroll_not">
+	    <span class=""></span> Enrollment ID exsits
+	</div>
+	<div class="" style="color: red;display: none;margin-top: 4px;" id="enroll_ok">
+	    <span class="glyphicon glyphicon-ok"></span> Enrollment ID does'nt exsits
+	</div>
+	<button type="submit" name="button">Submit</button>
+</form>
+
+</body>
+
+</html>

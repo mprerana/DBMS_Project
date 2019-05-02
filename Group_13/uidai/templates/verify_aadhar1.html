@@ -1,0 +1,22 @@
+{% extends 'test.html' %}
+
+{% block content %}
+  <div class="container">
+    <h5>Verify Aadhar:</h5>
+    <div class="card hoverable">
+      <div class="card-content">
+
+          <div class="card-content grey lighten-4">
+
+            <b><u>Aadhar Number</u></b>: {{aadhar_check.0}} <br>
+            <b><u>Status</u></b>: Aadhar number exists<br>
+            <b><u>Name</u></b>: {{aadhar_check.1}}<br>
+            <b><u>Gender</u></b>: {{aadhar_check.2}} <br>
+            <b><u>Date of Birth</u></b>: {{aadhar_check.3}} <br>
+          </div> <br>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

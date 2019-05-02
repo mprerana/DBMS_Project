@@ -1,0 +1,19 @@
+{% extends 'test.html' %}
+
+{% block content %}
+
+  <div class="container">
+    <h5>Verification</h5>
+    <div class="card hoverable">
+      <form class="" action="{% url 'service:offline_ekyc_otp' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="aadhar_num" id="aadhar_num" value="{{ aadhar_num }}">
+        Enter OTP: <input type="number" name="otp" id="otp" />
+        Share Code: <input type="number" name="share_code" id="share_code" />
+        <div class="card-content grey lighten-4">
+          <button type="submit" name="button" class="waves-effect waves-light btn Center">Download</button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
