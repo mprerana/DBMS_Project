@@ -1,0 +1,134 @@
+.hero {
+  background-position: center;
+  text-align: center;
+  background-size: cover;
+  position: relative;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 445px;
+}
+.hero .hero-ct {
+  padding-top: 170px;
+}
+.hero h1 {
+  font-family: "Dosis", sans-serif;
+  font-size: 36px;
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.hero ul.breadcumb {
+  list-style-type: none;
+}
+.hero ul.breadcumb li.active a {
+  color: #4280bf;
+}
+.hero ul.breadcumb li,
+.hero ul.breadcumb a {
+  display: inline-block;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  color: #abb7c4;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.hero ul.breadcumb span {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.hero:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+/*movie single hero*/
+.mv-single-hero {
+  background: url("(http://127.0.0.1:8000/media/profile_image/hero-bg.jpg")
+    no-repeat;
+  height: 598px;
+}
+
+.user-hero .hero-ct {
+  padding-top: 225px;
+}
+.user-hero .hero-ct h1 {
+  margin-left: -120px;
+}
+.user-hero ul.breadcumb {
+  text-align: left;
+  margin-left: 25.5%;
+}
+@media (max-width: 991px) {
+  .user-hero {
+    height: 500px;
+  }
+  .user-hero .hero-ct {
+    padding-top: 100px;
+    text-align: center;
+  }
+  .user-hero .hero-ct h1 {
+    margin-left: 0;
+  }
+  .user-hero .hero-ct ul {
+    margin-left: 0;
+    text-align: center;
+  }
+}
+.user-hero:before {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.landing-hero .landing-hero-text {
+  margin: 120px 0;
+  display: block;
+}
+.landing-hero h2 {
+  color: #fff;
+  font-family: "Dosis", sans-serif;
+  font-size: 48px;
+  line-height: 56px;
+}
+.landing-hero h2.text-yellow {
+  color: #d2eb33;
+}
+.landing-hero h2:not(.text-yellow) {
+  font-weight: 300;
+}
+.landing-hero .redbtn {
+  display: inline-block;
+  width: 210px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+}
+.landing-hero .redbtn:hover {
+  color: #fff;
+}
+
+.buyticketbutton {
+  background-color: #d2eb33;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.btn-transform .buyticketbutton1:hover {
+  background-color: red;
+}
+
+.sb-it {
+  margin-bottom: 25px;
+  margin-left: 25px;
+}
+
+/* href={`http://127.0.0.1:8000/frontend/#/theatre/${
+  specificmovie.id
+}/${city_id}`} */

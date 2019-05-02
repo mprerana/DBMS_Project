@@ -1,0 +1,112 @@
+.backgroundsnacks {
+  /* background: url(./iPad1.jpg) no-repeat center ;
+    background-size: cover;
+    background-position-y: inherit; */
+  background-color: rgb(36, 37, 43);
+  height: auto;
+  padding-bottom: 10%;
+}
+
+.headerimg {
+  position: absolute;
+  min-height: 1px;
+  padding-left: 8px;
+  padding-right: 8px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-top: 9%;
+
+  margin-bottom: 3%;
+}
+
+.snacksbody {
+  height: auto;
+  min-height: 400px;
+  background-color: #373641;
+  margin-top: 25%;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.1);
+}
+
+.bookingsummary {
+  height: 400px;
+  background-color: #373641;
+  margin-top: 5%;
+  width: 500px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.1);
+  position: absolute;
+}
+
+.snackshead {
+  height: auto;
+  text-align: center;
+  padding: 21px;
+  color: aliceblue;
+  padding-bottom: 10px;
+}
+
+.snackshead1 {
+  font-size: 30px;
+  margin-bottom: 0px;
+}
+
+.snackshead2 {
+  font-size: 16px;
+  margin-bottom: 0px;
+}
+.snackslist {
+  height: auto;
+
+  margin-top: 10px;
+  padding: 15px;
+}
+
+.snacksfooter {
+  height: auto;
+  margin-top: 10px;
+  color: lavenderblush;
+  padding-left: 30px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.card {
+  float: left;
+  margin: 10px;
+}
+.card-body {
+  height: auto;
+  background-color: #3c3a51;
+  color: aliceblue;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.1);
+  border: 0px;
+}
+
+.card-title {
+  margin-bottom: 0px;
+}
+.bookingsummary {
+  padding: 15px;
+  height: auto;
+  min-height: 250px;
+}
+
+.bookingsummaryrates {
+  height: auto;
+
+  margin-bottom: 10px;
+}
+.bookingsummarytotalamount {
+  height: auto;
+  margin-bottom: 10px;
+  background-color: #4f4f55;
+  border-radius: 10px;
+}
+
+.bookingsummarysubmit {
+  height: 10%;
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
