@@ -1,0 +1,32 @@
+<template class="task-template">
+  <section id="collection-section" class="section js-section u-category-menu">
+    <div class="container">
+      <span class="milkspan" >Milk Collection</span>
+      <form class="milkform" onsubmit="">
+        <label class="milklabel" for="date">DATE
+        <input  class="date_input" id="datePicker" type="date" value=""></label>
+          <label class="milklabel" for="date">SHIFT
+           <select class="milkselect" id="shift" type="button">
+                <option value="m">morning</option>
+                <option value="e">evening</option>
+           </select>
+      </label>
+        <!-- <input class="milkinput" type="button" value="SUBMIT" id="milkCollection"> -->
+        <button class="milkinput" type="button" id="button-formilkCollection" data-subsection="milkCollection">SUBMIT</button>
+      </form>
+    </div>
+    <script>
+        var todays_date = new Date();
+        document.getElementById('datePicker').valueAsDate = todays_date;
+        var hours = todays_date.getHours();
+        var select = document.getElementById('shift');
+        if (hours < 13) {
+          select.options[0].selected = true;
+          select.options[1].selected = false;
+        }else{
+          select.options[0].selected = false;
+          select.options[1].selected = true;
+        }
+    </script>
+  </section>
+</template>

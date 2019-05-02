@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	
+<script>
+function myFunction() {
+  x=document.getElementById("name").value;
+  y=0.86*x+161.099;
+  document.getElementById("phone").value=y;
+}
+</script>
+
+
+
+
+	<title>ml form </title>
+	<link rel = "stylesheet" type="text/css" href="ml.css">
+</head>
+<body>
+	<form  >
+
+		<section class="login__section">
+	  
+	
+	  <div class="login__card">
+	  	<span class="login_span" >predicted value </span>
+
+	  	
+
+	   
+
+
+	    <label class="login__label" for="name">name:</label>
+	    <input   class="login__input" id="name" type="number" placeholder="qty collected in morning shift">
+
+	  
+	  
+
+
+	    <label class="login__label" for="phone">address</label>
+	    <input class="login__input" id="phone" type="number" placeholder="predicted">
+
+	     
+	   
+	    
+	    <button type="button" class=" login__button "  onclick="myFunction()">SUBMIT</button>
+	    
+	  </div>
+	  
+	</section>
+	</form >
+</body>
+
+
+</html>
