@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>INSERT LANGUAGE</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ lform }}
+      <button type="submit">submit</button>
+    </form>
+    {% if all_languages %}
+    <ul>
+      <h3>Existing languages</h3>
+      {% for language in all_languages %}
+      <li>{{ language }}</li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <h3>NO LANGUAGE EXIST</h3>
+    {% endif %}
+  </body>
+</html>

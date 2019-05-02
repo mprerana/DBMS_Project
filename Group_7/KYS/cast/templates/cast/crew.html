@@ -1,0 +1,50 @@
+{% extends "cast/base_cast.html" %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% block content %}
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 heading">
+      <h1>{% if BirthName is not None %}{{BirthName}}{% else %}{{name}}{% endif %}</h1>
+    </div>
+<hr>
+  </div><br>
+  <div class="row">
+    <div class="col-md-4"><img src="{{Photo}}" width="300px" height="400px"></div>
+    <div class="col-md-6">
+
+        <b style="color:deepskyblue;">Age </b> : {{dob}}<br><br>
+        <b style="color:deepskyblue;">Years Active </b> : {{Yearsactive }}
+    </div>
+  </div><br><br>
+  <div class="row">
+    <div class="col-md-12 heading">
+      <h3>Movies Directed</h3>
+    </div>
+  </div><br>
+  <div class="row">
+    {% for movie in crewMovies %}
+    <div class="col-md-2 movie_acted"  style="text-align:center;">
+      <a href="{% url 'show:movie' movie.id %}" class="link">
+        <img src="/media/{{ movie.titlePoster1 }}" width="180px" height="250px">
+      </a><br>
+      <a href="{% url 'show:movie' movie.id %}" class="link" style="color:black;">{{movie.titleName}}</a><br>({{movie.year}})<br>
+    </div>
+    {% endfor %}
+  </div><br><br>
+  <div class="row">
+    <div class="col-md-12 heading">
+      <h3>Personal Information</h3>
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col-md-9">
+      <b style="color:deepskyblue;">Born </b> :   {{dob}} <b style="color:deepskyblue;">in</b> {{placeofbirth}} <br><br>
+      <b style="color:deepskyblue;">Biography</b> : {{Biography}}<br><br>
+      <b style="color:deepskyblue;">Education</b> : {{Education}}<br>
+    </div>
+  </div>
+</div>
+<br><br>
+{% endblock content %}

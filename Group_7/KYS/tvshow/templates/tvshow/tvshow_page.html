@@ -1,0 +1,52 @@
+{% extends "tvshow/tvshow_base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+<br><br>
+<div class="container background-container">
+  <div class="row">
+    <div class="col-md-10 heading">
+      <h1>{{tvshow.titleName}}</h1>
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col-md-6"><img src="{{tvshow.seriesPoster}}" width="200px" height="300px"></div>
+    <div class="col-md-4">
+      <b style="color:deepskyblue;">Languages</b> :
+      <ul>
+        {% for language in langs %}
+        <li>{{language.languages}}</li>
+        {% endfor %}
+      </ul>
+      <b style="color:deepskyblue;">Genres</b> :
+      <ul>
+        {% for genre in genres %}
+        <li>{{genre.genres}}</li>
+        {% endfor %}
+      </ul>
+      <b style="color:deepskyblue;">Series Summary</b> :
+           {{ tvshow.seriesSummary }} <br><br>
+           <b style="color:deepskyblue;">Seasons</b> :
+           <ul>
+             {% for season in seasons %}
+             <li> <a href="{% url 'tvshow:seasonpage' tvshow.id season.seasonNum %}"> Season {{season.seasonNum}} </a> </li>
+             {% endfor %}
+           </ul>
+    </div>
+  </div><br>
+
+  <script>
+      function reveal() {
+          document.getElementById("b").style.overflow="visible";
+          document.getElementById("b").style.whiteSpace="normal";
+          document.getElementById("c").style.display="none";
+          document.getElementById("d").style.display="block";
+      }
+      function showless() {
+          document.getElementById("b").style.overflow="hidden";
+          document.getElementById("b").style.whiteSpace="nowrap";
+          document.getElementById("c").style.display="block";
+          document.getElementById("d").style.display="none";
+      }
+  </script>
+{% endblock content %}

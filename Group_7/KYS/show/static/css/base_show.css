@@ -1,0 +1,67 @@
+
+
+body{
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.border{
+  border-left: 2px solid black;
+}
+.heading{
+  border-bottom:1px solid black;
+}
+.heading1{
+  border-bottom:1px solid black;
+  width:75%;
+}
+
+.link{
+  text-decoration: none;
+  color:black;
+  font-size: 15px;
+}
+.link:hover{
+  color: deepskyblue;
+  text-decoration: none;
+}
+
+.modal-title{
+  color:black;
+}
+.modal-sub{
+  color:black;
+}
+textarea {
+  resize:none;
+  overflow:auto;
+}
+/* .modal-content{
+  border: 1px solid white;
+}
+.modal-body,.modal-header,.modal-footer{
+  background-color: black;
+} */
+
+.button {
+  background-color: black;
+  border: none;
+  color: deepskyblue;
+  padding: 9px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 3px 0.5px;
+  cursor: pointer;
+  border:1px solid deepskyblue;
+}
+
+.button:hover{
+  background-color:  deepskyblue;
+  color:black;
+}
+
+/* .rate_btn{
+  margin-bottom: 15px;
+} */

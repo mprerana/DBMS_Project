@@ -1,0 +1,98 @@
+import wptools
+import wikipedia
+
+
+	SELECT id FROM show_show
+	ORDER BY movieViewCount DESC LIMIT 5
+
+Name
+ = wptools.page('Rami Malek').get_parse().data['infobox']['name']
+
+Birth Name
+ = wptools.page('Rami Malek').get_parse().data['infobox']['birth_name']
+
+Date of birth
+a = re.split('[{{ | }}]' , wptools.page('Barrack Obama').get_parse().data['infobox']['birth_date'])
+
+For example a =  ['', '', 'birth', 'date', 'and', 'age', '1961', '8', '4', '', '']
+dob = []
+for i in a:
+    try:
+        dob.append(int(i))
+    except:
+        pass
+
+Place of birth
+s = wptools.page('Barrack Obama').get_parse().data['infobox']['birth_place']
+Eg. s = '[[Honolulu]], [[Hawaii]], U.S.'
+pob = ''.join(i for i in s if i not in [ '[' , ']' ])
+
+Education
+= wptools.page('Rami Malek').get_parse().data['infobox']['education']
+
+Occupation
+s= wptools.page('Rami Malek').get_parse().data['infobox']['occupation']
+s2 = ''.join(i for i in s if i not in [ '[' , ']', '(', ')' ])
+
+Photo
+ = wptools.page('Rami Malek').get_parse().data['image'][0]['url']
+
+Years active
+ = wptools.page('Rami Malek').get_parse().data['infobox']['years_active']
+
+Biography
+ = wikipedia.page('Bob Odenkirk').summary
+
+DELIMITER $$
+CREATE PROCEDURE update_movie_count(INOUT movie_id INT(4))
+BEGIN
+	UPDATE show_show
+	SET movieViewCount = movieViewCount + 1
+	WHERE id = movie_id;
+END $$
+DELIMITER ;
+
+
+
+CREATE TABLE top5_movies (
+    Rankid int NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (Rankid),
+    FOREIGN KEY (Rankid) REFERENCES show_show(id)
+);
+
+
+DELIMITER $$
+CREATE TRIGGER update_top_movies
+	BEFORE UPDATE ON show_show
+	FOR EACH ROW
+BEGIN
+	INSERT INTO top5_movies
+	SET Rankid = id;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE update_series_count(INOUT S INT(4))
+BEGIN
+	UPDATE tvshow_tvshow
+	SET seriesViewCount = seriesViewCount + 1
+	WHERE id = S;
+END $$
+DELIMITER ;
+
+
+CREATE TABLE top5_series (
+    Rankid int NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (Rankid),
+    FOREIGN KEY (Rankid) REFERENCES tvshow_tvshow(id)
+);
+
+DELIMITER $$
+CREATE TRIGGER update_top_series
+	BEFORE UPDATE ON tvshow_tvshow
+	FOR EACH ROW
+BEGIN
+	INSERT INTO top5_series
+	SET Rankid = id;
+END$$
+DELIMITER ;
