@@ -46,3 +46,10 @@ The Reader can read articles of his interest. He
 can view bookmarked articles in his profile. 
 
 
+## How to Run This Project
+
+### Server
+In current directory run command ```pip install -r requirements.txt``` and then run the server using ```python manage.py runserver```
+
+### Client
+Run ```cd templates```, followed by ```npm i``` to all dependencies related to vue. To run client server run ```npm run serve```
