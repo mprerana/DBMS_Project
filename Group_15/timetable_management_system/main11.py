@@ -1,4 +1,4 @@
-import sqlite3
+import mysql.connector
 #from PyQt5 import QtCore, QtGui
 #from PyQt5.QtGui import *
 #from PyQt5 import QtWidgets
@@ -30,12 +30,30 @@ import os
 #         return QtGui.QApplication.translate(context, text, disambig)
 
 def db():
-    with sqlite3.connect('users.db') as db:
-        c = db.cursor()
-    c.execute('create table if not exists users(name TEXT NOT NULL,age INT NOT NULL,username TEXT NOT NULL,password TEXT NOT NULL, gender TEXT NOT NULL)')
-    db.commit()
-    c.close()
-    db.close()
+#         c = db.cursor()
+#     c.execute('create table if not exists users(name TEXT NOT NULL,age INT NOT NULL,username TEXT NOT NULL,password TEXT NOT NULL, gender TEXT NOT NULL)')
+#     db.commit()
+#     c.close()
+#     db.close()
+conn = mysql.connector.connect(
+      host='localhost',
+      user='root',
+      passwd='Sujala@123',
+      database="trial17",
+      autocommit=True
+    )
+
+    #conn = mysql.connect('gas.db')
+    cursor = conn.cursor()
+    
+    
+    cursor.execute('create table if not exists users(name TEXT NOT NULL,age INT NOT NULL,username TEXT NOT NULL,password TEXT NOT NULL, gender TEXT NOT NULL)')
+    result = cursor.fetchone()
+    conn.close()
+    if result is None:
+        return False
+    return True
+
 
 class Ui_win(object):
 
