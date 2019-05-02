@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald:100|Playfair+Display|Titillium+Web");
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100');
+.logo {
+  position: absolute;
+  width: 422px;
+  height: 139px;
+  left: 510px;
+  top: 43px;
+  /* 
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 35px;
+  line-height: normal;
+  text-align: center;
+  letter-spacing: -0.02em; */
+
+  color: #000000;
+}
