@@ -1,0 +1,7 @@
+img{
+  max-width:180px;
+  border-radius: 8px;
+}
+input[type=file]{
+padding:10px;
+background:#D3D3D3;}

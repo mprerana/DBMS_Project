@@ -1,0 +1,114 @@
+<!--
+  Install dependencies with Bower:
+    bower install PolymerElements/paper-elements#^1.0.7
+ -->
+
+<html>
+
+<head>
+  <title>Auth Example</title>
+  <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+  <!--Polymer-->
+  <script src="/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="/bower_components/polymer/polymer.html">
+  <link rel="import" href="/bower_components/paper-material/paper-material.html">
+  <link rel="import" href="/bower_components/paper-button/paper-button.html">
+  <link rel="import" href="/bower_components/paper-input/paper-input.html">
+  <link rel="import" href="/bower_components/paper-styles/demo-pages.html">
+
+  <!--Firebase-->
+  <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBP5EaFCQ0yAbcvYozyKCwKJ2Wf-yioCs4",
+      authDomain: "quiver-two.firebaseapp.com",
+      databaseURL: "https://quiver-two.firebaseio.com",
+      storageBucket: "quiver-two.appspot.com",
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <body>
+    <template is="dom-bind" id="app">
+      <paper-material elevation="1" style="padding: 2rem;">
+        <h2>Input your email and password.</h2>
+        <paper-input label="Email" value="{{email::input}}" type="text"></paper-input>
+        <paper-input label="Password" value="{{password::input}}" type="password"></paper-input>
+        <paper-button on-click="signIn">Sign In</paper-button>
+        <paper-button on-click="register">Register</paper-button>
+        <paper-button on-click="signInWithGoogle">Sign in with google</paper-button>
+        <paper-button on-click="signOut">Sign out</paper-button>
+      </paper-material>
+    </template>
+
+    <script>
+      (function() {
+        var app = document.querySelector('#app');
+        app.signIn = function() {
+          var email = app.email;
+          var password = app.password;
+          if (!email || !password) {
+            return console.log('email and password required');
+          }
+          // Sign in user
+          firebase.auth().signInWithEmailAndPassword(email, password)
+            .catch(function(error) {
+              // Handle Errors here.
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              console.log('signIn error', error);
+              // ...
+            });
+        };
+        app.register = function() {
+          var email = app.email;
+          var password = app.password;
+          if (!email || !password) {
+            return console.log('email and password required');
+          }
+          // Register user
+          firebase.auth().createUserWithEmailAndPassword(email, password)
+            .catch(function(error) {
+              console.log('register error', error);
+              if (error.code === 'auth/email-already-in-use') {
+                var credential = firebase.auth.EmailAuthProvider.credential(email, password);
+                app.signInWithGoogle()
+                  .then(function() {
+                    firebase.auth().currentUser.link(credential)
+                      .then(function(user) {
+                        console.log("Account linking success", user);
+                      }, function(error) {
+                        console.log("Account linking error", error);
+                      });
+                  });
+              }
+            });
+        };
+        app.signInWithGoogle = function() {
+          // Sign in with Google
+          var provider = new firebase.auth.GoogleAuthProvider();
+          provider.addScope('profile');
+          provider.addScope('email');
+          return firebase.auth().signInWithPopup(provider)
+            .catch(function(error) {
+              console.log('Google sign in error', error);
+            });
+        };
+        app.signOut = function() {
+          // Sign out
+          firebase.auth().signOut();
+        };
+        // Listen to auth state changes
+        firebase.auth().onAuthStateChanged(function(user) {
+          app.user = user;
+          console.log('user', user);
+        });
+      })();
+    </script>
+  </body>
+
+</head>
+
+
+</html>

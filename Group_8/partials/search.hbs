@@ -1,0 +1,16 @@
+<!-- Search bar -->
+        <div class="search-wrapper">
+            <div class="container container--add">
+                <form id='search-form' method="POST" class="search" action="/list">
+                    <input type="text" class="search__field" placeholder="Search" name="ser">
+                    <select name="val" id="search-sort" class="search__sort" tabindex="0">
+                        <option value="1" selected='selected'>Title</option>
+                        <option value="2">Year</option>
+                        <option value="3">Director</option>
+                        <option value="4">Genre</option>
+                    </select>
+                    <button type='submit' class="btn btn-md btn--danger search__button">search a movie</button>
+                </form>
+            </div>
+        </div>
+        
