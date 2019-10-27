@@ -110,8 +110,8 @@ exports.login = async (req, res, next) => {
 
         const refreshTokenExpiryDate = new Date(new Date() * 1 + (1000 * 60 * 60 * 24 * 30));
 
-        // add outstanding token to db
-        // kept async to end response faster
+        // add outstanding token in db
+        // keep async to end response faster
         const WrappedExpiryDate = queryWrappers.wrapValue(refreshTokenExpiryDate.toISOString());
         query = `INSERT INTO ${OutstandingToken.getTableName()} 
                 ("user_id","token", "expires_on") 
@@ -177,14 +177,14 @@ exports.refresh = async (req,res,next) => {
         const ot_instances = await sequelize.query(query, {type:sequelize.QueryTypes.SELECT, model: OutstandingToken});
 
         if (ot_instances.length <= 0){
-            // invalid refresh token
+            // invalid for refresh token
             const err = new Error("this refresh token is either invalid, expired or revoked!");
             err.statusCode = 422;
             err.data = errors.array();
             throw err;
         }
 
-        // valid refresh token. generate new access token and send
+        // valid to refresh token. generate new access token and send
 
         let user = await User.findByPk(ot_instances[0].dataValues.user_id);
         const newAccessToken = jwt.sign({
