@@ -176,7 +176,7 @@ exports.bookFlight = async (req, res, next) => {
         // console.log("flight null")
     }
 
-    //passenger details
+    //passengers details
     const noOfPassengers = passengers.length;
     const modifiedPassengers = passengers.map(pass => {
         return {
@@ -194,7 +194,7 @@ exports.bookFlight = async (req, res, next) => {
         passengers: modifiedPassengers,
         pnrNo: 'FH' + flight.flightNo.toString() + parseInt(new Date() * 1).toString()
     });
-    // console.log(flight);
+    // console.log(flights);
 
     paymentInstance.checked = true;
     await paymentInstance.save();
