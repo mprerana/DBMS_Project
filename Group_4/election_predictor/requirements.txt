@@ -2,7 +2,7 @@ autocorrect==0.3.0
 certifi==2019.3.9
 chardet==3.0.4
 dj-database-url==0.5.0
-Django==2.1.7
+Django==2.2.10
 django-appconf==1.0.3
 django-bootstrap-form==3.4
 django-ipware==2.1.0
