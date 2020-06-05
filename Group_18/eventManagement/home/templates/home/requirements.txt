@@ -1,7 +1,7 @@
 antiorm==1.2.1
 db==0.1.1
 db-sqlite3==0.0.1
-Django==2.1.7
+Django==2.2.13
 django-crispy-forms==1.7.2
 django-dbshell-plus==1.0.1
 mysql-connector-python==8.0.15
