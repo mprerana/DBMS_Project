@@ -29,7 +29,7 @@
     "express": "^4.16.4",
     "express-validator": "^5.3.1",
     "jsonwebtoken": "^8.5.1",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "moment": "^2.24.0",
     "npx": "^10.2.0",
     "pg": "^7.9.0",
