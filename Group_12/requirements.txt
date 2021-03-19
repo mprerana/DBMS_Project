@@ -23,7 +23,7 @@ markdown2==2.3.7
 matplotlib==3.0.3
 mccabe==0.6.1
 numpy==1.16.2
-Pillow==5.4.1
+Pillow==8.1.1
 psycopg2==2.7.7
 pylint==2.3.1
 pyparsing==2.3.1
