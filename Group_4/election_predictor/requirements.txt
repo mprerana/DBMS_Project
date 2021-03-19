@@ -9,7 +9,7 @@ django-ipware==2.1.0
 django-mysql==3.0.0.post1
 django-rest-framework==0.1.0
 django-widget-tweaks==1.4.3
-djangorestframework==3.9.3
+djangorestframework==3.11.2
 feedparser==5.2.1
 geographiclib==1.49
 idna==2.8
