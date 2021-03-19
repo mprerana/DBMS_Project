@@ -15,7 +15,7 @@ defusedxml==0.6.0
 Django==2.2
 django-jinja==2.4.1
 django-jinja-bootstrap-form==4.2.3
-djangorestframework==3.9.2
+djangorestframework==3.11.2
 hiredis==1.0.0
 hyperlink==19.0.0
 idna==2.8
