@@ -3,7 +3,7 @@ antiorm==1.2.1
 asgiref==2.3.2
 async-timeout==3.0.1
 attrs==19.1.0
-autobahn==19.3.3
+autobahn==20.12.3
 Automat==0.7.0
 certifi==2019.3.9
 channels==2.1.7
