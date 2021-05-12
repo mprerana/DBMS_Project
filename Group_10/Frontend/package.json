@@ -8,7 +8,7 @@
     "@material-ui/core": "3.9.3",
     "@material-ui/icons": "3.0.2",
     "axios": "^0.18.0",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "filepond": "^4.4.2",
     "js-file-download": "^0.4.5",
     "material-ui-flat-pagination": "^3.2.0",
