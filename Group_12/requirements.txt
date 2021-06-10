@@ -6,7 +6,7 @@ chardet==3.0.4
 colorama==0.4.1
 cssselect==1.0.3
 cycler==0.10.0
-Django==2.1.7
+Django==2.2.24
 django-autocomplete-light==3.3.2
 django-ckeditor==5.6.1
 django-cors-headers==2.5.2
