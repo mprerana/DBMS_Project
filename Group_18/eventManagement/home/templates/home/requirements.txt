@@ -6,6 +6,6 @@ django-crispy-forms==1.7.2
 django-dbshell-plus==1.0.1
 mysql-connector-python==8.0.15
 Pillow==5.4.1
-protobuf==3.7.1
+protobuf==3.15.0
 pytz==2018.9
 six==1.12.0
