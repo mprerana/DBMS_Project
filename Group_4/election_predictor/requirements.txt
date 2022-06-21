@@ -16,7 +16,7 @@ idna==2.8
 maxminddb==1.4.1
 mysqlclient==1.4.2.post1
 nltk==3.4.1
-numpy==1.16.3
+numpy==1.22.0
 pandas==0.24.2
 PyMySQL==0.9.3
 python-dateutil==2.8.0
