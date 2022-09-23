@@ -28,7 +28,7 @@ msgpack==0.6.1
 mysql-connector-python==8.0.15
 mysqlclient==1.4.2.post1
 Pillow==5.4.0
-protobuf==3.7.1
+protobuf==3.18.3
 PyHamcrest==1.9.0
 pytz==2018.9
 requests==2.21.0
