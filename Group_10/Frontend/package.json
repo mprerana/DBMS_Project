@@ -24,7 +24,7 @@
     "react-filepond": "^7.0.1",
     "react-helmet": "5.2.0",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8",
+    "react-scripts": "5.0.1",
     "react-text-mask": "^5.4.3",
     "semantic-ui-react": "^0.86.0",
     "styled-components": "4.2.0",
