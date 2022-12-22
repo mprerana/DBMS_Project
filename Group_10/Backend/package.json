@@ -21,7 +21,7 @@
     "chai-as-promised": "^7.1.1",
     "connect-busboy": "0.0.2",
     "express": "^4.16.4",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "md5": "^2.2.1",
     "multer": "^1.4.1",
     "node-kmeans": "^1.1.8",
